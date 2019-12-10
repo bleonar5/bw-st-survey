@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {{> head}}
+</head>
+    
+<body class="{{template}}">
+
+    <div class="container">
+        {{> navbar}}
+    {{!-- Temporary top margin to allow space for temporary navbar --}}
+    <div style="margin-top:150px;"></div>
+	    {{{body}}}
+    </div>
+    {{> footer}}
+    {{> scripts}}
+</body>
+</html>

@@ -1,0 +1,42 @@
+{{!-- todo - make this page like the one on the slides --}}
+
+<div class="row justify-content-center vertical-center">
+  <div class="col-md-8 p-4">
+      <form action="/individual-login" method="POST">
+      <fieldset class="bg-light p-4 rounded">
+          <div class="form-group">
+{{!-- Try to find out what participant_id is for --}}
+{{!-- Find best way of having label and input side by side --}}
+{{!-- Note: autocomplete off is not working --}}
+              <label for="participant_id">First Name</label>
+              <input type="text" class="form-control" name="firstNameOnLogin" value="" autocomplete="off">
+              <label for="participant_id">Family Name</label>
+              <input type="text" class="form-control" name="familyNameOnLogin" value="" autocomplete="off">
+              <label for="participant_id">Email</label>
+              <input type="email" class="form-control" name="emailOnLogin" value="" autocomplete="off">
+          </div>
+        <div class="text-center">
+          <button href="/eligibility-notice" class="btn btn-lg btn-success" type="submit">Login</button>
+        </div>
+      </fieldset>
+    </form> 
+  </div>
+</div>
+
+  
+<form id="form" action="/signup" method="POST">
+<label for="username">Username</label><br>
+<input type="text" name="username" placeholder="Your username" autocomplete="off">
+
+<label for="password">Password</label><br>
+{{!-- input type password means that we are going to have the ***. This is not actually encrypting anything. It is just making sure that the guy next to you can't see your p/w--}}
+<input type="password" name="password" placeholder="********" autocomplete="off">
+
+{{#if errorMessage}}
+<div class="error-message">{{ errorMessage }}</div>
+{{/if}}
+
+<button type="submit">Create account</button>
+</form>
+
+
