@@ -4,9 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon ./bin/www",
+    "start": "node ./bin/www",
     "dev": "DEBUG=i2es28-gen-test:* nodemon ./bin/www",
-    "dev-windows": "nodemon ./bin/www"
+    "start-dev": "nodemon ./bin/www"
   },
   "keywords": [],
   "author": "ralph-payne",
