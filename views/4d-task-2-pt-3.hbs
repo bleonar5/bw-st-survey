@@ -1,9 +1,62 @@
-<form id="big-five-form" action="/big-five" method="post">
+{{!-- The Dynamic code is in views/4b-task-2dynamic.hbs. MVP will not work dynamically as I need to sort out the code --}}
+
+<form action="#" method="POST">
         <div id="inst_1" class="inst">
             <table class="table table-striped table-sm mt-lg-4 big-five">
-                {{#each perguntas}}
-                    {{> dropdown this}}
-                {{/each}}
+
+            <tr>
+                <td class="text-left">In the last year, have you been part of any recreational clubs or groups that involves working in groups?</td>
+                <td>
+                <div id="file1" class="btn-group" data-toggle="buttons" >
+                    <label class="btn btn-primary">
+                        <input type="radio" name="option1" /> Yes
+                    </label>
+                    <label class="btn btn-danger">
+                        <input type="radio" name="option1" /> No
+                    </label>
+                </div>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="text-left">If YES, how often do you attend?</td>
+                <td>
+                <select class="form-control">
+                    <option>more than 3 times a week</option>
+                    <option>1-3 times a week</option>
+                    <option>1 per month</option>
+                    <option>infrequently</option>
+                </select>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="text-left">In the last year, have you worked with others as a volunteer, for example for a charity or for a local church?</td>
+                <td>
+                <div id="file1" class="btn-group" data-toggle="buttons" >
+                    <label class="btn btn-primary">
+                        <input type="radio" name="option1" />Yes
+                    </label>
+                    <label class="btn btn-danger">
+                        <input type="radio" name="option1" />No
+                    </label>
+                </div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="text-left">If YES, how often do you attend?</td>
+                <td>
+                <select class="form-control">
+                    <option>more than 3 times a week</option>
+                    <option>1-3 times a week</option>
+                    <option>1 per month</option>
+                    <option>infrequently</option>
+                </select>
+                </td>
+            </tr>
+
             </table>
         </div>
 

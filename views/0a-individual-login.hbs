@@ -23,20 +23,3 @@
   </div>
 </div>
 
-  
-<form id="form" action="/signup" method="POST">
-<label for="username">Username</label><br>
-<input type="text" name="username" placeholder="Your username" autocomplete="off">
-
-<label for="password">Password</label><br>
-{{!-- input type password means that we are going to have the ***. This is not actually encrypting anything. It is just making sure that the guy next to you can't see your p/w--}}
-<input type="password" name="password" placeholder="********" autocomplete="off">
-
-{{#if errorMessage}}
-<div class="error-message">{{ errorMessage }}</div>
-{{/if}}
-
-<button type="submit">Create account</button>
-</form>
-
-
