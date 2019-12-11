@@ -6,10 +6,15 @@
     
 <body class="{{template}}">
 
+      <div>
+        <a class="btn btn-lg dropbtn" role="button" href="/">Home</a>
+      </div>
+
+
     <div class="container">
-        {{> navbar}}
-    {{!-- Temporary top margin to allow space for temporary navbar --}}
-    <div style="margin-top:150px;"></div>
+    {{!-- top margin to allow space --}}
+    
+    <div style="margin-top:100px;"></div>
 	    {{{body}}}
     </div>
     {{> footer}}

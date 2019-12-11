@@ -24,7 +24,9 @@ router.post("/individual-login", (req, res, next) => {
 // Create validations Part 1: Validate that all fields are correctly filled up
   if (firstName === "" || familyName === "" || email === "") {
     // This is the error message that appears if either of the fields has not been filled out
-  res.render("auth/individual-login", {
+  res.render("1a-informed-consent", {
+    // Temporarily replacing this code below with the line above to allow for site demo
+  // res.render("0a-individual-login", {
     errorMessage: "Please complete all fields"
   });
   return;
@@ -35,7 +37,9 @@ router.post("/individual-login", (req, res, next) => {
     })
     .then(user => {
       if (user !== null) {
-        res.render("auth/individual-login", {
+        res.render("1a-informed-consent", {
+          // Temporarily replacing this code below with the line above to allow for site demo
+        // res.render("0a-individual-login", {
           errorMessage: "The email has already been used!"
         });
         return;
