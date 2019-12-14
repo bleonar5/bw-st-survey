@@ -1,13 +1,12 @@
-<div>
+
 {{> containerDiv}}
-{{> verticalCenterDiv}}
-
-<form action="#" method="POST">
-        <div id="inst_1" class="inst">
-            <table class="table table-striped table-sm mt-lg-4 big-five">
+    {{> verticalCenterDiv}}
+        <form action="#" method="POST">
+            <div>
+                <table class="table table-striped">
 
         <tr>
-            <td class="text-left">If you are a current student OR have completed a degree, what was your major?</td>
+            <td class="text-left bigger-text">If you are a current student OR have completed a degree, what was your major?</td>
             <td>
             <select class="form-control">
                 <option disabled selected value> -- select an option -- </option>
@@ -19,7 +18,7 @@
         </tr>
 
         <tr>
-            <td class="text-left">Roughly what fraction of your assessment during your degree was based on group work or team assignments?</td>
+            <td class="text-left bigger-text">Roughly what fraction of your assessment during your degree was based on group work or team assignments?</td>
             <td>
             <select class="form-control">
                 <option disabled selected value> -- select an option -- </option>
@@ -31,7 +30,7 @@
         </tr>
 
         <tr>
-            <td class="text-left">placeholder 1; David still coming up with some Q’s here</td>
+            <td class="text-left bigger-text">placeholder 1; David still coming up with some Q’s here</td>
             <td>
             <select class="form-control">
                 <option disabled selected value> -- select an option -- </option>
@@ -43,7 +42,7 @@
         </tr>
 
         <tr>
-            <td class="text-left">placeholder 2; David still coming up with some Q’s here</td>
+            <td class="text-left bigger-text">placeholder 2; David still coming up with some Q’s here</td>
             <td>
             <select class="form-control">
                 <option disabled selected value> -- select an option -- </option>
@@ -55,7 +54,7 @@
         </tr>
 
         <tr>
-            <td class="text-left">placeholder 3; David still coming up with some Q’s here</td>
+            <td class="text-left bigger-text">placeholder 3; David still coming up with some Q’s here</td>
             <td>
             <select class="form-control">
                 <option disabled selected value> -- select an option -- </option>
@@ -66,18 +65,11 @@
             </td>
         </tr>
             </table>
-        </div>
 
-    <div class="text-center m-5">
-        <a class="btn btn-lg btn-primary" role="button" href="task-2-pt-3">Next</a>
+            <div class="float-right"><a class="btn btn-lg btn-primary float-right" role="button" href="task-2-pt-3">Next</a></div>
+            </div>
+            <div id="page-number">{{> pageNumberFormat}}Page 2 of 3</div></div>
+
+        </form>
     </div>
-
-    {{> pageNumberFormat}}
-        Page 2 of 3
-    </div>
-
-</form>
-
-</div>
-</div>
 </div>

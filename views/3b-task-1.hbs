@@ -1,37 +1,17 @@
-<div>
+
 {{> containerDiv}}
-{{> verticalCenterDiv}}
+    {{> verticalCenterDiv}}         
+        <form action="#" method="POST">
+            <div>
+                {{> radioTableHeaderBig}}
+                    {{> radioheadingagree}}
+                    {{#each perguntas}} {{> radioRowNormalText this}} {{/each}}
+                </table>
 
-<form action="#" method="post">
-        <div>
-            <table class="table table-striped table-sm mt-lg-4 big-five">
-                {{> radioheadingagree}}
-                {{#each perguntas}}
-                    {{> radiorow this}}
-                {{/each}}
-            </table>
-        </div>
-
-    <div class="fixed-bottom">
-        
-            {{!-- Back Button Not Required --}}
-            {{!-- <a href="#" role="button" class="btn btn-lg btn-secondary float-left">Back</a> --}}
-            <a href="task-1-pt-2" role="button" class="btn btn-lg btn-primary float-md-right float-sm-none btn-bottom-right">Next</a>
-        
-    </div> 
-
-    {{> pageNumberFormat}}
-        Page 1 of 2
-    </div>     
-
-    {{!-- TODO: Add Dynamic Page Numbering
-    <div >
-        Page 1 of 2
+            {{> nextBtnFormValidation }}
+            </div>        
+            {{> warningMessage}}
+            <div id="page-number">{{> pageNumberFormat}}Page 1 of 2</div></div>
+        </form>
     </div>
-    > --}}
-    
-</form>
-
-</div>
-</div>
 </div>

@@ -1,15 +1,12 @@
 
-<div>
 {{> containerDiv}}
-{{> verticalCenterDiv}}
-
-<form action="#" method="POST">
-
-<div>
-    <table class="table table-striped">
+    {{> verticalCenterDiv}}
+        <form action="#" method="POST">
+            <div>
+                <table class="table table-striped">
 
         <tr>
-            <td class="text-left">Are you currently employed?</td>
+            <td class="text-left bigger-text">Are you currently employed?</td>
             <td>
             <select class="form-control">
                 <option disabled selected value> -- select an option -- </option>
@@ -21,7 +18,7 @@
         </tr>
 
         <tr>
-            <td class="text-left">
+            <td class="text-left bigger-text">
                 What industry do you work in?</td>
             <td>
             <select class="form-control">
@@ -34,7 +31,7 @@
         </tr>
 
         <tr>
-            <td class="text-left">What is your role?</td>
+            <td class="text-left bigger-text">What is your role?</td>
 
             <td>
             <input type="text" class="form-control" name="role" value="" autocomplete="off">
@@ -44,7 +41,7 @@
         </tr>
 
         <tr>
-            <td class="text-left">On average, how many times per week do you meet with co-workers to discuss work?</td>
+            <td class="text-left bigger-text">On average, how many times per week do you meet with co-workers to discuss work?</td>
             <td>
             <select class="form-control">
                 <option disabled selected value> -- select an option -- </option>
@@ -58,7 +55,7 @@
         </tr>
 
         <tr>
-            <td class="text-left">What is your annual salary?</td>
+            <td class="text-left bigger-text">What is your annual salary?</td>
             <td>
             <select class="form-control">
                 <option disabled selected value> -- select an option -- </option>
@@ -78,16 +75,11 @@
         </tr>
 
     </table>
-</div>
 
-    <div class="text-center">
-        <a class="btn btn-lg btn-primary" role="button" href="task-2-pt-2">Next</a>
+            <div class="float-right"><a class="btn btn-lg btn-primary float-right" role="button" href="task-2-pt-2">Next</a></div>
+            </div>
+            <div id="page-number">{{> pageNumberFormat}}Page 1 of 3</div></div>
+
+        </form>
     </div>
-
-{{> pageNumberFormat}}Page 1 of 3</div>
-
-</form>
-
-</div>
-</div>
 </div>

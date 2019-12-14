@@ -1,5 +1,4 @@
 
-
 function checkRadioFive1 (_id) {
 
     let radios1 = document.getElementsByName(_id);

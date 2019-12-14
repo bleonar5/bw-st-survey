@@ -21,6 +21,10 @@
   max-width: 1200px;
 }
 
+.hidden-navbar{
+  display: none !important;
+}
+
 /* Dropdown Button */
 .dropbtn {
     background-color: #f8f9fa;

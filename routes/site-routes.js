@@ -94,6 +94,7 @@ router.get('/task-3', (req, res) => {
   const allQuestions = require('../bin/sheets-import');
   // WARNING: The code below might not work on IE.
   const perguntas = allQuestions.filter( data => data.page === 14);
+  console.log(perguntas);
   res.render('5c-task-3', { perguntas });
 });
 

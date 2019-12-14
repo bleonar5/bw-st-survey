@@ -1,15 +1,13 @@
-{{!-- The Dynamic code is in views/4b-task-2dynamic.hbs. MVP will not work dynamically as I need to sort out the code --}}
 
-<div>
 {{> containerDiv}}
 {{> verticalCenterDiv}}
 
-<form action="#" method="POST">
+    <form action="#" method="POST">
         <div id="inst_1" class="inst">
-            <table class="table table-striped table-sm mt-lg-4 big-five">
+            <table class="table table-striped">
 
             <tr>
-                <td class="text-left">In the last year, have you been part of any recreational clubs or groups that involves working in groups?</td>
+                <td class="text-left bigger-text">In the last year, have you been part of any recreational clubs or groups that involves working in groups?</td>
                 <td>
                 <div id="file1" class="btn-group" data-toggle="buttons">
                     <label class="btn btn-primary">
@@ -23,7 +21,7 @@
             </tr>
 
             <tr>
-                <td class="text-left">If YES, how often do you attend?</td>
+                <td class="text-left bigger-text">If YES, how often do you attend?</td>
                 <td>
                 <select class="form-control">
                     <option disabled selected value> -- select an option -- </option>
@@ -36,7 +34,7 @@
             </tr>
 
             <tr>
-                <td class="text-left">In the last year, have you worked with others as a volunteer, for example for a charity or for a local church?</td>
+                <td class="text-left bigger-text">In the last year, have you worked with others as a volunteer, for example for a charity or for a local church?</td>
                 <td>
                 <div id="file1" class="btn-group" data-toggle="buttons">
                     <label class="btn btn-primary">
@@ -51,7 +49,7 @@
 
 
             <tr>
-                <td class="text-left">If YES, how often do you attend?</td>
+                <td class="text-left bigger-text">If YES, how often do you attend?</td>
                 <td>
                 <select class="form-control">
                     <option disabled selected value> -- select an option -- </option>
@@ -64,19 +62,11 @@
             </tr>
 
             </table>
+
+        <div class="float-right"><a class="btn btn-lg btn-primary float-right" role="button" href="task-2-pt-3">Next</a></div>
         </div>
+        <div id="page-number">{{> pageNumberFormat}}Page 3 of 3</div></div>
 
-    <div class="text-center m-5">
-        <a class="btn btn-lg btn-primary" role="button" href="instructions-3">Next</a>
+        </form>
     </div>
-
-    {{> pageNumberFormat}}
-        Page 3 of 3
-    </div>
-
-</form>
-
-
-</div>
-</div>
 </div>

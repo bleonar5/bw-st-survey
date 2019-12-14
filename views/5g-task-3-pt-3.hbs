@@ -1,24 +1,18 @@
-<div>
+{{!-- Handlebars partials can seem to deal with being on top line --}}
 {{> containerDiv}}
-{{> verticalCenterDiv}}
-
-<form action="#" method="POST">
-    <div id="inst_1" class="inst">
-        <table class="table table-striped table-sm mt-lg-4 big-five">
-            {{> radioheadingeffective}}
-            {{#each perguntas}}
-                {{> radioRowSmall this}}
-            {{/each}}
-        </table>
+    {{> verticalCenterDiv}}
+        <form action="#" method="POST">
+            <div>
+                {{> radioTableHeader }}
+                    {{> radioheadingeffective}}
+                    {{#each perguntas}} {{> radiorow this}} {{/each}}
+                </table>
+                <a href="scenario-3" role="button" class="btn btn-lg btn-secondary float-left">Return to scenario 3 description</a>                
+                {{> nextBtnFormValidation }}
+    
+            {{> warningMessage}}
+                {{!-- temporarily putting a blank page number until I refactor the domManip js script --}}
+            <div id="page-number">{{> pageNumberFormat}}</div></div>
+        </form>
     </div>
-
-    <h4>
-        <a href="scenario-3" role="button" class="btn btn-lg btn-secondary float-left my-2">Return to scenario 3 description</a>
-        <a href="study-conclusion" role="button" class="btn btn-lg btn-primary float-right my-2">Next</a>
-    </h4>
-
-</form>
-
-</div>
-</div>
 </div>
