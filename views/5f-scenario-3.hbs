@@ -1,19 +1,14 @@
 <div class="container">
-  <div class="row">
-    <div class="col-md-10 offset-md-1 inst">
+  {{> verticalCenterDiv}}
+    <div class="col-md-10">
       <h2 class="text-primary m-4">
         Scenario 3
       </h2>
         <ul>
-          <li class="p-1">You are a member of a long-standing manufacturing team.</li>
-          <li class="p-1">Your team has been together for several years and has become pretty good at handling the work at hand.</li>
-          <li class="p-1">Each team member is comfortable with the work process and the other team members.</li>
-          <li class="p-1">Your work team will be moving to a new building that has been added onto the plant.  </li>
-          <li class="p-1">The area manager has asked your team for some new ideas on how the equipment should be laid out in the new building.</li>
+            {{#each sheetsSituations}}
+                {{> listItems this}}
+            {{/each}}
         </ul>
-
-
-
       {{> scenarioMessage}}
       
       <div class="text-center">

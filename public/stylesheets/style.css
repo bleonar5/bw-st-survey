@@ -1,3 +1,26 @@
+/* Own CSS */
+
+
+.btn-bottom-right {
+  margin: 5rem;
+}
+
+.btn-bottom-left {
+  margin: 5rem;
+}
+
+.bigger-text {
+  font-size: 1.2rem
+}
+
+.smaller-text {
+  font-size: 0.8rem;
+}
+
+.maxWidth{
+  max-width: 1200px;
+}
+
 /* Dropdown Button */
 .dropbtn {
     background-color: #f8f9fa;
@@ -39,3 +62,22 @@
   
   /* Change the background color of the dropdown button when the dropdown content is shown */
   .dropdown:hover .dropbtn {background-color: #f8f9fa;}
+
+
+  /* Big Five */
+
+form#big-five-form th.rotate {
+  height: 200px;
+  white-space: nowrap;
+}
+
+form#big-five-form th.rotate > div {
+  transform:
+        translate(20px, 160px)
+        rotate(270deg);
+  width: 30px;
+}
+
+table.big-five th {
+  width: 140px;
+}

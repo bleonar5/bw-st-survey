@@ -1,18 +1,14 @@
 <div class="container">
-  <div class="row">
-    <div class="col-md-10 offset-md-1 inst">
+  {{> verticalCenterDiv}}
+    <div class="col-md-10">
       <h2 class="text-primary m-4">
         Scenario 2
       </h2>
         <ul>
-          <li class="p-1">You are a member of a manufacturing production team.</li>
-          <li class="p-1">Your team is responsible for the production of three product lines. </li>
-          <li class="p-1">Last month management asked for a recommendation from your team as to whether or not your team could assume responsibility for another product line (making a total of four).</li>
-          <li class="p-1">Your personal view is that taking on the new product line would increase the visibility and importance of the team within the organization, which would help raise salaries and promotional opportunities. </li>
-          <li class="p-1">The other four members of your team feel that, in addition to the increased time and personnel demands placed on the team, current technology may not be capable of producing the new product efficiently. </li>
-          <li class="p-1">For the past several weeks your team has been carefully investigating the possibility of taking on another product. Your team has thoroughly discussed all the issues and would like to propose to management that the product line be manufactured at another facility.</li>
+            {{#each sheetsSituations}}
+                {{> listItems this}}
+            {{/each}}
         </ul>
-      
       {{> scenarioMessage}}
 
       <div class="text-center">

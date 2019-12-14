@@ -5,6 +5,21 @@ router.get("/", (req, res, next) => {
   res.render('index');
 });
 
+/* --- TEST ROUTE FOR VALIDATION --- */
+router.get('/validation-example', (req, res) => {
+  res.render('validation-example');
+});
+
+
+// Create post route
+router.post("/validation-example", (req, res, next) => {
+
+  res.render('1a-informed-consent');
+ 
+});
+
+
+
 /* --- INTRO ROUTES --- */
 // individual-login is on routes/auth.js
 router.get('/study-consent', (req, res) => {
@@ -40,9 +55,7 @@ router.get('/task-1', (req, res) => {
 router.get('/task-1-pt-2', (req, res) => {
   const allQuestions = require('../bin/sheets-import');
 
-  const perguntas = allQuestions.filter( data => {
-    return data.page === 7;
-  });
+  const perguntas = allQuestions.filter( data => data.page === 7);
 
   res.render('3c-task-1-pt-2', { perguntas });
 });
@@ -55,25 +68,19 @@ router.get('/instructions-2', (req, res) => {
 router.get('/task-2', (req, res) => {
   const allQuestions = require('../bin/sheets-import');
   // WARNING: The code below might not work on IE.
-  const perguntas = allQuestions.filter( data => {
-    return data.page === 9;
-  });
+  const perguntas = allQuestions.filter( data => data.page === 9);
   res.render('4b-task-2', { perguntas });
 });
 
 router.get('/task-2-pt-2', (req, res) => {
   const allQuestions = require('../bin/sheets-import');
-  const perguntas = allQuestions.filter( data => {
-    return data.page === 10;
-  });
+  const perguntas = allQuestions.filter( data => data.page === 10);
   res.render('4c-task-2-pt-2', { perguntas });
 });
 
 router.get('/task-2-pt-3', (req, res) => {
   const allQuestions = require('../bin/sheets-import');
-  const perguntas = allQuestions.filter( data => {
-    return data.page === 11;
-  });
+  const perguntas = allQuestions.filter( data => data.page === 11);
 
   res.render('4d-task-2-pt-3', { perguntas });
 });
@@ -86,40 +93,39 @@ router.get('/instructions-3', (req, res) => {
 router.get('/task-3', (req, res) => {
   const allQuestions = require('../bin/sheets-import');
   // WARNING: The code below might not work on IE.
-  const perguntas = allQuestions.filter( data => {
-    return data.page === 14;
-  });
+  const perguntas = allQuestions.filter( data => data.page === 14);
   res.render('5c-task-3', { perguntas });
 });
 
 router.get('/task-3-pt-2', (req, res) => {
   const allQuestions = require('../bin/sheets-import');
-  const perguntas = allQuestions.filter( data => {
-    return data.page === 16;
-  });
+  const perguntas = allQuestions.filter( data => data.page === 16);
 
   res.render('5e-task-3-pt-2', { perguntas });
 });
 
 router.get('/task-3-pt-3', (req, res) => {
   const allQuestions = require('../bin/sheets-import');
-  const perguntas = allQuestions.filter( data => {
-    return data.page === 18;
-  });
-
+  const perguntas = allQuestions.filter( data => data.page === 18);
   res.render('5g-task-3-pt-3', { perguntas });
 });
 
 router.get('/scenario-1', (req, res) => {
-  res.render('5b-scenario-1');
+  const allQuestions = require('../bin/sheets-import');
+  const sheetsSituations = allQuestions.filter( data => data.page === 13);
+  res.render('5b-scenario-1', { sheetsSituations });
 });
 
 router.get('/scenario-2', (req, res) => {
-  res.render('5d-scenario-2');
+  const allQuestions = require('../bin/sheets-import');
+  const sheetsSituations = allQuestions.filter( data => data.page === 15);
+  res.render('5d-scenario-2', { sheetsSituations });
 });
 
 router.get('/scenario-3', (req, res) => {
-  res.render('5f-scenario-3');
+  const allQuestions = require('../bin/sheets-import');
+  const sheetsSituations = allQuestions.filter( data => data.page === 17);
+  res.render('5f-scenario-3', { sheetsSituations });
 });
 
 router.get('/study-conclusion', (req, res) => {

@@ -3,21 +3,14 @@
 <head>
     {{> head}}
 </head>
+{{> scriptsHead }}
     
 <body class="{{template}}">
 
-      <div>
-        <a class="btn btn-lg dropbtn" role="button" href="/">Home</a>
-      </div>
-
-
-    <div class="container">
-    {{!-- top margin to allow space --}}
-    
-    <div style="margin-top:100px;"></div>
+    <div id="main-container" class="container">
+      
 	    {{{body}}}
     </div>
-    {{> footer}}
-    {{> scripts}}
+    {{> scriptsFooter }}
 </body>
 </html>

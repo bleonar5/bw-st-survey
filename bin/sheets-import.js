@@ -122,7 +122,7 @@ const questions =
         "page": 9,
         "text": "What industry do you work in?",
         "type": "dropdown",
-        "options": "[option 1 [BW to provide], option 2 [BW to provide], option 3 etc. [BW to provide]]"
+        "options": "option 1 [BW to provide]; option 2 [BW to provide]; option 3 etc. [BW to provide]"
     },
     {
         "id": 203,
@@ -137,7 +137,7 @@ const questions =
         "page": 9,
         "text": "On average, how many times per week do you meet with co-workers to discuss work?",
         "type": "dropdown",
-        "options": "[once, 2 times, 3 times, every day, multiple times per day]"
+        "options": "once; 2 times; 3 times; every day; multiple times per day"
     },
     {
         "id": 205,
@@ -153,7 +153,7 @@ const questions =
         "page": 10,
         "text": "If you are a current student OR have completed a degree, what was your major?",
         "type": "dropdown",
-        "options": "[option 1 [BW to provide], option 2 [BW to provide], option 3 etc. [BW to provide]]"
+        "options": "option 1 [BW to provide]; option 2 [BW to provide]; option 3 etc. [BW to provide]"
     },
     {
         "id": 207,
@@ -161,7 +161,7 @@ const questions =
         "page": 10,
         "text": "Roughly what fraction of your assessment during your degree was based on group work or team assignments?",
         "type": "dropdown",
-        "options": "[option 1 [BW to provide], option 2 [BW to provide], option 3 etc. [BW to provide]]"
+        "options": "[option 1 [BW to provide]; option 2 [BW to provide]; option 3 etc. [BW to provide]"
     },
     {
         "id": 208,
@@ -218,7 +218,7 @@ const questions =
         "id": 301,
         "section": 3,
         "page": 14,
-        "text": "a) Make sure the team knows of potential risks and that it is critical that you are able to check for damage to the machine before any recommendation is made. (contributor)",
+        "text": "a) Make sure the team knows of potential risks and that it is critical that you are able to check for damage to the machine before any recommendation is made.",
         "type": "radio"
     },
     {
@@ -239,14 +239,14 @@ const questions =
         "id": 304,
         "section": 3,
         "page": 14,
-        "text": "d) Acknowledge that it’s likely that the electrical systems have not been damaged, but insist that you be given a chance to inspect the machine’s structural soundness yourself. (contributor)",
+        "text": "d) Acknowledge that it’s likely that the electrical systems have not been damaged, but insist that you be given a chance to inspect the machine’s structural soundness yourself.",
         "type": "radio"
     },
     {
         "id": 305,
         "section": 3,
         "page": 14,
-        "text": "e) Tell the team about your experiences with similar accidents in the past and ask that you be able to inspect the machine personally before the recommendation is made. (contributor)",
+        "text": "e) Tell the team about your experiences with similar accidents in the past and ask that you be able to inspect the machine personally before the recommendation is made.",
         "type": "radio"
     },
     {
@@ -260,7 +260,7 @@ const questions =
         "id": 307,
         "section": 3,
         "page": 14,
-        "text": "g) Relate to the team some additional areas of potential damage to the machine after inquiring into the inspections they have made. (contributor).",
+        "text": "g) Relate to the team some additional areas of potential damage to the machine after inquiring into the inspections they have made.",
         "type": "radio"
     },
     {
@@ -274,7 +274,7 @@ const questions =
         "id": 309,
         "section": 3,
         "page": 14,
-        "text": "i) Thank the team for checking the machine over, but relate to the team your experience with “unseen damage” occurring even when it is not evident from an outside glance. (contributor)",
+        "text": "i) Thank the team for checking the machine over, but relate to the team your experience with “unseen damage” occurring even when it is not evident from an outside glance.",
         "type": "radio"
     },
     {
@@ -423,6 +423,91 @@ const questions =
         "page": 18,
         "text": "j) Suggest that a good way to generate innovative layouts would be to hold the next meeting in the new building.",
         "type": "radio"
+    },
+    {
+        "id": "scenario01-01",
+        "page": 13,
+        "text": "You are a member of an equipment maintenance team responsible for 12 high tech manufacturing machines."
+    },
+    {
+        "id": "scenario01-02",
+        "page": 13,
+        "text": "Your five-person team has experts in many areas, including mechanical, electrical, & hydraulic systems."
+    },
+    {
+        "id": "scenario01-03",
+        "page": 13,
+        "text": "You are the only member of your team with experience in the structural mechanics of the machines."
+    },
+    {
+        "id": "scenario01-04",
+        "page": 13,
+        "text": "One of the machines was struck by a forklift while being prepared for an important production run."
+    },
+    {
+        "id": "scenario01-05",
+        "page": 13,
+        "text": "The company owner quickly pulls your team together and asks if it is ok to run the machine. You are the last one to arrive at the meeting."
+    },
+    {
+        "id": "scenario01-06",
+        "page": 13,
+        "text": "Apparently, the team feels that there was not any visible damage to the machine and it can be used safely.  They tell you that they have looked it over and didn’t see any damage."
+    },
+    {
+        "id": "scenario02-01",
+        "page": 15,
+        "text": "You are a member of a manufacturing production team."
+    },
+    {
+        "id": "scenario02-02",
+        "page": 15,
+        "text": "Your team is responsible for the production of three product lines."
+    },
+    {
+        "id": "scenario02-03",
+        "page": 15,
+        "text": "Last month management asked for a recommendation from your team as to whether or not your team could assume responsibility for another product line (making a total of four)."
+    },
+    {
+        "id": "scenario02-04",
+        "page": 15,
+        "text": "Your personal view is that taking on the new product line would increase the visibility and importance of the team within the organization, which would help raise salaries and promotional opportunities."
+    },
+    {
+        "id": "scenario02-05",
+        "page": 15,
+        "text": "The other four members of your team feel that, in addition to the increased time and personnel demands placed on the team, current technology may not be capable of producing the new product efficiently."
+    },
+    {
+        "id": "scenario02-06",
+        "page": 15,
+        "text": "For the past several weeks your team has been carefully investigating the possibility of taking on another product. Your team has thoroughly discussed all the issues and would like to propose to management that the product line be manufactured at another facility."
+    },
+    {
+        "id": "scenario03-01",
+        "page": 17,
+        "text": "You are a member of a long-standing manufacturing team."
+    },
+    {
+        "id": "scenario03-02",
+        "page": 17,
+        "text": "Your team has been together for several years and has become pretty good at handling the work at hand."
+    },
+    {
+        "id": "scenario03-03",
+        "page": 17,
+        "text": "Each team member is comfortable with the work process and the other team members."
+    },
+    {
+        "id": "scenario03-04",
+        "page": 17,
+        "text": "Your work team will be moving to a new building that has been added onto the plant."
+    },
+    {
+        "id": "scenario03-05",
+        "page": 17,
+        "text": "The area manager has asked your team for some new ideas on how the equipment should be laid out in the new building."
     }
 ]
 

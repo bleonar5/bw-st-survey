@@ -1,18 +1,14 @@
 <div class="container">
-  <div class="row">
-    <div class="col-md-10 offset-md-1 inst">
+  {{> verticalCenterDiv}}
+    <div class="col-md-10">
       <h2 class="text-primary m-4">
         Scenario 1
       </h2>
         <ul>
-          <li class="p-1">You are a member of an equipment maintenance team responsible for 12 high tech manufacturing machines.</li>
-          <li class="p-1">Your five-person team has experts in many areas, including mechanical, electrical, &amp; hydraulic systems.</li>
-          <li class="p-1">You are the only member of your team with experience in the structural mechanics of the machines.</li>
-          <li class="p-1">One of the machines was struck by a forklift while being prepared for an important production run.</li>
-          <li class="p-1">The company owner quickly pulls your team together and asks if it is ok to run the machine. You are the last one to arrive at the meeting.</li>
-          <li class="p-1">Apparently, the team feels that there was not any visible damage to the machine and it can be used safely.  They tell you that they have looked it over and didn’t see any damage.</li>   
+            {{#each sheetsSituations}}
+                {{> listItems this}}
+            {{/each}}
         </ul>
-
       {{> scenarioMessage}}
 
       <div class="text-center">
