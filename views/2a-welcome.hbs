@@ -1,15 +1,16 @@
+<div class="container">
   {{> verticalCenterDiv}}
     <div class="col-md-12 text-center">
       {{> navbar}}
       <h2 class="text-primary m-5">Welcome to the follow-up survey for the Superteams study!</h2>
-        <h4 class="m-3">This survey is only available to people who successfully participated in Superteams.</h4>
-        <h4 class="m-3">These questions take <strong>40 minutes</strong>. We will ask questions about your work experience, and your views on groupwork.</h4>
-        <h4 class="m-3">There are <strong>three parts</strong>. Some will take longer than others, but not more than 20 minutes. </h4>
-        <h4 class="m-3">If you have to stop, that's OK. Your answers will be saved. To continue, come back to <span class="text-primary"><a href="individual-login">this website </a></span> re-enter the <strong>same login details</strong> and pick up where you left off.</h4>
-        <h4 class="text-danger m-3">Note: These tasks <strong>must</strong> be done on a laptop or desktop computer.<br>They <strong>cannot</strong> be done on a mobile phone or tablet.</h4>
+
+          {{#each welcomepg4}} 
+            <h4 class="my-4">{{{this.text}}}</h4>                 
+          {{/each}}
+
         <div class="text-center my-4">
         <a class="btn btn-lg btn-primary" role="button" href="instructions-1">Next</a>
       </div>
     </div>
-
   </div>
+</div

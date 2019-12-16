@@ -11,19 +11,32 @@ router.get('/validation-example', (req, res) => {
 });
 
 
+
+
+
 // Create post route
+// Todo: Check that you can delete this route. It should only be temporary
 router.post("/validation-example", (req, res, next) => {
 
   res.render('1a-informed-consent');
- 
 });
 
-
+// Declare variable which hold all data from Google Sheets Import
+const allQuestions = require('../bin/sheets-import');
 
 /* --- INTRO ROUTES --- */
 // individual-login is on routes/auth.js
 router.get('/study-consent', (req, res) => {
-  res.render('1a-informed-consent');
+  const allQuestions = require('../bin/sheets-import');
+  const stdConsent = allQuestions.filter(data => data.page === 2);
+  res.render('1a-informed-consent', { stdConsent });
+});
+
+// Post route is required as the user arrives at this page after logging in
+router.post("/study-consent", (req, res, next) => {
+  const allQuestions = require('../bin/sheets-import');
+  const stdConsent = allQuestions.filter(data => data.page === 2);
+  res.render('1a-informed-consent', { stdConsent });
 });
 
 router.get('/no-study-consent', (req, res) => {
@@ -31,24 +44,27 @@ router.get('/no-study-consent', (req, res) => {
 });
 
 router.get('/eligibility-notice', (req, res) => {
-  res.render('1c-eligibility-notice');
+  const allQuestions = require('../bin/sheets-import');
+  const eligpg3 = allQuestions.filter(data => data.page === 3);
+  res.render('1c-eligibility-notice', { eligpg3 });
 });
 
 router.get('/welcome', (req, res) => {
-  res.render('2a-welcome');
+  const allQuestions = require('../bin/sheets-import');
+  const welcomepg4 = allQuestions.filter(data => data.page === 4);
+  res.render('2a-welcome', { welcomepg4 });
 });
 
 /* --- TASK ONE ROUTES --- */
-router.get('/instructions-1', (req, res) => {
-  res.render('3a-instructions-1');
+router.get('/instructions-1', (req, res) => { 
+  instructions1pg5 = allQuestions.filter(data => data.page === 5);
+  res.render('3a-instructions-1', { instructions1pg5 });
 });
+
 
 router.get('/task-1', (req, res) => {
   const allQuestions = require('../bin/sheets-import');
-
-  // WARNING: The code below might not work on IE.
   const perguntas = allQuestions.filter(data => data.page === 6);
-
   res.render('3b-task-1', { perguntas });
 });
 
@@ -62,12 +78,12 @@ router.get('/task-1-pt-2', (req, res) => {
 
 /* --- TASK TWO ROUTES --- */
 router.get('/instructions-2', (req, res) => {
-  res.render('4a-instructions-2');
+  instructions2pg8 = allQuestions.filter(data => data.page === 8);
+  res.render('4a-instructions-2', { instructions2pg8 });
 });
 
 router.get('/task-2', (req, res) => {
   const allQuestions = require('../bin/sheets-import');
-  // WARNING: The code below might not work on IE.
   const perguntas = allQuestions.filter( data => data.page === 9);
   res.render('4b-task-2', { perguntas });
 });

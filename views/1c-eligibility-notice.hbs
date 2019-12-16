@@ -1,22 +1,11 @@
 <div class="container">
   {{> verticalCenterDiv}}
     <div class="col-md-12 text-center">
-      {{> navbar}}
-      <h2 class="text-primary m-5">
-        Eligibility Notice
-        </h2>
-        <h4 class="m-3">
-          Our study requires participants who try their best in these Online Tasks. If you skip through questions, or don’t read the instructions, your responses cannot be used.
-          </h4>
-        <h4 class="m-3">
-          <strong>Our tasks contain checks to see whether or not you’re reading the instructions and the questions.</strong>
-          </h4>
-        <h4 class="m-3">
-          Everybody who makes a genuine attempt to answer the questions will be eligible for the Superteams study, regardless of your score.
-          </h4>
-        <h4 class="m-3">
-          Click "I agree" if you would like to proceed. If not, thank you for your time!
-          </h4>
+      <h2 class="text-primary m-5">Eligibility Notice</h2>
+
+          {{#each eligpg3}} 
+            <h4 class="my-4">{{{this.text}}}</h4>                 
+          {{/each}}
         
         <h4>
         <a href="/no-study-consent" role="button" class="btn btn-lg btn-warning float-left my-4">I Do <strong>NOT</strong> Agree</a>
@@ -25,3 +14,8 @@
     </div>
   </div>
 </div>
+
+
+
+
+

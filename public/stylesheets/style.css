@@ -9,12 +9,20 @@
   margin: 5rem;
 }
 
+/* CSS for text */
+
 .bigger-text {
   font-size: 1.2rem
 }
 
 .smaller-text {
   font-size: 0.8rem;
+}
+
+.consent-heading {
+  font-weight: bold;
+  text-decoration: underline;
+  text-transform: uppercase;
 }
 
 .maxWidth{

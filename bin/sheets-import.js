@@ -508,6 +508,158 @@ const questions =
         "id": "scenario03-05",
         "page": 17,
         "text": "The area manager has asked your team for some new ideas on how the equipment should be laid out in the new building."
+    },
+    {
+        "id": "consent-01",
+        "page": 2,
+        "heading": "Purpose of Research Study",
+        "text": "To understand the relationship between measures of social skill and fluid intelligence.",
+        "type": "heading"
+    },
+    {
+        "id": "consent-02",
+        "page": 2,
+        "heading": "What You’ll Do",
+        "text": "This is a follow-up survey. We will ask you some demographic questions about your work history and experience of teamwork, along with a ‘situational judgment test’ to assess your knowledge of working in a team.",
+        "type": "heading"
+    },
+    {
+        "id": "consent-03",
+        "page": 2,
+        "heading": "Risks",
+        "text": "There are no risks for participating in this study beyond those associated with normal computer use, including fatigue and mild stress.",
+        "type": "heading"
+    },
+    {
+        "id": "consent-04",
+        "page": 2,
+        "heading": "Compensation",
+        "text": "Overall, compensation for this experiment will be $15.",
+        "type": "heading"
+    },
+    {
+        "id": "consent-05",
+        "page": 2,
+        "heading": "Please Note",
+        "text": "This study contains a number of checks to make sure that participants are finishing the tasks honestly and completely.",
+        "type": "heading"
+    },
+    {
+        "id": "consent-06",
+        "page": 2,
+        "heading": "Voluntary Participation And Right To Withdraw",
+        "text": "Participation in this study is voluntary, and you can stop at any time without any penalty. To stop, simply close your browser window. Partial data will not be analyzed.",
+        "type": "heading"
+    },
+    {
+        "id": "consent-07",
+        "page": 2,
+        "heading": "Confidentiality",
+        "text": "All data collected as part of this study will be anonymized (and personal information, such as your email address, will be removed).",
+        "type": "heading"
+    },
+    {
+        "id": "consent-08",
+        "page": 2,
+        "heading": "Contact Information",
+        "text": "If you have any questions about this research, you may contact: Ben Weidmann at <a href=\"mailto:benweidmann@g.harvard.edu\">benweidmann@g.harvard.edu</a>, or David Deming at <a href=\"mailto:david_deming@harvard.edu\">david_deming@harvard.edu</a>",
+        "type": "heading",
+        "comments": "[RP-16-dec: html markup added to create links to email addresses]"
+    },
+    {
+        "id": "consent-09",
+        "page": 2,
+        "heading": "Clicking Accept",
+        "text": "By clicking on the \"I Consent\" button, you indicate that you are 18 years of age or older, that you voluntarily agree to participate in this study and that you understand the information in this consent form.",
+        "type": "heading"
+    },
+    {
+        "id": "eligibility-01",
+        "page": 3,
+        "text": "Our study requires participants who try their best in these Online Tasks. If you skip through questions, or don’t read the instructions, your responses cannot be used."
+    },
+    {
+        "id": "eligibility-02",
+        "page": 3,
+        "text": "<strong>Our tasks contain checks to see whether or not you’re reading the instructions and the questions.</strong>",
+        "comments": "[RP-16-dec: HTML <strong> tag = bold text]"
+    },
+    {
+        "id": "eligibility-03",
+        "page": 3,
+        "text": "Everybody who makes a genuine attempt to answer the questions will be eligible for the Superteams study, regardless of your score."
+    },
+    {
+        "id": "eligibility-04",
+        "page": 3,
+        "text": "Click \"I agree\" if you would like to proceed. If not, thank you for your time!"
+    },
+    {
+        "id": "welcome-01",
+        "page": 4,
+        "text": "This survey is only available to people who successfully participated in Superteams."
+    },
+    {
+        "id": "welcome-02",
+        "page": 4,
+        "text": "These questions take <strong>40 minutes</strong>. We will ask questions about your work experience, and your views on groupwork."
+    },
+    {
+        "id": "welcome-03",
+        "page": 4,
+        "text": "There are <strong>three parts</strong>. Some will take longer than others, but not more than 20 minutes. "
+    },
+    {
+        "id": "welcome-04",
+        "page": 4,
+        "text": "If you have to stop, that's OK. Your answers will be saved. To continue, come back to <span class=\"text-primary\"><a href=\"individual-login\">this website </a></span> re-enter the <strong>same login details</strong> and pick up where you left off."
+    },
+    {
+        "id": "welcome-05",
+        "page": 4,
+        "text": "<span class=\"text-danger\">Note: These tasks <strong>must</strong> be done on a laptop or desktop computer.<br>They <strong>cannot</strong> be done on a mobile phone or tablet.</span>"
+    },
+    {
+        "id": "inst-01-01",
+        "page": 5,
+        "heading": "Task 1 (of 3)",
+        "type": "heading"
+    },
+    {
+        "id": "inst-01-02",
+        "page": 5,
+        "text": "The purpose of this task is to understand your views about teamwork and working independently."
+    },
+    {
+        "id": "inst-01-03",
+        "page": 5,
+        "text": "It shouldn’t take more than 5 minutes. "
+    },
+    {
+        "id": "inst-01-04",
+        "page": 5,
+        "text": "Please be as honest as possible. Your answers will be kept in absolute confidence, and fully anonymized."
+    },
+    {
+        "id": "inst-02-01",
+        "page": 8,
+        "heading": "Task 2 (of 3)",
+        "type": "heading"
+    },
+    {
+        "id": "inst-02-02",
+        "page": 8,
+        "text": "The purpose of this task is to understand more about your background and experiences."
+    },
+    {
+        "id": "inst-02-03",
+        "page": 8,
+        "text": "It shouldn’t take more than a few minutes. "
+    },
+    {
+        "id": "inst-02-04",
+        "page": 8,
+        "text": "Again, please be as honest as possible. Your answers will be kept in absolute confidence, and fully anonymized."
     }
 ]
 
