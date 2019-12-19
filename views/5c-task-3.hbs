@@ -1,18 +1,44 @@
-{{!-- Handlebars partials can seem to deal with being on top line --}}
-{{> containerDiv}}
-    {{> verticalCenterDiv}}
-        <form action="#" method="POST">
-            <div>
-                {{> radioTableHeader }}
+{{!-- Task 3 --}}
+
+{{> 2contentmain}}
+    <div class="row justify-content-center">
+        <div class="col-xs-10 col-sm-12 col-md-12 text-left px-md-3 px-lg-5">
+            <form action="#" method="POST">
+                    <table class="table table-sm table-striped">
                     {{> radioheadingeffective}}
-                    {{#each perguntas}} {{> radiorow this}} {{/each}}
-                </table>
-                <a href="scenario-1" role="button" class="btn btn-lg btn-secondary float-left">Return to scenario 1 description</a>                
-                {{> nextBtnFormValidation }}
-    
-            {{> warningMessage}}
-                {{!-- temporarily putting a blank page number until I refactor the domManip js script --}}
-            <div id="page-number">{{> pageNumberFormat}}</div></div>
-        </form>
+                    {{#each perguntas}} {{#if radio}} {{> radiorow this}} {{/if}} {{/each}}
+                </table>      
+            </form>
+        </div>
     </div>
+{{!-- closing div of end of contentmain below --}}
+</div>
+
+<div class="col-xs-12" id="trick-div"></div>
+
+{{> 3footer}}
+
+    {{> 4footerleft}}
+            {{#if urlsAndPages.backbutton}}
+            <a href={{urlsAndPages.previousPage}} role="button" class="btn btn-lg btn-secondary float-left">Return to description</a>
+            {{/if}}
+        </div>
+    </div>
+
+    {{> 5footermiddle}}
+
+            <div id="warning-message"></div>
+
+            {{#if urlsAndPages.pagination}}
+            <div id="page-number">{{> pageNumberFormat}}{{urlsAndPages.pagination}}</div></div>
+            {{/if}}
+
+        </div>
+    </div>
+
+    {{> 6footerright}}
+            <a role="button" onclick="checkQuestions(getArrayOfQuestions());" class="btn btn-lg btn-primary float-right">Next</a>
+        </div>
+    </div>
+{{!-- closing div of footer below --}}
 </div>

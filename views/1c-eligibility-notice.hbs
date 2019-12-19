@@ -1,21 +1,40 @@
-<div class="container">
-  {{> verticalCenterDiv}}
-    <div class="col-md-12 text-center">
-      <h2 class="text-primary m-5">Eligibility Notice</h2>
-
-          {{#each eligpg3}} 
-            <h4 class="my-4">{{{this.text}}}</h4>                 
-          {{/each}}
-        
-        <h4>
-        <a href="/no-study-consent" role="button" class="btn btn-lg btn-warning float-left my-4">I Do <strong>NOT</strong> Agree</a>
-        <a href="/welcome" role="button" class="btn btn-lg btn-success float-right my-4">I agree</a>
-        </h4>
+{{!-- Eligibility Notice --}}
+{{> 1contentheading}}
+    <div class="row h-100">
+        <div class="col-md-12 align-self-end">
+            <h2>Eligibility Notice</h2>
+        </div>
     </div>
-  </div>
+</div>
+
+{{> 2contentmain}}
+    <div class="row justify-content-center bespoke-60vh-vertical-align">
+        <div class="col-xs-12 col-sm-10 col-md-10 text-center px-md-3 px-lg-5">
+
+            {{#each eligpg3}} 
+                <h4 class="my-sm-0 my-md-3 my-xl-4">{{{this.text}}}</h4>                 
+            {{/each}}
+
+        </div>
+    </div>
+{{!-- closing div of end of contentmain below --}}
 </div>
 
 
+{{> 3footer}}
 
+    {{> 4footerleft}}
+            <a href="/no-study-consent" role="button" class="btn btn-lg btn-warning float-left">I Do <strong>NOT </strong>Agree</a>
+        </div>
+    </div>
 
+    {{> 5footermiddle}}
+        </div>
+    </div>
 
+    {{> 6footerright}}
+            <a href="/welcome" role="button" class="btn btn-lg btn-success float-right">I agree</a>
+        </div>
+    </div>
+{{!-- closing div of footer below --}}
+</div>

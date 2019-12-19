@@ -1,19 +1,44 @@
-<div class="container">
-  {{> verticalCenterDiv}}
-    <div class="col-md-10">
-      <h2 class="text-primary m-4">
-        Scenario 1
-      </h2>
+
+{{> 1contentheading}}
+    <div class="row h-100">
+        <div class="col-md-12 align-self-end">
+            <h2 class="text-primary">{{#each sheetsSituations}}{{#if heading}}{{this.text}}{{/if}}{{/each}}</h2>
+        </div>
+    </div>
+</div>
+
+{{> 2contentmain}}
+    <div class="row justify-content-center bespoke-60vh-vertical-align">
+        <div class="col-xs-8 col-sm-10 col-md-10 text-left px-md-3 px-lg-5">
+        
         <ul>
             {{#each sheetsSituations}}
-                {{> listItems this}}
+            {{#if scenario}}
+                <li class="p-2 font-size-lg"> {{this.text}}</li>
+            {{/if}}
             {{/each}}
         </ul>
-      {{> scenarioMessage}}
+        
+        <p class="m-4">Click next to rate 10 potential responses. You can return to this scenario at any time to refresh your memory.</p>
 
-      <div class="text-center">
-        <a class="btn btn-lg btn-primary my-4" role="button" href="task-3">Next</a>
-      </div>
+        </div>
     </div>
-  </div>
+{{!-- closing div of end of contentmain below --}}
+</div>
+
+{{> 3footer}}
+
+    {{> 4footerleft}}
+        </div>
+    </div>
+
+    {{> 5footermiddle}}
+            <a class="btn btn-lg btn-primary" role="button" href={{urlsAndPages.nextPage}}>Next</a>
+        </div>
+    </div>
+
+    {{> 6footerright}}
+        </div>
+    </div>
+{{!-- closing div of footer below --}}
 </div>

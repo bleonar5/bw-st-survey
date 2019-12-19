@@ -1,17 +1,46 @@
+{{!-- Task 1 --}}
+{{> 1contentheading}}
+  <h2 class="text-white" style="display: none;">Header</h2>
+</div>
 
-{{> containerDiv}}
-    {{> verticalCenterDiv}}         
-        <form action="#" method="POST">
-            <div>
-                {{> radioTableHeaderBig}}
-                    {{> radioheadingagree}}
-                    {{#each perguntas}} {{> radioRowNormalText this}} {{/each}}
-                </table>
-
-            {{> nextBtnFormValidation }}
-            </div>        
-            {{> warningMessage}}
-            <div id="page-number">{{> pageNumberFormat}}Page 1 of 2</div></div>
-        </form>
+{{> 2contentmain}}
+    <div class="row justify-content-center bespoke-60vh-vertical-align">
+        <div class="col-xs-8 col-sm-10 col-md-10 text-left px-md-3 px-lg-5">
+            <form action="#" method="POST">
+                    <table class="table table-sm table-striped">
+                        {{> radioheadingagree}}
+                        {{#each perguntas}} {{> radioRowNormalText this}} {{/each}}
+                    </table>      
+            </form>
+        </div>
     </div>
+{{!-- closing div of end of contentmain below --}}
+</div>
+
+
+{{> 3footer}}
+
+    {{> 4footerleft}}
+            {{#if urlsAndPages.backbutton}}
+            <a href={{urlsAndPages.previousPage}} role="button" class="btn btn-lg btn-secondary float-left">Back</a>
+            {{/if}}
+        </div>
+    </div>
+
+    {{> 5footermiddle}}
+
+            <div id="warning-message"></div>
+
+            {{#if urlsAndPages.pagination}}
+                <div id="page-number">{{> pageNumberFormat}}{{urlsAndPages.pagination}}</div></div>
+            {{/if}}
+
+        </div>
+    </div>
+
+    {{> 6footerright}}
+            <a role="button" onclick="checkQuestions(getArrayOfQuestions());" class="btn btn-lg btn-primary float-right text-white">Next</a>
+        </div>
+    </div>
+{{!-- closing div of footer below --}}
 </div>

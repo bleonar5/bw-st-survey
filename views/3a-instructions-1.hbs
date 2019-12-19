@@ -1,18 +1,40 @@
-<div class="container">
-  {{> verticalCenterDiv}}
-    <div class="col-md-10 text-center">
-      {{> navbar}}
-      <h2 class="text-primary m-5">
-        Task 1 (of 3)
-      </h2>
 
-          {{#each instructions1pg5}} 
-            <h4 class="my-4">{{{this.text}}}</h4>                 
+{{> 1contentheading}}
+    <div class="row h-100">
+        <div class="col-md-12 align-self-end">
+            <h2 class="text-primary">{{#each instructions}}{{#if heading}}{{this.text}}{{/if}}{{/each}}</h2>
+        </div>
+    </div>
+</div>
+
+{{> 2contentmain}}
+    <div class="row justify-content-center bespoke-60vh-vertical-align">
+        <div class="col-xs-8 col-sm-8 col-md-8 text-center px-md-3 px-lg-5">
+
+          {{#each instructions}}
+            {{#if info}}
+                <h4 class="my-sm-3 my-md-2 my-lg-3 my-xl-4 mx-lg-3">{{{this.text}}}</h4>
+            {{/if}}
           {{/each}}
 
-      <div class="text-center m-5">
-        <a class="btn btn-lg btn-primary" role="button" href="task-1">Next</a>
-      </div>
+        </div>
     </div>
-  </div>
+{{!-- closing div of end of contentmain below --}}
+</div>
+
+{{> 3footer}}
+
+    {{> 4footerleft}}
+        </div>
+    </div>
+
+    {{> 5footermiddle}}
+            <a class="btn btn-lg btn-primary" role="button" href={{urlsAndPages.nextPage}}>Next</a>
+        </div>
+    </div>
+
+    {{> 6footerright}}
+        </div>
+    </div>
+{{!-- closing div of footer below --}}
 </div>

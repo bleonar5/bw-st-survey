@@ -1,0 +1,39 @@
+/* Small devices (landscape phones) */
+@media (min-width: 576px) {
+    body {
+        background: #f8f8ff;
+        font-size: 0.4rem;
+    }
+}
+
+
+@media (min-width: 576px) {
+    body {
+        background: white;
+        font-size: 0.6rem;
+    }
+}
+
+/* Medium devices (tablets) */
+@media (min-width: 768px) {
+    body {
+        background: blue;
+        font-size: 0.8rem;
+    }
+}
+
+/* Large devices (desktops) */
+@media (min-width: 992px) {
+    body {
+        background: green;
+        font-size: 1.0rem;
+    }
+}
+
+/* Extra large devices (large desktops) */
+@media (min-width: 1200px) {
+    body {
+        background: grey;
+        font-size: 1.2rem;
+    }
+}

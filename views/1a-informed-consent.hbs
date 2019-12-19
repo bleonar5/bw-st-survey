@@ -1,13 +1,38 @@
-<div class="container-fluid col-md-10">
-  {{> verticalCenterDiv}}
-    <div class="col-md-12 text-left">
-      {{> navbar}}
-      <h2 class="text-center m-5">Informed Consent Form</h2>
-          {{#each stdConsent}} 
-            <p><span class="consent-heading">{{this.heading}}</span>: {{{this.text}}}</p>                 
-          {{/each}}         
-      <a href="/no-study-consent" role="button" class="btn btn-lg btn-warning float-left my-2">I do not consent</a>
-      <a href="/eligibility-notice" role="button" class="btn btn-lg btn-success float-right my-2">I Consent</a>
+{{!-- Page 3: Informed Consent --}}
+{{> 1contentheading}}
+    <div class="row h-100">
+        <div class="col-md-12 align-self-end">
+            <h2>Informed Consent Form</h2>
+        </div>
     </div>
-  </div>
+</div>
+
+{{> 2contentmain}}
+
+    <div class="row justify-content-center bespoke-60vh-vertical-align">
+        <div class="col-md-12 text-left px-md-3 px-lg-5">
+            {{#each stdConsent}}
+            <p><span class="consent-heading">{{this.subheading}}</span><span>: {{{this.text}}}</span></p>
+            {{/each}}
+        </div>
+        </div>
+{{!-- closing div of end of contentmain below --}}
+</div>
+
+{{> 3footer}}
+
+    {{> 4footerleft}}
+            <a href="/no-study-consent" role="button" class="btn btn-lg btn-warning float-left">I Do <strong>NOT </strong>Consent</a>
+        </div>
+    </div>
+
+    {{> 5footermiddle}}
+        </div>
+    </div>
+
+    {{> 6footerright}}
+            <a href="/eligibility-notice" role="button" class="btn btn-lg btn-success float-right">I Consent</a>
+        </div>
+    </div>
+{{!-- closing div of footer below --}}
 </div>

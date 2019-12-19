@@ -5,25 +5,18 @@
 </head>
 {{> scriptsHead }}
     
-<body class="{{template}}">
+<body>
 
-
-    {{> navbar}}
-    <div class="tbc">
-        <a role="button" onclick="return toggleNavbar();" class="btn btn-sm btn-primary float-right">Toggle Nav</a>
-    </div>
-
-    <div id="main-container" class="mx-5"> 
-
-
-            
-
-
-
-
+    <div id="page-container" class="container-fluid col-12">
+        {{> 0header}}
+        </div> {{!-- Close Header Div --}}
 	    {{{body}}}
     </div>
+
     <script type="text/javascript" src="js/domManipulation.js"></script>
+    {{!-- Temporary Script for converting property of a Google Sheets Object to an Array --}}
+    <script type="text/javascript" src="js/sheetsQuestionConverter.js"></script>
     {{> scriptsFooter }}
+
 </body>
 </html>

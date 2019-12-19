@@ -1,85 +1,86 @@
 
-{{> containerDiv}}
-    {{> verticalCenterDiv}}
-        <form action="#" method="POST">
-            <div>
-                <table class="table table-striped">
-
-        <tr>
-            <td class="text-left bigger-text">Are you currently employed?</td>
-            <td>
-            <select class="form-control">
-                <option disabled selected value> -- select an option -- </option>
-                <option value="one">yes</option>
-                <option value="two">no</option>
-                <option value="three">full-time student</option>
-            </select>
-            </td>
-        </tr>
-
-        <tr>
-            <td class="text-left bigger-text">
-                What industry do you work in?</td>
-            <td>
-            <select class="form-control">
-                <option disabled selected value> -- select an option -- </option>
-                <option>option 1 [BW to provide]</option>
-                <option>option 2 [BW to provide]</option>
-                <option>option 3 etc. [BW to provide]</option>
-            </select>
-            </td>
-        </tr>
-
-        <tr>
-            <td class="text-left bigger-text">What is your role?</td>
-
-            <td>
-            <input type="text" class="form-control" name="role" value="" autocomplete="off">
-            </div>
-            </td>
-
-        </tr>
-
-        <tr>
-            <td class="text-left bigger-text">On average, how many times per week do you meet with co-workers to discuss work?</td>
-            <td>
-            <select class="form-control">
-                <option disabled selected value> -- select an option -- </option>
-                <option value="one">once</option>
-                <option value="two">2 times</option>
-                <option value="three">3 times</option>
-                <option value="four">every day</option>
-                <option value="five">multiple times per day</option>
-            </select>
-            </td>
-        </tr>
-
-        <tr>
-            <td class="text-left bigger-text">What is your annual salary?</td>
-            <td>
-            <select class="form-control">
-                <option disabled selected value> -- select an option -- </option>
-                <option value="1">$10-20k</option>
-                <option value="2">$20-30k</option>
-                <option value="3">$30-40k</option>
-                <option value="4">$40-50k</option>
-                <option value="5">$50-70k</option>
-                <option value="6">$70-90k</option>
-                <option value="7">$90-120k</option>
-                <option value="8">$120-150k</option>
-                <option value="9">$150-200k</option>
-                <option value="10">$>200k</option>
-                <option value="11"> prefer not to say</option>
-            </select>
-            </td>
-        </tr>
-
-    </table>
-
-            <div class="float-right"><a class="btn btn-lg btn-primary float-right" role="button" href="task-2-pt-2">Next</a></div>
-            </div>
-            <div id="page-number">{{> pageNumberFormat}}Page 1 of 3</div></div>
-
-        </form>
+{{> 1contentheading}}
+    <div class="row h-100">
+        <div class="col-md-12 align-self-end">
+              <h2>{{#each perguntas}}{{#if heading}}{{this.text}}{{/if}}{{/each}}</h2>
+        </div>
     </div>
+</div>
+
+{{> 2contentmain}}
+    <div class="row justify-content-center">
+        <div class="col-xs-8 col-sm-10 col-md-10 text-left p-xs-1 p-sm-2 p-md-3 p-lg-4 p-xl-5">
+            <form action="#" method="POST">
+                <table class="table table-striped">
+                    <h3 class="text-left my-5 mx-2"></h3>
+                    {{#each perguntas}} 
+                        {{#if dropdown}}
+                            <tr>
+                                <td class="text-left">{{this.text}}</td>          
+                                <td>
+                                    <select id={{this.id}} name={{this.id}} class="form-control dropdn first-radio-box" onclick="removeWarning();">
+                                        <option disabled selected value> -- select an option -- </option>
+                                            {{#each this.options}}
+                                                <option value={{this}}>{{this}}</option>
+                                            {{/each}}
+                                </select>
+                                </td>    
+                            </tr>
+                        {{/if}}
+
+                        {{#if yesno}}
+                                <tr>
+                                    <td class="text-left">{{this.text}}</td>
+                                    <td>
+                                    <div id={{this.id}} class="btn-group yesno" data-toggle="buttons">
+                                        <label class="btn btn-primary" onclick="removeWarning();"><input type="radio" name={{this.id}}-yes class="first-radio-box"/>Yes</label>
+                                        <label class="btn btn-danger" onclick="removeWarning();"><input type="radio" name={{this.id}}-no onclick="removeWarning();"/>No</label>
+                                    </div>
+                                    </td>
+                                </tr>
+                        {{/if}}
+
+                        {{#if textarea}}
+                            <tr>
+                                <td class="text-left">{{this.text}}</td>
+                                <td>
+                                    <input id={{this.id}} name={{this.id}} class="form-control first-radio-box text-area-for-vali" type="text" value="" autocomplete="off" onclick="removeWarning();">
+                                </td>
+                            </tr>
+                        {{/if}}
+                    {{/each}}
+                </table>      
+            </form>
+        </div>
+    </div>
+{{!-- closing div of end of contentmain below --}}
+</div>
+
+
+
+{{> 3footer}}
+
+    {{> 4footerleft}}
+            {{#if urlsAndPages.backbutton}}
+            <a href={{urlsAndPages.previousPage}} role="button" class="btn btn-lg btn-secondary float-left">Back</a>
+            {{/if}}
+        </div>
+    </div>
+
+    {{> 5footermiddle}}
+
+            <div id="warning-message"></div>
+
+            {{#if urlsAndPages.pagination}}
+            <div id="page-number">{{> pageNumberFormat}}{{urlsAndPages.pagination}}</div></div>
+            {{/if}}
+
+        </div>
+    </div>
+
+    {{> 6footerright}}
+            <a role="button" onclick="checkDropQuestions(getArrayOfQuestions());" class="btn btn-lg btn-primary text-white float-right">Next</a>
+        </div>
+    </div>
+{{!-- closing div of footer below --}}
 </div>

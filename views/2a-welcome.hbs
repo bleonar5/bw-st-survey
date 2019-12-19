@@ -1,16 +1,38 @@
-<div class="container">
-  {{> verticalCenterDiv}}
-    <div class="col-md-12 text-center">
-      {{> navbar}}
-      <h2 class="text-primary m-5">Welcome to the follow-up survey for the Superteams study!</h2>
 
-          {{#each welcomepg4}} 
-            <h4 class="my-4">{{{this.text}}}</h4>                 
+{{> 1contentheading}}
+    <div class="row h-100">
+        <div class="col-md-12 align-self-end">
+            <h2 class="text-primary">Welcome to the follow-up survey for the Superteams study!</h2>
+        </div>
+    </div>
+</div>
+
+{{> 2contentmain}}
+    <div class="row justify-content-center bespoke-60vh-vertical-align">
+        <div class="col-xs-12 col-sm-10 col-md-10 text-center px-md-3 px-lg-5">
+
+          {{#each welcomepg4}}
+            <h4 class="my-sm-0 my-md-3 my-xl-4">{{{this.text}}}</h4>                 
           {{/each}}
 
-        <div class="text-center my-4">
-        <a class="btn btn-lg btn-primary" role="button" href="instructions-1">Next</a>
-      </div>
+        </div>
     </div>
-  </div>
-</div
+{{!-- closing div of end of contentmain below --}}
+</div>
+
+{{> 3footer}}
+
+    {{> 4footerleft}}
+        </div>
+    </div>
+
+    {{> 5footermiddle}}
+            <a class="btn btn-lg btn-primary" role="button" href="instructions-1">Next</a>
+        </div>
+    </div>
+
+    {{> 6footerright}}
+        </div>
+    </div>
+{{!-- closing div of footer below --}}
+</div>

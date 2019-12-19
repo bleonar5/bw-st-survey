@@ -1,46 +1,164 @@
-/* Own CSS */
+/* Note: The Navbar styles needs sorting out. It's a bit of a mess at the moment*/
 
+/* This vertically aligns the text in the row, but it messes up the position of the radio boxes
 
-.btn-bottom-right {
-  margin: 5rem;
+.table > tbody > tr > td {
+    vertical-align: middle; 
+}
+*/
+
+.bespoke-higher-lines {
+    line-height: 2.0rem;
 }
 
-.btn-bottom-left {
-  margin: 5rem;
+input[type='radio'], label{   
+    vertical-align: baseline;
+ }
+
+/* New stuff */
+
+#trick-div {
+    height: 5%;
+  }
+
+html {
+  height: 100%;
+  font-size: 1.0vw;
 }
 
-/* CSS for text */
-
-.bigger-text {
-  font-size: 1.2rem
+body {
+  height: 100%;
 }
 
-.smaller-text {
+#page-container {
+  height: 100%;
+}
+
+#header {
+  height: 10%;
+}
+
+#footer {
+  height: 15%;
+}
+
+#content-heading {
+  height: 5%;
+}
+
+#content-main {
+  /* If you change the height % of content-main, you will also have to change the height in the "bespoke-60vh-vertical-align" class */
+  height: 70%;
+}
+
+.font-size-lg {
+    font-size: 1.2rem;
+}
+
+.font-size-task-3 {
+    font-size: 0.95rem;
+}
+
+.font-size-sm {
+    font-size: 0.8rem;
+}
+
+/* Dropdown Button */
+.nav-drop-btn {
+  background-color: #f8f9fa;
+  color: #000;
+  min-width: 8rem;
+  max-width: 8rem;
+  border: none;
+  vertical-align: middle;
+}
+
+/* Change the background color of the dropdown button when the dropdown content is shown */
+.dropdown:hover .nav-drop-btn {
+  background-color: #ddd;
+}
+
+#dev-navbar {
+  display: flex;
+  align-items: top; /* vertically aligned */
+  justify-content: center;
+}
+
+/* Dropdown Content (Hidden by Default with display: none property) */
+/* Current issue is that the dropdown menu gets blocked by the bottom of the div */
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f1f1f1;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1; /* The z-index property specifies the stack order of an element. An element with greater stack order is always in front of an element with a lower stack order. */
+}
+
+/* Links inside the dropdown */
+.dropdown-content a {
+  text-align: left;
   font-size: 0.8rem;
+  text-decoration: none;
+  display: block;
 }
 
+/* Change color of dropdown links on hover */
+.dropdown-content a:hover {
+  background-color: #ddd;
+}
+
+/* Show the dropdown menu on hover */
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+#validation-alert {
+  display: inline-block;
+  color: #721c24;
+  background-color: #f8d7da;
+  border-color: #f5c6cb;
+  position: relative;
+  text-align: center;
+  vertical-align: middle;
+  /* Give same padding, border-radius and border as the Boostrap buttons */
+  border-radius: 0.25rem;
+  border: 1px solid transparent;
+  font-size: 1rem;
+  line-height: 1.5;
+  padding: 0.375rem 0.75rem;
+}
+
+
+/* OLD STUFF */
+
+
+/* Class for Consent Headings (Informed Consent Form page) */
 .consent-heading {
   font-weight: bold;
   text-decoration: underline;
   text-transform: uppercase;
 }
 
-.maxWidth{
-  max-width: 1200px;
-}
 
-.hidden-navbar{
+/* .hidden-navbar{
   display: none !important;
-}
+} */
 
-/* Dropdown Button */
-.dropbtn {
+  /* Dropdown Button */
+  /* COMMENT: This has been transfered */
+  .dropbtn {
+      background-color: #f8f9fa;
+      color: #000;
+      padding: 16px;
+      font-size: 16px;
+      border: none;
+    }
+
+  /* Change the background color of the dropdown button when the dropdown content is shown */
+   /* COMMENT: This has been transfered */
+  .dropdown:hover .dropbtn {
     background-color: #f8f9fa;
-    color: #000;
-    padding: 16px;
-    font-size: 16px;
-    border: none;
-  }
+    }
   
   /* The container <div> - needed to position the dropdown content */
   .dropdown {
@@ -67,29 +185,28 @@
   }
   
   /* Change color of dropdown links on hover */
-  .dropdown-content a:hover {background-color: #ddd;}
+  .dropdown-content a:hover {
+      background-color: #ddd;
+  }
   
   /* Show the dropdown menu on hover */
-  .dropdown:hover .dropdown-content {display: block;}
+  .dropdown:hover .dropdown-content {
+    display: block;
+  }
   
-  /* Change the background color of the dropdown button when the dropdown content is shown */
-  .dropdown:hover .dropbtn {background-color: #f8f9fa;}
 
-
-  /* Big Five */
-
-form#big-five-form th.rotate {
-  height: 200px;
-  white-space: nowrap;
+/* Vertically centers text */
+.bespoke-vertical-center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
 }
 
-form#big-five-form th.rotate > div {
-  transform:
-        translate(20px, 160px)
-        rotate(270deg);
-  width: 30px;
-}
-
-table.big-five th {
-  width: 140px;
+/* Ùse this classname when you want to vertically center some content in the content-main section. It will only work in that section as it give the min height of 60% */
+.bespoke-60vh-vertical-align {
+  min-height: 60%;
+  min-height: 60vh;
+  display: flex;
+  align-items: center;
 }
