@@ -8,20 +8,19 @@
 </div>
 
 {{> 2contentmain}}
-    <div class="row justify-content-center">
-        <div class="col-xs-8 col-sm-10 col-md-10 text-left p-xs-1 p-sm-2 p-md-3 p-lg-4 p-xl-5">
+    <div class="row justify-content-center bespoke-higher-lines">
+        <div class="text-left p-xs-1 p-sm-2 p-md-3 p-lg-4 p-xl-5">
             <form action="#" method="POST">
                 <table class="table table-striped">
-                    <h3 class="text-left my-5 mx-2"></h3>
                     {{#each perguntas}} 
                         {{#if dropdown}}
                             <tr>
-                                <td class="text-left">{{this.text}}</td>          
+                                <td class="text-left col-md-4">{{this.text}}</td>          
                                 <td>
-                                    <select id={{this.id}} name={{this.id}} class="form-control dropdn first-radio-box" onclick="removeWarning();">
+                                    <select id={{this.id}} name={{this.id}} class="form-control first-radio-box col-md-8" onclick="removeWarning();" onChange="disableDependencies({{this.id}});">
                                         <option disabled selected value> -- select an option -- </option>
                                             {{#each this.options}}
-                                                <option value={{this}}>{{this}}</option>
+                                                <option value={{{this}}}>{{this}}</option>
                                             {{/each}}
                                 </select>
                                 </td>    
@@ -29,10 +28,10 @@
                         {{/if}}
 
                         {{#if yesno}}
-                                <tr>
-                                    <td class="text-left">{{this.text}}</td>
+                                <tr class="row">
+                                    <td class="text-left col-md-4">{{this.text}}</td>
                                     <td>
-                                    <div id={{this.id}} class="btn-group yesno" data-toggle="buttons">
+                                    <div id={{this.id}} class="btn-group yesno col-md-8" data-toggle="buttons">
                                         <label class="btn btn-primary" onclick="removeWarning();"><input type="radio" name={{this.id}}-yes class="first-radio-box"/>Yes</label>
                                         <label class="btn btn-danger" onclick="removeWarning();"><input type="radio" name={{this.id}}-no onclick="removeWarning();"/>No</label>
                                     </div>
@@ -41,9 +40,9 @@
                         {{/if}}
 
                         {{#if textarea}}
-                            <tr>
-                                <td class="text-left">{{this.text}}</td>
-                                <td>
+                            <tr class="row">
+                                <td class="text-left col-md-4">{{this.text}}</td>
+                                <td class="col-md-8">
                                     <input id={{this.id}} name={{this.id}} class="form-control first-radio-box text-area-for-vali" type="text" value="" autocomplete="off" onclick="removeWarning();">
                                 </td>
                             </tr>

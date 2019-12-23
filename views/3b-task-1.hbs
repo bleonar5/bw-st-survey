@@ -5,11 +5,11 @@
 
 {{> 2contentmain}}
     <div class="row justify-content-center bespoke-60vh-vertical-align">
-        <div class="col-xs-8 col-sm-10 col-md-10 text-left px-md-3 px-lg-5">
+        <div class="col-xs-8 col-sm-10 col-md-12 text-left px-md-3 px-lg-5">
             <form action="#" method="POST">
-                    <table class="table table-sm table-striped">
-                        {{> radioheadingagree}}
-                        {{#each perguntas}} {{> radioRowNormalText this}} {{/each}}
+                    <table class="table table-striped">
+                        {{> radioTask1HeadingAgree}}
+                        {{#each perguntas}} {{> radioTask1 this}} {{/each}}
                     </table>      
             </form>
         </div>

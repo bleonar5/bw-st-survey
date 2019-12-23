@@ -1,9 +1,296 @@
-console.log(`Hello, Dom. I'm the front end`);
+// let urls = require('../bin/urls.js');
+// I'm temporarily pasting the arry in here because I can't find a way of using imports and exports with client side JS
+
+// Declare variables to track user
+let employed = true;
+let timeTaken = 0;
+
+const urls = 
+[
+    {
+        "pageold": 1,
+        "page": 1,
+        "urlold": "individual-login",
+        "url": "/individual-login",
+        "hbsview": "1-individual-login",
+        "previouspage": "na",
+        "nextpage": "/study-consent"
+    },
+    {
+        "pageold": 2,
+        "page": 2,
+        "urlold": "study-consent",
+        "url": "/study-consent",
+        "previouspage": "/individual-login",
+        "nextpage": "/eligibility-notice"
+    },
+    {
+        "pageold": 3,
+        "page": 3,
+        "urlold": "eligibility-notice",
+        "url": "/eligibility-notice",
+        "previouspage": "/study-consent",
+        "nextpage": "/welcome"
+    },
+    {
+        "pageold": 4,
+        "page": 4,
+        "urlold": "welcome",
+        "url": "/welcome",
+        "previouspage": "/eligibility-notice",
+        "nextpage": "/instructions-1"
+    },
+    {
+        "pageold": 5,
+        "page": 5,
+        "urlold": "instructions-1",
+        "url": "/instructions-1",
+        "previouspage": "/welcome",
+        "nextpage": "/task-1-part-1"
+    },
+    {
+        "pageold": 6,
+        "page": 6,
+        "urlold": "task-1",
+        "url": "/task-1-part-1",
+        "pagination": "Page 1 of 2",
+        "previouspage": "/instructions-1",
+        "nextpage": "/task-1-part-2"
+    },
+    {
+        "pageold": 7,
+        "page": 7,
+        "urlold": "task-1-pt-2",
+        "url": "/task-1-part-2",
+        "pagination": "Page 2 of 2",
+        "backbutton": true,
+        "previouspage": "/task-1-part-1",
+        "nextpage": "/instructions-2"
+    },
+    {
+        "pageold": 8,
+        "page": 8,
+        "urlold": "instructions-2",
+        "url": "/instructions-2",
+        "previouspage": "/task-1-part-2",
+        "nextpage": "/task-2-part-1"
+    },
+    {
+        "pageold": 9,
+        "page": 9,
+        "urlold": "task-2",
+        "url": "/task-2-part-1",
+        "pagination": "Page 1 of 4",
+        "previouspage": "/instructions-2",
+        "nextpage": "/task-2-part-2"
+    },
+    {
+        "pageold": 20,
+        "page": 10,
+        "urlold": "task22",
+        "url": "/task-2-part-2",
+        "pagination": "Page 2 of 4",
+        "previouspage": "/task-2-part-1",
+        "nextpage": "/task-2-part-3",
+        "comment": "added on 22-dec"
+    },
+    {
+        "pageold": 10,
+        "page": 11,
+        "urlold": "task-2-pt-2",
+        "url": "/task-2-part-3",
+        "pagination": "Page 3 of 4",
+        "previouspage": "/task-2-part-2",
+        "nextpage": "/task-2-part-4"
+    },
+    {
+        "pageold": 11,
+        "page": 12,
+        "urlold": "task-2-pt-3",
+        "url": "/task-2-part-4",
+        "pagination": "Page 4 of 4",
+        "previouspage": "/task-2-part-3",
+        "nextpage": "/instructions-3"
+    },
+    {
+        "pageold": 12,
+        "page": 13,
+        "urlold": "instructions-3",
+        "url": "/instructions-3",
+        "previouspage": "/task-2-part-4",
+        "nextpage": "/scenario-1"
+    },
+    {
+        "pageold": 13,
+        "page": 14,
+        "urlold": "scenario-1",
+        "url": "/scenario-1",
+        "previouspage": "/instructions-3",
+        "nextpage": "/task-3-part-1"
+    },
+    {
+        "pageold": 14,
+        "page": 15,
+        "urlold": "task-3",
+        "url": "/task-3-part-1",
+        "backbutton": true,
+        "previouspage": "/scenario-1",
+        "nextpage": "/scenario-2"
+    },
+    {
+        "pageold": 15,
+        "page": 16,
+        "urlold": "scenario-2",
+        "url": "/scenario-2",
+        "previouspage": "/task-3-part-1",
+        "nextpage": "/task-3-part-2"
+    },
+    {
+        "pageold": 16,
+        "page": 17,
+        "urlold": "task-3-pt-2",
+        "url": "/task-3-part-2",
+        "backbutton": true,
+        "previouspage": "/scenario-2",
+        "nextpage": "/scenario-3"
+    },
+    {
+        "pageold": 17,
+        "page": 18,
+        "urlold": "scenario-3",
+        "url": "/scenario-3",
+        "previouspage": "/task-3-part-2",
+        "nextpage": "/task-3-part-3"
+    },
+    {
+        "pageold": 18,
+        "page": 19,
+        "urlold": "task-3-pt-3",
+        "url": "/task-3-part-3",
+        "backbutton": true,
+        "previouspage": "/scenario-3",
+        "nextpage": "/study-conclusion"
+    },
+    {
+        "pageold": 19,
+        "page": 20,
+        "urlold": "study-conclusion",
+        "url": "/study-conclusion",
+        "previouspage": "/task-3-part-3",
+        "nextpage": "/holding-page"
+    },
+    {
+        "pageold": 21,
+        "page": 21,
+        "urlold": "holding-page",
+        "url": "/holding-page",
+        "previouspage": "/study-conclusion",
+        "nextpage": "na"
+    }
+]
+
+
+
 const width  = window.innerWidth;
 const height = window.innerHeight;
-
+console.log(`Hello, Dom. I'm the front end`);
 console.log(`width: ${width}, height ${height}`);
 
+
+// This is a temporary array. It should be stored somewhere else and kept in middleware instead
+const dependenciesArray =
+
+[
+    {
+        "id": 201,
+        "trigger": "no",
+        "action": "disable",
+        "dependencies": "202; 203"
+    },
+    {
+        "id": 202,
+        "trigger": "no",
+        "action": "disable",
+        "dependencies": "203; 204"
+    }
+]
+
+// Function which returns the dependencies of a question
+function checkDependencies(_id, _dependenciesArray) {
+    for (let i = 0; i < _dependenciesArray.length; i++) {
+        if (_dependenciesArray[i].id === _id) {
+            return dependenciesArray[i].dependencies;
+        } else {
+            return false;
+        }
+    }
+}
+
+// Function which returns the word required to trigger the dependencies
+function getTrigger(_id, _dependenciesArray) {
+    for (let i = 0; i < _dependenciesArray.length; i++) {
+        if (_dependenciesArray[i].id === _id) {
+            return dependenciesArray[i].trigger;
+        }
+    }
+}
+
+function convertSemiColonsToArray(_ques) {
+    // If string contains a semi colon
+    let optionsString = _ques;
+    console.log(optionsString);
+    // Split the string into an array
+    let result = optionsString.split(';').map(e => e.split(';'));
+    let newArray = [];
+
+    // Loop through array, remove square brackets, \ and ""
+    for (let i = 0; i < result.length; i++) {
+        // Todo: this could be more concise
+        let jsonstringify = JSON.stringify(result[i]);
+        let withoutOpeningBrackets = jsonstringify.replace("[","");
+        let withoutBothBrackets = withoutOpeningBrackets.replace("]", "");
+        let withoutOpeningQuotes = withoutBothBrackets.replace("\"", "");
+        let withoutBothQuotes = withoutOpeningQuotes.replace("\"", "");
+        let trimmedString = withoutBothQuotes.trim();
+        newArray.push(trimmedString); 
+    }
+
+    return newArray;
+}
+
+
+function disableDependencies(_id) {
+
+
+
+    console.log(dependenciesArray);
+    let dependencies = checkDependencies(_id, dependenciesArray);
+    console.log(dependencies);
+    
+    // Todo: resolve error (domManipulation.js:54 Uncaught TypeError: Cannot read property 'split' of undefined) by breaking statement if there are no dependencides
+    let valueSelected = document.getElementById(_id).value;
+    let triggerWord = getTrigger(_id, dependenciesArray);
+    if (dependencies !== false) {
+        let arrayOfDependencies = convertSemiColonsToArray(dependencies);
+    
+
+    if (dependencies === undefined) {
+        console.log('no dependencies');
+        return false;
+    } if (triggerWord !== valueSelected) { 
+        console.log ('has depedencies but wrong word selected');
+        for (i = 0; i < arrayOfDependencies.length; i++) {
+            // Convert string to number with parseInt
+            document.getElementById(parseInt(arrayOfDependencies[i])).disabled = false;
+        }
+    } else {
+        // Convert the database input from a string with semicolons to an array so that we can loop through the new array and disable the questions
+        for (i = 0; i < arrayOfDependencies.length; i++) {
+            // Convert string to number with parseInt
+            document.getElementById(parseInt(arrayOfDependencies[i])).disabled = true;
+        }
+    }}
+}
 
 // This function below will work regardless of what question type (i.e. radios, yesnos, dropdowns etc.) we are dealing with. To make it work you need to add the classname "first-radio-box" to the questions).
 function getArrayOfQuestions() {
@@ -183,57 +470,24 @@ Remember, when you create the logic on the backend, you will want to create a li
 (4) Return url in position x + 1. The next button then redirects the user to this new path
 */
 
-pagesURL = [
-  { pgNo: 1, url: 'individual-login' },
-  { pgNo: 2, url: 'study-consent' },
-  { pgNo: 3, url: 'eligibility-notice' },
-  { pgNo: 4, url: 'welcome' },
-  { pgNo: 5, url: 'instructions-1' },
-  { pgNo: 6, url: 'task-1' },
-  { pgNo: 7, url: 'task-1-pt-2' },
-  { pgNo: 8, url: 'instructions-2' },
-  { pgNo: 9, url: 'task-2' },
-  { pgNo: 10, url: 'task-2-pt-2' },
-  { pgNo: 11, url: 'task-2-pt-3' },
-  { pgNo: 12, url: 'instructions-3' },
-  { pgNo: 13, url: 'scenario-1' },
-  { pgNo: 14, url: 'task-3' },
-  { pgNo: 15, url: 'scenario-2' },
-  { pgNo: 16, url: 'task-3-pt-2' },
-  { pgNo: 17, url: 'scenario-3' },
-  { pgNo: 18, url: 'task-3-pt-3' },
-  { pgNo: 19, url: 'study-conclusion' } 
-]
-
 function nextPage(_currentPathname) {
-    switch(_currentPathname){
-        case "/task-1":
-            window.location.pathname = '/task-1-pt-2'
+
+    console.log(_currentPathname);
+    console.log(urls);
+    for (i = 0; i < urls.length; i++) {
+        if (urls[i].url === _currentPathname) {
+            console.log(`below is the current url`);
+            console.log(urls[i].url);
+            console.log('below is the nextpage');
+            console.log(urls[i].nextpage);
+            console.log(`below is info about this url`);
+            console.log(urls[i]);
+            window.location.pathname = urls[i].nextpage;
             break;
-        case "/task-1-pt-2":
-            window.location.pathname = '/instructions-2'
-            break;
-        case "/task-3":
-            window.location.pathname = '/scenario-2';
-            break;
-        case "/task-3-pt-2":
-            window.location.pathname = '/scenario-3';
-            break;
-        case "/task-3-pt-3":
-            window.location.pathname = '/study-conclusion';
-            break;
-        case "/task-2":
-            window.location.pathname = '/task-2-pt-2';
-            break;
-        case "/task-2-pt-2":
-            window.location.pathname = '/task-2-pt-3';
-            break;
-        case "/task-2-pt-3":
-            window.location.pathname = '/instructions-3';
-            break;
-      default:
-        console.log("The Pathname you have entered is not in the switch statement") 
-}}
+        }
+    }
+
+}
 
 
 // Temporary Function which ticks all radio boxes (for speeding up testing)
