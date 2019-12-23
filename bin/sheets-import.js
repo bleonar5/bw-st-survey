@@ -3,6 +3,8 @@ const questions =
 [
     {
         "idlegacydontuse": "consent-01",
+        "order": 1,
+        "url": "/study-consent",
         "page": 2,
         "id": 10001,
         "text": "To understand the relationship between measures of social skill and fluid intelligence.",
@@ -12,6 +14,8 @@ const questions =
     },
     {
         "idlegacydontuse": "consent-02",
+        "order": 1,
+        "url": "/study-consent",
         "page": 2,
         "id": 10002,
         "text": "This is a follow-up survey. We will ask you some demographic questions about your work history and experience of teamwork, along with a ‘situational judgment test’ to assess your knowledge of working in a team.",
@@ -21,6 +25,8 @@ const questions =
     },
     {
         "idlegacydontuse": "consent-03",
+        "order": 1,
+        "url": "/study-consent",
         "page": 2,
         "id": 10003,
         "text": "There are no risks for participating in this study beyond those associated with normal computer use, including fatigue and mild stress.",
@@ -30,6 +36,8 @@ const questions =
     },
     {
         "idlegacydontuse": "consent-04",
+        "order": 1,
+        "url": "/study-consent",
         "page": 2,
         "id": 10004,
         "text": "Overall, compensation for this experiment will be $15.",
@@ -39,6 +47,8 @@ const questions =
     },
     {
         "idlegacydontuse": "consent-05",
+        "order": 1,
+        "url": "/study-consent",
         "page": 2,
         "id": 10005,
         "text": "This study contains a number of checks to make sure that participants are finishing the tasks honestly and completely.",
@@ -48,6 +58,8 @@ const questions =
     },
     {
         "idlegacydontuse": "consent-06",
+        "order": 1,
+        "url": "/study-consent",
         "page": 2,
         "id": 10006,
         "text": "Participation in this study is voluntary, and you can stop at any time without any penalty. To stop, simply close your browser window. Partial data will not be analyzed.",
@@ -57,6 +69,8 @@ const questions =
     },
     {
         "idlegacydontuse": "consent-07",
+        "order": 1,
+        "url": "/study-consent",
         "page": 2,
         "id": 10007,
         "text": "All data collected as part of this study will be anonymized (and personal information, such as your email address, will be removed).",
@@ -66,6 +80,8 @@ const questions =
     },
     {
         "idlegacydontuse": "consent-08",
+        "order": 1,
+        "url": "/study-consent",
         "page": 2,
         "id": 10008,
         "text": "If you have any questions about this research, you may contact: Ben Weidmann at <a href=\"mailto:benweidmann@g.harvard.edu\">benweidmann@g.harvard.edu</a>, or David Deming at <a href=\"mailto:david_deming@harvard.edu\">david_deming@harvard.edu</a>",
@@ -75,6 +91,8 @@ const questions =
     },
     {
         "idlegacydontuse": "consent-09",
+        "order": 1,
+        "url": "/study-consent",
         "page": 2,
         "id": 10009,
         "text": "By clicking on the \"I Consent\" button, you indicate that you are 18 years of age or older, that you voluntarily agree to participate in this study and that you understand the information in this consent form.",
@@ -84,12 +102,16 @@ const questions =
     },
     {
         "idlegacydontuse": "eligibility-01",
+        "order": 2,
+        "url": "/eligibility-notice",
         "page": 3,
         "id": 10010,
         "text": "Our study requires participants who try their best in these Online Tasks. If you skip through questions, or don’t read the instructions, your responses cannot be used."
     },
     {
         "idlegacydontuse": "eligibility-02",
+        "order": 2,
+        "url": "/eligibility-notice",
         "page": 3,
         "id": 10011,
         "text": "<strong>Our tasks contain checks to see whether or not you’re reading the instructions and the questions.</strong>",
@@ -97,48 +119,64 @@ const questions =
     },
     {
         "idlegacydontuse": "eligibility-03",
+        "order": 2,
+        "url": "/eligibility-notice",
         "page": 3,
         "id": 10012,
         "text": "Everybody who makes a genuine attempt to answer the questions will be paid for this follow up survey."
     },
     {
         "idlegacydontuse": "eligibility-04",
+        "order": 2,
+        "url": "/eligibility-notice",
         "page": 3,
         "id": 10013,
         "text": "Click \"I agree\" if you would like to proceed. If not, thank you for your time!"
     },
     {
         "idlegacydontuse": "welcome-01",
+        "order": 3,
+        "url": "/welcome",
         "page": 4,
         "id": 10014,
         "text": "This survey is only available to people who successfully participated in Superteams."
     },
     {
         "idlegacydontuse": "welcome-02",
+        "order": 3,
+        "url": "/welcome",
         "page": 4,
         "id": 10015,
         "text": "These questions take <strong>40 minutes</strong>. We will ask questions about your work experience, and your views on groupwork."
     },
     {
         "idlegacydontuse": "welcome-03",
+        "order": 3,
+        "url": "/welcome",
         "page": 4,
         "id": 10016,
         "text": "There are <strong>three parts</strong>. Some will take longer than others, but not more than 20 minutes. "
     },
     {
         "idlegacydontuse": "welcome-04",
+        "order": 3,
+        "url": "/welcome",
         "page": 4,
         "id": 10017,
         "text": "If you have to stop, that's OK. Your answers will be saved. To continue, come back to <span class=\"text-primary\"><a href=\"individual-login\">this website </a></span> re-enter the <strong>same login details</strong> and pick up where you left off."
     },
     {
         "idlegacydontuse": "welcome-05",
+        "order": 3,
+        "url": "/welcome",
         "page": 4,
         "id": 10018,
         "text": "<span class=\"text-danger\">Note: These tasks <strong>must</strong> be done on a laptop or desktop computer.<br>They <strong>cannot</strong> be done on a mobile phone or tablet.</span>"
     },
     {
         "idlegacydontuse": "inst-01-01",
+        "order": 4,
+        "url": "/instructions-1",
         "page": 5,
         "id": 10019,
         "text": "Task 1 (of 3)",
@@ -147,6 +185,8 @@ const questions =
     },
     {
         "idlegacydontuse": "inst-01-02",
+        "order": 4,
+        "url": "/instructions-1",
         "page": 5,
         "id": 10020,
         "text": "The purpose of this task is to understand your views about teamwork and working independently.",
@@ -155,6 +195,8 @@ const questions =
     },
     {
         "idlegacydontuse": "inst-01-03",
+        "order": 4,
+        "url": "/instructions-1",
         "page": 5,
         "id": 10021,
         "text": "It shouldn’t take more than 5 minutes. ",
@@ -163,6 +205,8 @@ const questions =
     },
     {
         "idlegacydontuse": "inst-01-04",
+        "order": 4,
+        "url": "/instructions-1",
         "page": 5,
         "id": 10022,
         "text": "Please be as honest as possible. Your answers will be kept in absolute confidence, and fully anonymized.",
@@ -171,6 +215,8 @@ const questions =
     },
     {
         "idlegacydontuse": 101,
+        "order": 5,
+        "url": "/task-1-part-1",
         "page": 6,
         "id": 10601,
         "text": "I always ask for information from others before making any important decision",
@@ -179,6 +225,8 @@ const questions =
     },
     {
         "idlegacydontuse": 102,
+        "order": 5,
+        "url": "/task-1-part-1",
         "page": 6,
         "id": 10602,
         "text": "I would rather take action on my own than wait around for others’ input",
@@ -187,6 +235,8 @@ const questions =
     },
     {
         "idlegacydontuse": 103,
+        "order": 5,
+        "url": "/task-1-part-1",
         "page": 6,
         "id": 10603,
         "text": "When solving a problem, it is very important to make your own decision and stick by it",
@@ -195,6 +245,8 @@ const questions =
     },
     {
         "idlegacydontuse": 104,
+        "order": 5,
+        "url": "/task-1-part-1",
         "page": 6,
         "id": 10604,
         "text": "Teams usually work very effectively",
@@ -203,6 +255,8 @@ const questions =
     },
     {
         "idlegacydontuse": 105,
+        "order": 5,
+        "url": "/task-1-part-1",
         "page": 6,
         "id": 10605,
         "text": "I find that it is often more productive to work on my own than with others",
@@ -212,6 +266,8 @@ const questions =
     },
     {
         "idlegacydontuse": 106,
+        "order": 5,
+        "url": "/task-1-part-1",
         "page": 6,
         "id": 10606,
         "text": "For most tasks, I would rather work alone than as part of a group",
@@ -221,6 +277,8 @@ const questions =
     },
     {
         "idlegacydontuse": 107,
+        "order": 5,
+        "url": "/task-1-part-1",
         "page": 6,
         "id": 10607,
         "text": "When I disagree with other team members, I tend to go with my own gut feelings",
@@ -229,6 +287,8 @@ const questions =
     },
     {
         "idlegacydontuse": 108,
+        "order": 5,
+        "url": "/task-1-part-1",
         "page": 6,
         "id": 10608,
         "text": "I can usually perform better when I work on my own",
@@ -237,6 +297,8 @@ const questions =
     },
     {
         "idlegacydontuse": 109,
+        "order": 6,
+        "url": "/task-1-part-2",
         "page": 7,
         "id": 10701,
         "text": "I find working on team projects to be very satisfying",
@@ -245,6 +307,8 @@ const questions =
     },
     {
         "idlegacydontuse": 110,
+        "order": 6,
+        "url": "/task-1-part-2",
         "page": 7,
         "id": 10702,
         "text": "When I have a different opinion than another group member, I usually try to stick with my own opinion",
@@ -253,6 +317,8 @@ const questions =
     },
     {
         "idlegacydontuse": 111,
+        "order": 6,
+        "url": "/task-1-part-2",
         "page": 7,
         "id": 10703,
         "text": "I prefer to complete a task from beginning to end with no assistance from others",
@@ -261,6 +327,8 @@ const questions =
     },
     {
         "idlegacydontuse": 112,
+        "order": 6,
+        "url": "/task-1-part-2",
         "page": 7,
         "id": 10704,
         "text": "It is important to stick to your own decisions, even when others around you are trying to get you to change",
@@ -269,6 +337,8 @@ const questions =
     },
     {
         "idlegacydontuse": 113,
+        "order": 6,
+        "url": "/task-1-part-2",
         "page": 7,
         "id": 10705,
         "text": "I think it is usually better to take the bull by the horns and do something yourself, rather than wait to get input from others",
@@ -277,6 +347,8 @@ const questions =
     },
     {
         "idlegacydontuse": 114,
+        "order": 6,
+        "url": "/task-1-part-2",
         "page": 7,
         "id": 10706,
         "text": "I find it easy to negotiate with others who hold a different viewpoint than I hold",
@@ -285,6 +357,8 @@ const questions =
     },
     {
         "idlegacydontuse": 115,
+        "order": 6,
+        "url": "/task-1-part-2",
         "page": 7,
         "id": 10707,
         "text": "When others disagree, it is important to hold one’s own ground and not give in",
@@ -293,6 +367,8 @@ const questions =
     },
     {
         "idlegacydontuse": "inst-02-01",
+        "order": 7,
+        "url": "/instructions-2",
         "page": 8,
         "id": 20001,
         "text": "Task 2 (of 3)",
@@ -301,6 +377,8 @@ const questions =
     },
     {
         "idlegacydontuse": "inst-02-02",
+        "order": 7,
+        "url": "/instructions-2",
         "page": 8,
         "id": 20002,
         "text": "The purpose of this task is to understand more about your background and experiences.",
@@ -309,6 +387,8 @@ const questions =
     },
     {
         "idlegacydontuse": "inst-02-03",
+        "order": 7,
+        "url": "/instructions-2",
         "page": 8,
         "id": 20003,
         "text": "It shouldn’t take more than a few minutes. ",
@@ -317,6 +397,8 @@ const questions =
     },
     {
         "idlegacydontuse": "inst-02-04",
+        "order": 7,
+        "url": "/instructions-2",
         "page": 8,
         "id": 20004,
         "text": "Again, please be as honest as possible. Your answers will be kept in absolute confidence, and fully anonymized.",
@@ -324,6 +406,8 @@ const questions =
         "info": true
     },
     {
+        "order": 8,
+        "url": "/task-2-part-1",
         "page": 9,
         "id": 20900,
         "text": "Employment",
@@ -332,6 +416,8 @@ const questions =
     },
     {
         "idlegacydontuse": 201,
+        "order": 8,
+        "url": "/task-2-part-1",
         "page": 9,
         "id": 20901,
         "text": "Are you currently employed?",
@@ -341,6 +427,8 @@ const questions =
     },
     {
         "idlegacydontuse": 206,
+        "order": 8,
+        "url": "/task-2-part-1",
         "page": 9,
         "id": 20902,
         "text": "For whom do you work? (Name of company, business or employer. If you have multiple jobs, describe the one where you work the most)",
@@ -349,6 +437,8 @@ const questions =
     },
     {
         "idlegacydontuse": 207,
+        "order": 8,
+        "url": "/task-2-part-1",
         "page": 9,
         "id": 20903,
         "text": "What kind of business or industry do you work in? (Please describe the main activity at your workplace. For example: hospital, newspaper publishing, auto repair shop, bank. If you have multiple jobs, describe the one where you work the most)",
@@ -357,23 +447,20 @@ const questions =
     },
     {
         "idlegacydontuse": 208,
+        "order": 8,
+        "url": "/task-2-part-1",
         "page": 9,
         "id": 20904,
         "text": "Is your work mainly:",
         "category": "dropdown",
-        "options": "‘Manufacturing’; ‘Wholesale trade’; ‘Retail trade’; ‘Other (agriculture; construction; service; government etc)’.",
+        "options": "Manufacturing; Wholesale trade; Retail trade; Other (agriculture, construction, service, government etc)",
         "dropdown": true
     },
     {
-        "page": 10,
-        "id": 21000,
-        "text": "Employment",
-        "category": "heading",
-        "heading": true
-    },
-    {
         "idlegacydontuse": 209,
-        "page": 10,
+        "order": 8,
+        "url": "/task-2-part-1",
+        "page": 9,
         "id": 21005,
         "text": "What kind of work do you do? (For example: registered nurse, personnel manager, supervisor of order department, auto mechanic, accountant)",
         "category": "textarea",
@@ -381,7 +468,9 @@ const questions =
     },
     {
         "idlegacydontuse": 210,
-        "page": 10,
+        "order": 8,
+        "url": "/task-2-part-1",
+        "page": 9,
         "id": 21006,
         "text": "What are your most important duties? (For example: patient care, directing hiring policies, supervising order clerks, repairing automobiles, reconciling financial records)",
         "category": "textarea",
@@ -389,16 +478,20 @@ const questions =
     },
     {
         "idlegacydontuse": 211,
-        "page": 10,
+        "order": 8,
+        "url": "/task-2-part-1",
+        "page": 9,
         "id": 21007,
-        "text": "Which of the following best describes you",
+        "text": "Which of the following best describes you:",
         "category": "dropdown",
-        "options": "‘Employee of a PRIVATE-FOR-PROFIT company or business or of an individual, for wages, salary, or commissions’; \n‘Employee of a PRIVATE NOT-FOR-PROFIT, tax-exempt, or charitable organization’; \n‘GOVERNMENT employee’;\n‘SELF-EMPLOYED in own NOT INCORPORATED business, professional practice, or farm’; \n‘SELF-EMPLOYED in own INCORPORATED business, professional practice, or farm’; \n‘Working WITHOUT PAY in family business or farm’",
+        "options": "Employee of a PRIVATE-FOR-PROFIT company or business or of an individual, for wages, salary, or commissions; Employee of a PRIVATE NOT-FOR-PROFIT, tax-exempt, or charitable organization; GOVERNMENT employee; SELF-EMPLOYED in own NOT INCORPORATED business, professional practice, or farm; SELF-EMPLOYED in own INCORPORATED business, professional practice, or farm; Working WITHOUT PAY in family business or farm",
         "dropdown": true
     },
     {
         "idlegacydontuse": 205,
-        "page": 10,
+        "order": 8,
+        "url": "/task-2-part-1",
+        "page": 9,
         "id": 21008,
         "text": "What is your annual salary?",
         "category": "dropdown",
@@ -407,7 +500,9 @@ const questions =
     },
     {
         "idlegacydontuse": 220,
-        "page": 11,
+        "order": 9,
+        "url": "/task-2-part-2",
+        "page": 10,
         "id": 21101,
         "text": "If you are a current student OR have completed a degree, what was your major?",
         "category": "dropdown",
@@ -416,16 +511,20 @@ const questions =
     },
     {
         "idlegacydontuse": 221,
-        "page": 11,
+        "order": 9,
+        "url": "/task-2-part-2",
+        "page": 10,
         "id": 21102,
         "text": "Roughly what fraction of your assessment during your degree was based on group work or team assignments?",
         "category": "dropdown",
-        "options": "[option 1 [BW to provide]; option 2 [BW to provide]; option 3 etc. [BW to provide]",
+        "options": "option 1 [BW to provide]; option 2 [BW to provide]; option 3 etc. [BW to provide]",
         "dropdown": true
     },
     {
         "idlegacydontuse": 222,
-        "page": 11,
+        "order": 9,
+        "url": "/task-2-part-2",
+        "page": 10,
         "id": 21103,
         "text": "[placeholder 1; David still coming up with some Q’s here]",
         "category": "dropdown",
@@ -434,7 +533,9 @@ const questions =
     },
     {
         "idlegacydontuse": 223,
-        "page": 11,
+        "order": 9,
+        "url": "/task-2-part-2",
+        "page": 10,
         "id": 21104,
         "text": "[placeholder 2; David still coming up with some Q’s here]",
         "category": "textarea",
@@ -442,14 +543,18 @@ const questions =
     },
     {
         "idlegacydontuse": 224,
-        "page": 11,
+        "order": 9,
+        "url": "/task-2-part-2",
+        "page": 10,
         "id": 21105,
         "text": "[placeholder 3; David still coming up with some Q’s here]",
         "category": "yesno",
         "yesno": true
     },
     {
-        "page": 11,
+        "order": 9,
+        "url": "/task-2-part-2",
+        "page": 10,
         "id": 21110,
         "text": "Education",
         "category": "heading",
@@ -457,7 +562,9 @@ const questions =
     },
     {
         "idlegacydontuse": 240,
-        "page": 12,
+        "order": 10,
+        "url": "/task-2-part-3",
+        "page": 11,
         "id": 21201,
         "text": "In the last year, have you been part of any recreational clubs or groups that involves working in groups?",
         "category": "yesno",
@@ -465,7 +572,9 @@ const questions =
     },
     {
         "idlegacydontuse": 241,
-        "page": 12,
+        "order": 10,
+        "url": "/task-2-part-3",
+        "page": 11,
         "id": 21202,
         "text": "If YES, how often do you attend?",
         "category": "dropdown",
@@ -474,7 +583,9 @@ const questions =
     },
     {
         "idlegacydontuse": 242,
-        "page": 12,
+        "order": 10,
+        "url": "/task-2-part-3",
+        "page": 11,
         "id": 21203,
         "text": "In the last year, have you worked with others as a volunteer, for example for a charity or for a local church?",
         "category": "yesno",
@@ -482,7 +593,9 @@ const questions =
     },
     {
         "idlegacydontuse": 243,
-        "page": 12,
+        "order": 10,
+        "url": "/task-2-part-3",
+        "page": 11,
         "id": 21204,
         "text": "If YES, how often do you attend?",
         "category": "dropdown",
@@ -490,7 +603,9 @@ const questions =
         "dropdown": true
     },
     {
-        "page": 12,
+        "order": 10,
+        "url": "/task-2-part-3",
+        "page": 11,
         "id": 21200,
         "text": "Community and co-curricular",
         "category": "heading",
@@ -498,7 +613,9 @@ const questions =
     },
     {
         "idlegacydontuse": "inst-03-01",
-        "page": 13,
+        "order": 11,
+        "url": "/instructions-3",
+        "page": 12,
         "id": 30001,
         "text": "Task 3 (of 3)",
         "category": "heading",
@@ -506,7 +623,9 @@ const questions =
     },
     {
         "idlegacydontuse": "inst-03-02",
-        "page": 13,
+        "order": 11,
+        "url": "/instructions-3",
+        "page": 12,
         "id": 30002,
         "text": "<strong>Total time: 15 minutes</strong>",
         "category": "info",
@@ -514,7 +633,9 @@ const questions =
     },
     {
         "idlegacydontuse": "inst-03-03",
-        "page": 13,
+        "order": 11,
+        "url": "/instructions-3",
+        "page": 12,
         "id": 30003,
         "text": "<strong>Overview</strong>",
         "category": "info",
@@ -522,7 +643,9 @@ const questions =
     },
     {
         "idlegacydontuse": "inst-03-04",
-        "page": 13,
+        "order": 11,
+        "url": "/instructions-3",
+        "page": 12,
         "id": 30004,
         "text": "The purpose of this task is to understand how you work in a team context.",
         "category": "info",
@@ -530,7 +653,9 @@ const questions =
     },
     {
         "idlegacydontuse": "inst-03-05",
-        "page": 13,
+        "order": 11,
+        "url": "/instructions-3",
+        "page": 12,
         "id": 30005,
         "text": "You will be asked to make judgments about the <strong>best ways to act</strong> in a team facing a specific situation.  You will be presented with three separate situation descriptions, each of which is followed by ten potential responses.  You will indicate how effective each of the responses would be.  Your responses are extremely important so please complete each rating carefully.",
         "category": "info",
@@ -538,7 +663,9 @@ const questions =
     },
     {
         "idlegacydontuse": "scenario01-00",
-        "page": 14,
+        "order": 12,
+        "url": "/scenario-1",
+        "page": 13,
         "id": 30006,
         "text": "Scenario 1",
         "category": "heading",
@@ -546,7 +673,9 @@ const questions =
     },
     {
         "idlegacydontuse": "scenario01-01",
-        "page": 14,
+        "order": 12,
+        "url": "/scenario-1",
+        "page": 13,
         "id": 30007,
         "text": "You are a member of an equipment maintenance team responsible for 12 high tech manufacturing machines.",
         "category": "scenario",
@@ -554,7 +683,9 @@ const questions =
     },
     {
         "idlegacydontuse": "scenario01-02",
-        "page": 14,
+        "order": 12,
+        "url": "/scenario-1",
+        "page": 13,
         "id": 30008,
         "text": "Your five-person team has experts in many areas, including mechanical, electrical, & hydraulic systems.",
         "category": "scenario",
@@ -562,7 +693,9 @@ const questions =
     },
     {
         "idlegacydontuse": "scenario01-03",
-        "page": 14,
+        "order": 12,
+        "url": "/scenario-1",
+        "page": 13,
         "id": 30009,
         "text": "You are the only member of your team with experience in the structural mechanics of the machines.",
         "category": "scenario",
@@ -570,7 +703,9 @@ const questions =
     },
     {
         "idlegacydontuse": "scenario01-04",
-        "page": 14,
+        "order": 12,
+        "url": "/scenario-1",
+        "page": 13,
         "id": 30010,
         "text": "One of the machines was struck by a forklift while being prepared for an important production run.",
         "category": "scenario",
@@ -578,7 +713,9 @@ const questions =
     },
     {
         "idlegacydontuse": "scenario01-05",
-        "page": 14,
+        "order": 12,
+        "url": "/scenario-1",
+        "page": 13,
         "id": 30011,
         "text": "The company owner quickly pulls your team together and asks if it is ok to run the machine. You are the last one to arrive at the meeting.",
         "category": "scenario",
@@ -586,14 +723,18 @@ const questions =
     },
     {
         "idlegacydontuse": "scenario01-06",
-        "page": 14,
+        "order": 12,
+        "url": "/scenario-1",
+        "page": 13,
         "id": 30012,
         "text": "Apparently, the team feels that there was not any visible damage to the machine and it can be used safely.  They tell you that they have looked it over and didn’t see any damage.",
         "category": "scenario",
         "scenario": true
     },
     {
-        "page": 15,
+        "order": 13,
+        "url": "/task-3-part-1",
+        "page": 14,
         "id": 30013,
         "text": "Scenario 1 (of 3)",
         "category": "heading",
@@ -601,7 +742,9 @@ const questions =
     },
     {
         "idlegacydontuse": 301,
-        "page": 15,
+        "order": 13,
+        "url": "/task-3-part-1",
+        "page": 14,
         "id": 30014,
         "text": "a) Make sure the team knows of potential risks and that it is critical that you are able to check for damage to the machine before any recommendation is made.",
         "category": "radio",
@@ -609,7 +752,9 @@ const questions =
     },
     {
         "idlegacydontuse": 302,
-        "page": 15,
+        "order": 13,
+        "url": "/task-3-part-1",
+        "page": 14,
         "id": 30015,
         "text": "b) Support your team members in their decision, you’ve worked together for a long time, and trust their judgment.",
         "category": "radio",
@@ -617,7 +762,9 @@ const questions =
     },
     {
         "idlegacydontuse": 303,
-        "page": 15,
+        "order": 13,
+        "url": "/task-3-part-1",
+        "page": 14,
         "id": 30016,
         "text": "c) Make sure the machine gets the job done on schedule by accepting the judgment of your experienced teammates.",
         "category": "radio",
@@ -625,7 +772,9 @@ const questions =
     },
     {
         "idlegacydontuse": 304,
-        "page": 15,
+        "order": 13,
+        "url": "/task-3-part-1",
+        "page": 14,
         "id": 30017,
         "text": "d) Acknowledge that it’s likely that the electrical systems have not been damaged, but insist that you be given a chance to inspect the machine’s structural soundness yourself.",
         "category": "radio",
@@ -633,7 +782,9 @@ const questions =
     },
     {
         "idlegacydontuse": 305,
-        "page": 15,
+        "order": 13,
+        "url": "/task-3-part-1",
+        "page": 14,
         "id": 30018,
         "text": "e) Tell the team about your experiences with similar accidents in the past and ask that you be able to inspect the machine personally before the recommendation is made.",
         "category": "radio",
@@ -641,7 +792,9 @@ const questions =
     },
     {
         "idlegacydontuse": 306,
-        "page": 15,
+        "order": 13,
+        "url": "/task-3-part-1",
+        "page": 14,
         "id": 30019,
         "text": "f) Recommend that they go ahead and run the machine to support your team and then check its structural soundness after the important production run is finished.",
         "category": "radio",
@@ -649,7 +802,9 @@ const questions =
     },
     {
         "idlegacydontuse": 307,
-        "page": 15,
+        "order": 13,
+        "url": "/task-3-part-1",
+        "page": 14,
         "id": 30020,
         "text": "g) Relate to the team some additional areas of potential damage to the machine after inquiring into the inspections they have made.",
         "category": "radio",
@@ -657,7 +812,9 @@ const questions =
     },
     {
         "idlegacydontuse": 308,
-        "page": 15,
+        "order": 13,
+        "url": "/task-3-part-1",
+        "page": 14,
         "id": 30021,
         "text": "h) Although you are more experienced in the structural mechanics, go with the judgment made by your teammates because two of them have been with the company much longer than you have.",
         "category": "radio",
@@ -665,7 +822,9 @@ const questions =
     },
     {
         "idlegacydontuse": 309,
-        "page": 15,
+        "order": 13,
+        "url": "/task-3-part-1",
+        "page": 14,
         "id": 30022,
         "text": "i) Thank the team for checking the machine over, but relate to the team your experience with “unseen damage” occurring even when it is not evident from an outside glance.",
         "category": "radio",
@@ -673,7 +832,9 @@ const questions =
     },
     {
         "idlegacydontuse": 310,
-        "page": 15,
+        "order": 13,
+        "url": "/task-3-part-1",
+        "page": 14,
         "id": 30023,
         "text": "j) Don’t waste time unnecessarily by asking the team to repeat everything they have checked, just let them know you will go with their judgment as long as they accept responsibility for the decision.",
         "category": "radio",
@@ -681,7 +842,9 @@ const questions =
     },
     {
         "idlegacydontuse": "scenario02-00",
-        "page": 16,
+        "order": 14,
+        "url": "/scenario-2",
+        "page": 15,
         "id": 30024,
         "text": "Scenario 2",
         "category": "heading",
@@ -689,7 +852,9 @@ const questions =
     },
     {
         "idlegacydontuse": "scenario02-01",
-        "page": 16,
+        "order": 14,
+        "url": "/scenario-2",
+        "page": 15,
         "id": 30025,
         "text": "You are a member of a manufacturing production team.",
         "category": "scenario",
@@ -697,7 +862,9 @@ const questions =
     },
     {
         "idlegacydontuse": "scenario02-02",
-        "page": 16,
+        "order": 14,
+        "url": "/scenario-2",
+        "page": 15,
         "id": 30026,
         "text": "Your team is responsible for the production of three product lines.",
         "category": "scenario",
@@ -705,7 +872,9 @@ const questions =
     },
     {
         "idlegacydontuse": "scenario02-03",
-        "page": 16,
+        "order": 14,
+        "url": "/scenario-2",
+        "page": 15,
         "id": 30027,
         "text": "Last month management asked for a recommendation from your team as to whether or not your team could assume responsibility for another product line (making a total of four).",
         "category": "scenario",
@@ -713,7 +882,9 @@ const questions =
     },
     {
         "idlegacydontuse": "scenario02-04",
-        "page": 16,
+        "order": 14,
+        "url": "/scenario-2",
+        "page": 15,
         "id": 30028,
         "text": "Your personal view is that taking on the new product line would increase the visibility and importance of the team within the organization, which would help raise salaries and promotional opportunities.",
         "category": "scenario",
@@ -721,7 +892,9 @@ const questions =
     },
     {
         "idlegacydontuse": "scenario02-05",
-        "page": 16,
+        "order": 14,
+        "url": "/scenario-2",
+        "page": 15,
         "id": 30029,
         "text": "The other four members of your team feel that, in addition to the increased time and personnel demands placed on the team, current technology may not be capable of producing the new product efficiently.",
         "category": "scenario",
@@ -729,7 +902,9 @@ const questions =
     },
     {
         "idlegacydontuse": "scenario02-06",
-        "page": 16,
+        "order": 14,
+        "url": "/scenario-2",
+        "page": 15,
         "id": 30030,
         "text": "For the past several weeks your team has been carefully investigating the possibility of taking on another product. Your team has thoroughly discussed all the issues and would like to propose to management that the product line be manufactured at another facility.",
         "category": "scenario",
@@ -737,7 +912,9 @@ const questions =
     },
     {
         "idlegacydontuse": 311,
-        "page": 17,
+        "order": 15,
+        "url": "/task-3-part-2",
+        "page": 16,
         "id": 31601,
         "text": "a) Acknowledge that your arguments have been heard and discussed by the team, and support the team’s decision.",
         "category": "radio",
@@ -745,7 +922,9 @@ const questions =
     },
     {
         "idlegacydontuse": 312,
-        "page": 17,
+        "order": 15,
+        "url": "/task-3-part-2",
+        "page": 16,
         "id": 31602,
         "text": "b) Ask the team to reconsider one more time your perspective on the long-term political impact of refusing the new product line because you feel it is an important issue.",
         "category": "radio",
@@ -753,7 +932,9 @@ const questions =
     },
     {
         "idlegacydontuse": 313,
-        "page": 17,
+        "order": 15,
+        "url": "/task-3-part-2",
+        "page": 16,
         "id": 31603,
         "text": "c) Let the team know that although you believe in team unity, you can’t bring yourself to refuse the new product line.",
         "category": "radio",
@@ -761,7 +942,9 @@ const questions =
     },
     {
         "idlegacydontuse": 314,
-        "page": 17,
+        "order": 15,
+        "url": "/task-3-part-2",
+        "page": 16,
         "id": 31604,
         "text": "d) Show your willingness to be a team player by voicing your support of the team’s decision. .",
         "category": "radio",
@@ -769,7 +952,9 @@ const questions =
     },
     {
         "idlegacydontuse": 315,
-        "page": 17,
+        "order": 15,
+        "url": "/task-3-part-2",
+        "page": 16,
         "id": 31605,
         "text": "e) Recognize that the team has reviewed the issues, and begin discussing ways to make the recommendation to management.",
         "category": "radio",
@@ -777,7 +962,9 @@ const questions =
     },
     {
         "idlegacydontuse": 316,
-        "page": 17,
+        "order": 15,
+        "url": "/task-3-part-2",
+        "page": 16,
         "id": 31606,
         "text": "f) Suggest that since the team can’t reach consensus they should allow upper management to make the final decision.",
         "category": "radio",
@@ -785,7 +972,9 @@ const questions =
     },
     {
         "idlegacydontuse": 317,
-        "page": 17,
+        "order": 15,
+        "url": "/task-3-part-2",
+        "page": 16,
         "id": 31607,
         "text": "g) Even though you would still prefer to take on the new product line, go along with the team’s decision, because they have let you have your say in the matter.",
         "category": "radio",
@@ -793,7 +982,9 @@ const questions =
     },
     {
         "idlegacydontuse": 318,
-        "page": 17,
+        "order": 15,
+        "url": "/task-3-part-2",
+        "page": 16,
         "id": 31608,
         "text": "h) Recognize that the team has some good arguments, but remain committed to making the team see that the benefits clearly outweigh the costs.",
         "category": "radio",
@@ -801,7 +992,9 @@ const questions =
     },
     {
         "idlegacydontuse": 319,
-        "page": 17,
+        "order": 15,
+        "url": "/task-3-part-2",
+        "page": 16,
         "id": 31609,
         "text": "i) Sustain the team’s decision on the recommendation, as long as they acknowledge to upper management that the team would revisit its decision if more resources are provided. .",
         "category": "radio",
@@ -809,14 +1002,18 @@ const questions =
     },
     {
         "idlegacydontuse": 320,
-        "page": 17,
+        "order": 15,
+        "url": "/task-3-part-2",
+        "page": 16,
         "id": 31610,
         "text": "j) Be assertive and let the team know you still feel strongly that the team should take on the new product line.",
         "category": "radio",
         "radio": true
     },
     {
-        "page": 17,
+        "order": 15,
+        "url": "/task-3-part-2",
+        "page": 16,
         "id": 31600,
         "text": "Scenario 2 (of 3)",
         "category": "heading",
@@ -824,7 +1021,9 @@ const questions =
     },
     {
         "idlegacydontuse": "scenario03-00",
-        "page": 18,
+        "order": 16,
+        "url": "/scenario-3",
+        "page": 17,
         "id": 31700,
         "text": "Scenario 3",
         "category": "heading",
@@ -832,7 +1031,9 @@ const questions =
     },
     {
         "idlegacydontuse": "scenario03-01",
-        "page": 18,
+        "order": 16,
+        "url": "/scenario-3",
+        "page": 17,
         "id": 31701,
         "text": "You are a member of a long-standing manufacturing team.",
         "category": "scenario",
@@ -840,7 +1041,9 @@ const questions =
     },
     {
         "idlegacydontuse": "scenario03-02",
-        "page": 18,
+        "order": 16,
+        "url": "/scenario-3",
+        "page": 17,
         "id": 31702,
         "text": "Your team has been together for several years and has become pretty good at handling the work at hand.",
         "category": "scenario",
@@ -848,7 +1051,9 @@ const questions =
     },
     {
         "idlegacydontuse": "scenario03-03",
-        "page": 18,
+        "order": 16,
+        "url": "/scenario-3",
+        "page": 17,
         "id": 31703,
         "text": "Each team member is comfortable with the work process and the other team members.",
         "category": "scenario",
@@ -856,7 +1061,9 @@ const questions =
     },
     {
         "idlegacydontuse": "scenario03-04",
-        "page": 18,
+        "order": 16,
+        "url": "/scenario-3",
+        "page": 17,
         "id": 31704,
         "text": "Your work team will be moving to a new building that has been added onto the plant.",
         "category": "scenario",
@@ -864,14 +1071,18 @@ const questions =
     },
     {
         "idlegacydontuse": "scenario03-05",
-        "page": 18,
+        "order": 16,
+        "url": "/scenario-3",
+        "page": 17,
         "id": 31705,
         "text": "The area manager has asked your team for some new ideas on how the equipment should be laid out in the new building.",
         "category": "scenario",
         "scenario": true
     },
     {
-        "page": 19,
+        "order": 17,
+        "url": "/task-3-part-3",
+        "page": 18,
         "id": 31800,
         "text": "Scenario 3 (of 3)",
         "category": "heading",
@@ -879,7 +1090,9 @@ const questions =
     },
     {
         "idlegacydontuse": 321,
-        "page": 19,
+        "order": 17,
+        "url": "/task-3-part-3",
+        "page": 18,
         "id": 31801,
         "text": "a) Highlight the fact that you have been doing the job for 15 years and the current layout is the best one.",
         "category": "radio",
@@ -887,7 +1100,9 @@ const questions =
     },
     {
         "idlegacydontuse": 322,
-        "page": 19,
+        "order": 17,
+        "url": "/task-3-part-3",
+        "page": 18,
         "id": 31802,
         "text": "b) Propose that a good strategy may be to think outside of the box and get new layout ideas from high performance manufacturers in other industries.",
         "category": "radio",
@@ -895,7 +1110,9 @@ const questions =
     },
     {
         "idlegacydontuse": 323,
-        "page": 19,
+        "order": 17,
+        "url": "/task-3-part-3",
+        "page": 18,
         "id": 31803,
         "text": "c) Keep the team on track by pointing out that it is very inefficient to waste time discussing solutions that are probably not practically feasible.",
         "category": "radio",
@@ -903,7 +1120,9 @@ const questions =
     },
     {
         "idlegacydontuse": 324,
-        "page": 19,
+        "order": 17,
+        "url": "/task-3-part-3",
+        "page": 18,
         "id": 31804,
         "text": "d) Suggest that the team keep the ideas similar to the current layout to simplify the transition to the new building.",
         "category": "radio",
@@ -911,7 +1130,9 @@ const questions =
     },
     {
         "idlegacydontuse": 325,
-        "page": 19,
+        "order": 17,
+        "url": "/task-3-part-3",
+        "page": 18,
         "id": 31805,
         "text": "e) Suggest that to find the optimal layout, the team should first generate innovative ideas and save the evaluation of the ideas for later in the process.",
         "category": "radio",
@@ -919,7 +1140,9 @@ const questions =
     },
     {
         "idlegacydontuse": 326,
-        "page": 19,
+        "order": 17,
+        "url": "/task-3-part-3",
+        "page": 18,
         "id": 31806,
         "text": "f) Make sure the team doesn’t waste time discussing drastic changes to the current layout because management is not likely to endorse such a proposal anyway.",
         "category": "radio",
@@ -927,7 +1150,9 @@ const questions =
     },
     {
         "idlegacydontuse": 327,
-        "page": 19,
+        "order": 17,
+        "url": "/task-3-part-3",
+        "page": 18,
         "id": 31807,
         "text": "g) Make sure production levels don’t drop due to letting your team’s most creative member make all suggestions.",
         "category": "radio",
@@ -935,7 +1160,9 @@ const questions =
     },
     {
         "idlegacydontuse": 328,
-        "page": 19,
+        "order": 17,
+        "url": "/task-3-part-3",
+        "page": 18,
         "id": 31808,
         "text": "h) Remind the team that they have been working in the current environment for many years, and should consider all layout options even if they seem unfamiliar.",
         "category": "radio",
@@ -943,7 +1170,9 @@ const questions =
     },
     {
         "idlegacydontuse": 329,
-        "page": 19,
+        "order": 17,
+        "url": "/task-3-part-3",
+        "page": 18,
         "id": 31809,
         "text": "i) Recommend that each team member take time this week to create three layout designs and bring them to the next team meeting.",
         "category": "radio",
@@ -951,7 +1180,9 @@ const questions =
     },
     {
         "idlegacydontuse": 330,
-        "page": 19,
+        "order": 17,
+        "url": "/task-3-part-3",
+        "page": 18,
         "id": 31810,
         "text": "j) Suggest that a good way to generate innovative layouts would be to hold the next meeting in the new building.",
         "category": "radio",
@@ -959,7 +1190,7 @@ const questions =
     },
     {
         "idlegacydontuse": 202,
-        "page": "9c-deleted?",
+        "order": "deleted?",
         "id": "209-del-1",
         "text": "What industry do you work in? (If you have multiple jobs, describe the one where you work the most; SKIP this question if you're unemployed)",
         "category": "textarea",
@@ -967,7 +1198,7 @@ const questions =
     },
     {
         "idlegacydontuse": 203,
-        "page": "9c-deleted?",
+        "order": "deleted?",
         "id": "209-del-2",
         "text": "What is your role? (If you have multiple jobs, describe the one where you work the most; SKIP this question if you're unemployed)",
         "category": "textarea",
@@ -975,7 +1206,7 @@ const questions =
     },
     {
         "idlegacydontuse": 204,
-        "page": "9c-deleted?",
+        "order": "deleted?",
         "id": "209-del-3",
         "text": "On average, how many times per week do you meet with co-workers to discuss work?",
         "category": "dropdown",

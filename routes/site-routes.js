@@ -99,7 +99,7 @@ router.get('/task-2-part-1', (req, res) => {
     const perguntasUnconverted = allQuestions.filter( data => data.page === currentPage );
     const perguntas = formatQuestions(perguntasUnconverted);
     const urlsAndPages = extractUrlAndPage(currentPage, allUrls);
-    res.render('4b-task-2', { perguntas, urlsAndPages });
+    res.render('4b-task-2-many-ques', { perguntas, urlsAndPages });
 });
 
 router.get('/task-2-part-2', (req, res) => {
@@ -107,7 +107,7 @@ router.get('/task-2-part-2', (req, res) => {
     const perguntasUnconverted = allQuestions.filter( data => data.page === currentPage );
     const perguntas = formatQuestions(perguntasUnconverted);
     const urlsAndPages = extractUrlAndPage(currentPage, allUrls);
-    res.render('4b-task-2', { perguntas, urlsAndPages });
+    res.render('4c-task-2-fewer-ques', { perguntas, urlsAndPages });
 });
 
 router.get('/task-2-part-3', (req, res) => {
@@ -115,7 +115,7 @@ router.get('/task-2-part-3', (req, res) => {
     const perguntasUnconverted = allQuestions.filter( data => data.page === currentPage );
     const perguntas = formatQuestions(perguntasUnconverted);
     const urlsAndPages = extractUrlAndPage(currentPage, allUrls);
-    res.render('4b-task-2', { perguntas, urlsAndPages });
+    res.render('4c-task-2-fewer-ques', { perguntas, urlsAndPages });
 });
 
 router.get('/task-2-part-4', (req, res) => {
@@ -123,7 +123,7 @@ router.get('/task-2-part-4', (req, res) => {
     const perguntasUnconverted = allQuestions.filter( data => data.page === currentPage );
     const perguntas = formatQuestions(perguntasUnconverted);
     const urlsAndPages = extractUrlAndPage(currentPage, allUrls);
-    res.render('4b-task-2', { perguntas, urlsAndPages });
+    res.render('4c-task-2-fewer-ques', { perguntas, urlsAndPages });
 });
 
 /* --- TASK THREE ROUTES --- */
@@ -151,22 +151,25 @@ router.get('/task-3-part-3', (req, res) => {
 router.get('/scenario-1', (req, res) => {
     currentPage = getPageNumber(req.originalUrl, allUrls);
     const sheetsSituations = allQuestions.filter( data => data.page === currentPage);
+    console.log(sheetsSituations);
     const urlsAndPages = extractUrlAndPage(currentPage, allUrls);
-    res.render('5b-scenario-1', { sheetsSituations, urlsAndPages });
+    console.log(currentPage);
+    console.log(urlsAndPages);
+    res.render('5b-scenarios', { sheetsSituations, urlsAndPages });
 });
 
 router.get('/scenario-2', (req, res) => {
     currentPage = getPageNumber(req.originalUrl, allUrls);
     const sheetsSituations = allQuestions.filter( data => data.page === currentPage);
     const urlsAndPages = extractUrlAndPage(currentPage, allUrls);
-    res.render('5b-scenario-1', { sheetsSituations, urlsAndPages });
+    res.render('5b-scenarios', { sheetsSituations, urlsAndPages });
 });
 
 router.get('/scenario-3', (req, res) => {
     currentPage = getPageNumber(req.originalUrl, allUrls);
     const sheetsSituations = allQuestions.filter( data => data.page === currentPage);
     const urlsAndPages = extractUrlAndPage(currentPage, allUrls);
-    res.render('5b-scenario-1', { sheetsSituations, urlsAndPages });
+    res.render('5b-scenarios', { sheetsSituations, urlsAndPages });
 });
 
 router.get('/study-conclusion', (req, res) => {

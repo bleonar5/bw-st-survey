@@ -1,8 +1,9 @@
 {{!-- Task 3 --}}
 
-{{> 2contentmain}}
-    <div class="row justify-content-center">
-        <div class="col-xs-10 col-sm-12 col-md-12 text-left px-md-3 px-lg-5">
+
+<div id="content-main-task-3" class="mx-xs-0 mx-sm-2 mx-md-3 mx-lg-5">
+    <div class="row justify-content-center bespoke-vertical-center col-sm-12 text-left">
+        <div class="px-md-3 px-lg-5">
             <form action="#" method="POST">
                     <table class="table table-sm table-striped">
                     {{> radioheadingeffective}}
@@ -14,9 +15,7 @@
 {{!-- closing div of end of contentmain below --}}
 </div>
 
-<div class="col-xs-12" id="trick-div"></div>
-
-{{> 3footer}}
+<div id="footer-task-3" class="row pb-xs-0 pb-sm-2 pb-md-3 pb-lg-5 mx-xs-0 mx-sm-2 mx-md-3 mx-lg-5">
 
     {{> 4footerleft}}
             {{#if urlsAndPages.backbutton}}
@@ -37,7 +36,7 @@
     </div>
 
     {{> 6footerright}}
-            <a role="button" onclick="checkQuestions(getArrayOfQuestions());" class="btn btn-lg btn-primary float-right">Next</a>
+            <a role="button" onclick="checkQuestions(getArrayOfQuestions());" class="btn btn-lg btn-primary text-white float-right hand-curser">Next</a>
         </div>
     </div>
 {{!-- closing div of footer below --}}

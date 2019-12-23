@@ -1,3 +1,13 @@
+// Looks at the urls array and returns the url of the next page
+function nextPage(_currentPathname) {
+    for (i = 0; i < urls.length; i++) {
+        if (urls[i].url === _currentPathname) {
+            window.location.pathname = urls[i].nextpage;
+            break;
+}}}
+
+
+
 const urls = 
 
 [
@@ -180,5 +190,3 @@ const urls =
         "comment": "added on 22-dec"
     }
 ]
-
-module.exports = urls;

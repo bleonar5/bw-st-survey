@@ -7,6 +7,10 @@
 }
 */
 
+.hand-curser {
+    cursor: pointer;
+}
+
 .bespoke-higher-lines {
     line-height: 2.0rem;
 }
@@ -47,18 +51,17 @@ body {
 }
 
 
-.dropdown-task-2 option {
-    width: 400px;
-}
-
-.dropdown-option-task2 {
-    width: 400px;
-}
-
-
 #content-main {
   /* If you change the height % of content-main, you will also have to change the height in the "bespoke-60vh-vertical-align" class */
   height: 65%;
+}
+
+#content-main-task-3 {
+    height: 80%;
+  }
+
+#footer-task-3 {
+    height: 10%;
 }
 
 /* Ùse this classname when you want to vertically center some content in the content-main section. It will only work in that section as it give the min height of 60% */
@@ -71,6 +74,10 @@ body {
   
 .font-size-task-one {
     font-size: 1.05rem;
+}
+
+.font-size-scenario {
+    font-size: 1.15rem;
 }
 
 .font-size-task-3 {
@@ -213,6 +220,7 @@ body {
   }
   
 
+  
 /* Vertically centers text */
 .bespoke-vertical-center {
   position: absolute;

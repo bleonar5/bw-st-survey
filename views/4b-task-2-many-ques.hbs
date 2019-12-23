@@ -1,4 +1,6 @@
 
+    <script type="text/javascript" src="js/disableQuestions.js"></script>
+
 {{> 1contentheading}}
     <div class="row h-100">
         <div class="col-md-12 align-self-end">
@@ -8,19 +10,19 @@
 </div>
 
 {{> 2contentmain}}
-    <div class="row justify-content-center bespoke-higher-lines">
-        <div class="text-left p-xs-1 p-sm-2 p-md-3 p-lg-4 p-xl-5">
+    <div class="row justify-content-center ">
+        <div class="col-sm-12 mt-2">
             <form action="#" method="POST">
-                <table class="table table-striped">
+                <table class="table table-sm my-sm-5 my-md-1 my-lg-3 table-striped">
                     {{#each perguntas}} 
                         {{#if dropdown}}
-                            <tr>
-                                <td class="text-left col-md-4">{{this.text}}</td>          
-                                <td>
-                                    <select id={{this.id}} name={{this.id}} class="form-control first-radio-box col-md-8" onclick="removeWarning();" onChange="disableDependencies({{this.id}});">
+                            <tr class="row">
+                                <td class="text-left col-sm-6">{{this.text}}</td>          
+                                <td class="col-sm-6">
+                                    <select id={{this.id}} name={{this.id}} class="form-control dropdn-form-validation first-radio-box" onclick="removeWarning();" onChange="disableDependencies({{this.id}});">
                                         <option disabled selected value> -- select an option -- </option>
                                             {{#each this.options}}
-                                                <option value={{{this}}}>{{this}}</option>
+                                                <option value="{{this}}">{{this}}</option>
                                             {{/each}}
                                 </select>
                                 </td>    
@@ -29,21 +31,21 @@
 
                         {{#if yesno}}
                                 <tr class="row">
-                                    <td class="text-left col-md-4">{{this.text}}</td>
-                                    <td>
-                                    <div id={{this.id}} class="btn-group yesno col-md-8" data-toggle="buttons">
-                                        <label class="btn btn-primary" onclick="removeWarning();"><input type="radio" name={{this.id}}-yes class="first-radio-box"/>Yes</label>
-                                        <label class="btn btn-danger" onclick="removeWarning();"><input type="radio" name={{this.id}}-no onclick="removeWarning();"/>No</label>
-                                    </div>
+                                    <td class="text-left col-sm-6">{{this.text}}</td>
+                                    <td id={{this.id}} class="text-center col-sm-2 btn-group yesno" data-toggle="buttons" onclick="removeWarning();" >
+                                    
+                                        <label class="btn btn-primary"><input type="radio" name={{this.id}} value="1" class="first-radio-box" />Yes</label>
+                                        <label class="btn btn-danger"><input type="radio" name={{this.id}} value="0" value="No"/>No</label>
+                                    
                                     </td>
                                 </tr>
                         {{/if}}
 
                         {{#if textarea}}
                             <tr class="row">
-                                <td class="text-left col-md-4">{{this.text}}</td>
-                                <td class="col-md-8">
-                                    <input id={{this.id}} name={{this.id}} class="form-control first-radio-box text-area-for-vali" type="text" value="" autocomplete="off" onclick="removeWarning();">
+                                <td class="text-left col-sm-6">{{this.text}}</td>
+                                <td class="col-sm-6">
+                                    <input id={{this.id}} name={{this.id}} class="form-control first-radio-box text-area-for-vali" type="text" autocomplete="off" onclick="removeWarning();">
                                 </td>
                             </tr>
                         {{/if}}
@@ -78,7 +80,7 @@
     </div>
 
     {{> 6footerright}}
-            <a role="button" onclick="checkDropQuestions(getArrayOfQuestions());" class="btn btn-lg btn-primary text-white float-right">Next</a>
+            <a role="button" class="btn btn-lg btn-primary text-white float-right hand-curser" onclick="checkQuestionsTask2(getArrayOfQuestions());" >Next</a>
         </div>
     </div>
 {{!-- closing div of footer below --}}
