@@ -7,6 +7,12 @@
 }
 */
 
+/* ------Bootstrap 4 Grid Sizes ------ *//*
+	            Extra small	    Small	    Medium	    Large	    Extra Large
+Class prefix	   .col-	   .col-sm-	.   col-md-	   .col-lg-	     .col-xl-
+Screen width	  <576px	    >=576px	    >=768px	    >=992px	     >=1200px
+*/
+
 .hand-curser {
     cursor: pointer;
 }
@@ -19,15 +25,9 @@ input[type='radio'], label{
     vertical-align: baseline;
  }
 
-/* New stuff */
-
-#trick-div {
-    height: 5%;
-  }
-
+/* Makin the html, body and page-container ids height equal to 100% will prevent a scroll bar from appearing*/
 html {
   height: 100%;
-  font-size: 1.0vw;
 }
 
 body {
@@ -38,55 +38,181 @@ body {
   height: 100%;
 }
 
-#header {
-  height: 10%;
+/* 
+Four Sections of the page: (1) Header (2) Content Heading (3) Content Main (4) Footer 
+For All sections expect for Task 3, the % proportion is:
+(1) Header             05%
+(2) Content Heading    10%
+(3) Content Main       70%
+(4) Footer             15%
+
+As Task 3 has more text to fit in Content Main, the % proportion is:
+(1) Header
+(2) Content Heading
+(3) Content Main
+(4) Footer
+*/
+
+/* -------------- LAYOUT A -------------------- */
+  
+#content-heading-a {
+    height: 10%;
+}
+  
+#content-main-a {
+/* If you change the height % of content-main, you will also have to change the height in the "bespoke-60vh-vertical-align" class */
+    height: 70%;
 }
 
-#footer {
-  height: 15%;
+.bespoke-vertical-align-a {
+    min-height: 70%;
+    min-height: 70vh;
+    display: flex;
+    align-items: center;
+}
+  
+#footer-a {
+    height: 15%;
+}
+
+/* -------------- LAYOUT B -------------------- */
+/* Layout B is used for pages which don't have much text (e.g. instructions, eligibility notice, welcome)*//*
+Remember, the header will always take up 5% of the screen so you just need to make sure the rest adds up to 95%
+In this case, the ratio is 15:60:20
+*/
+
+#content-heading-b {
+height: 15%;
+}
+  
+#content-main-b {
+/* If you change the height % of content-main, you will also have to change the height in the "bespoke-60vh-vertical-align" class */
+height: 60%;
+}
+  
+  /* Ùse this classname when you want to vertically center some content in the content-main section. It will only work in that section as it give the min height of 60% */
+.bespoke-vertical-align-b {
+    min-height: 60%;
+    min-height: 60vh;
+    display: flex;
+    align-items: center;
+}
+  
+#footer-b {
+    height: 20%;
+}
+
+/* ---------------------- */
+
+
+#header {
+  height: 5%;
 }
 
 #content-heading {
   height: 10%;
 }
 
-
 #content-main {
   /* If you change the height % of content-main, you will also have to change the height in the "bespoke-60vh-vertical-align" class */
-  height: 65%;
+  height: 70%;
 }
 
+/* Ùse this classname when you want to vertically center some content in the content-main section. It will only work in that section as it give the min height of 60% */
+.bespoke-60vh-vertical-align {
+    min-height: 70%;
+    min-height: 70vh;
+    display: flex;
+    align-items: center;
+}
+
+#footer {
+    height: 15%;
+}
+
+/* --------------Task 3 Proportions ---------------- */
+
+#header-task-3 {
+    height: 5%;
+}
+
+#content-heading-task-3 {
+    height: 5%;
+}
+
+/* Task 3 */
 #content-main-task-3 {
     height: 80%;
-  }
+}
+
+.bespoke-XXvh-vertical-align {
+    min-height: 70%;
+    min-height: 70vh;
+    display: flex;
+    align-items: center;
+}
 
 #footer-task-3 {
     height: 10%;
 }
 
-/* Ùse this classname when you want to vertically center some content in the content-main section. It will only work in that section as it give the min height of 60% */
-.bespoke-60vh-vertical-align {
-    min-height: 65%;
-    min-height: 65vh;
+#footer-task-3 {
+    height: 10%
+}
+
+
+/* -------------- LAYOUT B -------------------- */
+/* Layout B is used for pages which don't have much text (e.g. instructions, eligibility notice, welcome)*//*
+Remember, the header will always take up 5% of the screen so you just need to make sure the rest adds up to 95%
+In this case, the ratio is 15:60:20
+*/
+
+#content-heading-e {
+    height: 1%;
+}
+      
+#content-main-e {
+    height: 86%;
+}
+
+.bespoke-vertical-align-e {
+    min-height: 86%;
+    min-height: 86vh;
     display: flex;
     align-items: center;
-  }
+}
+    
+#footer-e {
+    height: 6%;
+}
+
+/* Font Sizes */
+/*
+If root: font-size is 16px, 1 rem will be 16px
+10px	0.625rem
+13px	0.8125rem
+14px	0.875rem
+15px	0.9375rem
+16px	1rem
+*/
   
 .font-size-task-one {
-    font-size: 1.05rem;
+    font-size: 1.00rem;
 }
 
 .font-size-scenario {
-    font-size: 1.15rem;
+    font-size: 1.00rem;
 }
 
 .font-size-task-3 {
-    font-size: 0.95rem;
+    font-size: 1.00rem;
 }
 
 .font-size-sm {
     font-size: 0.8rem;
 }
+
+/* Increased Font Sizes */
 
 /* Dropdown Button */
 .nav-drop-btn {
@@ -119,6 +245,8 @@ body {
   z-index: 1; /* The z-index property specifies the stack order of an element. An element with greater stack order is always in front of an element with a lower stack order. */
 }
 
+/* Dropdowns for Navbar */
+
 /* Links inside the dropdown */
 .dropdown-content a {
   text-align: left;
@@ -137,20 +265,20 @@ body {
   display: block;
 }
 
-#validation-alert {
-  display: inline-block;
-  color: #721c24;
-  background-color: #f8d7da;
-  border-color: #f5c6cb;
-  position: relative;
-  text-align: center;
-  vertical-align: middle;
-  /* Give same padding, border-radius and border as the Boostrap buttons */
-  border-radius: 0.25rem;
-  border: 1px solid transparent;
-  font-size: 1rem;
-  line-height: 1.5;
-  padding: 0.375rem 0.75rem;
+.alert-small {
+    display: inline-block;
+    color: #721c24;
+    position: relative;
+    text-align: center;
+    vertical-align: middle;
+    /* Give same padding, border-radius and border as the Boostrap buttons */
+    background-color: #f8d7da;
+    border-color: #f5c6cb;
+    border-radius: 0.25rem;
+    border: 1px solid transparent;
+    font-size: 1rem;
+    line-height: 1.5;
+    padding: 0.375rem 3rem;
 }
 
 
@@ -165,9 +293,6 @@ body {
 }
 
 
-/* .hidden-navbar{
-  display: none !important;
-} */
 
   /* Dropdown Button */
   /* COMMENT: This has been transfered */

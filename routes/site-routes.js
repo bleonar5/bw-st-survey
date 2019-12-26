@@ -8,6 +8,7 @@ console.log(`Backend is up`);
 
 const express = require("express");
 const router = express.Router();
+const Answer = require('../models/answers');
 
 const getPageNumber = require('../helpers/getPageNumber.js');
 const convertDropdownQues = require('../helpers/convertDropdownQues.js');
@@ -86,6 +87,25 @@ router.get('/task-1-part-1', (req, res) => {
     res.render('3b-task-1', { perguntas, urlsAndPages });
 });
 
+
+// Temporarily commenting out the POST part
+// router.post('/task-1-part-1', (req, res) => {
+
+
+//     const { radioques } = req.body;
+//     const newQuestionSubmittedByUser = new Answer ( { radioques } )
+
+//     newQuestionSubmittedByUser.save()
+//     .then( () => {
+//         console.log('answer saved');
+//         console.log(req.body);
+//         console.log(`posted and above is req.body`);
+//     })
+//     .catch((error) => {
+//         console.log(error);
+//     })
+// });
+
 router.get('/task-1-part-2', (req, res) => {
     currentPage = getPageNumber(req.originalUrl, allUrls);
     const perguntas = allQuestions.filter(data => data.page === currentPage);
@@ -94,12 +114,20 @@ router.get('/task-1-part-2', (req, res) => {
 });
 
 /* --- TASK TWO ROUTES --- */
-router.get('/task-2-part-1', (req, res) => {
+router.get('/task-2-part-1a', (req, res) => {
     currentPage = getPageNumber(req.originalUrl, allUrls);
     const perguntasUnconverted = allQuestions.filter( data => data.page === currentPage );
     const perguntas = formatQuestions(perguntasUnconverted);
     const urlsAndPages = extractUrlAndPage(currentPage, allUrls);
-    res.render('4b-task-2-many-ques', { perguntas, urlsAndPages });
+    res.render('4c-task-2-fewer-ques', { perguntas, urlsAndPages });
+});
+
+router.get('/task-2-part-1b', (req, res) => {
+    currentPage = getPageNumber(req.originalUrl, allUrls);
+    const perguntasUnconverted = allQuestions.filter( data => data.page === currentPage );
+    const perguntas = formatQuestions(perguntasUnconverted);
+    const urlsAndPages = extractUrlAndPage(currentPage, allUrls);
+    res.render('4c-task-2-fewer-ques', { perguntas, urlsAndPages });
 });
 
 router.get('/task-2-part-2', (req, res) => {

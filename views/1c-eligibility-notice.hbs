@@ -1,5 +1,5 @@
 {{!-- Eligibility Notice --}}
-{{> 1contentheading}}
+<div id="content-heading-b" class="mx-xs-0 mx-sm-2 mx-md-3 mx-lg-5 text-center">
     <div class="row h-100">
         <div class="col-md-12 align-self-end">
             <h2>Eligibility Notice</h2>
@@ -7,12 +7,12 @@
     </div>
 </div>
 
-{{> 2contentmain}}
-    <div class="row justify-content-center bespoke-60vh-vertical-align">
-        <div class="col-xs-12 col-sm-10 col-md-10 text-center px-md-3 px-lg-5">
+<div id="content-main-b">
+    <div class="row justify-content-center bespoke-vertical-align-b">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-8 text-center px-md-3 px-lg-5">
 
             {{#each eligpg3}} 
-                <h4 class="my-sm-0 my-md-3 my-xl-4">{{{this.text}}}</h4>                 
+                <h4 class="my-sm-2 my-md-3 my-xl-4">{{{this.text}}}</h4>                 
             {{/each}}
 
         </div>
@@ -21,7 +21,7 @@
 </div>
 
 
-{{> 3footer}}
+<div id="footer-b" class="row pb-xs-0 pb-sm-2 pb-md-3 pb-lg-5 mx-xs-0 mx-sm-2 mx-md-3 mx-lg-5">
 
     {{> 4footerleft}}
             <a href="/no-study-consent" role="button" class="btn btn-lg btn-warning float-left">I Do <strong>NOT </strong>Agree</a>

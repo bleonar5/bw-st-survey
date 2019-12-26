@@ -1,5 +1,4 @@
-
-{{> 1contentheading}}
+<div id="content-heading-b" class="text-center">
     <div class="row h-100">
         <div class="col-md-12 align-self-end">
             <h2 class="text-primary">{{#each instructions}}{{#if heading}}{{this.text}}{{/if}}{{/each}}</h2>
@@ -7,13 +6,13 @@
     </div>
 </div>
 
-{{> 2contentmain}}
-    <div class="row justify-content-center bespoke-60vh-vertical-align">
-        <div class="col-xs-8 col-sm-8 col-md-8 text-center px-md-3 px-lg-5">
+<div id="content-main-b">
+    <div class="row justify-content-center bespoke-vertical-align-b">
+        <div class="col-xs-12 col-sm-10 col-md-8 text-center">
 
           {{#each instructions}}
             {{#if info}}
-                <h4 class="my-sm-5 my-md-5 my-lg-4 my-xl-3 mx-lg-4">{{{this.text}}}</h4>
+                <h4 class="my-sm-3 my-md-4 my-lg-4 my-xl-5">{{{this.text}}}</h4>
             {{/if}}
           {{/each}}
 
@@ -22,7 +21,7 @@
 {{!-- closing div of end of contentmain below --}}
 </div>
 
-{{> 3footer}}
+<div id="footer-b" class="row">
 
     {{> 4footerleft}}
         </div>
