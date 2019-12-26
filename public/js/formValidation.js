@@ -53,12 +53,13 @@ function checkQuestionsTask2(_questionsArrayOnThisPage) {
     }}
     // If the loop above is broken because one of the questions is not valid, a warning box will appear
     if (!questionIsValid) {
-        let warningMessage = '<div class="row"><div class="col-md-12 text-center"><div class="alert alert-danger" role="alert">Please make sure you answer all questions before continuing</div></div></div>'; 
+        let warningMessageBig = '<div class="row"><div class="col-md-12 text-center"><div class="alert alert-danger" role="alert">Please make sure you answer all questions before continuing</div></div></div>'; 
+        let warningMessageSmall = '<div class="row"><div class="col-md-12 text-center"><div class="alert-small" role="alert">Please make sure you answer all questions before continuing</div></div></div>';
         let pageNumberExists = document.getElementById('page-number');
             if (pageNumberExists) {                    
             document.getElementById('page-number').style.display = "none";
             }
-        document.getElementById('warning-message').innerHTML = warningMessage;
+        document.getElementById('warning-message-small').innerHTML = warningMessageSmall;
     } else {
         // All questions have a radio box selected, so user can progress
         nextPage(window.location.pathname);
