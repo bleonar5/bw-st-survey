@@ -1,10 +1,4 @@
-console.log(`Backend is up`);
-
-/* --- HELPER FUNCTIONS (only temporarily in site-routes --- */
-/* --- TODO: Ask Miguel what the best practice is for storing these functions? i.e. what folder do they belong in? --- */
-/* -- HELPER FUNCTION FOR CONVERTING DROPDOWN QUESTIONS -- */
-
-// Impfort Function to get page number
+/* --- TODO: What is  the best practice is for storing these functions? i.e. what folder do they belong in? --- */
 
 const express = require("express");
 const router = express.Router();
@@ -89,22 +83,21 @@ router.get('/task-1-part-1', (req, res) => {
 
 
 // Temporarily commenting out the POST part
-// router.post('/task-1-part-1', (req, res) => {
+router.post('/task-1-part-1', (req, res) => {
 
+    const { radioques } = req.body;
+    const newQuestionSubmittedByUser = new Answer ( { radioques } )
 
-//     const { radioques } = req.body;
-//     const newQuestionSubmittedByUser = new Answer ( { radioques } )
-
-//     newQuestionSubmittedByUser.save()
-//     .then( () => {
-//         console.log('answer saved');
-//         console.log(req.body);
-//         console.log(`posted and above is req.body`);
-//     })
-//     .catch((error) => {
-//         console.log(error);
-//     })
-// });
+    newQuestionSubmittedByUser.save()
+    .then( () => {
+        console.log('answer saved');
+        console.log(req.body);
+        console.log(`posted and above is req.body`);
+    })
+    .catch((error) => {
+        console.log(error);
+    })
+});
 
 router.get('/task-1-part-2', (req, res) => {
     currentPage = getPageNumber(req.originalUrl, allUrls);
@@ -119,7 +112,7 @@ router.get('/task-2-part-1a', (req, res) => {
     const perguntasUnconverted = allQuestions.filter( data => data.page === currentPage );
     const perguntas = formatQuestions(perguntasUnconverted);
     const urlsAndPages = extractUrlAndPage(currentPage, allUrls);
-    res.render('4c-task-2-fewer-ques', { perguntas, urlsAndPages });
+    res.render('4c-task-2', { perguntas, urlsAndPages });
 });
 
 router.get('/task-2-part-1b', (req, res) => {
@@ -127,7 +120,7 @@ router.get('/task-2-part-1b', (req, res) => {
     const perguntasUnconverted = allQuestions.filter( data => data.page === currentPage );
     const perguntas = formatQuestions(perguntasUnconverted);
     const urlsAndPages = extractUrlAndPage(currentPage, allUrls);
-    res.render('4c-task-2-fewer-ques', { perguntas, urlsAndPages });
+    res.render('4c-task-2', { perguntas, urlsAndPages });
 });
 
 router.get('/task-2-part-2', (req, res) => {
@@ -135,7 +128,7 @@ router.get('/task-2-part-2', (req, res) => {
     const perguntasUnconverted = allQuestions.filter( data => data.page === currentPage );
     const perguntas = formatQuestions(perguntasUnconverted);
     const urlsAndPages = extractUrlAndPage(currentPage, allUrls);
-    res.render('4c-task-2-fewer-ques', { perguntas, urlsAndPages });
+    res.render('4c-task-2', { perguntas, urlsAndPages });
 });
 
 router.get('/task-2-part-3', (req, res) => {
@@ -143,7 +136,7 @@ router.get('/task-2-part-3', (req, res) => {
     const perguntasUnconverted = allQuestions.filter( data => data.page === currentPage );
     const perguntas = formatQuestions(perguntasUnconverted);
     const urlsAndPages = extractUrlAndPage(currentPage, allUrls);
-    res.render('4c-task-2-fewer-ques', { perguntas, urlsAndPages });
+    res.render('4c-task-2', { perguntas, urlsAndPages });
 });
 
 router.get('/task-2-part-4', (req, res) => {
@@ -151,7 +144,7 @@ router.get('/task-2-part-4', (req, res) => {
     const perguntasUnconverted = allQuestions.filter( data => data.page === currentPage );
     const perguntas = formatQuestions(perguntasUnconverted);
     const urlsAndPages = extractUrlAndPage(currentPage, allUrls);
-    res.render('4c-task-2-fewer-ques', { perguntas, urlsAndPages });
+    res.render('4c-task-2', { perguntas, urlsAndPages });
 });
 
 /* --- TASK THREE ROUTES --- */

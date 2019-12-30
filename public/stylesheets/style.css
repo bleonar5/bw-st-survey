@@ -13,6 +13,12 @@ Class prefix	   .col-	   .col-sm-	.   col-md-	   .col-lg-	     .col-xl-
 Screen width	  <576px	    >=576px	    >=768px	    >=992px	     >=1200px
 */
 
+#skip-btn {
+    background-color: #ddd;
+    /* display: none; */
+}
+
+
 .hand-curser {
     cursor: pointer;
 }

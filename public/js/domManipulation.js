@@ -11,7 +11,6 @@ const height = window.innerHeight;
 console.log(`width: ${width}, height ${height}`);
 
 
-
 // This function is for checking the radios on Task 1 and Task 3
 function checkQuestions(_arrayOfQuestions) {
 
