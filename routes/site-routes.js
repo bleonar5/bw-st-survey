@@ -55,21 +55,21 @@ router.get('/instructions-1', (req, res) => {
     currentPage = getPageNumber(req.originalUrl, allUrls);
     const instructions = allQuestions.filter(data => data.page === currentPage);
     const urlsAndPages = extractUrlAndPage(currentPage, allUrls);
-    res.render('3a-instructions-1', { instructions, urlsAndPages });
+    res.render('3a-instructions', { instructions, urlsAndPages });
 });
 
 router.get('/instructions-2', (req, res) => {
     currentPage = getPageNumber(req.originalUrl, allUrls);
     const instructions = allQuestions.filter(data => data.page === currentPage);
     const urlsAndPages = extractUrlAndPage(currentPage, allUrls);
-    res.render('3a-instructions-1', { instructions, urlsAndPages });
+    res.render('3a-instructions', { instructions, urlsAndPages });
 });
 
 router.get('/instructions-3', (req, res) => {
     currentPage = getPageNumber(req.originalUrl, allUrls);
     const instructions = allQuestions.filter(data => data.page === currentPage);
     const urlsAndPages = extractUrlAndPage(currentPage, allUrls);
-    res.render('3a-instructions-1', { instructions, urlsAndPages });
+    res.render('3a-instructions', { instructions, urlsAndPages });
   });
 
 

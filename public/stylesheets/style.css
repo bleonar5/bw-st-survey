@@ -44,6 +44,7 @@ body {
   height: 100%;
 }
 
+
 /* 
 Four Sections of the page: (1) Header (2) Content Heading (3) Content Main (4) Footer 
 For All sections expect for Task 3, the % proportion is:
@@ -67,18 +68,18 @@ As Task 3 has more text to fit in Content Main, the % proportion is:
   
 #content-main-a {
 /* If you change the height % of content-main, you will also have to change the height in the "bespoke-60vh-vertical-align" class */
-    height: 70%;
+    min-height: 80%;
 }
 
 .bespoke-vertical-align-a {
-    min-height: 70%;
-    min-height: 70vh;
+    min-height: 80%;
+    min-height: 80vh;
     display: flex;
     align-items: center;
 }
   
 #footer-a {
-    height: 15%;
+    height: 10%;
 }
 
 /* -------------- LAYOUT B -------------------- */
@@ -88,24 +89,24 @@ In this case, the ratio is 15:60:20
 */
 
 #content-heading-b {
-height: 15%;
+    height: 10%;
 }
   
 #content-main-b {
 /* If you change the height % of content-main, you will also have to change the height in the "bespoke-60vh-vertical-align" class */
-height: 60%;
+    min-height: 80%;
 }
   
-  /* Ùse this classname when you want to vertically center some content in the content-main section. It will only work in that section as it give the min height of 60% */
+  /* Ùse this classname when you want to vertically center some content in the content-main section. It will only work in that section as it give the min height the same */
 .bespoke-vertical-align-b {
-    min-height: 60%;
-    min-height: 60vh;
+    min-height: 80%;
+    min-height: 80vh;
     display: flex;
     align-items: center;
 }
   
 #footer-b {
-    height: 20%;
+    height: 10%;
 }
 
 /* ---------------------- */
@@ -174,22 +175,22 @@ In this case, the ratio is 15:60:20
 */
 
 #content-heading-e {
-    height: 1%;
+    height: 10%;
 }
       
 #content-main-e {
-    height: 86%;
+    min-height: 80%;
 }
 
 .bespoke-vertical-align-e {
-    min-height: 86%;
-    min-height: 86vh;
+    min-height: 80%;
+    min-height: 80vh;
     display: flex;
     align-items: center;
 }
     
 #footer-e {
-    height: 6%;
+    height: 10%;
 }
 
 /* Font Sizes */

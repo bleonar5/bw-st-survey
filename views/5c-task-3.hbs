@@ -1,39 +1,11 @@
-
-<div id="header" class="row">
-
-    <div class="col-2">
-        <div class="float-left">
-        </div>
-    </div>
-
-    <div class="col-8">
-        <div class="text-center">
-            <div id="empty"></div>
-
-            {{#if urlsAndPages.pagination}}
-                <div id="page-number">{{> pageNumberFormat}}{{urlsAndPages.pagination}}</div></div>
-            {{/if}}
-        </div>
-    </div>
-
-    <div class="col-2">
-        <div class="float-right pt-2 pr-2">
-            <a id="toggle-text-size-btn" role="button" onclick="toggleFontSize();" class="btn btn-success text-white float-right hand-curser">Increase Text Size</a>
-        </div>
-    </div>
-
-</div>
-
-<div id="content-heading-e" class="text-center">
-    <div class="row h-100">
-        <div class="col-md-12 align-self-end">
-            <h2 class="text-primary"></h2>
-        </div>
-    </div>
+<div id="content-heading-e" class="text-center row">
+    {{> 7completeAllQuestions}}
+    {{> 9emptyCol8Div}}
+    {{> 8increaseTextSizeBtn}}
 </div>
 
 <div id="content-main-e">
-    <div id="task-3-text-box" class="justify-content-center bespoke-vertical-align-e col-sm-12 text-left font-size-sm">
+    <div id="task-3-text-box" class="justify-content-center bespoke-vertical-align-e col-12 font-size-sm text-left ">
         <div>
             <form action="#" method="POST">
                     <table class="table table-sm table-striped">
@@ -43,7 +15,6 @@
             </form>
         </div>
     </div>
-{{!-- closing div of end of contentmain below --}}
 </div>
 
 <div id="footer-e" class="row">
@@ -71,5 +42,4 @@
             <a role="button" onclick="checkQuestions(getArrayOfQuestions());" class="btn btn-primary text-white float-right hand-curser">Next</a>
         </div>
     </div>
-{{!-- closing div of footer below --}}
 </div>

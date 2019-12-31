@@ -1,9 +1,47 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    {{> head}}
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- todo: check if HandheldFriendly is required -->
+    <!-- <meta name="HandheldFriendly" content="True" /> -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Superteams Survey</title>
+
+    <!-- Bootstrap -->
+    <!-- Temporarily removing link -->
+    <link rel="stylesheet"
+        href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css"
+        integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb"
+        crossorigin="anonymous">
+
+    <link rel="stylesheet" type="text/css" href="stylesheets/style.css"/>
+
+    <!-- Bootstrap stored locally -->
+    <!-- This is just a temporary fix in case Boostrap CDN doesn't work -->
+    <link rel="stylesheet" href="stylesheets/bootstrap-local-4.3.1.css">
+
+    <!-- todo: Check what uses the jquery-ui.css -->
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 </head>
-{{> scriptsHead }}
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js"
+        integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb"
+        crossorigin="anonymous">
+</script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js"
+        integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh"
+        crossorigin="anonymous">
+</script>
+
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js"
+        integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ"
+        crossorigin="anonymous">
+</script>
+
     
 <body>
 
@@ -18,7 +56,15 @@
     <script type="text/javascript" src="js/disableQuestions.js"></script>
     <script type="text/javascript" src="js/nextPage.js"></script>
     <script type="text/javascript" src="js/completeQuestions.js"></script>
-    {{> scriptsFooter }}
+   
+   <script type="text/javascript">
+    $(document).ready(function() {
+        window.history.pushState(null, "", window.location.href);        
+        window.onpopstate = function() {
+            window.history.pushState(null, "", window.location.href);
+        };
+    });
+    </script>
 
 </body>
 </html>
