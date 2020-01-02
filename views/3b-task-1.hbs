@@ -18,16 +18,20 @@
 <div id="content-main-e">
     <div class="justify-content-center bespoke-vertical-align-e col-sm-12 text-left">
         <div>
-            <form action="#" method="POST">
+            <form onSubmit="return checkQuestions(getArrayOfQuestions());" method="POST">
                     <table class="table table-striped">
                         {{> radioTask1HeadingAgree}}
                         {{#each perguntas}} {{> radioTask1 this}} {{/each}}
                     </table> 
                     
-            </form>
+            
         </div>
     </div>
-{{!-- closing div of end of contentmain below --}}
+{{!-- closing div of end of contentmain below 
+
+
+
+--}}
 </div>
 
 
@@ -55,8 +59,10 @@
 
     <div class="col-2">
         <div class="float-right">
-            <a role="button" onclick="checkQuestions(getArrayOfQuestions());" class="btn btn-lg btn-primary text-white float-right hand-curser">Next</a>
+            <button role="button" type="submit" class="btn btn-lg btn-primary text-white float-right hand-curser">Next</button>
         </div>
+        </form>
     </div>
-{{!-- closing div of footer below --}}            
+{{!-- closing div of footer below --}}    
+     
 </div>

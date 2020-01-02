@@ -8,6 +8,8 @@ const getPageNumber = require('../helpers/getPageNumber.js');
 const convertDropdownQues = require('../helpers/convertDropdownQues.js');
 const formatQuestions = require('../helpers/formatQuestions.js');
 const extractUrlAndPage = require('../helpers/extractUrlAndPage.js');
+const checkQuestionsBackEnd = require('../helpers/checkQuestionsBackEnd.js');
+const getArrayOfQuestions = require('../helpers/getArrayOfQuestionsBackEnd.js');
 
 // Declare variable which hold all data from Google Sheets Import
 const allQuestions = require('../bin/sheets-import');
@@ -88,11 +90,28 @@ router.post('/task-1-part-1', (req, res) => {
     const { radioques } = req.body;
     const newQuestionSubmittedByUser = new Answer ( { radioques } )
 
+    console.log(`I'm checking questions backend`);
+    /* 
+    Add validation code to check that user has answered 8 questions
+    If the user has answered the 8 questions, then you can 
+      (i)  post the answers to the database
+      (ii) send the user to the next page
+    If the user has not answered the 8 questions then there should be a warning
+
+    */
+
+    // const arrayOfQuestionsBackEnd = getArrayOfQuestions();
+    // console.log(arrayOfQuestionsBackEnd);
+    // const test04 = checkQuestionsBackEnd(arrayOfQuestionsBackEnd);
+    // console.log(test04);
+
+    console.log(`frontEndVariable is below`);
+    console.log(frontEndVariable);
+
     newQuestionSubmittedByUser.save()
     .then( () => {
-        console.log('answer saved');
+        console.log('answer saved. Below is the req.body');
         console.log(req.body);
-        console.log(`posted and above is req.body`);
     })
     .catch((error) => {
         console.log(error);
@@ -172,10 +191,7 @@ router.get('/task-3-part-3', (req, res) => {
 router.get('/scenario-1', (req, res) => {
     currentPage = getPageNumber(req.originalUrl, allUrls);
     const sheetsSituations = allQuestions.filter( data => data.page === currentPage);
-    console.log(sheetsSituations);
     const urlsAndPages = extractUrlAndPage(currentPage, allUrls);
-    console.log(currentPage);
-    console.log(urlsAndPages);
     res.render('5b-scenarios', { sheetsSituations, urlsAndPages });
 });
 
