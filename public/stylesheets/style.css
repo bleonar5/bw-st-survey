@@ -87,29 +87,58 @@ In this case, the ratio is 15:60:20
 */
 
 #content-heading-b {
-    height: 10%;
+    height: 15%;
 }
   
 #content-main-b {
+/* If you change the height % of content-main, you will also have to change the height in the "bespoke-60vh-vertical-align" class */
+    min-height: 70%;
+}
+  
+/* Ùse this classname when you want to vertically center some content in the content-main section. It will only work in that section as it give the min height the same */
+
+.bespoke-vertical-align-b {
+    min-height: 70%;
+    min-height: 70vh;
+    display: flex;
+    align-items: center;
+}
+  
+#footer-b {
+    height: 15%;
+}
+
+/* ---------------------- */
+
+/* -------------- LAYOUT C -------------------- */
+/* Layout B is used for pages which don't have much text (e.g. instructions, eligibility notice, welcome)*//*
+Remember, the header will always take up 5% of the screen so you just need to make sure the rest adds up to 95%
+In this case, the ratio is 15:60:20
+*/
+
+#content-heading-c {
+    height: 10%;
+}
+  
+#content-main-c {
 /* If you change the height % of content-main, you will also have to change the height in the "bespoke-60vh-vertical-align" class */
     min-height: 80%;
 }
   
 /* Ùse this classname when you want to vertically center some content in the content-main section. It will only work in that section as it give the min height the same */
 
-.bespoke-vertical-align-b {
+.bespoke-vertical-align-c {
     min-height: 80%;
     min-height: 80vh;
     display: flex;
     align-items: center;
 }
   
-#footer-b {
+#footer-c {
     height: 10%;
 }
 
 /* ---------------------- */
-
 
 #header {
   height: 5%;
