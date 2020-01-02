@@ -90,28 +90,17 @@ router.post('/task-1-part-1', (req, res) => {
     const { radioques } = req.body;
     const newQuestionSubmittedByUser = new Answer ( { radioques } )
 
-    console.log(`I'm checking questions backend`);
-    /* 
-    Add validation code to check that user has answered 8 questions
-    If the user has answered the 8 questions, then you can 
-      (i)  post the answers to the database
-      (ii) send the user to the next page
-    If the user has not answered the 8 questions then there should be a warning
-
-    */
-
-    // const arrayOfQuestionsBackEnd = getArrayOfQuestions();
-    // console.log(arrayOfQuestionsBackEnd);
-    // const test04 = checkQuestionsBackEnd(arrayOfQuestionsBackEnd);
-    // console.log(test04);
-
-    console.log(`frontEndVariable is below`);
-    console.log(frontEndVariable);
-
     newQuestionSubmittedByUser.save()
     .then( () => {
         console.log('answer saved. Below is the req.body');
         console.log(req.body);
+
+        const length = Object.keys(req.body).length;
+        console.log(length);
+        
+        if(length === 8) {
+            res.redirect('/task-1-part-2');
+          }
     })
     .catch((error) => {
         console.log(error);
@@ -123,6 +112,29 @@ router.get('/task-1-part-2', (req, res) => {
     const perguntas = allQuestions.filter(data => data.page === currentPage);
     const urlsAndPages = extractUrlAndPage(currentPage, allUrls);
     res.render('3b-task-1', { perguntas, urlsAndPages });
+});
+
+// Temporarily commenting out the POST part
+router.post('/task-1-part-2', (req, res) => {
+
+    const { radioques } = req.body;
+    const newQuestionSubmittedByUser = new Answer ( { radioques } )
+
+    newQuestionSubmittedByUser.save()
+    .then( () => {
+        console.log('answer saved. Below is the req.body');
+        console.log(req.body);
+
+        const length = Object.keys(req.body).length;
+        console.log(length);
+        
+        if(length === 7) {
+            res.redirect('/instructions-2');
+          }
+    })
+    .catch((error) => {
+        console.log(error);
+    })
 });
 
 /* --- TASK TWO ROUTES --- */

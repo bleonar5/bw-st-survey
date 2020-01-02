@@ -5,11 +5,14 @@ function nextPage(_currentPathname) {
 
             // Check if you should skip the next question, then find the nextpage of i+1
             if (skipNextQuestion) {
+                console.log('Next Question has been skipped');
                 window.location.pathname = urls[i+1].nextpage;
             }
 
             // Otherwise, proceed to next page
             else {
+                console.log('Proceed to next page');
+                console.log(urls[i].nextpage);
                 window.location.pathname = urls[i].nextpage;
             }
 

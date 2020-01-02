@@ -15,10 +15,11 @@
 
 </div>
 
+
 <div id="content-main-e">
     <div class="justify-content-center bespoke-vertical-align-e col-sm-12 text-left">
         <div>
-            <form onSubmit="return checkQuestions(getArrayOfQuestions());" method="POST">
+            <form onSubmit="return console.log(checkQuestions(getArrayOfQuestions()));" method="POST">
                     <table class="table table-striped">
                         {{> radioTask1HeadingAgree}}
                         {{#each perguntas}} {{> radioTask1 this}} {{/each}}
@@ -29,7 +30,7 @@
     </div>
 {{!-- closing div of end of contentmain below 
 
-
+return checkQuestions(getArrayOfQuestions());
 
 --}}
 </div>
