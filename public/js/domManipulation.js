@@ -6,9 +6,10 @@ let employed = true;
 let student = undefined;
 let timeTaken = 0;
 
+// Declare variables to measure user's screensize
 const width  = window.innerWidth;
 const height = window.innerHeight;
-console.log(`width: ${width}, height ${height}`);
+// console.log(`width: ${width}, height ${height}`);
 
 
 // This function is for checking the radios on Task 1 and Task 3

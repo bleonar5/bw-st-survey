@@ -92,7 +92,6 @@ function disableDependencies(_id) {
     }
 
     let dependencies = checkDependencies(_id, dependenciesArray);
-    // console.log(`these are the dependencies of this question: ${dependencies}`);
     
     // Todo: resolve error (domManipulation.js:54 Uncaught TypeError: Cannot read property 'split' of undefined) by breaking statement if there are no dependencides
     let element = document.getElementById(_id);
@@ -108,8 +107,6 @@ function disableDependencies(_id) {
         console.log('no dependencies');
         return false;
     } 
-
-    console.log(valueSelected);
     
     // Trigger word is not the same as the value selected, so function removes "skipped" classes and remove "disabled" class 
     if (valueSelected === 'no' || valueSelected === 'I am a full time student') { 
