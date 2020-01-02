@@ -34,11 +34,15 @@ function checkQuestions(_arrayOfQuestions) {
             }
 
         if (document.getElementById('warning-message-small') !== null) {
-        document.getElementById('warning-message-small').innerHTML = warningMessageSmall;
+            document.getElementById('warning-message-small').innerHTML = warningMessageSmall;
         } else if (document.getElementById('warning-message') !== null) {
             document.getElementById('warning-message').innerHTML = warningMessageBig;
         } else {
             console.log('there is no warning message div on this page');
+        }
+
+        if (document.getElementById('back-button') !== null) {
+            document.getElementById('back-button').style.display = "none";
         }
         
     } else {
@@ -62,6 +66,12 @@ function removeWarning() {
     
     if (pageNumberExists) {                    
         document.getElementById('page-number').style.display = "inherit";
+    }
+
+    let backButtonExists = document.getElementById('back-button');
+
+    if (backButtonExists) {
+        document.getElementById('back-button').style.display = "inherit";
     }
 }
 
