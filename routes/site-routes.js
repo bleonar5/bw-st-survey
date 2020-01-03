@@ -3,6 +3,7 @@
 const express = require("express");
 const router = express.Router();
 const Answer = require('../models/answers');
+const app = express();
 
 const getPageNumber = require('../helpers/getPageNumber.js');
 const convertDropdownQues = require('../helpers/convertDropdownQues.js');
@@ -10,10 +11,21 @@ const formatQuestions = require('../helpers/formatQuestions.js');
 const extractUrlAndPage = require('../helpers/extractUrlAndPage.js');
 const checkQuestionsBackEnd = require('../helpers/checkQuestionsBackEnd.js');
 const getArrayOfQuestions = require('../helpers/getArrayOfQuestionsBackEnd.js');
+const cookieSession = require('cookie-session')
 
 // Declare variable which hold all data from Google Sheets Import
 const allQuestions = require('../bin/sheets-import');
 const allUrls = require('../bin/urls');
+
+// Cookie Session
+app.use(cookieSession({
+    name: 'sesh',
+    // keys: [/* secret keys */],
+    keys: ['key1', 'key2'],
+  
+    // Cookie Options
+    maxAge: 24 * 60 * 60 * 1000 // 24 hours
+}))
 
 /** --- SITE-ROUTES START HERE --- **/
 router.get("/", (req, res, next) => {
@@ -77,6 +89,14 @@ router.get('/instructions-3', (req, res) => {
 
 /* --- TASK ONE ROUTES --- */
 router.get('/task-1-part-1', (req, res) => {
+
+    req.session.views = (req.session.views || 0) + 1
+
+    // Write response
+    console.log(`user has had ${req.session.views} views`);
+    console.log(req.session);
+    console.log(req.cookies);
+
     currentPage = getPageNumber(req.originalUrl, allUrls);
     const perguntas = allQuestions.filter(data => data.page === currentPage);
     const urlsAndPages = extractUrlAndPage(currentPage, allUrls);
@@ -114,7 +134,6 @@ router.get('/task-1-part-2', (req, res) => {
     res.render('3b-task-1', { perguntas, urlsAndPages });
 });
 
-// Temporarily commenting out the POST part
 router.post('/task-1-part-2', (req, res) => {
 
     const { radioques } = req.body;
@@ -139,6 +158,14 @@ router.post('/task-1-part-2', (req, res) => {
 
 /* --- TASK TWO ROUTES --- */
 router.get('/task-2-part-1a', (req, res) => {
+
+    req.session.views = (req.session.views || 0) + 1
+
+    // Write response
+    console.log(`user has had ${req.session.views} views`);
+    console.log(req.session);
+    console.log(req.cookies);
+
     currentPage = getPageNumber(req.originalUrl, allUrls);
     const perguntasUnconverted = allQuestions.filter( data => data.page === currentPage );
     const perguntas = formatQuestions(perguntasUnconverted);
@@ -146,12 +173,57 @@ router.get('/task-2-part-1a', (req, res) => {
     res.render('4c-task-2', { perguntas, urlsAndPages });
 });
 
+router.post('/task-2-part-1a', (req, res) => {
+
+    const { radioques } = req.body;
+    const newQuestionSubmittedByUser = new Answer ( { radioques } )
+
+    newQuestionSubmittedByUser.save()
+    .then( () => {
+        console.log('answer saved. Below is the req.body');
+        console.log(req.body);
+
+        const length = Object.keys(req.body).length;
+        console.log(length);
+        
+        if(length === 4) {
+            res.redirect('/task-2-part-1b');
+          }
+    })
+    .catch((error) => {
+        console.log(error);
+    })
+});
+
+
 router.get('/task-2-part-1b', (req, res) => {
     currentPage = getPageNumber(req.originalUrl, allUrls);
     const perguntasUnconverted = allQuestions.filter( data => data.page === currentPage );
     const perguntas = formatQuestions(perguntasUnconverted);
     const urlsAndPages = extractUrlAndPage(currentPage, allUrls);
     res.render('4c-task-2', { perguntas, urlsAndPages });
+});
+
+router.post('/task-2-part-1b', (req, res) => {
+
+    const { radioques } = req.body;
+    const newQuestionSubmittedByUser = new Answer ( { radioques } )
+
+    newQuestionSubmittedByUser.save()
+    .then( () => {
+        console.log('answer saved. Below is the req.body');
+        console.log(req.body);
+
+        const length = Object.keys(req.body).length;
+        console.log(length);
+        
+        if(length === 4) {
+            res.redirect('/task-2-part-2');
+          }
+    })
+    .catch((error) => {
+        console.log(error);
+    })
 });
 
 router.get('/task-2-part-2', (req, res) => {
@@ -162,12 +234,56 @@ router.get('/task-2-part-2', (req, res) => {
     res.render('4c-task-2', { perguntas, urlsAndPages });
 });
 
+router.post('/task-2-part-2', (req, res) => {
+
+    const { radioques } = req.body;
+    const newQuestionSubmittedByUser = new Answer ( { radioques } )
+
+    newQuestionSubmittedByUser.save()
+    .then( () => {
+        console.log('answer saved. Below is the req.body');
+        console.log(req.body);
+
+        const length = Object.keys(req.body).length;
+        console.log(length);
+        
+        if(length === 5) {
+            res.redirect('/task-2-part-3');
+          }
+    })
+    .catch((error) => {
+        console.log(error);
+    })
+});
+
 router.get('/task-2-part-3', (req, res) => {
     currentPage = getPageNumber(req.originalUrl, allUrls);
     const perguntasUnconverted = allQuestions.filter( data => data.page === currentPage );
     const perguntas = formatQuestions(perguntasUnconverted);
     const urlsAndPages = extractUrlAndPage(currentPage, allUrls);
     res.render('4c-task-2', { perguntas, urlsAndPages });
+});
+
+router.post('/task-2-part-3', (req, res) => {
+
+    const { radioques } = req.body;
+    const newQuestionSubmittedByUser = new Answer ( { radioques } )
+
+    newQuestionSubmittedByUser.save()
+    .then( () => {
+        console.log('answer saved. Below is the req.body');
+        console.log(req.body);
+
+        const length = Object.keys(req.body).length;
+        console.log(length);
+        
+        if(length === 4) {
+            res.redirect('/scenario-1');
+          }
+    })
+    .catch((error) => {
+        console.log(error);
+    })
 });
 
 router.get('/task-2-part-4', (req, res) => {
@@ -180,10 +296,34 @@ router.get('/task-2-part-4', (req, res) => {
 
 /* --- TASK THREE ROUTES --- */
 router.get('/task-3-part-1', (req, res) => {
+    
     currentPage = getPageNumber(req.originalUrl, allUrls);
     const perguntas = allQuestions.filter(data => data.page === currentPage);
     const urlsAndPages = extractUrlAndPage(currentPage, allUrls);
     res.render('5c-task-3', { perguntas, urlsAndPages });
+});
+
+
+router.post('/task-3-part-1', (req, res) => {
+
+    const { radioques } = req.body;
+    const newQuestionSubmittedByUser = new Answer ( { radioques } )
+
+    newQuestionSubmittedByUser.save()
+    .then( () => {
+        console.log('answer saved. Below is the req.body');
+        console.log(req.body);
+
+        const length = Object.keys(req.body).length;
+        console.log(length);
+        
+        if(length === 10) {
+            res.redirect('/scenario-2');
+          }
+    })
+    .catch((error) => {
+        console.log(error);
+    })
 });
 
 router.get('/task-3-part-2', (req, res) => {
@@ -193,11 +333,55 @@ router.get('/task-3-part-2', (req, res) => {
     res.render('5c-task-3', { perguntas, urlsAndPages });
 });
 
+router.post('/task-3-part-2', (req, res) => {
+
+    const { radioques } = req.body;
+    const newQuestionSubmittedByUser = new Answer ( { radioques } )
+
+    newQuestionSubmittedByUser.save()
+    .then( () => {
+        console.log('answer saved. Below is the req.body');
+        console.log(req.body);
+
+        const length = Object.keys(req.body).length;
+        console.log(length);
+        
+        if(length === 10) {
+            res.redirect('/scenario-3');
+          }
+    })
+    .catch((error) => {
+        console.log(error);
+    })
+});
+
 router.get('/task-3-part-3', (req, res) => {
     currentPage = getPageNumber(req.originalUrl, allUrls);
     const perguntas = allQuestions.filter(data => data.page === currentPage);
     const urlsAndPages = extractUrlAndPage(currentPage, allUrls);
     res.render('5c-task-3', { perguntas, urlsAndPages });
+});
+
+router.post('/task-3-part-3', (req, res) => {
+
+    const { radioques } = req.body;
+    const newQuestionSubmittedByUser = new Answer ( { radioques } )
+
+    newQuestionSubmittedByUser.save()
+    .then( () => {
+        console.log('answer saved. Below is the req.body');
+        console.log(req.body);
+
+        const length = Object.keys(req.body).length;
+        console.log(length);
+        
+        if(length === 10) {
+            res.redirect('/study-conclusion');
+          }
+    })
+    .catch((error) => {
+        console.log(error);
+    })
 });
 
 router.get('/scenario-1', (req, res) => {

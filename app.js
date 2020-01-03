@@ -2,6 +2,7 @@ require('dotenv').config();
 
 const bodyParser   = require('body-parser');
 const cookieParser = require('cookie-parser');
+const cookieSession = require('cookie-session')
 const express      = require('express');
 const favicon      = require('serve-favicon');
 const hbs          = require('hbs');
@@ -37,7 +38,30 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 
+app.use(cookieSession({
+    name: 'session',
+    // keys: [/* secret keys */],
+    keys: ['key1', 'key2'],
+  
+    // Cookie Options
+    maxAge: 24 * 60 * 60 * 1000 // 24 hours
+}))
+
+app.get('/', function (req, res, next) {
+    // Update views
+    req.session.views = (req.session.views || 0) + 1
+
+    // Write response
+    console.log(`user has had ${req.session.views} views`);
+    console.log(`req.session details ${req.session}`)
+    console.log(req.cookies)
+
+    res.render('index');
+})
+
+
 // Configure Middleware to enable sessions in Express
+/* Commenting out the below as we want to test whether cookies are working before deciding on whether we want a username/password/sign-in scenario
 app.use(session({
   // secret is used to sign the session ID cookie
   secret: "basic-auth-secret",
@@ -50,6 +74,7 @@ app.use(session({
     ttl: 24 * 60 * 60 // 1 day
   })
 }));
+*/
 
 // Express view engine setup
 app.use(require('node-sass-middleware')({

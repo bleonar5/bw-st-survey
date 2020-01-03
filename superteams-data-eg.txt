@@ -1,0 +1,83 @@
+{ session: 'eyJ2aWV3cyI6NjB9',
+  'session.sig': 'BIhswbq52G9GV8LC1AucqiXbXOI' }
+answer saved. Below is the req.body
+[Object: null prototype] {
+  '20901': 'yes – full time',
+  '20902':
+   'Pellentesque sed nibh sem. Nam aliquam, augue suscipit aliquet vulputate, massa leo malesuada turpis',
+  '20903':
+   'Pellentesque sed nibh sem. Nam aliquam, augue suscipit aliquet vulputate, massa leo malesuada turpis',
+  '20904': 'Wholesale trade' }
+4
+POST /task-2-part-1a 302 95.080 ms - 74
+answer saved. Below is the req.body
+[Object: null prototype] {
+  '21005':
+   'Pellentesque sed nibh sem. Nam aliquam, augue suscipit aliquet vulputate, massa leo malesuada turpis',
+  '21006':
+   'Pellentesque sed nibh sem. Nam aliquam, augue suscipit aliquet vulputate, massa leo malesuada turpis',
+  '21007':
+   'Employee of a PRIVATE NOT-FOR-PROFIT, tax-exempt, or charitable organization',
+  '21008': '120-150k' }
+4
+POST /task-2-part-1b 302 94.558 ms - 72
+answer saved. Below is the req.body
+[Object: null prototype] {
+  '21101': 'option 1 [BW to provide]',
+  '21102': 'option 2 [BW to provide]',
+  '21103': 'et cetera',
+  '21104':
+   'Pellentesque sed nibh sem. Nam aliquam, augue suscipit aliquet vulputate, massa leo malesuada turpis',
+  '21105': '1' }
+5
+POST /task-2-part-2 302 93.739 ms - 72
+answer saved. Below is the req.body
+[Object: null prototype] {
+  '21201': '1',
+  '21202': '1-3 times a week',
+  '21203': '1',
+  '21204': '1-3 times a week' }
+4
+POST /task-2-part-3 302 94.381 ms - 66
+answer saved. Below is the req.body
+[Object: null prototype] {
+  '30014': '4-somewhat-ineffective',
+  '30015': '1-very-effective',
+  '30016': '4-somewhat-ineffective',
+  '30017': '2-somewhat-effective',
+  '30018': '1-very-ineffective',
+  '30019': '2-somewhat-effective',
+  '30020': '3-neutral',
+  '30021': '1-very-effective',
+  '30022': '3-neutral',
+  '30023': '1-very-effective' }
+10
+POST /task-3-part-1 302 97.096 ms - 66
+answer saved. Below is the req.body
+[Object: null prototype] {
+  '31601': '1-very-ineffective',
+  '31602': '3-neutral',
+  '31603': '2-somewhat-effective',
+  '31604': '3-neutral',
+  '31605': '4-somewhat-ineffective',
+  '31606': '4-somewhat-ineffective',
+  '31607': '3-neutral',
+  '31608': '1-very-ineffective',
+  '31609': '1-very-ineffective',
+  '31610': '3-neutral' }
+10
+POST /task-3-part-2 302 94.808 ms - 66
+answer saved. Below is the req.body
+[Object: null prototype] {
+  '31801': '4-somewhat-ineffective',
+  '31802': '1-very-ineffective',
+  '31803': '4-somewhat-ineffective',
+  '31804': '4-somewhat-ineffective',
+  '31805': '2-somewhat-effective',
+  '31806': '4-somewhat-ineffective',
+  '31807': '3-neutral',
+  '31808': '2-somewhat-effective',
+  '31809': '2-somewhat-effective',
+  '31810': '3-neutral' }
+10
+POST /task-3-part-3 302 94.420 ms - 78

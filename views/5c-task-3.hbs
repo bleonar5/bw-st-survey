@@ -7,12 +7,12 @@
 <div id="content-main-e">
     <div id="task-3-text-box" class="justify-content-center bespoke-vertical-align-e col-12 font-size-sm text-left ">
         <div>
-            <form action="#" method="POST">
+            <form onSubmit="return checkQuestions(getArrayOfQuestions());" method="POST">
                     <table class="table table-sm table-striped">
-                    {{> radioheadingeffective}}
-                    {{#each perguntas}} {{#if radio}} {{> radiorow this}} {{/if}} {{/each}}
+                    {{> radioHeadingEffective}}
+                    {{#each perguntas}} {{#if radio}} {{> radioTask3 this}} {{/if}} {{/each}}
                 </table>      
-            </form>
+
         </div>
     </div>
 </div>
@@ -39,7 +39,8 @@
 
     <div class="col-2">
         <div class="float-right">
-            <a role="button" onclick="checkQuestions(getArrayOfQuestions());" class="btn btn-lg btn-primary text-white float-right hand-curser">Next</a>
+            <button role="button" type="submit" class="btn btn-lg btn-primary text-white float-right hand-curser">Next</button>
         </div>
+        </form>
     </div>
 </div>
