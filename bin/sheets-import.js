@@ -125,14 +125,14 @@ const questions =
         "url": "/welcome",
         "page": 4,
         "id": 10014,
-        "text": "This survey is only available to people who successfully participated in Superteams."
+        "text": "This survey is only available to people who successfully participated in Superteams. It will take <strong>30-40 minutes</strong>. We will ask questions about your work experience, and your views on groupwork."
     },
     {
         "order": 3,
         "url": "/welcome",
         "page": 4,
         "id": 10015,
-        "text": "These questions take <strong>40 minutes</strong>. We will ask questions about your work experience, and your views on groupwork."
+        "text": "Payment is $15 (either in cash, or an Amazon voucher). Details about payment will be provided at the end of the survey."
     },
     {
         "order": 3,
@@ -147,6 +147,12 @@ const questions =
         "page": 4,
         "id": 10017,
         "text": "If you have to stop, that's OK. Your answers will be saved. To continue, come back to <span class=\"text-primary\"><a href=\"individual-login\">this website </a></span> re-enter the <strong>same login details</strong> and pick up where you left off."
+    },
+    {
+        "order": 3,
+        "url": "/welcome",
+        "page": 4,
+        "text": "If you need to increase the text size, click the aA button which will appear at the top-right corner of the screen."
     },
     {
         "order": 3,
@@ -483,7 +489,7 @@ const questions =
         "url": "/task-2-part-2",
         "page": 11,
         "id": 21103,
-        "text": "[placeholder 1; David still coming up with some Q’s here]",
+        "text": "[placeholder 1; Ben/David still coming up with some Q’s here]",
         "category": "dropdown",
         "options": "testing an option; another test option; et cetera",
         "dropdown": true
@@ -493,7 +499,7 @@ const questions =
         "url": "/task-2-part-2",
         "page": 11,
         "id": 21104,
-        "text": "[placeholder 2; David still coming up with some Q’s here]",
+        "text": "[placeholder 2; Ben/David still coming up with some Q’s here]",
         "category": "textarea",
         "textarea": true
     },
@@ -502,7 +508,7 @@ const questions =
         "url": "/task-2-part-2",
         "page": 11,
         "id": 21105,
-        "text": "[placeholder 3; David still coming up with some Q’s here]",
+        "text": "[placeholder 3; Ben/David still coming up with some Q’s here]",
         "category": "yesno",
         "yesno": true
     },

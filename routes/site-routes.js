@@ -181,13 +181,21 @@ router.post('/task-2-part-1a', (req, res) => {
     const userId = req.cookies.session;
     const length = Object.keys(req.body).length;
     const newQuestionSubmittedByUser = new Answer ( { userId, answersObject, createdAt} )
+    const values = Object.values(req.body);
+    const valuesAsString = values.toString();
+    console.log(length);
 
-    if (length === 4) {
+    if (length === 4 || valuesAsString === 'I am a full time student' ) {
         newQuestionSubmittedByUser.save()
         .then( () => {
             console.log('Answer saved to database:');
-            console.log(newQuestionSubmittedByUser);    
-            res.redirect('/task-2-part-1b');
+            console.log(newQuestionSubmittedByUser);
+            if (length === 4) {
+                res.redirect('/task-2-part-1b');
+            // Skip the next question if the length is not equal to 4
+            } else {
+                res.redirect('/task-2-part-2');
+            }
         })
         .catch((error) => {
             console.log(error);
@@ -195,7 +203,6 @@ router.post('/task-2-part-1a', (req, res) => {
     }
     
 });
-
 
 router.get('/task-2-part-1b', (req, res) => {
     currentPage = getPageNumber(req.originalUrl, allUrls);
@@ -275,8 +282,13 @@ router.post('/task-2-part-3', (req, res) => {
     const userId = req.cookies.session;
     const length = Object.keys(req.body).length;
     const newQuestionSubmittedByUser = new Answer ( { userId, answersObject, createdAt} )
+    const values = Object.values(req.body);
+    const valuesAsString = values.toString();
+    console.log(valuesAsString);
+    console.log(length);
 
-    if (length > 1) {
+    // Temporary Fix. You should add more logic to prevent user from 
+    if (length > 2 || valuesAsString === '0-no,0-no') /* contains two nos*/  /* contains 1 no and 2 commas */ {
         newQuestionSubmittedByUser.save()
         .then( () => {
             console.log('Answer saved to database:');

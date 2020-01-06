@@ -2,7 +2,6 @@ function toggleFontSize() {
 
     let textSizeBox = document.getElementById('toggle-text-size-btn');
 
-    console.log('Toggling');
     let task1TextBox = document.getElementById('task-1-text-box');
     let task3TextBox = document.getElementById('task-3-text-box');
     let contentMainA = document.getElementById('content-main-a');
@@ -32,17 +31,18 @@ function toggleFontSize() {
     }
     
     if (task1TextBox !== null) {
-        console.log('Task1TextBox is not null');
-        if (task1TextBox.classList.contains('font-size-task-one')) {
-            console.log('Change classList of Task1TextBox');
-            task1TextBox.classList.remove('font-size-task-one');
-            task1TextBox.classList.add('font-size-bigger');
-            textSizeBox.innerHTML = 'a<strong>A</strong>';
-        } else {
+
+
+        if (task1TextBox.classList.contains('font-size-bigger')) {
             task1TextBox.classList.remove('font-size-bigger');
             task1TextBox.classList.add('font-size-task-one');
             textSizeBox.innerHTML = '<strong>a</strong>A';
+        } else {
+            task1TextBox.classList.remove('font-size-task-one');
+            task1TextBox.classList.add('font-size-bigger');
+            textSizeBox.innerHTML = 'a<strong>A</strong>';
         }
+
     }
 
     if (task3TextBox !== null) {

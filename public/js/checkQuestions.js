@@ -9,7 +9,6 @@ function checkQuestionsRadios(_arrayOfQuestions) {
     for(let i = 0; i < _arrayOfQuestions.length; i++) {
         if (!checkRadios(_arrayOfQuestions[i])) {
             questionIsValid = false;
-            console.log(`question is not valid as question ${i} has not been answered`);
             break;
         }
     }
@@ -25,7 +24,6 @@ function checkQuestionsRadios(_arrayOfQuestions) {
 
         if (document.getElementById('warning-message-small') !== null) {
             document.getElementById('warning-message-small').innerHTML = warningMessageSmall;
-            console.log(`display warning message`);
         } else if (document.getElementById('warning-message') !== null) {
             document.getElementById('warning-message').innerHTML = warningMessageBig;
         } else {
@@ -39,9 +37,8 @@ function checkQuestionsRadios(_arrayOfQuestions) {
     } else {
         // All questions have a radio box selected, so user can progress
         console.log('I can now send user to the next page');
-        currentPath = window.location.pathname;
-        console.log(currentPath);
-        nextPage(currentPath);
+        // currentPath = window.location.pathname;
+        // nextPage(currentPath);
     }
 }
 
@@ -93,7 +90,7 @@ function checkQuestionsTaskTwo(_arrayOfQuestions) {
         // All questions have a radio box selected, so user can progress
         console.log('I can now send user to the next page');
         currentPath = window.location.pathname;
-        console.log(currentPath);
-        nextPage(currentPath);
+       //  console.log(currentPath);
+        // nextPage(currentPath);
     }
 }
