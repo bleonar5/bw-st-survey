@@ -21,11 +21,13 @@ function toggleFontSize() {
 
     if (contentMainB !== null) {
         console.log('in b');
-        if (contentMainB.classList.contains('font-size-bigger')) {
-            contentMainB.classList.remove('font-size-bigger');
+        if (contentMainB.classList.contains('font-size-bigger-120')) {
+            contentMainB.classList.remove('font-size-bigger-120');
+            contentMainB.classList.add('font-size-bigger');
             textSizeBox.innerHTML = '<strong>a</strong>A';
         } else {
-            contentMainB.classList.add('font-size-bigger');
+            contentMainB.classList.add('font-size-bigger-120');
+            contentMainB.classList.remove('font-size-bigger');
             textSizeBox.innerHTML = 'a<strong>A</strong>';
         }
     }

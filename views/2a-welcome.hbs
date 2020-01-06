@@ -1,19 +1,36 @@
 
-<div id="content-heading-b" class="mx-xs-0 mx-sm-2 mx-md-3 mx-lg-5 text-center">
-    <div class="row h-100">
-        <div class="col-md-12 align-self-end">
-            <h2 class="text-primary">Welcome to the follow-up survey for the Superteams study!</h2>
+<div id="content-heading-b" class="mx-xs-0 mx-sm-2 mx-md-3 mx-lg-5 text-center row">
+
+    <div class="col-2">
+    </div>
+
+    <div class="col-8">
+        <div class="row h-100">
+            <div class="col-md-12 align-self-end">
+                <h2 class="text-primary">Welcome to the follow-up survey for the Superteams study!</h2>
+            </div>
         </div>
     </div>
+
+    <div class="col-2">
+        <div class="row h-100">
+            <div class="col-md-12 align-self-end">
+                <div class="float-right pt-2 pr-2">
+                    <a id="toggle-text-size-btn" role="button" onclick="toggleFontSize();" class="btn btn-lg btn-secondary text-white float-right hand-curser"><strong>a</strong>A</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
 </div>
 
 
-<div id="content-main-b">
+<div id="content-main-b" class="font-size-bigger">
     <div class="row justify-content-center bespoke-vertical-align-b">
         <div class="col-xs-12 col-sm-10 col-md-10 text-center">
 
           {{#each welcomepg4}}
-            <h4 class="my-sm-0 my-md-3 mt-xl-4">{{{this.text}}}</h4>                 
+            <p class="my-sm-0 my-md-3 mt-xl-4">{{{this.text}}}</p>                
           {{/each}}
 
         </div>

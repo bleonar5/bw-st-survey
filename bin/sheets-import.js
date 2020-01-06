@@ -152,7 +152,7 @@ const questions =
         "order": 3,
         "url": "/welcome",
         "page": 4,
-        "text": "If you need to increase the text size, click the aA button which will appear at the top-right corner of the screen."
+        "text": "If you want to increase the text size, click the button at the top-right corner of the screen."
     },
     {
         "order": 3,

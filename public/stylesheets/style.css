@@ -251,6 +251,10 @@ If root: font-size is 16px, 1 rem will be 16px
     font-size: 1.10rem;
 }
 
+.font-size-bigger-120 {
+    font-size: 1.20rem;
+}
+
 /* Increased Font Sizes */
 
 /* Dropdown Button */
