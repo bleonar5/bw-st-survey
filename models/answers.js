@@ -3,14 +3,16 @@ const Schema = mongoose.Schema;
 
 const questionSchema = new Schema({
     // radioques: String,
+    userId: String,
     answersObject: Object,
-    // userId: String,
+
     // questionId: String,
     // question: String,
     // response: String,
     // name: String,
     // value: String,
     // type: String
+    createdAt: String,
 }, {
 }, {
   timestamps: {

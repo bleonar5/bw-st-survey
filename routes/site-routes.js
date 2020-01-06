@@ -107,40 +107,24 @@ router.get('/task-1-part-1', (req, res) => {
 // Temporarily commenting out the POST part
 router.post('/task-1-part-1', (req, res) => {
 
-    // const { answersObject } = req.body;
-    const hello1 = req.body;
+    const reqBody = req.body;
+    const createdAt = req._startTime;
+    const answersObject = JSON.stringify(reqBody);
+    const userId = req.cookies.session;
+    const length = Object.keys(req.body).length;
+    const newQuestionSubmittedByUser = new Answer ( { userId, answersObject, createdAt} )
 
-    const data5 = req.body;
-
-    object4 =  JSON.stringify(data5);
-    console.log('object');
-    console.log(object4);
-
-
-    let answersObject = object4;
-
-    console.log('hello below');
-    console.log(hello1);
-    const newQuestionSubmittedByUser = new Answer ( { answersObject } )
-
-    newQuestionSubmittedByUser.save()
-    .then( () => {
-        console.log('answer saved. Below is the req.body');
-        console.log(req.body);
-
-        console.log('below is the new ques');
-        console.log(newQuestionSubmittedByUser);
-
-        const length = Object.keys(req.body).length;
-        console.log(length);
-        
-        if(length === 8) {
+    if (length === 8) {
+        newQuestionSubmittedByUser.save()
+        .then( () => {
+            console.log('Answer saved to database:');
+            console.log(newQuestionSubmittedByUser);    
             res.redirect('/task-1-part-2');
-          }
-    })
-    .catch((error) => {
-        console.log(error);
-    })
+        })
+        .catch((error) => {
+            console.log(error);
+        })
+    }
 });
 
 router.get('/task-1-part-2', (req, res) => {
@@ -152,24 +136,24 @@ router.get('/task-1-part-2', (req, res) => {
 
 router.post('/task-1-part-2', (req, res) => {
 
-    const { radioques } = req.body;
-    const newQuestionSubmittedByUser = new Answer ( { radioques } )
+    const reqBody = req.body;
+    const createdAt = req._startTime;
+    const answersObject = JSON.stringify(reqBody);
+    const userId = req.cookies.session;
+    const length = Object.keys(req.body).length;
+    const newQuestionSubmittedByUser = new Answer ( { userId, answersObject, createdAt} )
 
-    newQuestionSubmittedByUser.save()
-    .then( () => {
-        console.log('answer saved. Below is the req.body');
-        console.log(req.body);
-
-        const length = Object.keys(req.body).length;
-        console.log(length);
-        
-        if(length === 7) {
+    if (length === 7) {
+        newQuestionSubmittedByUser.save()
+        .then( () => {
+            console.log('Answer saved to database:');
+            console.log(newQuestionSubmittedByUser);    
             res.redirect('/instructions-2');
-          }
-    })
-    .catch((error) => {
-        console.log(error);
-    })
+        })
+        .catch((error) => {
+            console.log(error);
+        })
+    }
 });
 
 /* --- TASK TWO ROUTES --- */
@@ -191,27 +175,25 @@ router.get('/task-2-part-1a', (req, res) => {
 
 router.post('/task-2-part-1a', (req, res) => {
 
-    const { radioques } = req.body;
-    const newQuestionSubmittedByUser = new Answer ( { radioques } )
+    const reqBody = req.body;
+    const createdAt = req._startTime;
+    const answersObject = JSON.stringify(reqBody);
+    const userId = req.cookies.session;
     const length = Object.keys(req.body).length;
+    const newQuestionSubmittedByUser = new Answer ( { userId, answersObject, createdAt} )
 
     if (length === 4) {
         newQuestionSubmittedByUser.save()
         .then( () => {
-            console.log('answer saved. Below is the req.body');
-            console.log(req.body);
-            console.log(length);
-            console.log('below is new qustion');
-            console.log(newQuestionSubmittedByUser);
-            
-            if(length === 4) {
-                res.redirect('/task-2-part-1b');
-            }
+            console.log('Answer saved to database:');
+            console.log(newQuestionSubmittedByUser);    
+            res.redirect('/task-2-part-1b');
         })
         .catch((error) => {
             console.log(error);
         })
     }
+    
 });
 
 
@@ -225,24 +207,25 @@ router.get('/task-2-part-1b', (req, res) => {
 
 router.post('/task-2-part-1b', (req, res) => {
 
-    const { radioques } = req.body;
-    const newQuestionSubmittedByUser = new Answer ( { radioques } )
+    const reqBody = req.body;
+    const createdAt = req._startTime;
+    const answersObject = JSON.stringify(reqBody);
+    const userId = req.cookies.session;
+    const length = Object.keys(req.body).length;
+    const newQuestionSubmittedByUser = new Answer ( { userId, answersObject, createdAt} )
 
-    newQuestionSubmittedByUser.save()
-    .then( () => {
-        console.log('answer saved. Below is the req.body');
-        console.log(req.body);
-
-        const length = Object.keys(req.body).length;
-        console.log(length);
-        
-        if(length === 4) {
+    if (length === 4) {
+        newQuestionSubmittedByUser.save()
+        .then( () => {
+            console.log('Answer saved to database:');
+            console.log(newQuestionSubmittedByUser);    
             res.redirect('/task-2-part-2');
-          }
-    })
-    .catch((error) => {
-        console.log(error);
-    })
+        })
+        .catch((error) => {
+            console.log(error);
+        })
+    }
+
 });
 
 router.get('/task-2-part-2', (req, res) => {
@@ -255,24 +238,25 @@ router.get('/task-2-part-2', (req, res) => {
 
 router.post('/task-2-part-2', (req, res) => {
 
-    const { radioques } = req.body;
-    const newQuestionSubmittedByUser = new Answer ( { radioques } )
+    const reqBody = req.body;
+    const createdAt = req._startTime;
+    const answersObject = JSON.stringify(reqBody);
+    const userId = req.cookies.session;
+    const length = Object.keys(req.body).length;
+    const newQuestionSubmittedByUser = new Answer ( { userId, answersObject, createdAt} )
 
-    newQuestionSubmittedByUser.save()
-    .then( () => {
-        console.log('answer saved. Below is the req.body');
-        console.log(req.body);
-
-        const length = Object.keys(req.body).length;
-        console.log(length);
-        
-        if(length === 5) {
+    if (length === 5) {
+        newQuestionSubmittedByUser.save()
+        .then( () => {
+            console.log('Answer saved to database:');
+            console.log(newQuestionSubmittedByUser);    
             res.redirect('/task-2-part-3');
-          }
-    })
-    .catch((error) => {
-        console.log(error);
-    })
+        })
+        .catch((error) => {
+            console.log(error);
+        })
+    }
+
 });
 
 router.get('/task-2-part-3', (req, res) => {
@@ -285,33 +269,26 @@ router.get('/task-2-part-3', (req, res) => {
 
 router.post('/task-2-part-3', (req, res) => {
 
-    const { radioques } = req.body;
-    const newQuestionSubmittedByUser = new Answer ( { radioques } )
+    const reqBody = req.body;
+    const createdAt = req._startTime;
+    const answersObject = JSON.stringify(reqBody);
+    const userId = req.cookies.session;
+    const length = Object.keys(req.body).length;
+    const newQuestionSubmittedByUser = new Answer ( { userId, answersObject, createdAt} )
 
-    newQuestionSubmittedByUser.save()
-    .then( () => {
-        console.log('answer saved. Below is the req.body');
-        console.log(req.body);
-
-        const length = Object.keys(req.body).length;
-        console.log(length);
-        
-        if(length === 4) {
+    if (length > 1) {
+        newQuestionSubmittedByUser.save()
+        .then( () => {
+            console.log('Answer saved to database:');
+            console.log(newQuestionSubmittedByUser);    
             res.redirect('/scenario-1');
-          }
-    })
-    .catch((error) => {
-        console.log(error);
-    })
+        })
+        .catch((error) => {
+            console.log(error);
+        })
+    }
 });
 
-router.get('/task-2-part-4', (req, res) => {
-    currentPage = getPageNumber(req.originalUrl, allUrls);
-    const perguntasUnconverted = allQuestions.filter( data => data.page === currentPage );
-    const perguntas = formatQuestions(perguntasUnconverted);
-    const urlsAndPages = extractUrlAndPage(currentPage, allUrls);
-    res.render('4c-task-2', { perguntas, urlsAndPages });
-});
 
 /* --- TASK THREE ROUTES --- */
 router.get('/task-3-part-1', (req, res) => {
@@ -324,25 +301,24 @@ router.get('/task-3-part-1', (req, res) => {
 
 
 router.post('/task-3-part-1', (req, res) => {
+    const reqBody = req.body;
+    const createdAt = req._startTime;
+    const answersObject = JSON.stringify(reqBody);
+    const userId = req.cookies.session;
+    const length = Object.keys(req.body).length;
+    const newQuestionSubmittedByUser = new Answer ( { userId, answersObject, createdAt} )
 
-    const { radioques } = req.body;
-    const newQuestionSubmittedByUser = new Answer ( { radioques } )
-
-    newQuestionSubmittedByUser.save()
-    .then( () => {
-        console.log('answer saved. Below is the req.body');
-        console.log(req.body);
-
-        const length = Object.keys(req.body).length;
-        console.log(length);
-        
-        if(length === 10) {
+    if (length === 10) {
+        newQuestionSubmittedByUser.save()
+        .then( () => {
+            console.log('Answer saved to database:');
+            console.log(newQuestionSubmittedByUser);    
             res.redirect('/scenario-2');
-          }
-    })
-    .catch((error) => {
-        console.log(error);
-    })
+        })
+        .catch((error) => {
+            console.log(error);
+        })
+    }
 });
 
 router.get('/task-3-part-2', (req, res) => {
@@ -354,24 +330,24 @@ router.get('/task-3-part-2', (req, res) => {
 
 router.post('/task-3-part-2', (req, res) => {
 
-    const { radioques } = req.body;
-    const newQuestionSubmittedByUser = new Answer ( { radioques } )
+    const reqBody = req.body;
+    const createdAt = req._startTime;
+    const answersObject = JSON.stringify(reqBody);
+    const userId = req.cookies.session;
+    const length = Object.keys(req.body).length;
+    const newQuestionSubmittedByUser = new Answer ( { userId, answersObject, createdAt} )
 
-    newQuestionSubmittedByUser.save()
-    .then( () => {
-        console.log('answer saved. Below is the req.body');
-        console.log(req.body);
-
-        const length = Object.keys(req.body).length;
-        console.log(length);
-        
-        if(length === 10) {
+    if (length === 10) {
+        newQuestionSubmittedByUser.save()
+        .then( () => {
+            console.log('Answer saved to database:');
+            console.log(newQuestionSubmittedByUser);    
             res.redirect('/scenario-3');
-          }
-    })
-    .catch((error) => {
-        console.log(error);
-    })
+        })
+        .catch((error) => {
+            console.log(error);
+        })
+    }
 });
 
 router.get('/task-3-part-3', (req, res) => {
@@ -383,24 +359,24 @@ router.get('/task-3-part-3', (req, res) => {
 
 router.post('/task-3-part-3', (req, res) => {
 
-    const { radioques } = req.body;
-    const newQuestionSubmittedByUser = new Answer ( { radioques } )
+    const reqBody = req.body;
+    const createdAt = req._startTime;
+    const answersObject = JSON.stringify(reqBody);
+    const userId = req.cookies.session;
+    const length = Object.keys(req.body).length;
+    const newQuestionSubmittedByUser = new Answer ( { userId, answersObject, createdAt} )
 
-    newQuestionSubmittedByUser.save()
-    .then( () => {
-        console.log('answer saved. Below is the req.body');
-        console.log(req.body);
-
-        const length = Object.keys(req.body).length;
-        console.log(length);
-        
-        if(length === 10) {
+    if (length === 10) {
+        newQuestionSubmittedByUser.save()
+        .then( () => {
+            console.log('Answer saved to database:');
+            console.log(newQuestionSubmittedByUser);    
             res.redirect('/study-conclusion');
-          }
-    })
-    .catch((error) => {
-        console.log(error);
-    })
+        })
+        .catch((error) => {
+            console.log(error);
+        })
+    }
 });
 
 router.get('/scenario-1', (req, res) => {
