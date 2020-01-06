@@ -37,16 +37,5 @@ function removeWarning() {
 }
 
 
-function toggleFontSize() {
-    let task3TextBox = document.getElementById('task-3-text-box');
-    let textSizeBox = document.getElementById('toggle-text-size-btn');
 
-    if (task3TextBox.classList.contains('font-size-sm')) {
-        task3TextBox.classList.remove('font-size-sm');
-        textSizeBox.innerHTML = 'Decrease Font Size';
-    } else {
-        task3TextBox.classList.add('font-size-sm');
-        textSizeBox.innerHTML = 'Increase Font Size';
-    }
-}
 

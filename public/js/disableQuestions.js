@@ -104,14 +104,12 @@ function disableDependencies(_id) {
         let arrayOfDependencies = convertSemiColonsToArray(dependencies);
 
     if (dependencies === undefined) {
-        console.log('no dependencies');
         return false;
     } 
     
     // Trigger word is not the same as the value selected, so function removes "skipped" classes and remove "disabled" class 
     if (valueSelected === 'no' || valueSelected === 'I am a full time student') { 
         skipNextQuestion = true;
-        console.log(`skip next question: ${skipNextQuestion}`);
         for (i = 0; i < arrayOfDependencies.length; i++) {
             // Convert string to number with parseInt
             // if element exists perform action
@@ -127,7 +125,6 @@ function disableDependencies(_id) {
     } else {
         // Convert the database input from a string with semicolons to an array so that we can loop through the new array and disable the questions
         skipNextQuestion = false;
-        console.log(`skip next question: ${skipNextQuestion}`);
         for (i = 0; i < arrayOfDependencies.length; i++) {
 
             let element =  document.getElementById(parseInt(arrayOfDependencies[i]));

@@ -2,7 +2,8 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 const questionSchema = new Schema({
-    radioques: String,
+    // radioques: String,
+    answersObject: Object,
     // userId: String,
     // questionId: String,
     // question: String,

@@ -107,13 +107,29 @@ router.get('/task-1-part-1', (req, res) => {
 // Temporarily commenting out the POST part
 router.post('/task-1-part-1', (req, res) => {
 
-    const { radioques } = req.body;
-    const newQuestionSubmittedByUser = new Answer ( { radioques } )
+    // const { answersObject } = req.body;
+    const hello1 = req.body;
+
+    const data5 = req.body;
+
+    object4 =  JSON.stringify(data5);
+    console.log('object');
+    console.log(object4);
+
+
+    let answersObject = object4;
+
+    console.log('hello below');
+    console.log(hello1);
+    const newQuestionSubmittedByUser = new Answer ( { answersObject } )
 
     newQuestionSubmittedByUser.save()
     .then( () => {
         console.log('answer saved. Below is the req.body');
         console.log(req.body);
+
+        console.log('below is the new ques');
+        console.log(newQuestionSubmittedByUser);
 
         const length = Object.keys(req.body).length;
         console.log(length);
@@ -177,22 +193,25 @@ router.post('/task-2-part-1a', (req, res) => {
 
     const { radioques } = req.body;
     const newQuestionSubmittedByUser = new Answer ( { radioques } )
+    const length = Object.keys(req.body).length;
 
-    newQuestionSubmittedByUser.save()
-    .then( () => {
-        console.log('answer saved. Below is the req.body');
-        console.log(req.body);
-
-        const length = Object.keys(req.body).length;
-        console.log(length);
-        
-        if(length === 4) {
-            res.redirect('/task-2-part-1b');
-          }
-    })
-    .catch((error) => {
-        console.log(error);
-    })
+    if (length === 4) {
+        newQuestionSubmittedByUser.save()
+        .then( () => {
+            console.log('answer saved. Below is the req.body');
+            console.log(req.body);
+            console.log(length);
+            console.log('below is new qustion');
+            console.log(newQuestionSubmittedByUser);
+            
+            if(length === 4) {
+                res.redirect('/task-2-part-1b');
+            }
+        })
+        .catch((error) => {
+            console.log(error);
+        })
+    }
 });
 
 

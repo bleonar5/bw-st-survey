@@ -4,22 +4,15 @@
 
     {{> 9emptyCol8Div}}
 
-    <div class="col-2">
-        <div class="row h-100">
-            <div class="col-md-12 align-self-end">
-                <div class="float-right pt-2 pr-2">
-                </div>
-            </div>
-        </div>
-    </div>
+    {{> 8increaseTextSizeBtn}}
 
 </div>
 
 
 <div id="content-main-e">
-    <div class="justify-content-center bespoke-vertical-align-e col-sm-12 text-left">
+    <div id="task-1-text-box" class="justify-content-center bespoke-vertical-align-e col-sm-12 text-left">
         <div>
-            <form onSubmit="return checkQuestions(getArrayOfQuestions());" method="POST">
+            <form onSubmit="return checkQuestionsRadios(getArrayOfQuestions());" method="POST">
                     <table class="table table-striped">
                         {{> radioTask1HeadingAgree}}
                         {{#each perguntas}} {{> radioTask1 this}} {{/each}}
@@ -67,3 +60,5 @@ return checkQuestions(getArrayOfQuestions());
 {{!-- closing div of footer below --}}    
      
 </div>
+
+<script type="text/javascript" src="js/localStorageTasks1and3.js"></script>

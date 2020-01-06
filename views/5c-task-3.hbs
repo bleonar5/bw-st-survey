@@ -7,7 +7,7 @@
 <div id="content-main-e">
     <div id="task-3-text-box" class="justify-content-center bespoke-vertical-align-e col-12 font-size-sm text-left ">
         <div>
-            <form onSubmit="return checkQuestions(getArrayOfQuestions());" method="POST">
+            <form onSubmit="return checkQuestionsRadios(getArrayOfQuestions());" method="POST">
                     <table class="table table-sm table-striped">
                     {{> radioHeadingEffective}}
                     {{#each perguntas}} {{#if radio}} {{> radioTask3 this}} {{/if}} {{/each}}
