@@ -9,7 +9,7 @@
         <div>
             <form onSubmit="return checkQuestionsRadios(getArrayOfQuestions());" method="POST">
                     <table class="table table-sm table-striped">
-                    {{> radioHeadingEffective}}
+                    {{> radioTask3HeadingEff}}
                     {{#each perguntas}} {{#if radio}} {{> radioTask3 this}} {{/if}} {{/each}}
                 </table>      
 
