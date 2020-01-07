@@ -88,7 +88,6 @@ function checkQuestionsTaskTwo(_arrayOfQuestions) {
         
     } else {
         // All questions have a radio box selected, so user can progress
-        console.log('I can now send user to the next page');
         currentPath = window.location.pathname;
        //  console.log(currentPath);
         // nextPage(currentPath);
