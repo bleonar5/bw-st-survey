@@ -4,6 +4,7 @@ function toggleFontSize() {
 
     let task1TextBox = document.getElementById('task-1-text-box');
     let task3TextBox = document.getElementById('task-3-text-box');
+    let task3TextBoxScenario = document.getElementById('task3TextBoxScenario');
     let contentMainA = document.getElementById('content-main-a');
     let contentMainB = document.getElementById('content-main-b');
     let contentMainTopF = document.getElementById('ontent-main-top-f');
@@ -21,6 +22,16 @@ function toggleFontSize() {
         }
     }
 
+
+    if (task3TextBoxScenario !== null) {
+        if (task3TextBoxScenario.classList.contains('font-size-bigger')) {
+            task3TextBoxScenario.classList.remove('font-size-bigger');
+            textSizeBox.innerHTML = 'a<strong>A</strong>';
+        } else {
+            task3TextBoxScenario.classList.add('font-size-bigger');
+            textSizeBox.innerHTML = '<strong>a</strong>A';
+        }
+    }
 
     if (contentMainA !== null) {
         if (contentMainA.classList.contains('font-size-bigger')) {
@@ -68,5 +79,8 @@ function toggleFontSize() {
             textSizeBox.innerHTML = '<strong>a</strong>A';
         }
     }
+
+
+
 
 }

@@ -1,11 +1,11 @@
-<div id="content-heading-f" class="text-center">
+<div id="content-heading-f" class="text-center row">
 
     {{> 7completeAllQuestions}}
 
     <div class="col-8">
         <div class="row h-100">
             <div class="col-md-12 align-self-end">
-                <h2 class="text-primary">{{#each sheetsSituations}}{{#if heading}}{{this.text}}{{/if}}{{/each}}</h2>
+                <h2 class="text-primary">{{#each heading}}{{#if heading}}{{this.text}}{{/if}}{{/each}}</h2>
             </div>
         </div>
     </div>
@@ -13,3 +13,64 @@
     {{> 8increaseTextSizeBtn}}
 </div>
 
+
+<div id="content-main-top-f">
+
+    <div class="row justify-content-center bespoke-vertical-align-f">
+        <div id="task3TextBoxScenario" class="col-12 px-md-3 px-lg-5">
+        
+        <ul>
+            {{#each sheetsSituations}}
+            {{#if scenario}}
+                <li class="px-2 py-1"> {{this.text}}</li>
+            {{/if}}
+            {{/each}}
+        </ul>
+        
+        </div>
+    </div>
+</div>
+
+
+<div id="content-main-bottom-f">
+    <div id="task-3-text-box" class="justify-content-center bespoke-vertical-align-f col-12 font-size-sm text-left ">
+        <div>
+            <form onSubmit="return checkQuestionsRadios(getArrayOfQuestions());" method="POST">
+                    <table class="table table-sm table-striped">
+                    {{> radioTask3HeadingEff}}
+                    {{#each perguntas}} {{#if radio}} {{> radioTask3 this}} {{/if}} {{/each}}
+                </table>      
+
+        </div>
+    </div>
+</div>
+
+
+
+<div id="footer-f" class="row">
+
+    <div class="col-2">
+        <div id="back-button" class="float-left">
+            {{#if urlsAndPages.backbutton}}
+            <a href={{urlsAndPages.previousPage}} role="button" class="btn btn-lg btn-secondary float-left">Back</a>
+            {{/if}}
+        </div>
+    </div>
+
+    <div class="col-8">
+        <div class="text-center">
+            <div id="warning-message-small"></div>
+
+            {{#if urlsAndPages.pagination}}
+                <div id="page-number">{{> pageNumberFormat}}{{urlsAndPages.pagination}}</div></div>
+            {{/if}}
+        </div>
+    </div>
+
+    <div class="col-2">
+        <div class="float-right">
+            <button role="button" type="submit" class="btn btn-lg btn-primary text-white float-right hand-curser">Next</button>
+        </div>
+        </form>
+    </div>
+</div>

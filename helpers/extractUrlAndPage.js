@@ -16,6 +16,6 @@ function extractUrlAndPage(_page, _urlsArray) {
             pagination: _urlsArray[_page - 1].pagination,
             backbutton: _urlsArray[_page - 1].backbutton
         }
-  
+    
     return urlInfo;
   }

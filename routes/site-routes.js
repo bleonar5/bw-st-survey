@@ -413,12 +413,214 @@ router.get('/scenario-3', (req, res) => {
 });
 
 router.get('/scenario-1-split-1', (req, res) => {
-    console.log('scenario-1');
+
     currentPage = getPageNumber(req.originalUrl, allUrls);
-    const sheetsSituations = allQuestions.filter( data => data.page === currentPage);
-    const perguntas = allQuestions.filter(data => data.page === currentPage);
+    const dataForThisSheet = allQuestions.filter( data => data.page === currentPage);
+    const sheetsSituations = dataForThisSheet.filter (data => data.scenario);
+    const heading = dataForThisSheet.filter (data => data.heading);
+    const perguntas = dataForThisSheet.filter (data => data.radio);
     const urlsAndPages = extractUrlAndPage(currentPage, allUrls);
-    res.render('5a-scenarios-split', { sheetsSituations, perguntas, urlsAndPages });
+    console.log(urlsAndPages.nextPage);
+    res.render('5a-scenarios-split', { heading, sheetsSituations, perguntas, urlsAndPages });
+});
+
+router.post('/scenario-1-split-1', (req, res) => {
+
+    const reqBody = req.body;
+    const createdAt = req._startTime;
+    const answersObject = JSON.stringify(reqBody);
+    const userId = req.cookies.session;
+    const length = Object.keys(req.body).length;
+    const dataForThisSheet = allQuestions.filter( data => data.page === currentPage);
+    const perguntas = dataForThisSheet.filter (data => data.radio);
+    const newQuestionSubmittedByUser = new Answer ( { userId, answersObject, createdAt} )
+    const urlsAndPages = extractUrlAndPage(currentPage, allUrls);
+
+    if (length === perguntas.length) {
+        newQuestionSubmittedByUser.save()
+        .then( () => {
+            console.log(newQuestionSubmittedByUser);    
+            res.redirect(urlsAndPages.nextPage);
+        })
+        .catch((error) => {
+            console.log(error);
+        })
+    }
+});
+
+router.get('/scenario-1-split-2', (req, res) => {
+
+    currentPage = getPageNumber(req.originalUrl, allUrls);
+    const dataForThisSheet = allQuestions.filter( data => data.page === currentPage);
+    const sheetsSituations = dataForThisSheet.filter (data => data.scenario);
+    const heading = dataForThisSheet.filter (data => data.heading);
+    const perguntas = dataForThisSheet.filter (data => data.radio);
+    const urlsAndPages = extractUrlAndPage(currentPage, allUrls);
+    res.render('5a-scenarios-split', { heading, sheetsSituations, perguntas, urlsAndPages });
+});
+
+router.post('/scenario-1-split-2', (req, res) => {
+
+    const reqBody = req.body;
+    const createdAt = req._startTime;
+    const answersObject = JSON.stringify(reqBody);
+    const userId = req.cookies.session;
+    const length = Object.keys(req.body).length;
+    const dataForThisSheet = allQuestions.filter( data => data.page === currentPage);
+    const perguntas = dataForThisSheet.filter (data => data.radio);
+    const newQuestionSubmittedByUser = new Answer ( { userId, answersObject, createdAt} )
+    const urlsAndPages = extractUrlAndPage(currentPage, allUrls);
+
+    if (length === perguntas.length) {
+        newQuestionSubmittedByUser.save()
+        .then( () => {
+            console.log(newQuestionSubmittedByUser);    
+            res.redirect(urlsAndPages.nextPage);
+        })
+        .catch((error) => {
+            console.log(error);
+        })
+    }
+});
+
+router.get('/scenario-2-split-1', (req, res) => {
+
+    currentPage = getPageNumber(req.originalUrl, allUrls);
+    const dataForThisSheet = allQuestions.filter( data => data.page === currentPage);
+    const sheetsSituations = dataForThisSheet.filter (data => data.scenario);
+    const heading = dataForThisSheet.filter (data => data.heading);
+    const perguntas = dataForThisSheet.filter (data => data.radio);
+    const urlsAndPages = extractUrlAndPage(currentPage, allUrls);
+    res.render('5a-scenarios-split', { heading, sheetsSituations, perguntas, urlsAndPages });
+});
+
+router.post('/scenario-2-split-1', (req, res) => {
+
+    const reqBody = req.body;
+    const createdAt = req._startTime;
+    const answersObject = JSON.stringify(reqBody);
+    const userId = req.cookies.session;
+    const length = Object.keys(req.body).length;
+    const dataForThisSheet = allQuestions.filter( data => data.page === currentPage);
+    const perguntas = dataForThisSheet.filter (data => data.radio);
+    const newQuestionSubmittedByUser = new Answer ( { userId, answersObject, createdAt} )
+    const urlsAndPages = extractUrlAndPage(currentPage, allUrls);
+
+    if (length === perguntas.length) {
+        newQuestionSubmittedByUser.save()
+        .then( () => {
+            console.log(newQuestionSubmittedByUser);    
+            res.redirect(urlsAndPages.nextPage);
+        })
+        .catch((error) => {
+            console.log(error);
+        })
+    }
+});
+
+router.get('/scenario-2-split-2', (req, res) => {
+
+    currentPage = getPageNumber(req.originalUrl, allUrls);
+    const dataForThisSheet = allQuestions.filter( data => data.page === currentPage);
+    const sheetsSituations = dataForThisSheet.filter (data => data.scenario);
+    const heading = dataForThisSheet.filter (data => data.heading);
+    const perguntas = dataForThisSheet.filter (data => data.radio);
+    const urlsAndPages = extractUrlAndPage(currentPage, allUrls);
+    res.render('5a-scenarios-split', { heading, sheetsSituations, perguntas, urlsAndPages });
+});
+
+router.post('/scenario-2-split-2', (req, res) => {
+
+    const reqBody = req.body;
+    const createdAt = req._startTime;
+    const answersObject = JSON.stringify(reqBody);
+    const userId = req.cookies.session;
+    const length = Object.keys(req.body).length;
+    const dataForThisSheet = allQuestions.filter( data => data.page === currentPage);
+    const perguntas = dataForThisSheet.filter (data => data.radio);
+    const newQuestionSubmittedByUser = new Answer ( { userId, answersObject, createdAt} )
+    const urlsAndPages = extractUrlAndPage(currentPage, allUrls);
+
+    if (length === perguntas.length) {
+        newQuestionSubmittedByUser.save()
+        .then( () => {
+            console.log(newQuestionSubmittedByUser);    
+            res.redirect(urlsAndPages.nextPage);
+        })
+        .catch((error) => {
+            console.log(error);
+        })
+    }
+});
+
+router.get('/scenario-3-split-1', (req, res) => {
+
+    currentPage = getPageNumber(req.originalUrl, allUrls);
+    const dataForThisSheet = allQuestions.filter( data => data.page === currentPage);
+    const sheetsSituations = dataForThisSheet.filter (data => data.scenario);
+    const heading = dataForThisSheet.filter (data => data.heading);
+    const perguntas = dataForThisSheet.filter (data => data.radio);
+    const urlsAndPages = extractUrlAndPage(currentPage, allUrls);
+    res.render('5a-scenarios-split', { heading, sheetsSituations, perguntas, urlsAndPages });
+});
+
+router.post('/scenario-3-split-1', (req, res) => {
+
+    const reqBody = req.body;
+    const createdAt = req._startTime;
+    const answersObject = JSON.stringify(reqBody);
+    const userId = req.cookies.session;
+    const length = Object.keys(req.body).length;
+    const dataForThisSheet = allQuestions.filter( data => data.page === currentPage);
+    const perguntas = dataForThisSheet.filter (data => data.radio);
+    const newQuestionSubmittedByUser = new Answer ( { userId, answersObject, createdAt} )
+    const urlsAndPages = extractUrlAndPage(currentPage, allUrls);
+
+    if (length === perguntas.length) {
+        newQuestionSubmittedByUser.save()
+        .then( () => {
+            console.log(newQuestionSubmittedByUser);    
+            res.redirect(urlsAndPages.nextPage);
+        })
+        .catch((error) => {
+            console.log(error);
+        })
+    }
+});
+
+router.get('/scenario-3-split-2', (req, res) => {
+
+    currentPage = getPageNumber(req.originalUrl, allUrls);
+    const dataForThisSheet = allQuestions.filter( data => data.page === currentPage);
+    const sheetsSituations = dataForThisSheet.filter (data => data.scenario);
+    const heading = dataForThisSheet.filter (data => data.heading);
+    const perguntas = dataForThisSheet.filter (data => data.radio);
+    const urlsAndPages = extractUrlAndPage(currentPage, allUrls);
+    res.render('5a-scenarios-split', { heading, sheetsSituations, perguntas, urlsAndPages });
+});
+
+router.post('/scenario-3-split-2', (req, res) => {
+
+    const reqBody = req.body;
+    const createdAt = req._startTime;
+    const answersObject = JSON.stringify(reqBody);
+    const userId = req.cookies.session;
+    const length = Object.keys(req.body).length;
+    const dataForThisSheet = allQuestions.filter( data => data.page === currentPage);
+    const perguntas = dataForThisSheet.filter (data => data.radio);
+    const newQuestionSubmittedByUser = new Answer ( { userId, answersObject, createdAt} )
+    const urlsAndPages = extractUrlAndPage(currentPage, allUrls);
+
+    if (length === perguntas.length) {
+        newQuestionSubmittedByUser.save()
+        .then( () => {
+            console.log(newQuestionSubmittedByUser);    
+            res.redirect(urlsAndPages.nextPage);
+        })
+        .catch((error) => {
+            console.log(error);
+        })
+    }
 });
 
 router.get('/study-conclusion', (req, res) => {
