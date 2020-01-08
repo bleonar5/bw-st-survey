@@ -114,7 +114,7 @@ router.post('/task-1-part-1', (req, res) => {
     const length = Object.keys(req.body).length;
     const newQuestionSubmittedByUser = new Answer ( { userId, answersObject, createdAt} )
 
-    if (length === 8) {
+    if (length === 9) {
         newQuestionSubmittedByUser.save()
         .then( () => {
             console.log('Answer saved to database:');
@@ -143,7 +143,7 @@ router.post('/task-1-part-2', (req, res) => {
     const length = Object.keys(req.body).length;
     const newQuestionSubmittedByUser = new Answer ( { userId, answersObject, createdAt} )
 
-    if (length === 7) {
+    if (length === 8) {
         newQuestionSubmittedByUser.save()
         .then( () => {
             console.log('Answer saved to database:');
@@ -185,12 +185,12 @@ router.post('/task-2-part-1a', (req, res) => {
     const valuesAsString = values.toString();
     console.log(length);
 
-    if (length === 4 || valuesAsString === 'I am a full time student' ) {
+    if (length === 5 || valuesAsString === 'I am a full time student' ) {
         newQuestionSubmittedByUser.save()
         .then( () => {
             console.log('Answer saved to database:');
             console.log(newQuestionSubmittedByUser);
-            if (length === 4) {
+            if (length === 5) {
                 res.redirect('/task-2-part-1b');
             // Skip the next question if the length is not equal to 4
             } else {
@@ -221,7 +221,7 @@ router.post('/task-2-part-1b', (req, res) => {
     const length = Object.keys(req.body).length;
     const newQuestionSubmittedByUser = new Answer ( { userId, answersObject, createdAt} )
 
-    if (length === 4) {
+    if (length === 5) {
         newQuestionSubmittedByUser.save()
         .then( () => {
             console.log('Answer saved to database:');
@@ -293,7 +293,7 @@ router.post('/task-2-part-3', (req, res) => {
         .then( () => {
             console.log('Answer saved to database:');
             console.log(newQuestionSubmittedByUser);    
-            res.redirect('/scenario-1');
+            res.redirect('/instructions-3');
         })
         .catch((error) => {
             console.log(error);
@@ -410,6 +410,15 @@ router.get('/scenario-3', (req, res) => {
     const sheetsSituations = allQuestions.filter( data => data.page === currentPage);
     const urlsAndPages = extractUrlAndPage(currentPage, allUrls);
     res.render('5b-scenarios', { sheetsSituations, urlsAndPages });
+});
+
+router.get('/scenario-1-split-1', (req, res) => {
+    console.log('scenario-1');
+    currentPage = getPageNumber(req.originalUrl, allUrls);
+    const sheetsSituations = allQuestions.filter( data => data.page === currentPage);
+    const perguntas = allQuestions.filter(data => data.page === currentPage);
+    const urlsAndPages = extractUrlAndPage(currentPage, allUrls);
+    res.render('5a-scenarios-split', { sheetsSituations, perguntas, urlsAndPages });
 });
 
 router.get('/study-conclusion', (req, res) => {

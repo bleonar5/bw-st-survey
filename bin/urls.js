@@ -136,14 +136,46 @@ const urls =
         "url": "/holding-page-1",
         "page": 21,
         "previouspage": "/study-conclusion",
-        "nextpage": "/holding-page-2"
+        "nextpage": "n/a"
     },
     {
-        "url": "/holding-page-2",
-        "page": 22,
-        "previouspage": "/holding-page-1",
-        "nextpage": "/end-of-survey",
-        "comment": "added on 22-dec"
+        "url": "/scenario-1-split-1",
+        "page": 30,
+        "previouspage": "/instructions-3",
+        "nextpage": "/scenario-1-split-2"
+    },
+    {
+        "url": "/scenario-1-split-2",
+        "page": 31,
+        "backbutton": true,
+        "previouspage": "/scenario-1-split-1",
+        "nextpage": "/scenario-2-split-1"
+    },
+    {
+        "url": "/scenario-2-split-1",
+        "page": 32,
+        "previouspage": "/scenario-1-split-2",
+        "nextpage": "/scenario-2-split-2"
+    },
+    {
+        "url": "/scenario-2-split-2",
+        "page": 33,
+        "backbutton": true,
+        "previouspage": "/scenario-2-split-1",
+        "nextpage": "/scenario-3-split-1"
+    },
+    {
+        "url": "/scenario-3-split-1",
+        "page": 34,
+        "previouspage": "/scenario-2-split-2",
+        "nextpage": "/scenario-3-split-2"
+    },
+    {
+        "url": "/scenario-3-split-2",
+        "page": 35,
+        "backbutton": true,
+        "previouspage": "/scenario-3-split-1",
+        "nextpage": "/study-conclusion"
     }
 ]
 

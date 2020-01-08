@@ -20,7 +20,7 @@ const dependenciesArray =
         "text": "Are you currently employed?",
         "trigger": "no",
         "action": "disable",
-        "dependencies": "20902; 20903; 20904; 21005; 21006; 21007; 21008"
+        "dependencies": "20902; 20903; 20904; 20905; 21005; 21006; 21007; 21008"
     },
     {
         "id": 21201,

@@ -272,6 +272,16 @@ const questions =
         "radio": true
     },
     {
+        "order": 5,
+        "url": "/task-1-part-1",
+        "page": 6,
+        "id": 10609,
+        "text": "I enjoy working in teams",
+        "category": "radio",
+        "radio": true,
+        "comments": "[RP-08-jan: added in v9]"
+    },
+    {
         "order": 6,
         "url": "/task-1-part-2",
         "page": 7,
@@ -333,6 +343,16 @@ const questions =
         "text": "When others disagree, it is important to hold one’s own ground and not give in",
         "category": "radio",
         "radio": true
+    },
+    {
+        "order": 6,
+        "url": "/task-1-part-2",
+        "page": 7,
+        "id": 10708,
+        "text": "I am skilled at working in teams",
+        "category": "radio",
+        "radio": true,
+        "comments": "[RP-08-jan: added in v9]"
     },
     {
         "order": 7,
@@ -418,6 +438,16 @@ const questions =
         "dropdown": true
     },
     {
+        "order": 8.1,
+        "url": "/task-2-part-1a",
+        "page": 9,
+        "id": 20905,
+        "text": "What is your job title?",
+        "category": "textarea",
+        "textarea": true,
+        "comments": "[RP-08-jan: added in v9]"
+    },
+    {
         "order": 8.2,
         "url": "/task-2-part-1b",
         "page": 10,
@@ -462,6 +492,16 @@ const questions =
         "text": "What is your annual salary?",
         "category": "dropdown",
         "options": "$0-20k; 20-30k; 30-40k; 40-50k; 50-70k; 70-90k; 90-120k; 120-150k; 150-200k; >200k; prefer not to say",
+        "dropdown": true
+    },
+    {
+        "order": 8.2,
+        "url": "/task-2-part-1b",
+        "page": 10,
+        "id": 21009,
+        "text": "How much teamwork does your job require?",
+        "category": "dropdown",
+        "options": "none; a little; some; a lot; all the time",
         "dropdown": true
     },
     {
