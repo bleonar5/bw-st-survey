@@ -225,26 +225,26 @@ In this case, the ratio is 15:60:20
 */
 
 #content-heading-f {
-    height: 10%;
+    height: 7%;
 }
       
 #content-main-top-f {
-    min-height: 40%;
+    min-height: 42%;
 }
 
 .bespoke-vertical-align-f {
-    min-height: 40%;
-    min-height: 40vh;
+    min-height: 42%;
+    min-height: 42vh;
     display: flex;
     align-items: center;
 }
 
 #content-main-bottom-f {
-    min-height: 40%;
+    min-height: 42%;
 }
     
 #footer-f {
-    height: 10%;
+    height: 7%;
 }
 
 /* Layout G is used for scenario-split mezzanine pages
