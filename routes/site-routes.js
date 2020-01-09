@@ -17,6 +17,8 @@ const cookieSession = require('cookie-session')
 const allQuestions = require('../bin/sheets-import');
 const allUrls = require('../bin/urls');
 
+
+
 // Cookie Session
 app.use(cookieSession({
     name: 'sesh',
@@ -629,6 +631,7 @@ router.post('/scenario-3-split-1', (req, res) => {
 
 router.get('/scenario-3-split-2', (req, res) => {
 
+    const reqBody = req.body;
     let currentPage = getPageNumber(req.originalUrl, allUrls);
     const dataForThisSheet = allQuestions.filter( data => data.page === currentPage);
     const sheetsSituations = dataForThisSheet.filter (data => data.scenario);
