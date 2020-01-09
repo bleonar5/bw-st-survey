@@ -86,6 +86,20 @@ router.get('/instructions-3', (req, res) => {
     res.render('3a-instructions', { instructions, urlsAndPages });
   });
 
+/* --- MEZZANINE LEVEL ROUTES - ADDED on 9th January --- */
+router.get('/scenario-2-intro', (req, res) => {
+    currentPage = getPageNumber(req.originalUrl, allUrls);
+    const instructions = allQuestions.filter(data => data.page === currentPage);
+    const urlsAndPages = extractUrlAndPage(currentPage, allUrls);
+    res.render('5d-scenarios-mezzanine', { instructions, urlsAndPages });
+});
+
+router.get('/scenario-3-intro', (req, res) => {
+    currentPage = getPageNumber(req.originalUrl, allUrls);
+    const instructions = allQuestions.filter(data => data.page === currentPage);
+    const urlsAndPages = extractUrlAndPage(currentPage, allUrls);
+    res.render('5d-scenarios-mezzanine', { instructions, urlsAndPages });
+});
 
 /* --- TASK ONE ROUTES --- */
 router.get('/task-1-part-1', (req, res) => {
@@ -169,6 +183,7 @@ router.get('/task-2-part-1a', (req, res) => {
     currentPage = getPageNumber(req.originalUrl, allUrls);
     const perguntasUnconverted = allQuestions.filter( data => data.page === currentPage );
     const perguntas = formatQuestions(perguntasUnconverted);
+    console.log(perguntas);
     const urlsAndPages = extractUrlAndPage(currentPage, allUrls);
     res.render('4c-task-2', { perguntas, urlsAndPages });
 });
@@ -183,16 +198,24 @@ router.post('/task-2-part-1a', (req, res) => {
     const newQuestionSubmittedByUser = new Answer ( { userId, answersObject, createdAt} )
     const values = Object.values(req.body);
     const valuesAsString = values.toString();
-    console.log(length);
+    // Check if any of the text boxes are blank
+    let includesBlank = answersObject.includes(`":""`);
+    let currentPage = getPageNumber(req.originalUrl, allUrls);
+    const dataForThisSheet = allQuestions.filter( data => data.page === currentPage);
+    // Declare variable which will be used to calculate how many questions are on this page (it excludes headings)
+    const perguntas = dataForThisSheet.filter (data => !data.heading);
 
-    if (length === 5 || valuesAsString === 'I am a full time student' ) {
+    // If length is 5, then you can proceed to the next page. If the valuesAsString are 'I am a full time student' or 'no', then we can proceed, but by skipping the next question
+    // If the length is correct and the text boxes do not have any blanks, then you can progress
+
+    if ( (length === perguntas.length && !includesBlank) || valuesAsString === 'I am a full time student' || valuesAsString === 'no' ) {
         newQuestionSubmittedByUser.save()
         .then( () => {
             console.log('Answer saved to database:');
             console.log(newQuestionSubmittedByUser);
-            if (length === 5) {
+            if (length === perguntas.length) {
                 res.redirect('/task-2-part-1b');
-            // Skip the next question if the length is not equal to 4
+            // Skip the next question if the values are 'I am a full time student' or 'no'
             } else {
                 res.redirect('/task-2-part-2');
             }
@@ -206,6 +229,7 @@ router.post('/task-2-part-1a', (req, res) => {
 
 router.get('/task-2-part-1b', (req, res) => {
     currentPage = getPageNumber(req.originalUrl, allUrls);
+    // Unconverted questions consist of dropdowns which aren't arrays
     const perguntasUnconverted = allQuestions.filter( data => data.page === currentPage );
     const perguntas = formatQuestions(perguntasUnconverted);
     const urlsAndPages = extractUrlAndPage(currentPage, allUrls);
@@ -219,9 +243,14 @@ router.post('/task-2-part-1b', (req, res) => {
     const answersObject = JSON.stringify(reqBody);
     const userId = req.cookies.session;
     const length = Object.keys(req.body).length;
-    const newQuestionSubmittedByUser = new Answer ( { userId, answersObject, createdAt} )
+    const newQuestionSubmittedByUser = new Answer ( { userId, answersObject, createdAt} );
+    let currentPage = getPageNumber(req.originalUrl, allUrls);
+    const dataForThisSheet = allQuestions.filter( data => data.page === currentPage);
+    // Declare variable which will be used to calculate how many questions are on this page (it excludes headings)
+    const perguntas = dataForThisSheet.filter (data => !data.heading);
+    let includesBlank = answersObject.includes(`":""`);
 
-    if (length === 5) {
+    if (length === perguntas.length && !includesBlank) {
         newQuestionSubmittedByUser.save()
         .then( () => {
             console.log('Answer saved to database:');
@@ -236,7 +265,7 @@ router.post('/task-2-part-1b', (req, res) => {
 });
 
 router.get('/task-2-part-2', (req, res) => {
-    currentPage = getPageNumber(req.originalUrl, allUrls);
+    let currentPage = getPageNumber(req.originalUrl, allUrls);
     const perguntasUnconverted = allQuestions.filter( data => data.page === currentPage );
     const perguntas = formatQuestions(perguntasUnconverted);
     const urlsAndPages = extractUrlAndPage(currentPage, allUrls);
@@ -250,9 +279,13 @@ router.post('/task-2-part-2', (req, res) => {
     const answersObject = JSON.stringify(reqBody);
     const userId = req.cookies.session;
     const length = Object.keys(req.body).length;
-    const newQuestionSubmittedByUser = new Answer ( { userId, answersObject, createdAt} )
+    const newQuestionSubmittedByUser = new Answer ( { userId, answersObject, createdAt} );
+    let currentPage = getPageNumber(req.originalUrl, allUrls);
+    const dataForThisSheet = allQuestions.filter( data => data.page === currentPage);
+    const perguntas = dataForThisSheet.filter (data => !data.heading);
+    let includesBlank = answersObject.includes(`":""`);
 
-    if (length === 5) {
+    if (length === perguntas.length && !includesBlank) {
         newQuestionSubmittedByUser.save()
         .then( () => {
             console.log('Answer saved to database:');
@@ -281,14 +314,15 @@ router.post('/task-2-part-3', (req, res) => {
     const answersObject = JSON.stringify(reqBody);
     const userId = req.cookies.session;
     const length = Object.keys(req.body).length;
-    const newQuestionSubmittedByUser = new Answer ( { userId, answersObject, createdAt} )
+    const newQuestionSubmittedByUser = new Answer ( { userId, answersObject, createdAt} );
     const values = Object.values(req.body);
     const valuesAsString = values.toString();
-    console.log(valuesAsString);
-    console.log(length);
+    let currentPage = getPageNumber(req.originalUrl, allUrls);
+    const dataForThisSheet = allQuestions.filter( data => data.page === currentPage);
+    const perguntas = dataForThisSheet.filter (data => !data.heading);
+    let includesNo = valuesAsString.includes("0-no");
 
-    // Temporary Fix. You should add more logic to prevent user from 
-    if (length > 2 || valuesAsString === '0-no,0-no') /* contains two nos*/  /* contains 1 no and 2 commas */ {
+    if ((length === perguntas.length) || (length === 2 && valuesAsString === '0-no,0-no') || ( (length === 3 && includesNo) ) ) {
         newQuestionSubmittedByUser.save()
         .then( () => {
             console.log('Answer saved to database:');
@@ -414,7 +448,7 @@ router.get('/scenario-3', (req, res) => {
 
 router.get('/scenario-1-split-1', (req, res) => {
 
-    currentPage = getPageNumber(req.originalUrl, allUrls);
+    let currentPage = getPageNumber(req.originalUrl, allUrls);
     const dataForThisSheet = allQuestions.filter( data => data.page === currentPage);
     const sheetsSituations = dataForThisSheet.filter (data => data.scenario);
     const heading = dataForThisSheet.filter (data => data.heading);
@@ -431,6 +465,7 @@ router.post('/scenario-1-split-1', (req, res) => {
     const answersObject = JSON.stringify(reqBody);
     const userId = req.cookies.session;
     const length = Object.keys(req.body).length;
+    let currentPage = getPageNumber(req.originalUrl, allUrls);
     const dataForThisSheet = allQuestions.filter( data => data.page === currentPage);
     const perguntas = dataForThisSheet.filter (data => data.radio);
     const newQuestionSubmittedByUser = new Answer ( { userId, answersObject, createdAt} )
@@ -450,7 +485,7 @@ router.post('/scenario-1-split-1', (req, res) => {
 
 router.get('/scenario-1-split-2', (req, res) => {
 
-    currentPage = getPageNumber(req.originalUrl, allUrls);
+    let currentPage = getPageNumber(req.originalUrl, allUrls);
     const dataForThisSheet = allQuestions.filter( data => data.page === currentPage);
     const sheetsSituations = dataForThisSheet.filter (data => data.scenario);
     const heading = dataForThisSheet.filter (data => data.heading);
@@ -466,6 +501,7 @@ router.post('/scenario-1-split-2', (req, res) => {
     const answersObject = JSON.stringify(reqBody);
     const userId = req.cookies.session;
     const length = Object.keys(req.body).length;
+    let currentPage = getPageNumber(req.originalUrl, allUrls);
     const dataForThisSheet = allQuestions.filter( data => data.page === currentPage);
     const perguntas = dataForThisSheet.filter (data => data.radio);
     const newQuestionSubmittedByUser = new Answer ( { userId, answersObject, createdAt} )
@@ -485,7 +521,7 @@ router.post('/scenario-1-split-2', (req, res) => {
 
 router.get('/scenario-2-split-1', (req, res) => {
 
-    currentPage = getPageNumber(req.originalUrl, allUrls);
+    let currentPage = getPageNumber(req.originalUrl, allUrls);
     const dataForThisSheet = allQuestions.filter( data => data.page === currentPage);
     const sheetsSituations = dataForThisSheet.filter (data => data.scenario);
     const heading = dataForThisSheet.filter (data => data.heading);
@@ -501,6 +537,7 @@ router.post('/scenario-2-split-1', (req, res) => {
     const answersObject = JSON.stringify(reqBody);
     const userId = req.cookies.session;
     const length = Object.keys(req.body).length;
+    let currentPage = getPageNumber(req.originalUrl, allUrls);
     const dataForThisSheet = allQuestions.filter( data => data.page === currentPage);
     const perguntas = dataForThisSheet.filter (data => data.radio);
     const newQuestionSubmittedByUser = new Answer ( { userId, answersObject, createdAt} )
@@ -520,7 +557,7 @@ router.post('/scenario-2-split-1', (req, res) => {
 
 router.get('/scenario-2-split-2', (req, res) => {
 
-    currentPage = getPageNumber(req.originalUrl, allUrls);
+    let currentPage = getPageNumber(req.originalUrl, allUrls);
     const dataForThisSheet = allQuestions.filter( data => data.page === currentPage);
     const sheetsSituations = dataForThisSheet.filter (data => data.scenario);
     const heading = dataForThisSheet.filter (data => data.heading);
@@ -536,6 +573,7 @@ router.post('/scenario-2-split-2', (req, res) => {
     const answersObject = JSON.stringify(reqBody);
     const userId = req.cookies.session;
     const length = Object.keys(req.body).length;
+    let currentPage = getPageNumber(req.originalUrl, allUrls);
     const dataForThisSheet = allQuestions.filter( data => data.page === currentPage);
     const perguntas = dataForThisSheet.filter (data => data.radio);
     const newQuestionSubmittedByUser = new Answer ( { userId, answersObject, createdAt} )
@@ -555,7 +593,7 @@ router.post('/scenario-2-split-2', (req, res) => {
 
 router.get('/scenario-3-split-1', (req, res) => {
 
-    currentPage = getPageNumber(req.originalUrl, allUrls);
+    let currentPage = getPageNumber(req.originalUrl, allUrls);
     const dataForThisSheet = allQuestions.filter( data => data.page === currentPage);
     const sheetsSituations = dataForThisSheet.filter (data => data.scenario);
     const heading = dataForThisSheet.filter (data => data.heading);
@@ -571,6 +609,7 @@ router.post('/scenario-3-split-1', (req, res) => {
     const answersObject = JSON.stringify(reqBody);
     const userId = req.cookies.session;
     const length = Object.keys(req.body).length;
+    let currentPage = getPageNumber(req.originalUrl, allUrls);
     const dataForThisSheet = allQuestions.filter( data => data.page === currentPage);
     const perguntas = dataForThisSheet.filter (data => data.radio);
     const newQuestionSubmittedByUser = new Answer ( { userId, answersObject, createdAt} )
@@ -590,7 +629,7 @@ router.post('/scenario-3-split-1', (req, res) => {
 
 router.get('/scenario-3-split-2', (req, res) => {
 
-    currentPage = getPageNumber(req.originalUrl, allUrls);
+    let currentPage = getPageNumber(req.originalUrl, allUrls);
     const dataForThisSheet = allQuestions.filter( data => data.page === currentPage);
     const sheetsSituations = dataForThisSheet.filter (data => data.scenario);
     const heading = dataForThisSheet.filter (data => data.heading);
@@ -606,6 +645,7 @@ router.post('/scenario-3-split-2', (req, res) => {
     const answersObject = JSON.stringify(reqBody);
     const userId = req.cookies.session;
     const length = Object.keys(req.body).length;
+    let currentPage = getPageNumber(req.originalUrl, allUrls);
     const dataForThisSheet = allQuestions.filter( data => data.page === currentPage);
     const perguntas = dataForThisSheet.filter (data => data.radio);
     const newQuestionSubmittedByUser = new Answer ( { userId, answersObject, createdAt} )

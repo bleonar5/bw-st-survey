@@ -247,6 +247,28 @@ In this case, the ratio is 15:60:20
     height: 10%;
 }
 
+/* Layout G is used for scenario-split mezzanine pages
+*/
+
+#content-heading-g {
+    height: 25%;
+}
+
+#content-main-g {
+    min-height: 50%;
+}
+
+.bespoke-vertical-align-g {
+    min-height: 50%;
+    min-height: 50vh;
+    display: flex;
+    align-items: center;
+}
+    
+#footer-g {
+    height: 25%;
+}
+
 /* Font Sizes */
 /*
 If root: font-size is 16px, 1 rem will be 16px

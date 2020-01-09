@@ -1,0 +1,38 @@
+<div id="content-heading-g" class="text-center">
+    <div class="row h-100">
+        <div class="col-md-12 align-self-end">
+        </div>
+    </div>
+</div>
+
+<div id="content-main-g">
+    <div class="row justify-content-center bespoke-vertical-align-g">
+        <div class="col-xs-12 col-sm-10 col-md-8 text-center">
+
+          {{#each instructions}}
+            {{#if info}}
+                <h3 class="my-sm-3 my-md-4 my-lg-4 my-xl-5">{{{this.text}}}</h3>
+            {{/if}}
+          {{/each}}
+
+        </div>
+    </div>
+{{!-- closing div of end of contentmain below --}}
+</div>
+
+<div id="footer-g" class="row">
+
+    {{> 4footerleft}}
+        </div>
+    </div>
+
+    {{> 5footermiddle}}
+            <a class="btn btn-lg btn-primary" role="button" href={{urlsAndPages.nextPage}}>Next</a>
+        </div>
+    </div>
+
+    {{> 6footerright}}
+        </div>
+    </div>
+{{!-- closing div of footer below --}}
+</div>

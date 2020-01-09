@@ -99,34 +99,48 @@ const urls =
         "page": 15,
         "backbutton": true,
         "previouspage": "/scenario-1-split-1",
-        "nextpage": "/scenario-2-split-1",
+        "nextpage": "/scenario-2-intro",
         "comment": "[RP: added 08-jan]"
     },
     {
-        "url": "/scenario-2-split-1",
+        "url": "/scenario-2-intro",
         "page": 16,
         "previouspage": "/scenario-1-split-2",
+        "nextpage": "/scenario-2-split-1",
+        "comment": "[RP: added 09-jan]"
+    },
+    {
+        "url": "/scenario-2-split-1",
+        "page": 17,
+        "previouspage": "/scenario-2-intro",
         "nextpage": "/scenario-2-split-2",
         "comment": "[RP: added 08-jan]"
     },
     {
         "url": "/scenario-2-split-2",
-        "page": 17,
+        "page": 18,
         "backbutton": true,
         "previouspage": "/scenario-2-split-1",
-        "nextpage": "/scenario-3-split-1",
+        "nextpage": "/scenario-3-intro",
         "comment": "[RP: added 08-jan]"
     },
     {
-        "url": "/scenario-3-split-1",
-        "page": 18,
+        "url": "/scenario-3-intro",
+        "page": 19,
         "previouspage": "/scenario-2-split-2",
+        "nextpage": "/scenario-3-split-1",
+        "comment": "[RP: added 09-jan]"
+    },
+    {
+        "url": "/scenario-3-split-1",
+        "page": 20,
+        "previouspage": "/scenario-3-intro",
         "nextpage": "/scenario-3-split-2",
         "comment": "[RP: added 08-jan]"
     },
     {
         "url": "/scenario-3-split-2",
-        "page": 19,
+        "page": 21,
         "backbutton": true,
         "previouspage": "/scenario-3-split-1",
         "nextpage": "/study-conclusion",
@@ -134,13 +148,13 @@ const urls =
     },
     {
         "url": "/study-conclusion",
-        "page": 20,
+        "page": 22,
         "previouspage": "/scenario-3-split-2"
     },
     {
         "url": "/scenario-1",
         "page": 114,
-        "previouspage": "/instructions-3",
+        "previouspage": "/scenario-1-split-2",
         "nextpage": "/task-3-part-1"
     },
     {

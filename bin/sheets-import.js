@@ -499,9 +499,9 @@ const questions =
         "url": "/task-2-part-1b",
         "page": 10,
         "id": 21009,
-        "text": "How much teamwork does your job require?",
+        "text": "How often does your job require teamwork?",
         "category": "dropdown",
-        "options": "none; a little; some; a lot; all the time",
+        "options": "Never; Rarely; Sometimes; Frequently; Constantly",
         "dropdown": true
     },
     {
@@ -1315,7 +1315,7 @@ const questions =
     },
     {
         "url": "/scenario-2-split-1",
-        "page": 16,
+        "page": 17,
         "id": 30024,
         "text": "Scenario 2 (of 3)",
         "category": "heading",
@@ -1323,7 +1323,7 @@ const questions =
     },
     {
         "url": "/scenario-2-split-1",
-        "page": 16,
+        "page": 17,
         "id": 30025,
         "text": "You are a member of a manufacturing production team.",
         "category": "scenario",
@@ -1331,7 +1331,7 @@ const questions =
     },
     {
         "url": "/scenario-2-split-1",
-        "page": 16,
+        "page": 17,
         "id": 30026,
         "text": "Your team is responsible for the production of three product lines.",
         "category": "scenario",
@@ -1339,7 +1339,7 @@ const questions =
     },
     {
         "url": "/scenario-2-split-1",
-        "page": 16,
+        "page": 17,
         "id": 30027,
         "text": "Last month management asked for a recommendation from your team as to whether or not your team could assume responsibility for another product line (making a total of four).",
         "category": "scenario",
@@ -1347,7 +1347,7 @@ const questions =
     },
     {
         "url": "/scenario-2-split-1",
-        "page": 16,
+        "page": 17,
         "id": 30028,
         "text": "Your personal view is that taking on the new product line would increase the visibility and importance of the team within the organization, which would help raise salaries and promotional opportunities.",
         "category": "scenario",
@@ -1355,7 +1355,7 @@ const questions =
     },
     {
         "url": "/scenario-2-split-1",
-        "page": 16,
+        "page": 17,
         "id": 30029,
         "text": "The other four members of your team feel that, in addition to the increased time and personnel demands placed on the team, current technology may not be capable of producing the new product efficiently.",
         "category": "scenario",
@@ -1363,7 +1363,7 @@ const questions =
     },
     {
         "url": "/scenario-2-split-1",
-        "page": 16,
+        "page": 17,
         "id": 30030,
         "text": "For the past several weeks your team has been carefully investigating the possibility of taking on another product. Your team has thoroughly discussed all the issues and would like to propose to management that the product line be manufactured at another facility.",
         "category": "scenario",
@@ -1371,7 +1371,7 @@ const questions =
     },
     {
         "url": "/scenario-2-split-1",
-        "page": 16,
+        "page": 17,
         "id": 31601,
         "text": "a) Acknowledge that your arguments have been heard and discussed by the team, and support the team’s decision.",
         "category": "radio",
@@ -1379,7 +1379,7 @@ const questions =
     },
     {
         "url": "/scenario-2-split-1",
-        "page": 16,
+        "page": 17,
         "id": 31602,
         "text": "b) Ask the team to reconsider one more time your perspective on the long-term political impact of refusing the new product line because you feel it is an important issue.",
         "category": "radio",
@@ -1387,7 +1387,7 @@ const questions =
     },
     {
         "url": "/scenario-2-split-1",
-        "page": 16,
+        "page": 17,
         "id": 31603,
         "text": "c) Let the team know that although you believe in team unity, you can’t bring yourself to refuse the new product line.",
         "category": "radio",
@@ -1395,7 +1395,7 @@ const questions =
     },
     {
         "url": "/scenario-2-split-1",
-        "page": 16,
+        "page": 17,
         "id": 31604,
         "text": "d) Show your willingness to be a team player by voicing your support of the team’s decision. .",
         "category": "radio",
@@ -1403,7 +1403,7 @@ const questions =
     },
     {
         "url": "/scenario-2-split-1",
-        "page": 16,
+        "page": 17,
         "id": 31605,
         "text": "e) Recognize that the team has reviewed the issues, and begin discussing ways to make the recommendation to management.",
         "category": "radio",
@@ -1411,7 +1411,7 @@ const questions =
     },
     {
         "url": "/scenario-2-split-2",
-        "page": 17,
+        "page": 18,
         "id": 30024,
         "text": "Scenario 2 (of 3)",
         "category": "heading",
@@ -1419,7 +1419,7 @@ const questions =
     },
     {
         "url": "/scenario-2-split-2",
-        "page": 17,
+        "page": 18,
         "id": 30025,
         "text": "You are a member of a manufacturing production team.",
         "category": "scenario",
@@ -1427,7 +1427,7 @@ const questions =
     },
     {
         "url": "/scenario-2-split-2",
-        "page": 17,
+        "page": 18,
         "id": 30026,
         "text": "Your team is responsible for the production of three product lines.",
         "category": "scenario",
@@ -1435,7 +1435,7 @@ const questions =
     },
     {
         "url": "/scenario-2-split-2",
-        "page": 17,
+        "page": 18,
         "id": 30027,
         "text": "Last month management asked for a recommendation from your team as to whether or not your team could assume responsibility for another product line (making a total of four).",
         "category": "scenario",
@@ -1443,7 +1443,7 @@ const questions =
     },
     {
         "url": "/scenario-2-split-2",
-        "page": 17,
+        "page": 18,
         "id": 30028,
         "text": "Your personal view is that taking on the new product line would increase the visibility and importance of the team within the organization, which would help raise salaries and promotional opportunities.",
         "category": "scenario",
@@ -1451,7 +1451,7 @@ const questions =
     },
     {
         "url": "/scenario-2-split-2",
-        "page": 17,
+        "page": 18,
         "id": 30029,
         "text": "The other four members of your team feel that, in addition to the increased time and personnel demands placed on the team, current technology may not be capable of producing the new product efficiently.",
         "category": "scenario",
@@ -1459,7 +1459,7 @@ const questions =
     },
     {
         "url": "/scenario-2-split-2",
-        "page": 17,
+        "page": 18,
         "id": 30030,
         "text": "For the past several weeks your team has been carefully investigating the possibility of taking on another product. Your team has thoroughly discussed all the issues and would like to propose to management that the product line be manufactured at another facility.",
         "category": "scenario",
@@ -1467,7 +1467,7 @@ const questions =
     },
     {
         "url": "/scenario-2-split-2",
-        "page": 17,
+        "page": 18,
         "id": 31606,
         "text": "f) Suggest that since the team can’t reach consensus they should allow upper management to make the final decision.",
         "category": "radio",
@@ -1475,7 +1475,7 @@ const questions =
     },
     {
         "url": "/scenario-2-split-2",
-        "page": 17,
+        "page": 18,
         "id": 31607,
         "text": "g) Even though you would still prefer to take on the new product line, go along with the team’s decision, because they have let you have your say in the matter.",
         "category": "radio",
@@ -1483,7 +1483,7 @@ const questions =
     },
     {
         "url": "/scenario-2-split-2",
-        "page": 17,
+        "page": 18,
         "id": 31608,
         "text": "h) Recognize that the team has some good arguments, but remain committed to making the team see that the benefits clearly outweigh the costs.",
         "category": "radio",
@@ -1491,7 +1491,7 @@ const questions =
     },
     {
         "url": "/scenario-2-split-2",
-        "page": 17,
+        "page": 18,
         "id": 31609,
         "text": "i) Sustain the team’s decision on the recommendation, as long as they acknowledge to upper management that the team would revisit its decision if more resources are provided. .",
         "category": "radio",
@@ -1499,7 +1499,7 @@ const questions =
     },
     {
         "url": "/scenario-2-split-2",
-        "page": 17,
+        "page": 18,
         "id": 31610,
         "text": "j) Be assertive and let the team know you still feel strongly that the team should take on the new product line.",
         "category": "radio",
@@ -1507,7 +1507,7 @@ const questions =
     },
     {
         "url": "/scenario-3-split-1",
-        "page": 18,
+        "page": 20,
         "id": 31700,
         "text": "Scenario 3 (of 3)",
         "category": "heading",
@@ -1515,7 +1515,7 @@ const questions =
     },
     {
         "url": "/scenario-3-split-1",
-        "page": 18,
+        "page": 20,
         "id": 31701,
         "text": "You are a member of a long-standing manufacturing team.",
         "category": "scenario",
@@ -1523,7 +1523,7 @@ const questions =
     },
     {
         "url": "/scenario-3-split-1",
-        "page": 18,
+        "page": 20,
         "id": 31702,
         "text": "Your team has been together for several years and has become pretty good at handling the work at hand.",
         "category": "scenario",
@@ -1531,7 +1531,7 @@ const questions =
     },
     {
         "url": "/scenario-3-split-1",
-        "page": 18,
+        "page": 20,
         "id": 31703,
         "text": "Each team member is comfortable with the work process and the other team members.",
         "category": "scenario",
@@ -1539,7 +1539,7 @@ const questions =
     },
     {
         "url": "/scenario-3-split-1",
-        "page": 18,
+        "page": 20,
         "id": 31704,
         "text": "Your work team will be moving to a new building that has been added onto the plant.",
         "category": "scenario",
@@ -1547,7 +1547,7 @@ const questions =
     },
     {
         "url": "/scenario-3-split-1",
-        "page": 18,
+        "page": 20,
         "id": 31705,
         "text": "The area manager has asked your team for some new ideas on how the equipment should be laid out in the new building.",
         "category": "scenario",
@@ -1555,7 +1555,7 @@ const questions =
     },
     {
         "url": "/scenario-3-split-1",
-        "page": 18,
+        "page": 20,
         "id": 31801,
         "text": "a) Highlight the fact that you have been doing the job for 15 years and the current layout is the best one.",
         "category": "radio",
@@ -1563,7 +1563,7 @@ const questions =
     },
     {
         "url": "/scenario-3-split-1",
-        "page": 18,
+        "page": 20,
         "id": 31802,
         "text": "b) Propose that a good strategy may be to think outside of the box and get new layout ideas from high performance manufacturers in other industries.",
         "category": "radio",
@@ -1571,7 +1571,7 @@ const questions =
     },
     {
         "url": "/scenario-3-split-1",
-        "page": 18,
+        "page": 20,
         "id": 31803,
         "text": "c) Keep the team on track by pointing out that it is very inefficient to waste time discussing solutions that are probably not practically feasible.",
         "category": "radio",
@@ -1579,7 +1579,7 @@ const questions =
     },
     {
         "url": "/scenario-3-split-1",
-        "page": 18,
+        "page": 20,
         "id": 31804,
         "text": "d) Suggest that the team keep the ideas similar to the current layout to simplify the transition to the new building.",
         "category": "radio",
@@ -1587,7 +1587,7 @@ const questions =
     },
     {
         "url": "/scenario-3-split-1",
-        "page": 18,
+        "page": 20,
         "id": 31805,
         "text": "e) Suggest that to find the optimal layout, the team should first generate innovative ideas and save the evaluation of the ideas for later in the process.",
         "category": "radio",
@@ -1595,7 +1595,7 @@ const questions =
     },
     {
         "url": "/scenario-3-split-2",
-        "page": 19,
+        "page": 21,
         "id": 31700,
         "text": "Scenario 3 (of 3)",
         "category": "heading",
@@ -1603,7 +1603,7 @@ const questions =
     },
     {
         "url": "/scenario-3-split-2",
-        "page": 19,
+        "page": 21,
         "id": 31701,
         "text": "You are a member of a long-standing manufacturing team.",
         "category": "scenario",
@@ -1611,7 +1611,7 @@ const questions =
     },
     {
         "url": "/scenario-3-split-2",
-        "page": 19,
+        "page": 21,
         "id": 31702,
         "text": "Your team has been together for several years and has become pretty good at handling the work at hand.",
         "category": "scenario",
@@ -1619,7 +1619,7 @@ const questions =
     },
     {
         "url": "/scenario-3-split-2",
-        "page": 19,
+        "page": 21,
         "id": 31703,
         "text": "Each team member is comfortable with the work process and the other team members.",
         "category": "scenario",
@@ -1627,7 +1627,7 @@ const questions =
     },
     {
         "url": "/scenario-3-split-2",
-        "page": 19,
+        "page": 21,
         "id": 31704,
         "text": "Your work team will be moving to a new building that has been added onto the plant.",
         "category": "scenario",
@@ -1635,7 +1635,7 @@ const questions =
     },
     {
         "url": "/scenario-3-split-2",
-        "page": 19,
+        "page": 21,
         "id": 31705,
         "text": "The area manager has asked your team for some new ideas on how the equipment should be laid out in the new building.",
         "category": "scenario",
@@ -1643,7 +1643,7 @@ const questions =
     },
     {
         "url": "/scenario-3-split-2",
-        "page": 19,
+        "page": 21,
         "id": 31806,
         "text": "f) Make sure the team doesn’t waste time discussing drastic changes to the current layout because management is not likely to endorse such a proposal anyway.",
         "category": "radio",
@@ -1651,7 +1651,7 @@ const questions =
     },
     {
         "url": "/scenario-3-split-2",
-        "page": 19,
+        "page": 21,
         "id": 31807,
         "text": "g) Make sure production levels don’t drop due to letting your team’s most creative member make all suggestions.",
         "category": "radio",
@@ -1659,7 +1659,7 @@ const questions =
     },
     {
         "url": "/scenario-3-split-2",
-        "page": 19,
+        "page": 21,
         "id": 31808,
         "text": "h) Remind the team that they have been working in the current environment for many years, and should consider all layout options even if they seem unfamiliar.",
         "category": "radio",
@@ -1667,7 +1667,7 @@ const questions =
     },
     {
         "url": "/scenario-3-split-2",
-        "page": 19,
+        "page": 21,
         "id": 31809,
         "text": "i) Recommend that each team member take time this week to create three layout designs and bring them to the next team meeting.",
         "category": "radio",
@@ -1675,11 +1675,27 @@ const questions =
     },
     {
         "url": "/scenario-3-split-2",
-        "page": 19,
+        "page": 21,
         "id": 31810,
         "text": "j) Suggest that a good way to generate innovative layouts would be to hold the next meeting in the new building.",
         "category": "radio",
         "radio": true
+    },
+    {
+        "url": "/scenario-2-intro",
+        "page": 16,
+        "text": "Click 'next' to read the second scenario",
+        "category": "info",
+        "info": true,
+        "comments": "[RP:9-jan - added 9-jan]"
+    },
+    {
+        "url": "/scenario-3-intro",
+        "page": 19,
+        "text": "Click 'next' to read the last scenario",
+        "category": "info",
+        "info": true,
+        "comments": "[RP:9-jan - added 9-jan]"
     }
 ]
 
