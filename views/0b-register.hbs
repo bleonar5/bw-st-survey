@@ -1,0 +1,40 @@
+
+<div id="content-main-c" class="mx-xs-0 mx-sm-2 mx-md-3 mx-lg-5">
+    <div class="row justify-content-center bespoke-vertical-align-c">
+        <div class="col-md-8 col-sm-10 p-4">
+            <form method="POST">
+            <fieldset class="bg-light p-4 rounded">
+                <div class="form-group">
+                    {{!-- <div class="my-5">
+                        <label for="first-name">First Name</label>
+                        <input id="first-name" type="text" class="form-control" name="firstNameOnRegister" value="" required>
+                    </div>
+                    <div class="my-5">
+                        <label for="family-name">Family Name</label>
+                        <input id="family-name" type="text" class="form-control" name="familyNameOnRegister" value="" required>
+                    </div> --}}
+                    <div class="my-5">
+                        <label for="email">Email</label>
+                        <input id="email" type="email" class="form-control" name="emailOnRegister" value="" required>
+                    </div>
+
+                    <div class="my-5">
+                        <label for="password">Password</label><br>
+                        <input id="password" type="password" class="form-control" name="passwordOnRegister" placeholder="**********" autocomplete="off" required>
+                    </div>
+                    <div>
+                        {{#if errorMessage }}
+                            <div class="error-message">{{ errorMessage }}</div>
+                        {{/if}}
+                    </div>
+                </div>
+
+                <div class="text-center">
+                    <button type="submit" class="btn btn-lg btn-success" >Begin Survey</button>
+                </div>
+            </fieldset>
+            </form> 
+        </div>
+        </div>
+{{!-- closing div of end of content main below --}}
+</div>

@@ -1,26 +1,26 @@
 
 {{!-- Close Header Div --}}
 
-{{> 1contentheading}}
+<div id="content-heading">
 </div>
-    {{> 2contentmain}}
 
+    <div id="content-main" class="mx-xs-0 mx-sm-2 mx-md-3 mx-lg-5">
         <div class="row justify-content-center bespoke-60vh-vertical-align">
-            <div class="col-md-8 col-sm-10 p-4 ">
+            <div class="col-md-8 col-sm-10 p-4">
               <form action="/study-consent" method="POST">
                 <fieldset class="bg-light p-4 rounded">
                     <div class="form-group">
                         <div class="my-5">
                             <label for="participant_id">First Name</label>
-                            <input type="text" class="form-control" name="firstNameOnLogin" value="">
+                            <input type="text" class="form-control" name="firstNameOnLogin" value="" required>
                         </div>
                         <div class="my-5">
                             <label for="participant_id">Family Name</label>
-                            <input type="text" class="form-control" name="familyNameOnLogin" value="">
+                            <input type="text" class="form-control" name="familyNameOnLogin" value="" required>
                         </div>
                         <div class="my-5">
                             <label for="participant_id">Email</label>
-                            <input type="email" class="form-control" name="emailOnLogin" value="">
+                            <input type="email" class="form-control" name="emailOnLogin" value="" required>
                         </div>
                         <div>
                             {{#if errorMessage }}
@@ -30,7 +30,7 @@
                     </div>
   
                     <div class="text-center">
-                    <button href="/eligibility-notice" class="btn btn-lg btn-success" type="submit">Login</button>
+                        <button href="/eligibility-notice" class="btn btn-lg btn-success" type="submit">Login</button>
                     </div>
                 </fieldset>
               </form> 
@@ -39,5 +39,5 @@
     {{!-- closing div of end of content main below --}}
     </div>
 
-{{> 3footer}}
+<div id="footer">
 </div>
