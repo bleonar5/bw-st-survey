@@ -4,7 +4,9 @@ const Schema = mongoose.Schema;
 const questionSchema = new Schema({
     // radioques: String,
     userId: String,
-    answersObject: Object,
+    answersObject: String,
+    currentPage: Number,
+    userEmail: String,
 
     // questionId: String,
     // question: String,

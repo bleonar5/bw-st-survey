@@ -94,11 +94,12 @@ router.get('/login', (req, res) => {
     // Use method from bcrypt called compareSync. This will compare the password with the saved password
     // You have to use the function compareSync because bcrypt compares the hashes that the 
         if (bcrypt.compareSync(thePassword, user.password)) {
-          // Note how we create the user session (req.session.currentUser = user); the request object has a property called session where we can add the values we want to store on it. In this case, we are setting it up with the user’s information.
-          req.session.currentUser = user;
+          // Note how we create the user session (req.session.currentUser = user); the request object has a property called session where we can add the values we want to store on it. In this case, we are setting it up with the user’s email address.
+          req.session.currentUser = user.email;
+          console.log(`This email address has been stored in the req.session: ${user.email}`);
           res.redirect("study-consent");
         } else {
-          res.render("auth/login", {
+          res.render("0c-login", {
             errorMessage: "Incorrect password"
           });
         }

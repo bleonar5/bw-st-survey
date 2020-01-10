@@ -29,6 +29,16 @@ app.use(cookieSession({
     maxAge: 24 * 60 * 60 * 1000 // 24 hours
 }))
 
+
+// Write own Middleware to prevent users who are not logged in from accessing secret pages
+router.use((req, res, next) => {
+    if (req.session.currentUser) { // <== if there's user in the session (user is logged in)
+      next(); // ==> go to the next route ---
+    } else {                          //    |
+      res.redirect("/login");         //    |
+    }                                 //    |
+});
+
 /** --- SITE-ROUTES START HERE --- **/
 router.get("/", (req, res, next) => {
   res.render('index');
@@ -107,6 +117,7 @@ router.get('/scenario-3-intro', (req, res) => {
 router.get('/task-1-part-1', (req, res) => {
 
     req.session.views = (req.session.views || 0) + 1
+    const userEmail = req.session.currentUser;
 
     // Write response
     console.log(`user has had ${req.session.views} views`);
@@ -115,22 +126,52 @@ router.get('/task-1-part-1', (req, res) => {
 
     currentPage = getPageNumber(req.originalUrl, allUrls);
     const perguntas = allQuestions.filter(data => data.page === currentPage);
+    console.log(perguntas);
     const urlsAndPages = extractUrlAndPage(currentPage, allUrls);
     res.render('3b-task-1', { perguntas, urlsAndPages });
+
+    // Key Value pair
+    Answer.findOne({userEmail: userEmail})
+    .then((answer) => {
+        console.log(`below are the answers loaded`);
+        // Declare variable to store the answeres retrieved from the database (as a string)
+        const answersLoaded = answer.answersObject;
+        console.log(answersLoaded);
+        console.log(typeof answersLoaded);
+        // Convert string to object
+        const objectOfRetrievedAnswers = JSON.parse(answersLoaded);
+        console.log(objectOfRetrievedAnswers);
+
+        // const entries = Object.entries(answersLoaded);
+        // console.log(entries);
+        // const gobbo = answersLoaded.toArray();
+        // console.log(gobbo);
+      // We are now passing the answers that we got from the database to the view
+    })
+    .catch((error) => {
+      console.log(error);
+    })
 });
 
 
-// Temporarily commenting out the POST part
 router.post('/task-1-part-1', (req, res) => {
 
     const reqBody = req.body;
+    console.log(`req body is below`);
+    console.log(reqBody);
     const createdAt = req._startTime;
     const answersObject = JSON.stringify(reqBody);
     const userId = req.cookies.session;
+    const userEmail = req.session.currentUser;
     const length = Object.keys(req.body).length;
-    const newQuestionSubmittedByUser = new Answer ( { userId, answersObject, createdAt} )
+    const currentPage = getPageNumber(req.originalUrl, allUrls);
+    const dataForThisSheet = allQuestions.filter( data => data.page === currentPage);
+    const perguntas = dataForThisSheet.filter (data => !data.heading);
+    console.log(`No of questions is: ${perguntas.length}`);
 
-    if (length === 9) {
+    const newQuestionSubmittedByUser = new Answer ( { userId, userEmail, currentPage, answersObject, createdAt} )
+
+    if (length === perguntas.length) {
         newQuestionSubmittedByUser.save()
         .then( () => {
             console.log('Answer saved to database:');
@@ -319,7 +360,7 @@ router.post('/task-2-part-3', (req, res) => {
     const newQuestionSubmittedByUser = new Answer ( { userId, answersObject, createdAt} );
     const values = Object.values(req.body);
     const valuesAsString = values.toString();
-    let currentPage = getPageNumber(req.originalUrl, allUrls);
+    const currentPage = getPageNumber(req.originalUrl, allUrls);
     const dataForThisSheet = allQuestions.filter( data => data.page === currentPage);
     const perguntas = dataForThisSheet.filter (data => !data.heading);
     let includesNo = valuesAsString.includes("0-no");
@@ -383,9 +424,12 @@ router.post('/task-3-part-2', (req, res) => {
     const answersObject = JSON.stringify(reqBody);
     const userId = req.cookies.session;
     const length = Object.keys(req.body).length;
-    const newQuestionSubmittedByUser = new Answer ( { userId, answersObject, createdAt} )
+    const newQuestionSubmittedByUser = new Answer ( { userId, answersObject, createdAt} );
+    const currentPage = getPageNumber(req.originalUrl, allUrls);
+    const dataForThisSheet = allQuestions.filter( data => data.page === currentPage);
+    const perguntas = dataForThisSheet.filter (data => !data.heading);
 
-    if (length === 10) {
+    if (length === perguntas.length) {
         newQuestionSubmittedByUser.save()
         .then( () => {
             console.log('Answer saved to database:');
@@ -412,9 +456,12 @@ router.post('/task-3-part-3', (req, res) => {
     const answersObject = JSON.stringify(reqBody);
     const userId = req.cookies.session;
     const length = Object.keys(req.body).length;
-    const newQuestionSubmittedByUser = new Answer ( { userId, answersObject, createdAt} )
+    const newQuestionSubmittedByUser = new Answer ( { userId, answersObject, createdAt} );
+    const currentPage = getPageNumber(req.originalUrl, allUrls);
+    const dataForThisSheet = allQuestions.filter( data => data.page === currentPage);
+    const perguntas = dataForThisSheet.filter (data => !data.heading);
 
-    if (length === 10) {
+    if (length === perguntas.length) {
         newQuestionSubmittedByUser.save()
         .then( () => {
             console.log('Answer saved to database:');
@@ -631,7 +678,6 @@ router.post('/scenario-3-split-1', (req, res) => {
 
 router.get('/scenario-3-split-2', (req, res) => {
 
-    const reqBody = req.body;
     let currentPage = getPageNumber(req.originalUrl, allUrls);
     const dataForThisSheet = allQuestions.filter( data => data.page === currentPage);
     const sheetsSituations = dataForThisSheet.filter (data => data.scenario);
