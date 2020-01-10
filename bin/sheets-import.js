@@ -204,6 +204,7 @@ const questions =
         "id": 10601,
         "text": "I always ask for information from others before making any important decision",
         "category": "radio",
+        "testanswer": "1-strongly-disagree",
         "radio": true
     },
     {
@@ -213,6 +214,7 @@ const questions =
         "id": 10602,
         "text": "I would rather take action on my own than wait around for others’ input",
         "category": "radio",
+        "testanswer": "2-somewhat-disagree",
         "radio": true
     },
     {
@@ -222,6 +224,7 @@ const questions =
         "id": 10603,
         "text": "When solving a problem, it is very important to make your own decision and stick by it",
         "category": "radio",
+        "testanswer": "3-no-opinion",
         "radio": true
     },
     {
@@ -231,6 +234,7 @@ const questions =
         "id": 10604,
         "text": "Teams usually work very effectively",
         "category": "radio",
+        "testanswer": "4-somewhat-agree",
         "radio": true
     },
     {
@@ -240,6 +244,7 @@ const questions =
         "id": 10605,
         "text": "I find that it is often more productive to work on my own than with others",
         "category": "radio",
+        "testanswer": "5-strongly-agree",
         "radio": true,
         "comments": "[RP-09-dec: corrected typo won -> own]"
     },
@@ -425,6 +430,7 @@ const questions =
         "id": 20903,
         "text": "What kind of business or industry do you work in? (Please describe the main activity at your workplace. For example: hospital, newspaper publishing, auto repair shop, bank. If you have multiple jobs, describe the one where you work the most)",
         "category": "textarea",
+        "testanswer": "Testing Testing",
         "textarea": true
     },
     {
@@ -435,6 +441,7 @@ const questions =
         "text": "Is your work mainly:",
         "category": "dropdown",
         "options": "Manufacturing; Wholesale trade; Retail trade; Other (agriculture, construction, service, government etc)",
+        "testanswer": "Retail trade",
         "dropdown": true
     },
     {
@@ -444,6 +451,7 @@ const questions =
         "id": 20905,
         "text": "What is your job title?",
         "category": "textarea",
+        "testanswer": "Testing Text",
         "textarea": true,
         "comments": "[RP-08-jan: added in v9]"
     },
@@ -463,6 +471,7 @@ const questions =
         "id": 21005,
         "text": "What kind of work do you do? (For example: registered nurse, personnel manager, supervisor of order department, auto mechanic, accountant)",
         "category": "textarea",
+        "testanswer": "Finibus Bonorum et Malorum",
         "textarea": true
     },
     {
@@ -541,6 +550,7 @@ const questions =
         "id": 21104,
         "text": "[placeholder 2; Ben/David still coming up with some Q’s here]",
         "category": "textarea",
+        "testanswer": "Finibus Bonorum et Malorum",
         "textarea": true
     },
     {
@@ -568,6 +578,7 @@ const questions =
         "id": 21201,
         "text": "In the last year, have you been part of any recreational clubs or groups that involves working in groups?",
         "category": "yesno",
+        "testanswer": "yes",
         "yesno": true
     },
     {
@@ -578,6 +589,7 @@ const questions =
         "text": "If YES, how often do you attend?",
         "category": "dropdown",
         "options": "more than 3 times a week; 1-3 times a week; 1 per month; infrequently",
+        "testanswer": "1-3 times a week",
         "dropdown": true
     },
     {

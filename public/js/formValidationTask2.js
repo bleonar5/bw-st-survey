@@ -20,7 +20,7 @@ function checkQuestionsTask2(_questionsArrayOnThisPage) {
         document.getElementById('warning-message-small').innerHTML = warningMessageSmall;
     } else {
         // All questions have a radio box selected, so user can progress
-        console.log('Front End Check Complete');
+        return true;
         // Comment out nextPage as the backend is doing validation to send to next page
         // nextPage(window.location.pathname);
 }}
@@ -52,7 +52,6 @@ function checkDropdownsAndYesNosAndTextAreas(_quesId) {
         // Check if either the yes or no button has been selected by the user
         if (yesNoArray[0].classList.contains("active") || yesNoArray[1].classList.contains("active")) {
             checked = true;
-            console.log('yes, no has been selected');
     }}
 
     // Run check to see if text boxes have been filled

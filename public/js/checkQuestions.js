@@ -36,7 +36,8 @@ function checkQuestionsRadios(_arrayOfQuestions) {
         
     } else {
         // All questions have a radio box selected, so user can progress
-        console.log('I can now send user to the next page');
+
+        return true;
         // currentPath = window.location.pathname;
         // nextPage(currentPath);
     }

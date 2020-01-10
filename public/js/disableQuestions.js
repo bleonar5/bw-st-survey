@@ -62,8 +62,6 @@ function convertSemiColonsToArray(_ques) {
     return newArray;
 }
 
-
-
 function disableDependencies(_id) {
 
     // Temporarily hardcoding Ids

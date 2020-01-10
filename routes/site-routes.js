@@ -318,8 +318,10 @@ router.get('/task-2-part-2', (req, res) => {
 router.post('/task-2-part-2', (req, res) => {
 
     const reqBody = req.body;
+    console.log(reqBody);
     const createdAt = req._startTime;
     const answersObject = JSON.stringify(reqBody);
+    console.log(answersObject);
     const userId = req.cookies.session;
     const length = Object.keys(req.body).length;
     const newQuestionSubmittedByUser = new Answer ( { userId, answersObject, createdAt} );
