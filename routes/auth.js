@@ -83,7 +83,7 @@ router.get('/login', (req, res) => {
       return;
     }
   
-    User.findOne({ "username": theUsername })
+    User.findOne({ "email": theUsername })
     .then(user => {
         if (!user) {
           res.render("0c-login", {
