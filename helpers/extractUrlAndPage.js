@@ -14,7 +14,8 @@ function extractUrlAndPage(_page, _urlsArray) {
             previousPage: _urlsArray[_page - 2].url,
             nextPage: _urlsArray[_page].url,
             pagination: _urlsArray[_page - 1].pagination,
-            backbutton: _urlsArray[_page - 1].backbutton
+            backbutton: _urlsArray[_page - 1].backbutton,
+            handlebarsStaticPage: _urlsArray[_page - 1].hbsview
         }
     
     return urlInfo;
