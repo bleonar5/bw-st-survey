@@ -38,7 +38,31 @@
             <form onSubmit="return checkQuestionsRadios(getArrayOfQuestions());" method="POST">
                     <table class="table table-sm table-striped">
                     {{> radioTask3HeadingEff}}
-                    {{#each perguntas}} {{#if radio}} {{> radioTask3 this}} {{/if}} {{/each}}
+                    {{#each perguntas}} 
+                    {{#if radio}} 
+                
+                        <tr name ="radioques">
+                        <td class="text-left col-md-6">{{this.text}}</td>
+
+                        <td class="radiocol text-center input ">
+                                <input class="form-check-input first-radio-box" type="radio" name={{this.id}} value="1-strongly-disagree" onclick="removeWarning();" {{#if this.option1Selected}} checked {{/if}} required>
+                            </td>
+                        <td class="radiocol text-center input">
+                                <input class="form-check-input" type="radio" name={{this.id}} value="2-somewhat-disagree" onclick="removeWarning();" {{#if this.option2Selected}} checked {{/if}} required>
+                            </td>
+                        <td class="radiocol text-center input">
+                                <input class="form-check-input" type="radio" name={{this.id}} value="3-no-opinion" onclick="removeWarning();" {{#if this.option3Selected}} checked {{/if}} required>
+                            </td>
+                        <td class="radiocol text-center input">
+                                <input class="form-check-input" type="radio" name={{this.id}} value="4-somewhat-agree" onclick="removeWarning();" {{#if this.option4Selected}} checked {{/if}} required>
+                            </td>
+                        <td class="radiocol text-center input">
+                                <input class="form-check-input" type="radio" name={{this.id}} value="5-strongly-agree" onclick="removeWarning();" {{#if this.option5Selected}} checked {{/if}} required>
+                            </td>
+                        </tr>
+                    
+                    {{/if}} 
+                    {{/each}}
                 </table>      
 
         </div>

@@ -40,7 +40,7 @@ const urls =
         "url": "/task-1-part-1",
         "page": 6,
         "pagination": "Page 1 of 2",
-        "hbsview": "3b-task-1'",
+        "hbsview": "3b-task-1",
         "previouspage": "/instructions-1",
         "nextpage": "/task-1-part-2"
     },
@@ -119,6 +119,7 @@ const urls =
     {
         "url": "/scenario-2-intro",
         "page": 16,
+        "backbutton": true,
         "hbsview": "5d-scenarios-mezzanine",
         "previouspage": "/scenario-1-split-2",
         "nextpage": "/scenario-2-split-1",
@@ -144,6 +145,7 @@ const urls =
     {
         "url": "/scenario-3-intro",
         "page": 19,
+        "backbutton": true,
         "hbsview": "5d-scenarios-mezzanine",
         "previouspage": "/scenario-2-split-2",
         "nextpage": "/scenario-3-split-1",

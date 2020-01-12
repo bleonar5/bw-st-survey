@@ -4,6 +4,8 @@ function convertDropdownQues(_ques) {
 
     // Create variable (which will be a string) and assign the options (separated by semi colons) to that variable.
     let optionsString = _ques.options;
+    // If the optionsString contains a semi-colon, then it needs to be converted to an array
+    // console.log(optionsString);
     // Create an object of arrays by splitting the string using the semi colon as the separator
     let result = optionsString.split(';').map(e => e.split(';'));
     // Declare new array which will hold the list of options for the dropdown
@@ -19,21 +21,25 @@ function convertDropdownQues(_ques) {
         let withoutOpeningQuotes = withoutBothBrackets.replace("\"", "");
         let withoutBothQuotes = withoutOpeningQuotes.replace("\"", "");
         let trimmedString = withoutBothQuotes.trim();
-        newArray.push(trimmedString); 
+
+        let object = { 
+            option: trimmedString,
+            selected: false
+        }
+        
+        newArray.push(object); 
     }
-  
-    // Create new, formatted, dropdown question
-    // Note (todo), this should use ES6 destructuring (?) syntax
-    let dropdownQuestion = {
-        "id": _ques.id,
-        "section": 54,
-        "page": _ques.page,
-        "text": _ques.text,
-        "category": _ques.category,
-        "dropdown": _ques.dropdown,
-        "options": newArray
-    }
-  
-    return dropdownQuestion;
-  
+
+    // Add a new property
+    _ques.options = newArray;
+    _ques.editedByUser = false;
+
+    // Return an object
+    return _ques;
+
+    
   }
+
+
+
+

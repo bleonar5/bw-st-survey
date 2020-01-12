@@ -9,9 +9,30 @@ function formatQuestions(_array) {
     for (i = 0; i < _array.length; i++) {
   
         if (_array[i].category === 'dropdown') {
-            // convert & add conversion to newArray
-            let convertedDropdown = convertDropdownQues(_array[i]);
-            newArray.push(convertedDropdown);
+            // If it is a string, it needs converting to an array
+            if (typeof _array[i].options === "string") {
+                // console.log('1 - Receiving Semi Colons so will convert to an object');
+                let convertedDropdown = convertDropdownQues(_array[i]);
+                newArray.push(convertedDropdown);
+                // console.log(convertedDropdown);
+            } else {
+                // console.log('2 - Dropdown is already an object so no need to convert');
+                newArray.push(_array[i]);
+                // console.log(_array[i]);
+            }
+
+        } else if (_array[i].category === 'yesno') {
+
+            let convertedYesNo = convertYesNoQues(_array[i]);
+
+            // Push yesNoArray into the newArray
+            newArray.push(convertedYesNo);
+        } else if (_array[i].category === 'textarea' && _array[i].editedByUser === null) {
+            
+            _array[i].editedByUser = false;
+            newArray.push(_array[i]);
+                 
+
         } else {
             newArray.push(_array[i]);
         }
@@ -20,4 +41,33 @@ function formatQuestions(_array) {
   
     return newArray;
   }
+  
+
+
+  function convertYesNoQues(_ques) {
+    
+    let yesNoArray = [];
+
+    let objectNo = { 
+        option: '0-no',
+        selected: false
+    }
+  
+    let objectYes = {
+        option: '1-yes',
+        selected: false
+    }
+
+    yesNoArray.push(objectNo, objectYes);
+
+    // Add a new property
+    _ques.options = yesNoArray;
+    
+    if (_ques.editedByUser === null){
+        _ques.editedByUser = false;
+    }
+
+    return _ques;
+  }
+
   

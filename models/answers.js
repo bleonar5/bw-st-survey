@@ -7,6 +7,8 @@ const questionSchema = new Schema({
     answersObject: String,
     currentPage: Number,
     userEmail: String,
+    questionsIdSaved: String,
+    answersSaved: String,
 
     // questionId: String,
     // question: String,

@@ -22,16 +22,23 @@
 
 <div id="footer-g" class="row">
 
-    {{> 4footerleft}}
+    <div class="col-2 offset-2">
+        <div class="float-left">
+            {{#if urlsAndPages.backbutton}}
+                <a href={{urlsAndPages.previousPage}} role="button" class="btn btn-lg btn-secondary float-left">Back</a>
+            {{/if}}
         </div>
     </div>
 
-    {{> 5footermiddle}}
-            <a class="btn btn-lg btn-primary" role="button" href={{urlsAndPages.nextPage}}>Next</a>
+    <div class="col-4">
+        <div class="text-center">
+            
         </div>
     </div>
 
-    {{> 6footerright}}
+    <div class="col-2">
+        <div class="float-right">
+        <a class="btn btn-lg btn-primary" role="button" href={{urlsAndPages.nextPage}}>Next</a>
         </div>
     </div>
 {{!-- closing div of footer below --}}

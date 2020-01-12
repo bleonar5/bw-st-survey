@@ -39,7 +39,6 @@ const dependenciesArray =
 ]
 
 
-
 function convertSemiColonsToArray(_ques) {
     // If string contains a semi colon
     let optionsString = _ques;
@@ -81,9 +80,10 @@ function disableDependencies(_id) {
             dependency.parentNode.classList.remove("skipped");
         } else if (yesNoArray[1].checked) {
             dependency.disabled = true;
+            console.log(dependency.options);
+            // Todo: Deselect all options
             dependency.classList.add("skipped");
             dependency.parentNode.classList.add("skipped");
-
         } else {
             console.log(`neither are checked`);
         }
@@ -114,6 +114,7 @@ function disableDependencies(_id) {
 
             let element = document.getElementById(parseInt(arrayOfDependencies[i]));
                 if (typeof(element) != 'undefined' && element != null) {
+                    element.value = "";
                     element.disabled = true;
                     element.classList.add("skipped");
                     element.parentNode.classList.add("skipped");

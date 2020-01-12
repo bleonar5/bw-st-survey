@@ -7,7 +7,7 @@
         <div class="row h-100">
             <div class="col-md-12 align-self-end">
                 <div class="text-center">
-                    <h2>{{#each perguntas}}{{#if heading}}{{this.text}}{{/if}}{{/each}}</h2>
+                    <h2>{{#each perguntas}}{{#if heading}}{{this.text}}{{/if}}{{/each}} 4c-task-2.hbs</h2>
                 </div>
             </div>
         </div>
@@ -23,6 +23,7 @@
     </div>
 </div>
 
+
 <div id="content-main-e">
     <div class="row justify-content-center bespoke-vertical-align-e">
         <div class="col-sm-10 col-md-10">
@@ -36,20 +37,23 @@
                                     <select id={{this.id}} name={{this.id}} class="form-control dropdn-form-validation first-radio-box" onclick="removeWarning();" onChange="disableDependencies({{this.id}});" required>
                                         <option disabled selected value> -- select an option -- </option>
                                             {{#each this.options}}
-                                                <option value="{{this}}">{{this}}</option>
+                                                
+                                                    <option {{#if this.selected}}selected{{/if}} value="{{this.option}}">{{this.option}}</option>
+                                                
                                             {{/each}}
-                                </select>
+                                    </select>
                                 </td>    
                             </tr>
                         {{/if}}
+
 
                         {{#if yesno}}
                                 <tr class="row">
                                     <td class="text-left col-sm-6">{{this.text}}</td>
                                     <td id={{this.id}} class="text-center offset-sm-2 col-sm-2 btn-group yesno" data-toggle="buttons" onclick="removeWarning();" required>
-                                    
-                                        <label class="btn btn-primary"><input type="radio" name={{this.id}} value="1-yes" class="first-radio-box" onChange="disableDependencies({{this.id}});"/>Yes</label>
-                                        <label class="btn btn-danger"><input type="radio" name={{this.id}} value="0-no"/ onChange="disableDependencies({{this.id}});">No</label>
+
+                                        <label class="btn btn-primary {{#if this.options.1.selected}}active{{/if}}"><input type="radio" name={{this.id}} value="1-yes" class="first-radio-box" onChange="disableDependencies({{this.id}});" {{#if this.options.1.selected}}checked{{/if}}/>Yes </label>
+                                        <label class="btn btn-danger {{#if this.options.0.selected}}active{{/if}}"><input type="radio" name={{this.id}} value="0-no" onChange="disableDependencies({{this.id}});" {{#if this.options.0.selected}}checked{{/if}}/>No</label>
                                     
                                     </td>
                                 </tr>
@@ -59,7 +63,12 @@
                             <tr class="row">
                                 <td class="text-left col-sm-6">{{this.text}}</td>
                                 <td class="col-sm-6">
-                                    <input id={{this.id}} name={{this.id}} class="form-control first-radio-box text-area-for-vali" type="text" autocomplete="off" onclick="removeWarning();" required>
+                                    <input id={{this.id}} name={{this.id}} class="form-control first-radio-box text-area-for-vali" type="text" autocomplete="off" onclick="removeWarning();" 
+                                    
+                                    {{#if this.editedByUser}}value={{this.userAnswer}}{{/if}}
+                                                                        
+                                    
+                                    required>
                                 </td>
                             </tr>
                         {{/if}}
