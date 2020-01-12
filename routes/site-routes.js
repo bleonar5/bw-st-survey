@@ -34,14 +34,12 @@ router.use((req, res, next) => {
     if (req.session.currentUser) { // <== if there's user in the session (user is logged in)
       next(); // ==> go to the next route ---
     } else {                          //    |
-      res.redirect("/login");         //    |
+      res.redirect('/individual-login');         //    |
     }                                 //    |
 });
 
 /** --- SITE-ROUTES START HERE --- **/
-router.get("/", (req, res, next) => {
-  res.render('index');
-});
+
 
 
 /* --- INTRO ROUTES --- */
@@ -122,15 +120,18 @@ router.get('/task-1-part-1', (req, res) => {
 
     Answer.findOne({userEmail: userEmail, currentPage: currentPage})
     .then((answer) => {
-        const questionIds = JSON.parse(answer.questionsIdSaved);
-        const questionAnswersPartial = JSON.parse(answer.answersSaved);
-        perguntasWithUserAnswers = addUsersExistingsAnswers(perguntas, questionIds, questionAnswersPartial);
-        perguntas = perguntasWithUserAnswers;
-        console.log(perguntas);
-        res.render(handlebarsPage, { perguntas, urlsAndPages });
+        if (answer !== null) {
+            const questionIds = JSON.parse(answer.questionsIdSaved);
+            const questionAnswersPartial = JSON.parse(answer.answersSaved);
+            perguntasWithUserAnswers = addUsersExistingsAnswers(perguntas, questionIds, questionAnswersPartial);
+            perguntas = perguntasWithUserAnswers;
+            res.render(handlebarsPage, { perguntas, urlsAndPages });
+        } else {
+            console.log(`no answers saved for ${userEmail} yet`);
+            res.render(handlebarsPage, { perguntas, urlsAndPages });
+        }
     })
     .catch((error) => {
-        res.render(handlebarsPage, { perguntas, urlsAndPages });
         console.log(error);
     })
 });
@@ -154,7 +155,7 @@ router.post('/task-1-part-1', (req, res) => {
         .then(() => {
             newQuestionSubmittedByUser.save()
             .then( (answer) => {
-                console.log(`Answer saved to database: ${answer}`);
+                // console.log(`Answer saved to database: ${answer}`);
                 res.redirect(urlsAndPages.nextPage);
             })
             .catch((error) => {
@@ -171,16 +172,18 @@ router.get('/task-1-part-2', (req, res) => {
     
     Answer.findOne({userEmail: userEmail, currentPage: currentPage})
     .then((answer) => {
-        console.log(answer);
-        const questionIds = JSON.parse(answer.questionsIdSaved);
-        const questionAnswersPartial = JSON.parse(answer.answersSaved);
-        perguntasWithUserAnswers = addUsersExistingsAnswers(perguntas, questionIds, questionAnswersPartial);
-        perguntas = perguntasWithUserAnswers;
-        // console.log(perguntas);
-        res.render(handlebarsPage, { perguntas, urlsAndPages });
+        if (answer !== null) {
+            const questionIds = JSON.parse(answer.questionsIdSaved);
+            const questionAnswersPartial = JSON.parse(answer.answersSaved);
+            perguntasWithUserAnswers = addUsersExistingsAnswers(perguntas, questionIds, questionAnswersPartial);
+            perguntas = perguntasWithUserAnswers;
+            res.render(handlebarsPage, { perguntas, urlsAndPages });
+        } else {
+            console.log(`no answers saved for ${userEmail} yet`);
+            res.render(handlebarsPage, { perguntas, urlsAndPages });
+        }
     })
     .catch((error) => {
-        res.render(handlebarsPage, { perguntas, urlsAndPages });
         console.log(error);
     })
 });
@@ -224,19 +227,18 @@ router.get('/task-2-part-1a', (req, res) => {
     const handlebarsPage = urlsAndPages.handlebarsStaticPage;
     Answer.findOne({userEmail: userEmail, currentPage: currentPage})
     .then((answer) => {
-        // console.log(`Here are the are the answers loaded for ${userEmail}: ${answer}`);
         if (answer != null) {
             const questionIds = JSON.parse(answer.questionsIdSaved);
             const questionAnswersPartial = JSON.parse(answer.answersSaved);
-            perguntas2 = addUsersExistingsAnswers(perguntas, questionIds, questionAnswersPartial);
-            perguntas = perguntas2
+            perguntasWithUserAnswers = addUsersExistingsAnswers(perguntas, questionIds, questionAnswersPartial);
+            perguntas =  perguntasWithUserAnswers;
             res.render(handlebarsPage, { perguntas, urlsAndPages });
         } else {
-            console.log(`no answers found for ${userEmail}`);
+            console.log(`no answers saved for ${userEmail} yet`);
             res.render(handlebarsPage, { perguntas, urlsAndPages });
         }})
         .catch((error) => {
-        console.log(error);
+            console.log(error);
     })
 });
 
@@ -249,19 +251,18 @@ router.get('/task-2-part-1b', (req, res) => {
     const handlebarsPage = urlsAndPages.handlebarsStaticPage;
     Answer.findOne({userEmail: userEmail, currentPage: currentPage})
     .then((answer) => {
-        // console.log(`Here are the are the answers loaded for ${userEmail}: ${answer}`);
         if (answer != null) {
             const questionIds = JSON.parse(answer.questionsIdSaved);
             const questionAnswersPartial = JSON.parse(answer.answersSaved);
-            perguntas2 = addUsersExistingsAnswers(perguntas, questionIds, questionAnswersPartial);
-            perguntas = perguntas2
+            perguntasWithUserAnswers = addUsersExistingsAnswers(perguntas, questionIds, questionAnswersPartial);
+            perguntas =  perguntasWithUserAnswers;
             res.render(handlebarsPage, { perguntas, urlsAndPages });
         } else {
-            console.log(`no answers found for ${userEmail}`);
+            console.log(`no answers saved for ${userEmail} yet`);
             res.render(handlebarsPage, { perguntas, urlsAndPages });
         }})
         .catch((error) => {
-        console.log(error);
+            console.log(error);
     })
 });
 
@@ -275,19 +276,18 @@ router.get('/task-2-part-2', (req, res) => {
     
     Answer.findOne({userEmail: userEmail, currentPage: currentPage})
     .then((answer) => {
-        // console.log(`Here are the are the answers loaded for ${userEmail}: ${answer}`);
         if (answer != null) {
             const questionIds = JSON.parse(answer.questionsIdSaved);
             const questionAnswersPartial = JSON.parse(answer.answersSaved);
-            perguntas2 = addUsersExistingsAnswers(perguntas, questionIds, questionAnswersPartial);
-            perguntas = perguntas2;
+            perguntasWithUserAnswers = addUsersExistingsAnswers(perguntas, questionIds, questionAnswersPartial);
+            perguntas =  perguntasWithUserAnswers;
             res.render(handlebarsPage, { perguntas, urlsAndPages });
         } else {
-            console.log(`no answers found for ${userEmail}`);
+            console.log(`no answers saved for ${userEmail} yet`);
             res.render(handlebarsPage, { perguntas, urlsAndPages });
         }})
         .catch((error) => {
-        console.log(error);
+            console.log(error);
     })
 });
 
@@ -300,19 +300,18 @@ router.get('/task-2-part-3', (req, res) => {
     const handlebarsPage = urlsAndPages.handlebarsStaticPage;
     Answer.findOne({userEmail: userEmail, currentPage: currentPage})
     .then((answer) => {
-        console.log(`Here are the are the answers loaded for ${userEmail}: ${answer}`);
         if (answer != null) {
             const questionIds = JSON.parse(answer.questionsIdSaved);
             const questionAnswersPartial = JSON.parse(answer.answersSaved);
-            perguntas2 = addUsersExistingsAnswers(perguntas, questionIds, questionAnswersPartial);
-            perguntas = perguntas2;
+            perguntasWithUserAnswers = addUsersExistingsAnswers(perguntas, questionIds, questionAnswersPartial);
+            perguntas =  perguntasWithUserAnswers;
             res.render(handlebarsPage, { perguntas, urlsAndPages });
         } else {
-            console.log(`no answers found for ${userEmail}`);
+            console.log(`no answers saved for ${userEmail} yet`);
             res.render(handlebarsPage, { perguntas, urlsAndPages });
         }})
         .catch((error) => {
-        console.log(error);
+            console.log(error);
     })
 });
 
@@ -473,17 +472,19 @@ router.get('/scenario-1-split-1', (req, res) => {
 
     Answer.findOne({userEmail: userEmail, currentPage: currentPage})
     .then((answer) => {
+        if (answer != null) {
         const questionIds = JSON.parse(answer.questionsIdSaved);
         const questionAnswersPartial = JSON.parse(answer.answersSaved);
         let perguntasWithUserAnswers = addUsersExistingsAnswers(perguntas, questionIds, questionAnswersPartial);
         perguntas = perguntasWithUserAnswers;
         res.render(handlebarsPage, { heading, sheetsSituations, perguntas, urlsAndPages });
-    })
-    .catch((error) => {
+    } else {
+        console.log(`no answers saved for ${userEmail} yet`);
         res.render(handlebarsPage, { heading, sheetsSituations, perguntas, urlsAndPages });
+    }})
+    .catch((error) => {
         console.log(error);
-    })
-});
+})});
 
 
 router.post('/scenario-1-split-1', (req, res) => {
@@ -528,17 +529,19 @@ router.get('/scenario-1-split-2', (req, res) => {
 
     Answer.findOne({userEmail: userEmail, currentPage: currentPage})
     .then((answer) => {
+        if (answer != null) {
         const questionIds = JSON.parse(answer.questionsIdSaved);
         const questionAnswersPartial = JSON.parse(answer.answersSaved);
         let perguntasWithUserAnswers = addUsersExistingsAnswers(perguntas, questionIds, questionAnswersPartial);
         perguntas = perguntasWithUserAnswers;
         res.render(handlebarsPage, { heading, sheetsSituations, perguntas, urlsAndPages });
-    })
-    .catch((error) => {
+    } else {
+        console.log(`no answers saved for ${userEmail} yet`);
         res.render(handlebarsPage, { heading, sheetsSituations, perguntas, urlsAndPages });
+    }})
+    .catch((error) => {
         console.log(error);
-    })
-});
+})});
 
 router.post('/scenario-1-split-2', (req, res) => {
     let currentPage = getPageNumber(req.originalUrl, allUrls);
@@ -580,17 +583,19 @@ router.get('/scenario-2-split-1', (req, res) => {
 
     Answer.findOne({userEmail: userEmail, currentPage: currentPage})
     .then((answer) => {
+        if (answer != null) {
         const questionIds = JSON.parse(answer.questionsIdSaved);
         const questionAnswersPartial = JSON.parse(answer.answersSaved);
         let perguntasWithUserAnswers = addUsersExistingsAnswers(perguntas, questionIds, questionAnswersPartial);
         perguntas = perguntasWithUserAnswers;
         res.render(handlebarsPage, { heading, sheetsSituations, perguntas, urlsAndPages });
-    })
-    .catch((error) => {
+    } else {
+        console.log(`no answers saved for ${userEmail} yet`);
         res.render(handlebarsPage, { heading, sheetsSituations, perguntas, urlsAndPages });
+    }})
+    .catch((error) => {
         console.log(error);
-    })
-});
+})});
 
 router.post('/scenario-2-split-1', (req, res) => {
     let currentPage = getPageNumber(req.originalUrl, allUrls);
@@ -632,17 +637,19 @@ router.get('/scenario-2-split-2', (req, res) => {
 
     Answer.findOne({userEmail: userEmail, currentPage: currentPage})
     .then((answer) => {
+        if (answer != null) {
         const questionIds = JSON.parse(answer.questionsIdSaved);
         const questionAnswersPartial = JSON.parse(answer.answersSaved);
         let perguntasWithUserAnswers = addUsersExistingsAnswers(perguntas, questionIds, questionAnswersPartial);
         perguntas = perguntasWithUserAnswers;
         res.render(handlebarsPage, { heading, sheetsSituations, perguntas, urlsAndPages });
-    })
-    .catch((error) => {
+    } else {
+        console.log(`no answers saved for ${userEmail} yet`);
         res.render(handlebarsPage, { heading, sheetsSituations, perguntas, urlsAndPages });
+    }})
+    .catch((error) => {
         console.log(error);
-    })
-});
+})});
 
 router.post('/scenario-2-split-2', (req, res) => {
     let currentPage = getPageNumber(req.originalUrl, allUrls);
@@ -684,17 +691,19 @@ router.get('/scenario-3-split-1', (req, res) => {
 
     Answer.findOne({userEmail: userEmail, currentPage: currentPage})
     .then((answer) => {
+        if (answer != null) {
         const questionIds = JSON.parse(answer.questionsIdSaved);
         const questionAnswersPartial = JSON.parse(answer.answersSaved);
         let perguntasWithUserAnswers = addUsersExistingsAnswers(perguntas, questionIds, questionAnswersPartial);
         perguntas = perguntasWithUserAnswers;
         res.render(handlebarsPage, { heading, sheetsSituations, perguntas, urlsAndPages });
-    })
-    .catch((error) => {
+    } else {
+        console.log(`no answers saved for ${userEmail} yet`);
         res.render(handlebarsPage, { heading, sheetsSituations, perguntas, urlsAndPages });
+    }})
+    .catch((error) => {
         console.log(error);
-    })
-});
+})});
 
 router.post('/scenario-3-split-1', (req, res) => {
     let currentPage = getPageNumber(req.originalUrl, allUrls);
@@ -736,17 +745,19 @@ router.get('/scenario-3-split-2', (req, res) => {
 
     Answer.findOne({userEmail: userEmail, currentPage: currentPage})
     .then((answer) => {
+        if (answer != null) {
         const questionIds = JSON.parse(answer.questionsIdSaved);
         const questionAnswersPartial = JSON.parse(answer.answersSaved);
         let perguntasWithUserAnswers = addUsersExistingsAnswers(perguntas, questionIds, questionAnswersPartial);
         perguntas = perguntasWithUserAnswers;
         res.render(handlebarsPage, { heading, sheetsSituations, perguntas, urlsAndPages });
-    })
-    .catch((error) => {
+    } else {
+        console.log(`no answers saved for ${userEmail} yet`);
         res.render(handlebarsPage, { heading, sheetsSituations, perguntas, urlsAndPages });
+    }})
+    .catch((error) => {
         console.log(error);
-    })
-});
+})});
 
 router.post('/scenario-3-split-2', (req, res) => {
     let currentPage = getPageNumber(req.originalUrl, allUrls);
