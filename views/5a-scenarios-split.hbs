@@ -16,17 +16,16 @@
 
 <div id="content-main-top-f">
 
-    <div class="row justify-content-center bespoke-vertical-align-f pt-4">
-        <div id="task3TextBoxScenario" class="col-12 px-md-3 px-lg-5">
-        
-        <ul>
-            {{#each sheetsSituations}}
-            {{#if scenario}}
-                <li class="text-center px-2 py-md-0 pt-lg-2"> {{this.text}}</li>
-            {{/if}}
-            {{/each}}
-        </ul>
-        
+    <div class="row justify-content-center bespoke-vertical-align-f pt-4 ">
+        <div id="task3TextBoxScenario" class="col-10 px-md-3 py-3">
+                {{#each sheetsSituations}}
+
+                        {{#if scenario}}
+                            {{{this.text}}}
+                        {{/if}}
+
+                {{/each}}
+            
         </div>
     </div>
 </div>
@@ -34,9 +33,9 @@
 
 <div id="content-main-bottom-f">
     <div id="task-3-text-box" class="justify-content-center bespoke-vertical-align-f col-12 font-size-sm text-left ">
-        <div>
+        <div class="col-10">
             <form onSubmit="return checkQuestionsRadios(getArrayOfQuestions());" method="POST">
-                    <table class="table table-sm table-striped">
+                    <table class="table table-striped">
                     {{> radioTask3HeadingEff}}
                     {{#each perguntas}} 
                     {{#if radio}} 
