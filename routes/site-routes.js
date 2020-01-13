@@ -38,10 +38,6 @@ router.use((req, res, next) => {
     }                                 //    |
 });
 
-/** --- SITE-ROUTES START HERE --- **/
-
-
-
 /* --- INTRO ROUTES --- */
 // individual-login is on routes/auth.js
 router.get('/study-consent', (req, res) => {
@@ -790,7 +786,5 @@ router.post('/scenario-3-split-2', (req, res) => {
 router.get('/study-conclusion', (req, res) => {
   res.render('6a-study-conclusion');
 });
-
-
 
 module.exports = router;
