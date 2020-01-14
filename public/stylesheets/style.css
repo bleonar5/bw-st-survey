@@ -224,27 +224,60 @@ In this case, the ratio is 15:60:20
 /* Layout F is used for scenario-split pages
 */
 
+.table-wrappa{
+    width: 100%;
+}
+
 #content-heading-f {
-    height: 7%;
+    height: 10%;
 }
       
 #content-main-top-f {
-    min-height: 42%;
+    min-height: 20%;
+}
+
+.bespoke-vertical-align-top-f {
+    min-height: 20%;
+    min-height: 20vh;
+    display: flex;
+    align-items: center;
 }
 
 .bespoke-vertical-align-f {
-    min-height: 42%;
-    min-height: 42vh;
+    min-height: 50%;
+    min-height: 50vh;
     display: flex;
     align-items: center;
 }
 
 #content-main-bottom-f {
-    min-height: 42%;
+    min-height: 50%;
+}
+
+#content-main-top-f-c {
+    min-height: 40%;
 }
     
+.bespoke-vertical-align-top-f-c {
+    min-height: 40%;
+    min-height: 40vh;
+    display: flex;
+    align-items: center;
+}
+
+.bespoke-vertical-align-bottom-f-c {
+    min-height: 40%;
+    min-height: 40vh;
+    display: flex;
+    align-items: center;
+}
+
+#content-main-bottom-f-c {
+    min-height: 40%;
+}
+
 #footer-f {
-    height: 7%;
+    height: 10%;
 }
 
 /* Layout G is used for scenario-split mezzanine pages
@@ -301,6 +334,10 @@ If root: font-size is 16px, 1 rem will be 16px
 
 .font-size-bigger-120 {
     font-size: 1.20rem;
+}
+
+.font-size-bigger-130 {
+    font-size: 1.30rem;
 }
 
 /* Increased Font Sizes */

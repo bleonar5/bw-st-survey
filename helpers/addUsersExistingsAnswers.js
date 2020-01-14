@@ -25,7 +25,6 @@ function addUsersExistingsAnswers(_arrayOfBlankQuestions, _arrayOfQuestionIds, _
             _ques.editedByUser = true;
 
             // if it's a dropdown you want to do a loop through that dropdown and then return selected on the correct option
-
             if(_ques.dropdown) {
                 for (let j = 0; j < _ques.options.length; j++) {
                     if (_ques.options[j].option === _ques.userAnswer) {
@@ -50,7 +49,7 @@ function addUsersExistingsAnswers(_arrayOfBlankQuestions, _arrayOfQuestionIds, _
 
             if(_ques.radio) {
 
-                // Todo: Tidy this up. Make it into an object
+                // Todo (Low Priority): Tidy this up. Make it into an object
                 if (_ques.userAnswer.includes('1')) {
                     _ques.option1Selected = true;
                     _ques.option2Selected = false;
@@ -119,133 +118,3 @@ function convertYesNoQues() {
 
     return yesNoArray;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/*
-[ 
-    { option: 'Manufacturing', selected: false },
-    { option: 'Wholesale trade', selected: false },
-    { option: 'Retail trade', selected: false },
-    { option: 'Other (agriculture, construction, service, government etc)', selected: false } 
-],
-  */
-
-
-/*
-
-Write a loop to look through the original array of questions
-for each question, you want to check if the id is incluced in the edited questions
-if it is, you want to add the answer to the object
-if it is not included in the edited question, you want to return the object to the new array
-*/
-
-/*
-Write a loop to look through an array of objects
-new empty array
-new variable of id of answer
-if the property "id" is equal to the new variable of the answer
-then add a new property to that object by returning the answer (positioned n + 50% down the array) 
-return the new array
-*/
-
-/*
-{ id: 20901,
-    page: 9,
-    text: 'Are you currently employed?',
-    category: 'dropdown',
-    dropdown: true,
-    options:
-     [ 'yes – full time',
-       'yes – part time',
-       'I am a full time student',
-       'no' ] },
-  { order: 8.1,
-    url: '/task-2-part-1a',
-    page: 9,
-    id: 20902,
-    text:
-     'For whom do you work? (Name of company, business or employer. If you have multiple jobs, describe the one where you work the most)',
-    category: 'textarea',
-    textarea: true },
-*/
-
-/*
-[ 20901, 20902, 20903, 20904, 20905 ]
-
-
-[ 'yes – full time',
-  'Filling in the text',
-  'Filling in the text',
-  'Retail trade',
-  'Filling in the text' ]
-
-
-  [ { order: 8.1,
-    url: '/task-2-part-1a',
-    page: 9,
-    id: 20900,
-    text: 'Employment (Part 1)',
-    category: 'heading',
-    heading: true },
-  { id: 20901,
-    page: 9,
-    text: 'Are you currently employed?',
-    category: 'dropdown',
-    dropdown: true,
-    options:
-     [ 'yes – full time',
-       'yes – part time',
-       'I am a full time student',
-       'no' ] },
-  { order: 8.1,
-    url: '/task-2-part-1a',
-    page: 9,
-    id: 20902,
-    text:
-     'For whom do you work? (Name of company, business or employer. If you have multiple jobs, describe the one where you work the most)',
-    category: 'textarea',
-    textarea: true },
-  { order: 8.1,
-    url: '/task-2-part-1a',
-    page: 9,
-    id: 20903,
-    text:
-     'What kind of business or industry do you work in? (Please describe the main activity at your workplace. For example: hospital, newspaper publishing, auto repair shop, bank. If you have multiple jobs, describe the one where you work the most)',
-    category: 'textarea',
-    testanswer: 'Testing Testing',
-    textarea: true },
-  { id: 20904,
-    page: 9,
-    text: 'Is your work mainly:',
-    category: 'dropdown',
-    dropdown: true,
-    options:
-     [ 'Manufacturing',
-       'Wholesale trade',
-       'Retail trade',
-       'Other (agriculture, construction, service, government etc)' ] },
-  { order: 8.1,
-    url: '/task-2-part-1a',
-    page: 9,
-    id: 20905,
-    text: 'What is your job title?',
-    category: 'textarea',
-    testanswer: 'Testing Text',
-    textarea: true,
-    comments: '[RP-08-jan: added in v9]' } ]
-
-    */

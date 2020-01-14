@@ -38,7 +38,9 @@ const dependenciesArray =
     }
 ]
 
+const questionsWithDependencies = extractQuestionsWithDependencies(dependenciesArray);
 
+// Todo (Low Priority): Move this function to another js file
 function convertSemiColonsToArray(_ques) {
     // If string contains a semi colon
     let optionsString = _ques;
@@ -57,103 +59,97 @@ function convertSemiColonsToArray(_ques) {
         let trimmedString = withoutBothQuotes.trim();
         newArray.push(trimmedString); 
     }
-
     return newArray;
 }
 
 function disableDependencies(_id) {
 
-    // Temporarily hardcoding Ids
+    if (questionsWithDependencies.includes(_id)) {
+
+    let dependencies = checkDependencies(_id, dependenciesArray);
+    // Temporarily hardcoding Ids (checking if the hardcoded IDs are the YesNo questions in task-2-part-3
     if ( _id === hardCodedYesNo1 || _id === hardCodedYesNo2) {
 
-        let yesNoNodeList = document.getElementsByName(_id);
         // Convert NodeList to array
-        yesNoArray = Array.from(yesNoNodeList);
+        let yesNoArray = Array.from(document.getElementsByName(_id));
         // Dependency is the next question (i.e. ID plus 1)
-        dependencyId = parseInt(_id) + 1;
-        let dependency = document.getElementById(dependencyId);
-
-        // Check which of the yes no questions is active
+        let dependency = document.getElementById(parseInt(_id) + 1);
+        // Check which of the yes no questions is active (yesNoArray[0] is 'yes')
         if (yesNoArray[0].checked) {
             dependency.disabled = false;
             dependency.classList.remove("skipped");
             dependency.parentNode.classList.remove("skipped");
+        // Check which of the yes no questions is active (yesNoArray[1] is 'no')
         } else if (yesNoArray[1].checked) {
             dependency.disabled = true;
-            console.log(dependency.options);
+            // Choose --select an option-- on dropdown
+            dependency.options[0].selected = true;
             // Todo: Deselect all options
             dependency.classList.add("skipped");
             dependency.parentNode.classList.add("skipped");
-        } else {
-            console.log(`neither are checked`);
-        }
-    }
-
-    let dependencies = checkDependencies(_id, dependenciesArray);
-    
-    // Todo: resolve error (domManipulation.js:54 Uncaught TypeError: Cannot read property 'split' of undefined) by breaking statement if there are no dependencides
-    let element = document.getElementById(_id);
-
-    // This works for dropdowns
+        } 
+    // Code below is for the "Are you currently employed?" (task-2-part-1a) question 
+    } else if (_id === hardCodedEmploymentQuestion) {
+    // Declare variable which retrieves value for the selected question
     let valueSelected = document.getElementById(_id).value;
-    let triggerWord = getTrigger(_id, dependenciesArray);
-    
-    if (dependencies !== false) {
-        let arrayOfDependencies = convertSemiColonsToArray(dependencies);
-
-    if (dependencies === undefined) {
-        return false;
-    } 
-    
+    let arrayOfDependencies = convertSemiColonsToArray(dependencies);
     // Trigger word is not the same as the value selected, so function removes "skipped" classes and remove "disabled" class 
-    if (valueSelected === 'no' || valueSelected === 'I am a full time student') { 
-        skipNextQuestion = true;
-        for (i = 0; i < arrayOfDependencies.length; i++) {
-            // Convert string to number with parseInt
-            // if element exists perform action
+        if (valueSelected === 'no' || valueSelected === 'I am a full time student') { 
+            skipNextQuestion = true;
+            for (i = 0; i < arrayOfDependencies.length; i++) {
+                // Convert string to number with parseInt. If element exists perform action
+                let element = document.getElementById(parseInt(arrayOfDependencies[i]));
+                    if (typeof(element) != 'undefined' && element != null) {
+                        element.value = "";
+                        element.disabled = true;
+                        element.classList.add("skipped");
+                        element.parentNode.classList.add("skipped");
+            }}
+        // Trigger word is the same as the value selected, so you select the disabled 
+        } else {
+            // Convert the database input from a string with semicolons to an array so that we can loop through the new array and disable the questions
+            skipNextQuestion = false;
+            for (i = 0; i < arrayOfDependencies.length; i++) {
 
-            let element = document.getElementById(parseInt(arrayOfDependencies[i]));
+                let element =  document.getElementById(parseInt(arrayOfDependencies[i]));
                 if (typeof(element) != 'undefined' && element != null) {
-                    element.value = "";
-                    element.disabled = true;
-                    element.classList.add("skipped");
-                    element.parentNode.classList.add("skipped");
-                }
-        }
-    // Trigger word is the same as the value selected, so you select the disabled 
-    } else {
-        // Convert the database input from a string with semicolons to an array so that we can loop through the new array and disable the questions
-        skipNextQuestion = false;
-        for (i = 0; i < arrayOfDependencies.length; i++) {
-
-            let element =  document.getElementById(parseInt(arrayOfDependencies[i]));
-            if (typeof(element) != 'undefined' && element != null)
-            {
-                // Convert string to number with parseInt
-                document.getElementById(parseInt(arrayOfDependencies[i])).disabled = false;
-                document.getElementById(parseInt(arrayOfDependencies[i])).classList.remove("skipped");
-                document.getElementById(parseInt(arrayOfDependencies[i])).parentNode.classList.remove("skipped");
-            }
-        }
-    }}
+                    // Convert string to number with parseInt
+                    document.getElementById(parseInt(arrayOfDependencies[i])).disabled = false;
+                    document.getElementById(parseInt(arrayOfDependencies[i])).classList.remove("skipped");
+                    document.getElementById(parseInt(arrayOfDependencies[i])).parentNode.classList.remove("skipped");
+}}}}} else {
+        return false
+    }
 }
+
 
 // Function which returns the dependencies of a question
 function checkDependencies(_id, _dependenciesArray) {
+
+    let hasDependencies = false;
+
     for (let i = 0; i < _dependenciesArray.length; i++) {
         if (_dependenciesArray[i].id === _id) {
+            hasDependencies = true;
             return dependenciesArray[i].dependencies;
-        } else {
-            return false;
-        }
+        } 
+    }
+
+    if (!hasDependencies) {
+        return false;
     }
 }
 
-// Function which returns the word required to trigger the dependencies
-function getTrigger(_id, _dependenciesArray) {
-    for (let i = 0; i < _dependenciesArray.length; i++) {
-        if (_dependenciesArray[i].id === _id) {
-            return dependenciesArray[i].trigger;
-        }
+
+function extractQuestionsWithDependencies(_dependenciesArray) {
+    
+    let array = [];
+    let length = _dependenciesArray.length
+
+    for (let i = 0; i < length; i++) {
+        let id = _dependenciesArray[i].id;
+        array.push(id);
     }
+
+    return array;
 }

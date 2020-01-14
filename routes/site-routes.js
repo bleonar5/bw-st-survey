@@ -459,6 +459,7 @@ router.post('/task-2-part-3', (req, res) => {
 
 router.get('/scenario-1-split-1', (req, res) => {
     const currentPage = getPageNumber(req.originalUrl, allUrls);
+    console.log(currentPage);
     const dataForThisSheet = allQuestions.filter( data => data.page === currentPage);
     const sheetsSituations = dataForThisSheet.filter (data => data.scenario);
     const heading = dataForThisSheet.filter (data => data.heading);
@@ -482,6 +483,8 @@ router.get('/scenario-1-split-1', (req, res) => {
     .catch((error) => {
         console.log(error);
 })});
+
+
 
 
 router.post('/scenario-1-split-1', (req, res) => {
@@ -787,5 +790,86 @@ router.post('/scenario-3-split-2', (req, res) => {
 router.get('/study-conclusion', (req, res) => {
   res.render('6a-study-conclusion');
 });
+
+
+// Temp Pages for DEMO PURPOSES
+router.get('/scenarios-layout-a', (req, res) => {
+    const currentPage = 14;
+    const dataForThisSheet = allQuestions.filter( data => data.page === currentPage);
+    const sheetsSituations = dataForThisSheet.filter (data => data.scenario);
+    const heading = dataForThisSheet.filter (data => data.heading);
+    const urlsAndPages = extractUrlAndPage(currentPage, allUrls);
+    const userEmail = req.session.currentUser;
+    const handlebarsPage = '5a-scenarios-split';
+    let perguntas = dataForThisSheet.filter (data => data.radio);
+
+    Answer.findOne({userEmail: userEmail, currentPage: currentPage})
+    .then((answer) => {
+        if (answer != null) {
+        const questionIds = JSON.parse(answer.questionsIdSaved);
+        const questionAnswersPartial = JSON.parse(answer.answersSaved);
+        let perguntasWithUserAnswers = addUsersExistingsAnswers(perguntas, questionIds, questionAnswersPartial);
+        perguntas = perguntasWithUserAnswers;
+        res.render(handlebarsPage, { heading, sheetsSituations, perguntas, urlsAndPages });
+    } else {
+        console.log(`no answers saved for ${userEmail} yet`);
+        res.render(handlebarsPage, { heading, sheetsSituations, perguntas, urlsAndPages });
+    }})
+    .catch((error) => {
+        console.log(error);
+})});
+
+router.get('/scenarios-layout-b', (req, res) => {
+    const currentPage = 14;
+    const dataForThisSheet = allQuestions.filter( data => data.page === currentPage);
+    const sheetsSituations = dataForThisSheet.filter (data => data.scenario);
+    const heading = dataForThisSheet.filter (data => data.heading);
+    const urlsAndPages = extractUrlAndPage(currentPage, allUrls);
+    const userEmail = req.session.currentUser;
+    const handlebarsPage = '5a-scenarios-split-b';
+    let perguntas = dataForThisSheet.filter (data => data.radio);
+
+    Answer.findOne({userEmail: userEmail, currentPage: currentPage})
+    .then((answer) => {
+        if (answer != null) {
+        const questionIds = JSON.parse(answer.questionsIdSaved);
+        const questionAnswersPartial = JSON.parse(answer.answersSaved);
+        let perguntasWithUserAnswers = addUsersExistingsAnswers(perguntas, questionIds, questionAnswersPartial);
+        perguntas = perguntasWithUserAnswers;
+        res.render(handlebarsPage, { heading, sheetsSituations, perguntas, urlsAndPages });
+    } else {
+        console.log(`no answers saved for ${userEmail} yet`);
+        res.render(handlebarsPage, { heading, sheetsSituations, perguntas, urlsAndPages });
+    }})
+    .catch((error) => {
+        console.log(error);
+})});
+
+router.get('/scenarios-layout-c', (req, res) => {
+    const currentPage = 14;
+    const dataForThisSheet = allQuestions.filter( data => data.page === currentPage);
+    const sheetsSituations = dataForThisSheet.filter (data => data.scenario);
+    const heading = dataForThisSheet.filter (data => data.heading);
+    const urlsAndPages = extractUrlAndPage(currentPage, allUrls);
+    const userEmail = req.session.currentUser;
+    const handlebarsPage = '5a-scenarios-split-c';
+    let perguntas = dataForThisSheet.filter (data => data.radio);
+
+    Answer.findOne({userEmail: userEmail, currentPage: currentPage})
+    .then((answer) => {
+        if (answer != null) {
+        const questionIds = JSON.parse(answer.questionsIdSaved);
+        const questionAnswersPartial = JSON.parse(answer.answersSaved);
+        let perguntasWithUserAnswers = addUsersExistingsAnswers(perguntas, questionIds, questionAnswersPartial);
+        perguntas = perguntasWithUserAnswers;
+        res.render(handlebarsPage, { heading, sheetsSituations, perguntas, urlsAndPages });
+    } else {
+        console.log(`no answers saved for ${userEmail} yet`);
+        res.render(handlebarsPage, { heading, sheetsSituations, perguntas, urlsAndPages });
+    }})
+    .catch((error) => {
+        console.log(error);
+})});
+
 
 module.exports = router;
