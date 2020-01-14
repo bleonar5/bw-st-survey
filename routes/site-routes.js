@@ -1,4 +1,5 @@
 /* --- TODO: What is  the best practice is for storing these functions? i.e. what folder do they belong in? --- */
+/* -- TODO: Create a class */
 
 const express = require("express");
 const router = express.Router();
