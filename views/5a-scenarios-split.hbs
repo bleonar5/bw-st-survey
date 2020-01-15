@@ -16,9 +16,9 @@
 
 <div id="content-main-top-f">
     <div class="row justify-content-center bespoke-vertical-align-top-f">
-        <div id="task3TextBoxScenario" class="col-12 py-3 px-5">
+        <div id="task3TextBoxScenario" class="col-12 py-1 px-5">
                 {{#each sheetsSituations}}
-                    <div class="py-xl-1">
+                    <div >
                         {{#if scenario}}
                             {{{this.text}}}
                         {{/if}}
@@ -34,7 +34,7 @@
     <div id="task-3-text-box" class="justify-content-center bespoke-vertical-align-bottom-f col-12 text-left">
         <div class="col-12">
             <form onSubmit="return checkQuestionsRadios(getArrayOfQuestions());" method="POST">
-                <table class="table table-striped">
+                <table class="table table-striped table-sm">
                     {{> radioTask3HeadingEff}}
                         <tbody>
                             {{#each perguntas}} 

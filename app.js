@@ -18,8 +18,10 @@ const MongoStore = require("connect-mongo")(session);
 
 // Prevent Deprecation Warning by adding useUnifiedTopology: true
 mongoose
-  // .connect('mongodb://localhost/superteams', [old database stored on local machine]
-  .connect(process.env.MONGODB_URI,
+  // [old database stored on local machine]
+  .connect('mongodb://localhost/superteams-dev-13', 
+  // MongoDB
+  // .connect(process.env.MONGODB_URI,
   {useUnifiedTopology: true,
   useNewUrlParser: true})
   .then(x => {

@@ -4,6 +4,7 @@
 const express = require("express");
 const router = express.Router();
 const Answer = require('../models/answers');
+const FinalAnsSubmitted = require('../models/finalAnsSubmitted');
 const app = express();
 
 const getPageNumber = require('../helpers/getPageNumber.js');
@@ -780,12 +781,44 @@ router.post('/scenario-3-split-2', (req, res) => {
             newQuestionSubmittedByUser.save()
             .then( (answer) => {
                 console.log(`Answer saved to database: ${answer}`);
-                res.redirect(urlsAndPages.nextPage);
-            })
-            .catch((error) => {
-                console.log(error);
-            })
-})}});
+                Answer.find({userEmail: userEmail})
+                .then( (allData) => {
+                    const arrayOfAllAns = allData;
+                    const length = arrayOfAllAns.length;
+                    const answersSavedArray = [];
+                    const timesOfAnswersArray = [];
+                    for (i = 0; i < length; i++) {
+                        let obbo = JSON.parse(arrayOfAllAns[i].answersObject);
+                        let answerRecorded = arrayOfAllAns[i].createdAt;
+                        answersSavedArray.push(obbo);
+                        timesOfAnswersArray.push(answerRecorded);
+                    }
+                    const timesOfAnswers = JSON.stringify(timesOfAnswersArray);
+                    const answersSaved = JSON.stringify(answersSavedArray);
+                    const finalAnswer = new FinalAnsSubmitted ( { userId, userEmail, answersSaved, timesOfAnswers} );
+                    console.log(finalAnswer);
+                    finalAnswer.save()
+                    .then ( (x) => {
+                        res.redirect(urlsAndPages.nextPage);
+                    })})
+                    .catch((error) => {
+                        console.log(error);
+})})})}});
+
+
+
+
+
+/*
+    Answer.findOne({userEmail: userEmail})
+    .then((allDataFromUser) => {
+        if (allDataFromUser != null) {
+        console.log(allDataFromUser);
+*/
+
+
+
+
 
 router.get('/study-conclusion', (req, res) => {
   res.render('6a-study-conclusion');
