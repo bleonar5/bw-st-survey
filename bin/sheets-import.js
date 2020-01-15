@@ -913,7 +913,7 @@ const questions =
         "url": "/task-3-part-2",
         "page": 117,
         "id": 31604,
-        "text": "d) Show your willingness to be a team player by voicing your support of the team’s decision. .",
+        "text": "d) Show your willingness to be a team player by voicing your support of the team’s decision.",
         "category": "radio",
         "radio": true
     },
@@ -958,7 +958,7 @@ const questions =
         "url": "/task-3-part-2",
         "page": 117,
         "id": 31609,
-        "text": "i) Sustain the team’s decision on the recommendation, as long as they acknowledge to upper management that the team would revisit its decision if more resources are provided. .",
+        "text": "i) Sustain the team’s decision on the recommendation, as long as they acknowledge to upper management that the team would revisit its decision if more resources are provided.",
         "category": "radio",
         "radio": true
     },
@@ -1409,7 +1409,7 @@ const questions =
         "url": "/scenario-2-split-1",
         "page": 17,
         "id": 31604,
-        "text": "d) Show your willingness to be a team player by voicing your support of the team’s decision. .",
+        "text": "d) Show your willingness to be a team player by voicing your support of the team’s decision.",
         "category": "radio",
         "radio": true
     },
@@ -1505,7 +1505,7 @@ const questions =
         "url": "/scenario-2-split-2",
         "page": 18,
         "id": 31609,
-        "text": "i) Sustain the team’s decision on the recommendation, as long as they acknowledge to upper management that the team would revisit its decision if more resources are provided. .",
+        "text": "i) Sustain the team’s decision on the recommendation, as long as they acknowledge to upper management that the team would revisit its decision if more resources are provided.",
         "category": "radio",
         "radio": true
     },

@@ -10,32 +10,31 @@
 
 
 <div id="content-main-e">
-    <div id="task-1-text-box" class="justify-content-center bespoke-vertical-align-e col-12 text-left">
-        <div>
-            <form onSubmit="return checkQuestionsRadios(getArrayOfQuestions());" method="POST">
-                {{!-- <div class="row">
-                    <div class="col-12"> --}}
-                {{!-- <div class="table-responsive"> --}}
-                    <div class="table-wrappa">
-                <table class="table table-sm table-striped" style="width:100%">
 
+    {{!-- bespoke-vertical-align-e contains padding top (check CSS) --}}
+
+    <div id="task-1-text-box" class="col-12 bespoke-vertical-align-e text-left px-5">
+        <form onSubmit="return checkQuestionsRadios(getArrayOfQuestions());" method="POST">
+            <div class="row">
+                <table class="table table-striped" style="width:100%">
+                    {{!-- Removed table-smd --}}
                     <thead>
                         <tr>
-                            <td class="blank"></td>
+                            <td class="blank col-7"></td>
                             
-                            <th class="key">
+                            <th class="key col-1">
                                 <div class="text-center"><span class="font-weight-normal">Strongly<br></span><span class="text-danger">disagree</span></div>
                             </th>
-                            <th class="key">
+                            <th class="key col-1">
                                 <div class="text-center"><span class="font-weight-normal">Somewhat<br></span><span class="text-danger">disagree</span></div>
                             </th>
-                            <th class="key">
+                            <th class="key col-1">
                                 <div class="text-center"><span><span class="text-secondary font-weight-normal">No opinion</span></span></div>
                             </th>
-                            <th class="key">
+                            <th class="key col-1">
                                 <div class="text-center"><span class="font-weight-normal">Somewhat</span><span class="text-success"><br>agree</span></div>
                             </th>
-                            <th class="key">
+                            <th class="key col-1">
                                 <div class="text-center"><span class="font-weight-normal">Strongly</span><span class="text-success"><br>agree</span></div>
                             </th>
                         </tr>
@@ -45,35 +44,32 @@
                         {{#each perguntas}}
 
                             <tr name ="radioques">
-                            <td class="text-left">{{this.text}}</td>
+                            <td class="text-left col-7">{{this.text}}</td>
 
-                            <td class="radiocol text-center input ">
+                            <td class="radiocol text-center input col-1">
                                     <input class="form-check-input first-radio-box" type="radio" name={{this.id}} value="1-strongly-disagree" onclick="removeWarning();" {{#if this.option1Selected}} checked {{/if}} required>
                                 </td>
-                            <td class="radiocol text-center input">
+                            <td class="radiocol text-center input col-1">
                                     <input class="form-check-input" type="radio" name={{this.id}} value="2-somewhat-disagree" onclick="removeWarning();" {{#if this.option2Selected}} checked {{/if}} required>
                                 </td>
-                            <td class="radiocol text-center input">
+                            <td class="radiocol text-center input col-1">
                                     <input class="form-check-input" type="radio" name={{this.id}} value="3-no-opinion" onclick="removeWarning();" {{#if this.option3Selected}} checked {{/if}} required>
                                 </td>
-                            <td class="radiocol text-center input">
+                            <td class="radiocol text-center input col-1">
                                     <input class="form-check-input" type="radio" name={{this.id}} value="4-somewhat-agree" onclick="removeWarning();" {{#if this.option4Selected}} checked {{/if}} required>
                                 </td>
-                            <td class="radiocol text-center input">
+                            <td class="radiocol text-center input col-1">
                                     <input class="form-check-input" type="radio" name={{this.id}} value="5-strongly-agree" onclick="removeWarning();" {{#if this.option5Selected}} checked {{/if}} required>
                                 </td>
                             </tr>
 
                         {{/each}}
                     </tbody>
-                </table> 
-                </div>
-                {{!-- </div> --}}
-                {{!-- </div>
-                </div> --}}
-        </div>
+                </table>
+            </div>
     </div>
-</div>
+</div>     
+
 
 
 <div id="footer-e" class="row">
