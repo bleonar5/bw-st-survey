@@ -110,23 +110,25 @@ router.get('/scenario-3-intro', (req, res) => {
 
 /* --- TASK ONE ROUTES --- */
 router.get('/task-1-part-1', (req, res) => {
-    let currentPage = getPageNumber(req.originalUrl, allUrls);
-    let perguntas = allQuestions.filter(data => data.page === currentPage);
+    const currentPage = getPageNumber(req.originalUrl, allUrls);
     const urlsAndPages = extractUrlAndPage(currentPage, allUrls);
     const userEmail = req.session.currentUser;
     const handlebarsPage = urlsAndPages.handlebarsStaticPage;
+    const dataForThisSheet = allQuestions.filter( data => data.page === currentPage);
+    const heading = dataForThisSheet.filter (data => data.heading);
+    let perguntas = dataForThisSheet.filter (data => data.radio);
 
     Answer.findOne({userEmail: userEmail, currentPage: currentPage})
     .then((answer) => {
         if (answer !== null) {
             const questionIds = JSON.parse(answer.questionsIdSaved);
             const questionAnswersPartial = JSON.parse(answer.answersSaved);
-            perguntasWithUserAnswers = addUsersExistingsAnswers(perguntas, questionIds, questionAnswersPartial);
+            const perguntasWithUserAnswers = addUsersExistingsAnswers(perguntas, questionIds, questionAnswersPartial);
             perguntas = perguntasWithUserAnswers;
-            res.render(handlebarsPage, { perguntas, urlsAndPages });
+            res.render(handlebarsPage, { perguntas, heading, urlsAndPages });
         } else {
             console.log(`no answers saved for ${userEmail} yet`);
-            res.render(handlebarsPage, { perguntas, urlsAndPages });
+            res.render(handlebarsPage, { perguntas, heading, urlsAndPages });
         }
     })
     .catch((error) => {
@@ -162,12 +164,14 @@ router.post('/task-1-part-1', (req, res) => {
 })}});
 
 router.get('/task-1-part-2', (req, res) => {
-    let currentPage = getPageNumber(req.originalUrl, allUrls);
-    let perguntas = allQuestions.filter(data => data.page === currentPage);
+    const currentPage = getPageNumber(req.originalUrl, allUrls);
     const urlsAndPages = extractUrlAndPage(currentPage, allUrls);
     const userEmail = req.session.currentUser;
     const handlebarsPage = urlsAndPages.handlebarsStaticPage;
-    
+    const dataForThisSheet = allQuestions.filter( data => data.page === currentPage);
+    const heading = dataForThisSheet.filter (data => data.heading);
+    let perguntas = dataForThisSheet.filter (data => data.radio);
+    console.log(heading);
     Answer.findOne({userEmail: userEmail, currentPage: currentPage})
     .then((answer) => {
         if (answer !== null) {
@@ -175,10 +179,10 @@ router.get('/task-1-part-2', (req, res) => {
             const questionAnswersPartial = JSON.parse(answer.answersSaved);
             perguntasWithUserAnswers = addUsersExistingsAnswers(perguntas, questionIds, questionAnswersPartial);
             perguntas = perguntasWithUserAnswers;
-            res.render(handlebarsPage, { perguntas, urlsAndPages });
+            res.render(handlebarsPage, { perguntas, heading, urlsAndPages });
         } else {
             console.log(`no answers saved for ${userEmail} yet`);
-            res.render(handlebarsPage, { perguntas, urlsAndPages });
+            res.render(handlebarsPage, { perguntas, heading, urlsAndPages });
         }
     })
     .catch((error) => {
@@ -460,7 +464,6 @@ router.post('/task-2-part-3', (req, res) => {
 
 router.get('/scenario-1-split-1', (req, res) => {
     const currentPage = getPageNumber(req.originalUrl, allUrls);
-    console.log(currentPage);
     const dataForThisSheet = allQuestions.filter( data => data.page === currentPage);
     const sheetsSituations = dataForThisSheet.filter (data => data.scenario);
     const heading = dataForThisSheet.filter (data => data.heading);
@@ -903,6 +906,58 @@ router.get('/scenarios-layout-c', (req, res) => {
     .catch((error) => {
         console.log(error);
 })});
+
+router.get('/scenarios-layout-d', (req, res) => {
+    const currentPage = 15;
+    const dataForThisSheet = allQuestions.filter( data => data.page === currentPage);
+    const sheetsSituations = dataForThisSheet.filter (data => data.scenario);
+    const heading = dataForThisSheet.filter (data => data.heading);
+    const urlsAndPages = extractUrlAndPage(currentPage, allUrls);
+    const userEmail = req.session.currentUser;
+    const handlebarsPage = '5a-scenarios-split-d';
+    let perguntas = dataForThisSheet.filter (data => data.radio);
+
+    Answer.findOne({userEmail: userEmail, currentPage: currentPage})
+    .then((answer) => {
+        if (answer != null) {
+        const questionIds = JSON.parse(answer.questionsIdSaved);
+        const questionAnswersPartial = JSON.parse(answer.answersSaved);
+        let perguntasWithUserAnswers = addUsersExistingsAnswers(perguntas, questionIds, questionAnswersPartial);
+        perguntas = perguntasWithUserAnswers;
+        res.render(handlebarsPage, { heading, sheetsSituations, perguntas, urlsAndPages });
+    } else {
+        console.log(`no answers saved for ${userEmail} yet`);
+        res.render(handlebarsPage, { heading, sheetsSituations, perguntas, urlsAndPages });
+    }})
+    .catch((error) => {
+        console.log(error);
+})});
+
+
+router.get('/3b-task-1-b', (req, res) => {
+    let currentPage = 7;
+    let perguntas = allQuestions.filter(data => data.page === currentPage);
+    const urlsAndPages = extractUrlAndPage(currentPage, allUrls);
+    const userEmail = req.session.currentUser;
+    const handlebarsPage = '3b-task-1-b';
+
+    Answer.findOne({userEmail: userEmail, currentPage: currentPage})
+    .then((answer) => {
+        if (answer !== null) {
+            const questionIds = JSON.parse(answer.questionsIdSaved);
+            const questionAnswersPartial = JSON.parse(answer.answersSaved);
+            perguntasWithUserAnswers = addUsersExistingsAnswers(perguntas, questionIds, questionAnswersPartial);
+            perguntas = perguntasWithUserAnswers;
+            res.render(handlebarsPage, { perguntas, urlsAndPages });
+        } else {
+            console.log(`no answers saved for ${userEmail} yet`);
+            res.render(handlebarsPage, { perguntas, urlsAndPages });
+        }
+    })
+    .catch((error) => {
+        console.log(error);
+    })
+});
 
 
 module.exports = router;

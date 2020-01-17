@@ -6,10 +6,7 @@ let employed = true;
 let student = undefined;
 let timeTaken = 0;
 
-// Declare variables to measure user's screensize
-const width  = window.innerWidth;
-const height = window.innerHeight;
-// console.log(`width: ${width}, height ${height}`);
+
 
 
 // Function which removes the form validation warning when user clicks on any radio button

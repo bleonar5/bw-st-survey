@@ -1,4 +1,4 @@
-<div id="content-heading-f" class="text-center row">
+<div id="content-heading-f-d" class="text-center row">
 
     <div class="col-2">
             <div class="row h-100">
@@ -34,9 +34,9 @@
 </div>
 
 
-<div id="content-main-top-f">
-    <div class="row justify-content-center bespoke-vertical-align-top-f font-size-90">
-        <div id="task3TextBoxScenario" class="col-12 py-1 px-5">
+<div id="content-main-top-f-d">
+    <div class="row justify-content-center bespoke-vertical-align-top-f font-size-90 text-center">
+        <div id="task3TextBoxScenario" class="col-12 py-1">
                 {{#each sheetsSituations}}
                     <div >
                         {{#if scenario}}
@@ -50,9 +50,19 @@
 </div>
 
 
-<div id="content-main-bottom-f">
-    <div id="task-3-text-box" class="justify-content-center bespoke-vertical-align-bottom-f col-12 text-left font-size-90">
-        <div class="col-12">
+<div id="content-main-bottom-f-d" class="font-size-90">
+    <div id="task-3-text-box" class="justify-content-center bespoke-vertical-align-bottom-f-d col-12 text-left">
+
+        <div class="col-1 align-self-end pb-1">
+            <div id="back-button" class="float-left">
+                {{#if urlsAndPages.backbutton}}
+                    <a href={{urlsAndPages.previousPage}} role="button" class="btn btn-secondary float-left">Back</a>
+                {{/if}}
+            </div>
+        </div>
+
+
+        <div class="col-10">
             <form onSubmit="return checkQuestionsRadios(getArrayOfQuestions());" method="POST">
                 <table class="table table-striped table-sm">
                         <thead>
@@ -65,8 +75,10 @@
                                 <th class="key col-1">
                                     <div class="text-center font-size-sm"><span class="font-weight-normal">Somewhat<br></span><span class="text-danger">Ineffective</span></div>
                                 </th>
-                                <th class="key col-1 align-middle">
-                                        <div class="text-center text-secondary font-weight-normal font-size-sm "><span>Neutral</span></div>
+                                <th class="key col-1">
+                                    
+                                        <div class="text-center text-secondary font-weight-normal font-size-sm"><span>Neutral</span></div>
+                                   
                                 </th>
                                 <th class="key col-1">
                                     <div class="text-center font-size-sm"><span class="font-weight-normal">Somewhat<br></span><span class="text-success">Effective</span></span></div>
@@ -104,35 +116,14 @@
                         </tbody>
                 </table>
         </div>
+
+                <div class="col-1 align-self-end pb-1">
+                    <div class="float-right">
+                        <button role="button" type="submit" class="btn btn-primary text-white float-right hand-curser">Next</button>
+                    </div>
+                </div>
+            </form>
     </div>
 </div>
 
 
-
-<div id="footer-f" class="row">
-
-    <div class="col-2">
-        <div id="back-button" class="float-left">
-            {{#if urlsAndPages.backbutton}}
-            <a href={{urlsAndPages.previousPage}} role="button" class="btn btn-secondary float-left">Back</a>
-            {{/if}}
-        </div>
-    </div>
-
-    <div class="col-8">
-        <div class="text-center">
-            <div id="warning-message-small"></div>
-
-            {{#if urlsAndPages.pagination}}
-                <div id="page-number">{{> pageNumberFormat}}{{urlsAndPages.pagination}}</div></div>
-            {{/if}}
-        </div>
-    </div>
-
-    <div class="col-2">
-        <div class="float-right">
-            <button role="button" type="submit" class="btn btn-primary text-white float-right hand-curser">Next</button>
-        </div>
-        </form>
-    </div>
-</div>

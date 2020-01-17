@@ -1,15 +1,14 @@
 <div class="row">
 
-{{!-- Start of Left Side Bar --}} 
+{{!-- Left Side Bar --}} 
     <div class="col-1">
 
-        <div id="empty-skip-btn" class="row h-50">
-            {{!-- Skip button used to speed up testing phase. Not used for production --}} 
+        <div id="empty-skip-btn" class="row h-50">>
         </div>
 
         <div class="row h-50">
             <div class="align-self-end col-12">
-                <div class="text-left {{> paddingBottomDefault }}">
+                <div class="text-left {{> paddingBottomDefault }} {{> paddingLeftDefault }}">
                     {{#if urlsAndPages.backbutton}}
                         <a href={{urlsAndPages.previousPage}} role="button" class="btn btn-secondary">Back</a>
                     {{/if}}
@@ -17,22 +16,22 @@
             </div>
         </div>
     </div>
-{{!-- End of Left Side Bar --}} 
 
 
-    <div class="col-10">
-        {{!-- Header Start --}} 
-            <div class="row bespoke-header-and-footer-o">
-                <div class="col-md-12 align-self-end text-center">
-                    <div class="text-center">
-                        <h2 class="text-primary m-0">{{#each heading}} {{#if this.heading}}{{this.text}}{{/if}} {{/each}}</h2>
-                    </div>
+    <div id="task-1-text-box" class="col-10">
+
+        <div>
+            <div class="row bespoke-header-o">
+                <div class="col-md-12 align-self-top text-center {{> paddingTopDefault }}">
+                    <h2 class="text-primary">Scenarios</h2>
                 </div>
             </div>
-     {{!-- Header End --}} 
+
+
 
         <form onSubmit="return checkQuestionsRadios(getArrayOfQuestions());" method="POST">
-            <div id="task-1-text-box" class="row bespoke-vertical-align-o">
+            <div class="row">
+                <div class="row bespoke-vertical-align-o">
                 <table class="table-sm table-striped">
                     <thead>
                         <tr>
@@ -58,7 +57,7 @@
 
                     <tbody>
                         {{#each perguntas}}
-                            {{#if radio}}
+
                             <tr name ="radioques">
                             <td class="text-left col-7">{{this.text}}</td>
 
@@ -78,48 +77,49 @@
                                     <input type="radio" name={{this.id}} value="5-strongly-agree" onclick="removeWarning();" {{#if this.option5Selected}} checked {{/if}} required>
                                 </td>
                             </tr>
-                        {{/if}}
+
                         {{/each}}
                     </tbody>
                 </table>
+                </div >
             </div>
 
-        {{!-- Start of Footer --}}
-            <div class="row bespoke-header-and-footer-o">
-                <div class="col-md-12 align-self-end text-center font-size-90 pb-md-0 pb-lg-3 d-md-none d-lg-block">
-                    <div id="warning-message-small">
-                        {{!-- Form Validation Div --}}
-                    </div>
+            <div class="row bespoke-header-o">
+                <div class="col-md-12 align-self-end text-center font-size-90 ">
+                    
+                    <div id="warning-message-small"></div>
 
                     {{#if urlsAndPages.pagination}}
                         <div id="page-number">{{> pageNumberFormat}}{{urlsAndPages.pagination}}</div></div>
                     {{/if}}
 
+
                 </div>
             </div>
-        {{!-- End of Footer --}}
+
+        </div>
     </div>
 
 
-{{!-- Start of Right Side Bar --}}
+        {{!-- Right Side Bar --}}
     <div class="col-1">
+
         <div class="row h-50">
             <div class="align-self-top col-12">
-                <div class="text-right {{> paddingTopDefault }}">
-                    <a id="toggle-text-size-btn" role="button" onclick="toggleFontSize();" class="btn btn-secondary text-white hand-curser"><strong>a</strong>A</a>
-                </div>
+                    <div class="text-right {{> paddingTopDefault }} {{> paddingRightDefault }}">
+                        <a id="toggle-text-size-btn" role="button" onclick="toggleFontSize();" class="btn btn-secondary text-white hand-curser"><strong>a</strong>A</a>
+                    </div>
             </div>
         </div>
 
         <div class="row h-50">
             <div class="align-self-end col-12">
-                <div class="text-right {{> paddingBottomDefault }}">
+                <div class="text-right {{> paddingBottomDefault }} {{> paddingRightDefault }}">
                     <button role="button" type="submit" class="btn btn-primary text-white hand-curser">Next</button>
                 </div>
                 </form>
             </div>
         </div>
     </div>
-{{!-- End of Right Side Bar --}}
-{{!-- Ending Div (row) Below--}}
+{{!-- Right Side Bar --}}
 </div> 

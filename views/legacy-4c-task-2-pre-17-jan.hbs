@@ -1,38 +1,33 @@
-<div class="row">
+<div id="content-heading-h" class="text-center row">
 
-{{!-- Start of Left Side Bar --}} 
-    <div class="col-1">
+    <div class="col-2">
+    </div>
 
-        <div id="empty-skip-btn" class="row h-50">
-            {{!-- Skip button used to speed up testing phase. Not used for production --}} 
-        </div>
-
-        <div class="row h-50">
-            <div class="align-self-end col-12">
-                <div class="text-left {{> paddingBottomDefault }}">
-                    {{#if urlsAndPages.backbutton}}
-                        <a href={{urlsAndPages.previousPage}} role="button" class="btn btn-secondary">Back</a>
-                    {{/if}}
+    <div class="col-8">
+        <div class="row h-100">
+            <div class="col-md-12 align-self-end">
+                <div class="text-center">
+                    <h2>{{#each perguntas}}{{#if heading}}{{this.text}}{{/if}}{{/each}}</h2>
                 </div>
             </div>
         </div>
     </div>
-{{!-- End of Left Side Bar --}} 
 
-    <div class="col-10">
-    {{!-- Header Start --}} 
-        <div class="row bespoke-header-and-footer-o">
-            <div class="col-md-12 align-self-top text-center {{> paddingTopDefault }}">
-                <div class="text-center">
-                    <h2 class="text-primary">{{#each perguntas}}{{#if heading}}{{this.text}}{{/if}}{{/each}}</h2>
+    <div class="col-2">
+        <div class="row h-100">
+            <div class="col-md-12 align-self-end">
+                <div class="float-right pt-2 pr-2">
                 </div>
             </div>
         </div>
-    {{!-- Header End --}} 
+    </div>
+</div>
 
-        <form onSubmit="return checkQuestionsTask2(getArrayOfQuestions());" method="POST">
-            <div id="task-2-text-box" class="row justify-content-center bespoke-vertical-align-o">
-                    <table class="table-sm table-striped">
+<div id="content-main-h">
+    <div class="row justify-content-center bespoke-vertical-align-h">
+        <div class="col-sm-10 col-md-10">
+            <form onSubmit="return checkQuestionsTask2(getArrayOfQuestions());" method="POST">
+                <table class="table table-striped my-5">
                     {{#each perguntas}} 
                         {{#if dropdown}}
                             <tr class="row">
@@ -49,6 +44,7 @@
                                 </td>    
                             </tr>
                         {{/if}}
+
 
                         {{#if yesno}}
                                 <tr class="row">
@@ -76,44 +72,37 @@
                             </tr>
                         {{/if}}
                     {{/each}}
-                    </table>  
-                </div>
-        {{!-- Start of Footer --}}
-            <div class="row bespoke-header-and-footer-o">
-                <div class="col-md-12 align-self-end text-center font-size-90 pb-md-0 pb-lg-3 d-md-none d-lg-block">
-                    <div id="warning-message-small">
-                        {{!-- Form Validation Div --}}
-                    </div>
+                </table>  
+        </div>
+    </div>
+{{!-- closing div of end of contentmain below --}}
+</div>
 
-                    {{#if urlsAndPages.pagination}}
-                        <div id="page-number">{{> pageNumberFormat}}{{urlsAndPages.pagination}}</div></div>
-                    {{/if}}
+<div id="footer-h" class="row">
 
-                </div>
-            </div>
-        {{!-- End of Footer --}}
+    {{> 4footerleft}}
+            {{#if urlsAndPages.backbutton}}
+            <a href={{urlsAndPages.previousPage}} role="button" class="btn btn-lg btn-secondary float-left mx-5">Back</a>
+            {{/if}}
+        </div>
     </div>
 
-{{!-- Start of Right Side Bar --}}
-    <div class="col-1">
-        <div class="row h-50">
-            <div class="align-self-top col-12">
-                <div class="text-right {{> paddingTopDefault }}">
-                    <a id="toggle-text-size-btn" role="button" onclick="toggleFontSize();" class="btn btn-secondary text-white hand-curser"><strong>a</strong>A</a>
-                </div>
-            </div>
-        </div>
+    {{> 5footermiddle}}
 
-        <div class="row h-50">
-            <div class="align-self-end col-12">
-                <div class="text-right {{> paddingBottomDefault }}">
-                    <button role="button" type="submit" class="btn btn-primary text-white hand-curser">Next</button>
-                </div>
-                </form>
-            </div>
+            <div id="warning-message-small"></div>
+
+            {{#if urlsAndPages.pagination}}
+            <div id="page-number">{{> pageNumberFormat}}{{urlsAndPages.pagination}}</div></div>
+            {{/if}}
+
         </div>
-    </div>    
-{{!-- End of Right Side Bar --}}
-{{!-- Ending Div (row) Below--}}
-</div> 
+    </div>
+
+    {{> 6footerright}}
+            <button role="button" type="submit" class="btn btn-lg btn-primary text-white float-right hand-curser">Next</button>
+        </div>
+        </form>
+    </div>
+{{!-- closing div of footer below --}}
+</div>
 

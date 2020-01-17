@@ -198,6 +198,15 @@ const questions =
         "info": true
     },
     {
+        "url": "/task-1-part-1",
+        "page": 6,
+        "id": 10600,
+        "text": "Task 1",
+        "category": "heading",
+        "heading": true,
+        "comments": "[RP-17-jan: added in v14]"
+    },
+    {
         "order": 5,
         "url": "/task-1-part-1",
         "page": 6,
@@ -285,6 +294,15 @@ const questions =
         "category": "radio",
         "radio": true,
         "comments": "[RP-08-jan: added in v9]"
+    },
+    {
+        "url": "/task-1-part-2",
+        "page": 7,
+        "id": 10700,
+        "text": "Task 1",
+        "category": "heading",
+        "heading": true,
+        "comments": "[RP-17-jan: added in v14]"
     },
     {
         "order": 6,
@@ -519,9 +537,9 @@ const questions =
         "page": 11,
         "id": 21101,
         "text": "If you are a current student OR have completed a degree, what was your major?",
-        "category": "dropdown",
+        "category": "textarea",
         "options": "option 1 [BW to provide]; option 2 [BW to provide]; option 3 etc. [BW to provide]",
-        "dropdown": true
+        "textarea": true
     },
     {
         "order": 9,
@@ -530,7 +548,7 @@ const questions =
         "id": 21102,
         "text": "Roughly what fraction of your assessment during your degree was based on group work or team assignments?",
         "category": "dropdown",
-        "options": "option 1 [BW to provide]; option 2 [BW to provide]; option 3 etc. [BW to provide]",
+        "options": "0-10%; 10-20%; 20-30%; 30-40%; 40-50%; 50-80%; almost all ",
         "dropdown": true
     },
     {
@@ -538,9 +556,9 @@ const questions =
         "url": "/task-2-part-2",
         "page": 11,
         "id": 21103,
-        "text": "[placeholder 1; Ben/David still coming up with some Q’s here]",
+        "text": "Which of the following types of assessment did you MOST prefer?",
         "category": "dropdown",
-        "options": "testing an option; another test option; et cetera",
+        "options": "exams; individual assignments; group assignments",
         "dropdown": true
     },
     {
@@ -548,19 +566,21 @@ const questions =
         "url": "/task-2-part-2",
         "page": 11,
         "id": 21104,
-        "text": "[placeholder 2; Ben/David still coming up with some Q’s here]",
-        "category": "textarea",
+        "text": "Which of the following types of assessment did you LEAST prefer?",
+        "category": "dropdown",
+        "options": "exams; individual assignments; group assignments",
         "testanswer": "Finibus Bonorum et Malorum",
-        "textarea": true
+        "dropdown": true
     },
     {
         "order": 9,
         "url": "/task-2-part-2",
         "page": 11,
         "id": 21105,
-        "text": "[placeholder 3; Ben/David still coming up with some Q’s here]",
-        "category": "yesno",
-        "yesno": true
+        "text": "Which of the following types of assessment did you do best at?",
+        "category": "dropdown",
+        "options": "exams; individual assignments; group assignments",
+        "dropdown": true
     },
     {
         "order": 9,

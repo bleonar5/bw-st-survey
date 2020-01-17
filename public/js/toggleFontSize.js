@@ -1,3 +1,6 @@
+// Todo: Make it functional for task-2-text-box
+
+
 function toggleFontSize() {
 
     let task1TextBox = document.getElementById('task-1-text-box');
@@ -5,6 +8,8 @@ function toggleFontSize() {
     let contentMainB = document.getElementById('content-main-b');
     let task3TextBoxScenario = document.getElementById('task3TextBoxScenario');
     let task3TextRadioBox = document.getElementById('task-3-text-box');
+
+
 
     // Content A - study-consent
     if (contentMainA !== null) {
@@ -23,8 +28,8 @@ function toggleFontSize() {
 
     // Task 3 Radio and Scenario Buttons
     if (task3TextBoxScenario !== null) {
-        changeTextSize(task3TextBoxScenario, 'font-size-bigger');
-        changeTextSize(task3TextRadioBox, 'font-size-bigger');
+        changeTextSize(task3TextBoxScenario, 'font-size-task-3');
+        changeTextSize(task3TextRadioBox, 'font-size-task-3');
     }
 }
 
