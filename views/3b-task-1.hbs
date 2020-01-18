@@ -23,7 +23,7 @@
 {{!-- End of Left Side Bar --}} 
 
 
-    <div class="col-10" id="test1">
+    <div id="task-1-main" class="col-10">
         {{!-- Header Start --}} 
             <div class="row bespoke-header-and-footer-o">
                 <div class="col-md-12 align-self-end text-center">
@@ -96,7 +96,11 @@
                     </div>
 
                     {{#if urlsAndPages.pagination}}
-                        <div id="page-number">{{> pageNumberFormat}}{{urlsAndPages.pagination}}</div></div>
+                        <div id="page-number">
+                            <div class="text-center pt-3">
+                                {{urlsAndPages.pagination}}
+                            </div>
+                        </div>
                     {{/if}}
 
                 </div>

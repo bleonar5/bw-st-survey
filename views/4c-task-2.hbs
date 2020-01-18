@@ -19,6 +19,7 @@
     </div>
 {{!-- End of Left Side Bar --}} 
 
+    <div id="task-2-main" class="col-10">
     {{!-- Header Start --}} 
         <div class="row bespoke-header-and-footer-o">
             <div class="col-md-12 align-self-top text-center {{> paddingTopDefault }}">
@@ -86,13 +87,18 @@
                     </div>
 
                     {{#if urlsAndPages.pagination}}
-                        <div id="page-number">{{> pageNumberFormat}}{{urlsAndPages.pagination}}</div></div>
+                        <div id="page-number">
+                            <div class="text-center pt-3">
+                                {{urlsAndPages.pagination}}
+                            </div>
+                        </div>
                     {{/if}}
 
                 </div>
             </div>
-        {{!-- End of Footer --}}
+            {{!-- End of Footer --}}
     </div>
+    {{!-- End of task-2-main --}}
 
 {{!-- Start of Right Side Bar --}}
     <div class="col-1">

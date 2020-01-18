@@ -20,7 +20,7 @@
 {{!-- End of Left Side Bar --}} 
 
 
-    <div class="col-10">
+    <div id="task-3-main" class="col-10">
         {{!-- Header Start --}} 
         <div class="row bespoke-header-and-footer-o">
             <div class="col-md-12 align-self-end text-center">
@@ -104,8 +104,6 @@
             </div>
         </div>
 
-
-
         {{!-- Start of Footer --}}
             <div class="row bespoke-header-and-footer-o">
                 <div class="col-md-12 align-self-end text-center font-size-90 pb-md-0 pb-lg-3 d-md-none d-lg-block">
@@ -114,13 +112,18 @@
                     </div>
 
                     {{#if urlsAndPages.pagination}}
-                        <div id="page-number">{{> pageNumberFormat}}{{urlsAndPages.pagination}}</div></div>
+                        <div id="page-number">
+                            <div class="text-center pt-3">
+                                {{urlsAndPages.pagination}}
+                            </div>
+                        </div>
                     {{/if}}
 
                 </div>
             </div>
         {{!-- End of Footer --}}
     </div>
+    {{!-- End of task-3-main --}}
 
 
 {{!-- Start of Right Side Bar --}}

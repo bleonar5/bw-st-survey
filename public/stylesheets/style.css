@@ -39,7 +39,7 @@ https://stackoverflow.com/questions/25427407/bootstrap-3-and-4-container-fluid-w
     height: 80vh;
 }
 
-#test-1 {
+#task-1-main, #task-2-main, #task-3-main {
     height: 100%;
     height: 100vh;
 }
