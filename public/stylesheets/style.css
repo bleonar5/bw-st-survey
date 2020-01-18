@@ -30,8 +30,8 @@ https://stackoverflow.com/questions/25427407/bootstrap-3-and-4-container-fluid-w
 }
 
 .bespoke-header-and-footer-o {
-    height: 10%;
-    /* min-height: 10vh; */
+    min-height: 10% !important;
+    min-height: 10vh !important;
 }
 
 #task-1-text-box {
