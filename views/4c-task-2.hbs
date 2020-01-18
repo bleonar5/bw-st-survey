@@ -19,7 +19,6 @@
     </div>
 {{!-- End of Left Side Bar --}} 
 
-    <div class="col-10">
     {{!-- Header Start --}} 
         <div class="row bespoke-header-and-footer-o">
             <div class="col-md-12 align-self-top text-center {{> paddingTopDefault }}">
@@ -29,9 +28,9 @@
             </div>
         </div>
     {{!-- Header End --}} 
-
+        <div id="task-2" class="row bespoke-vertical-align-o justify-content-center">
         <form onSubmit="return checkQuestionsTask2(getArrayOfQuestions());" method="POST">
-            <div id="task-2-text-box" class="row bespoke-vertical-align-o justify-content-center">
+            <div id="task-2-text-box">
                     <table class="table-sm table-striped">
                     {{#each perguntas}} 
                         {{#if dropdown}}
@@ -78,6 +77,7 @@
                     {{/each}}
                     </table>  
                 </div>
+        </div>
         {{!-- Start of Footer --}}
             <div class="row bespoke-header-and-footer-o">
                 <div class="col-md-12 align-self-end text-center font-size-90 pb-md-0 pb-lg-3 d-md-none d-lg-block">
