@@ -1,138 +1,147 @@
-<div id="content-heading-f" class="text-center row">
+<div class="row">
 
-    <div class="col-2">
-            <div class="row h-100">
-                <div class="col-md-12 align-self-end">
-                    
-                        <div class="float-left pt-2 pl-2 mb-2">
-                            <a id="skip-btn" role="button" onclick="completeQuestions(); removeWarning();" class="btn btn-warning float-left hand-curser">Skip</a>
-                        </div>
+{{!-- Start of Left Side Bar --}} 
+    <div class="col-1">
+
+        <div id="empty-skip-btn" class="row h-50">
+            {{!-- Skip button used to speed up testing phase. Not used for production --}} 
+        </div>
+
+        <div class="row h-50">
+            <div class="align-self-end col-12">
+                <div class="text-left {{> paddingBottomDefault }}">
+                    {{#if urlsAndPages.backbutton}}
+                        <a href={{urlsAndPages.previousPage}} role="button" class="btn btn-secondary">Back</a>
+                    {{/if}}
+                </div>
+            </div>
+        </div>
+    </div>
+{{!-- End of Left Side Bar --}} 
+
+
+    <div class="col-10">
+        {{!-- Header Start --}} 
+        <div class="row bespoke-header-and-footer-o">
+            <div class="col-md-12 align-self-end text-center">
+                <div class="text-center">
+                    <h2 class="text-primary m-0">{{#each heading}} {{#if this.heading}}{{this.text}}{{/if}} {{/each}}</h2>
+                </div>
+            </div>
+        </div>
+        {{!-- Header End --}}
+
+        {{!-- Scenarios Start --}} 
+        <div id="content-main-top-o">
+            <div class="row justify-content-center bespoke-vertical-align-o-top font-size-90">
+                {{!-- py-1 px-5 below --}}
+                <div id="task3TextBoxScenario" class="col-12 ">
+                        {{#each sheetsSituations}}
+                            <div >
+                                {{#if scenario}}
+                                    {{{this.text}}}
+                                {{/if}}
+                            </div>
+                        {{/each}}
+                </div>
+            </div>
+        </div>
+
+        <div id="content-main-bottom-o">
+            <div id="task-3-text-box" class="justify-content-center bespoke-vertical-align-o-bottom col-12 text-left font-size-90">
+                <form onSubmit="return checkQuestionsRadios(getArrayOfQuestions());" method="POST">
+                    <div id="task-3-text-box-2" class="col-12">
+                        <table class="table-sm table-striped">
+                            <thead>
+                                <tr>
+                                    <td class="blank col-7"></td>
+
+                                    <th class="key col-1">
+                                        <div class="text-center font-size-sm"><span class="font-weight-normal">Very<br></span><span class="text-danger">Ineffective</span></div>
+                                    </th>
+                                    <th class="key col-1">
+                                        <div class="text-center font-size-sm"><span class="font-weight-normal">Somewhat<br></span><span class="text-danger">Ineffective</span></div>
+                                    </th>
+                                    <th class="key col-1 align-middle">
+                                        <div class="text-center text-secondary font-weight-normal font-size-sm "><span>Neutral</span></div>
+                                    </th>
+                                    <th class="key col-1">
+                                        <div class="text-center font-size-sm"><span class="font-weight-normal">Somewhat<br></span><span class="text-success">Effective</span></span></div>
+                                    </th>
+                                    <th class="key col-1">
+                                        <div class="text-center font-size-sm"><span class="font-weight-normal">Very<br></span><span class="text-success">Effective</span></span></div>
+                                    </th>
+                                </tr>
+                            </thead>
+                            
+                            <tbody>
+                                {{#each perguntas}} 
+                                {{#if radio}} 
+                                    <tr name="radioques">
+                                        <td class="text-left col-7">{{this.text}}</td>
+
+                                        <td class="radiocol text-center input col-1">
+                                                <input class="first-radio-box" type="radio" name={{this.id}} value="1-strongly-disagree" onclick="removeWarning();" {{#if this.option1Selected}} checked {{/if}} required>
+                                            </td>
+                                        <td class="radiocol text-center input col-1">
+                                                <input type="radio" name={{this.id}} value="2-somewhat-disagree" onclick="removeWarning();" {{#if this.option2Selected}} checked {{/if}} required>
+                                            </td>
+                                        <td class="radiocol text-center input col-1">
+                                                <input type="radio" name={{this.id}} value="3-no-opinion" onclick="removeWarning();" {{#if this.option3Selected}} checked {{/if}} required>
+                                            </td>
+                                        <td class="radiocol text-center input col-1">
+                                                <input type="radio" name={{this.id}} value="4-somewhat-agree" onclick="removeWarning();" {{#if this.option4Selected}} checked {{/if}} required>
+                                            </td>
+                                        <td class="radiocol text-center input col-1">
+                                                <input type="radio" name={{this.id}} value="5-strongly-agree" onclick="removeWarning();" {{#if this.option5Selected}} checked {{/if}} required>
+                                            </td>
+                                    </tr>
+                                {{/if}} 
+                                {{/each}}
+                            </tbody>
+                        </table>
+                </div>
+            </div>
+        </div>
+
+
+
+        {{!-- Start of Footer --}}
+            <div class="row bespoke-header-and-footer-o">
+                <div class="col-md-12 align-self-end text-center font-size-90 pb-md-0 pb-lg-3 d-md-none d-lg-block">
+                    <div id="warning-message-small">
+                        {{!-- Form Validation Div --}}
+                    </div>
+
+                    {{#if urlsAndPages.pagination}}
+                        <div id="page-number">{{> pageNumberFormat}}{{urlsAndPages.pagination}}</div></div>
+                    {{/if}}
 
                 </div>
             </div>
+        {{!-- End of Footer --}}
     </div>
 
-    <div class="col-8">
-        <div class="row h-100">
-            <div class="col-md-12 align-self-end">
-                <h2 class="text-primary">{{#each heading}}{{#if heading}}{{this.text}}{{/if}}{{/each}}</h2>
+
+{{!-- Start of Right Side Bar --}}
+    <div class="col-1">
+        <div class="row h-50">
+            <div class="align-self-top col-12">
+                <div class="text-right {{> paddingTopDefault }}">
+                    <a id="toggle-text-size-btn" role="button" onclick="toggleFontSize();" class="btn btn-secondary text-white hand-curser"><strong>a</strong>A</a>
+                </div>
             </div>
         </div>
-    </div>
 
-    <div class="col-2">
-        <div class="row h-100">
-            <div class="col-md-12 align-self-end">
-                
-                    <div class="float-right pt-2 pr-2 mb-2">
-                        <a id="toggle-text-size-btn" role="button" onclick="toggleFontSize();" class="btn btn-secondary text-white float-right hand-curser"><strong>a</strong>A</a>
-                    </div>
-
+        <div class="row h-50">
+            <div class="align-self-end col-12">
+                <div class="text-right {{> paddingBottomDefault }}">
+                    <button role="button" type="submit" class="btn btn-primary text-white hand-curser">Next</button>
+                </div>
+                </form>
             </div>
         </div>
-    </div>
-</div>
-
-
-<div id="content-main-top-f">
-    <div class="row justify-content-center bespoke-vertical-align-top-f font-size-90">
-        <div id="task3TextBoxScenario" class="col-12 py-1 px-5">
-                {{#each sheetsSituations}}
-                    <div >
-                        {{#if scenario}}
-                            {{{this.text}}}
-                        {{/if}}
-                    </div>
-                {{/each}}
-            
-        </div>
-    </div>
-</div>
-
-
-<div id="content-main-bottom-f">
-    <div id="task-3-text-box" class="justify-content-center bespoke-vertical-align-bottom-f col-12 text-left font-size-90">
-        <div class="col-12">
-            <form onSubmit="return checkQuestionsRadios(getArrayOfQuestions());" method="POST">
-                <table class="table table-striped table-sm">
-                        <thead>
-                            <tr> 
-                                <td class="blank col-7"></td>
-
-                                <th class="key col-1">
-                                    <div class="text-center font-size-sm"><span class="font-weight-normal">Very<br></span><span class="text-danger">Ineffective</span></div>
-                                </th>
-                                <th class="key col-1">
-                                    <div class="text-center font-size-sm"><span class="font-weight-normal">Somewhat<br></span><span class="text-danger">Ineffective</span></div>
-                                </th>
-                                <th class="key col-1 align-middle">
-                                        <div class="text-center text-secondary font-weight-normal font-size-sm "><span>Neutral</span></div>
-                                </th>
-                                <th class="key col-1">
-                                    <div class="text-center font-size-sm"><span class="font-weight-normal">Somewhat<br></span><span class="text-success">Effective</span></span></div>
-                                </th>
-                                <th class="key col-1">
-                                    <div class="text-center font-size-sm"><span class="font-weight-normal">Very<br></span><span class="text-success">Effective</span></span></div>
-                                </th>
-                            </tr>
-                        </thead>
-                    
-                        <tbody>
-                            {{#each perguntas}} 
-                            {{#if radio}} 
-                                <tr name="radioques">
-                                    <td class="text-left col-7">{{this.text}}</td>
-
-                                    <td class="radiocol text-center input col-1">
-                                            <input class="form-check-input first-radio-box" type="radio" name={{this.id}} value="1-strongly-disagree" onclick="removeWarning();" {{#if this.option1Selected}} checked {{/if}} required>
-                                        </td>
-                                    <td class="radiocol text-center input col-1">
-                                            <input class="form-check-input" type="radio" name={{this.id}} value="2-somewhat-disagree" onclick="removeWarning();" {{#if this.option2Selected}} checked {{/if}} required>
-                                        </td>
-                                    <td class="radiocol text-center input col-1">
-                                            <input class="form-check-input" type="radio" name={{this.id}} value="3-no-opinion" onclick="removeWarning();" {{#if this.option3Selected}} checked {{/if}} required>
-                                        </td>
-                                    <td class="radiocol text-center input col-1">
-                                            <input class="form-check-input" type="radio" name={{this.id}} value="4-somewhat-agree" onclick="removeWarning();" {{#if this.option4Selected}} checked {{/if}} required>
-                                        </td>
-                                    <td class="radiocol text-center input col-1">
-                                            <input class="form-check-input" type="radio" name={{this.id}} value="5-strongly-agree" onclick="removeWarning();" {{#if this.option5Selected}} checked {{/if}} required>
-                                        </td>
-                                </tr>
-                            {{/if}} 
-                            {{/each}}
-                        </tbody>
-                </table>
-        </div>
-    </div>
-</div>
-
-
-
-<div id="footer-f" class="row">
-
-    <div class="col-2">
-        <div id="back-button" class="float-left">
-            {{#if urlsAndPages.backbutton}}
-            <a href={{urlsAndPages.previousPage}} role="button" class="btn btn-secondary float-left">Back</a>
-            {{/if}}
-        </div>
-    </div>
-
-    <div class="col-8">
-        <div class="text-center">
-            <div id="warning-message-small"></div>
-
-            {{#if urlsAndPages.pagination}}
-                <div id="page-number">{{> pageNumberFormat}}{{urlsAndPages.pagination}}</div></div>
-            {{/if}}
-        </div>
-    </div>
-
-    <div class="col-2">
-        <div class="float-right">
-            <button role="button" type="submit" class="btn btn-primary text-white float-right hand-curser">Next</button>
-        </div>
-        </form>
-    </div>
+    </div>    
+{{!-- End of Right Side Bar --}}
+{{!-- Ending Div (row) Below--}}
 </div>

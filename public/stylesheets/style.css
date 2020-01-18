@@ -19,6 +19,7 @@ Below is a workaround to fix the issue with having unwanted padding on the conta
 https://stackoverflow.com/questions/25427407/bootstrap-3-and-4-container-fluid-with-grid-adding-unwanted-padding
 */
 
+
 .full-width-row {
     overflow-x: hidden;
 }
@@ -39,6 +40,42 @@ https://stackoverflow.com/questions/25427407/bootstrap-3-and-4-container-fluid-w
     display: flex;
     align-items: center;
 }
+
+#content-main-top-o {
+    height: 30%;
+    height: 30vh;
+}
+
+#task-3-text-box {
+    padding: 0;
+    margin: 0;
+}
+
+#task-3-text-box-2 {
+    padding: 0;
+    margin: 0;
+}
+
+
+.bespoke-vertical-align-o-top {
+    height: 30%;
+    height: 30vh;
+    display: flex;
+    align-items: center;
+}
+
+#content-main-bottom-o {
+    height: 50%;
+    height: 50vh;
+}
+
+.bespoke-vertical-align-o-bottom {
+    height: 50%;
+    height: 50vh;
+    display: flex;
+    align-items: center;
+}
+
 
 #content-main-b-b {
 /* If you change the height % of content-main, you will also have to change the height in the "bespoke-60vh-vertical-align" class */
@@ -296,7 +333,6 @@ In this case, the ratio is 15:60:20
     min-height: 50vh;
     display: flex;
     align-items: center;
-    /* padding-bottom: 3rem; */
 }
 
 #footer-f {
