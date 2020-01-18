@@ -36,7 +36,7 @@ https://stackoverflow.com/questions/25427407/bootstrap-3-and-4-container-fluid-w
 
 #task-1-text-box {
     height: 80%;
-    height: 80vh;
+    /* height: 80vh; */
 }
 
 .main-h-100 {
