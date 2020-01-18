@@ -45,8 +45,8 @@ https://stackoverflow.com/questions/25427407/bootstrap-3-and-4-container-fluid-w
 }
 
 .main-h-80 {
-    height: 100%;
-    height: 100vh;
+    min-height: 80%;
+    min-height: 80vh;
 }
 
 #task-1-main, #task-2-main, #task-3-main {
