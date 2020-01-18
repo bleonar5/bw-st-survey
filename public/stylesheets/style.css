@@ -19,6 +19,15 @@ Below is a workaround to fix the issue with having unwanted padding on the conta
 https://stackoverflow.com/questions/25427407/bootstrap-3-and-4-container-fluid-with-grid-adding-unwanted-padding
 */
 
+.row-10h {
+    height: 10%;
+    height: 10vh;
+}
+
+.row-80h {
+    height: 80%;
+    height: 80vh;
+}
 
 .full-width-row {
     overflow-x: hidden;

@@ -1,10 +1,7 @@
-<div style="height: 100vh">
-<form onSubmit="return checkQuestionsRadios(getArrayOfQuestions());" method="POST" class="h-100">
-
 <div class="row h-100">
 
 {{!-- Start of Left Side Bar --}} 
-    <div id="left-col" class="col-1 h-100">
+    <div class="col-1">
 
         <div id="empty-skip-btn" class="row h-50">
             {{!-- Skip button used to speed up testing phase. Not used for production --}} 
@@ -22,32 +19,28 @@
                 </div>
             </div>
         </div>
-
     </div>
 {{!-- End of Left Side Bar --}} 
 
 
-{{!-- Start of Middle Column (col-10) --}}
-    <div id="main-col" class="col-10 h-100">
+    <div class="col-10">
         {{!-- Header Start --}} 
-        {{!-- bespoke-header-and-footer-o --}}
-            <div class="row row-10h">
+            <div class="row bespoke-header-and-footer-o">
                 <div class="col-md-12 align-self-end text-center">
                     <div class="text-center">
                         <h2 class="text-primary m-0">{{#each heading}} {{#if this.heading}}{{this.text}}{{/if}} {{/each}}</h2>
                     </div>
                 </div>
             </div>
-        {{!-- Header End --}}
-
+        {{!-- Header End --}} 
         {{!-- Main Start --}} 
 
-        
-
+        <div class="row">
+        <form onSubmit="return checkQuestionsRadios(getArrayOfQuestions());" method="POST">
              {{!-- justify-content-center is a Bootstrap class which horizonally centers the content --}} 
-             
-            {{!-- bespoke-vertical-align-o --}}
-            <div id="task-1-text-box" class="row row-80h bespoke-vertical-align-o">
+             {{!-- bespoke-vertical-align-o --}}
+
+            {{!-- <div id="task-1-text-box" class="bespoke-vertical-align-o"> --}}
                 <table class="table-sm table-striped">
                     <thead>
                         <tr>
@@ -99,10 +92,10 @@
                 </table>
             {{!-- </div> --}}
         </div>
-        {{!-- ^^ End of Main Content --}} 
+        {{!-- Main End --}} 
 
-        {{!-- Start of Footer bespoke-header-and-footer-o--}}
-            <div class="row row-10h"> 
+        {{!-- Start of Footer --}}
+            <div class="row bespoke-header-and-footer-o">
                 <div class="col-md-12 align-self-end text-center font-size-90 pb-md-0 pb-lg-3 d-md-none d-lg-block">
                     <div id="warning-message-small">
                         {{!-- Form Validation Div --}}
@@ -118,12 +111,13 @@
 
                 </div>
             </div>
-        {{!-- ^^ End of Footer  --}}
-</div>
-{{!-- End of Middle Column (col-10) --}}
+        {{!-- End of Footer --}}
+    </div>
+    {{!-- End of Main --}} 
+
 
 {{!-- Start of Right Side Bar --}}
-    <div id="right-col" class="col-1 h-100">
+    <div class="col-1">
         <div class="row h-50">
             <div class="align-self-top col-12">
                 <div class="text-right {{> paddingTopDefault }}">
@@ -137,15 +131,10 @@
                 <div class="text-right {{> paddingBottomDefault }}">
                     <button role="button" type="submit" class="btn btn-primary text-white hand-curser">Next</button>
                 </div>
+                </form>
             </div>
         </div>
     </div>
-{{!-- ^^ End of Right Side Bar --}}
-
-</div>
-{{!-- ^^ End of Page Div --}}
-
-
-
-</form>
-</div>
+{{!-- End of Right Side Bar --}}
+{{!-- Ending Div (row) Below--}}
+</div> 
