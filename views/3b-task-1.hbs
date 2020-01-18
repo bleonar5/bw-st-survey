@@ -30,24 +30,34 @@
 {{!-- Start of Middle Column (col-10) --}}
     <div id="main-col" class="col-10 h-100">
         {{!-- Header Start --}} 
-        {{!-- bespoke-header-and-footer-o --}}
-            <div class="row row-10h">
-                <div class="col-md-12 align-self-end text-center">
-                    <div class="text-center">
-                        <h2 class="text-primary m-0">{{#each heading}} {{#if this.heading}}{{this.text}}{{/if}} {{/each}}</h2>
-                    </div>
+        {{!-- To vertically align items to the bottom  you need both d-flex and align-items-end. text-center horizonally centers --}}
+            <div class="row-10h d-flex align-items-end text-center">
+                <div class="col-12">
+                        <h2 class="text-primary m-0 h-100">{{#each heading}} {{#if this.heading}}{{this.text}}{{/if}} {{/each}}</h2>
                 </div>
             </div>
         {{!-- Header End --}}
 
         {{!-- Main Start --}} 
 
-        
+
+{{!-- <section class="section mt-5">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6">
+        <div>
+          <img alt="Web Studio" class="img-fluid" src="https://raw.githubusercontent.com/solodev/vertically-centering/master/images/vc-img-1.jpg" />
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-5 ml-auto d-flex align-items-center mt-4 mt-md-0">
+        <div>
+          <h2>Module Studio</h2>
+          <p class="margin-top-s">Whether you’re a full stack web developer, content author, or business professional – Solodev gives you the power to build, customize, and manage modules to boost your website.</p> --}}
 
              {{!-- justify-content-center is a Bootstrap class which horizonally centers the content --}} 
              
             {{!-- bespoke-vertical-align-o --}}
-            <div id="task-1-text-box" class="row row-80h bespoke-vertical-align-o">
+            <div id="task-1-text-box" class="row row-80h bespoke-vertical-align-o justify-content-center ">
                 <table class="table-sm table-striped">
                     <thead>
                         <tr>
