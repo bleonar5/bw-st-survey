@@ -113,8 +113,8 @@ router.get('/task-1-part-1', (req, res) => {
     const currentPage = getPageNumber(req.originalUrl, allUrls);
     const urlsAndPages = extractUrlAndPage(currentPage, allUrls);
     const userEmail = req.session.currentUser;
-    // const handlebarsPage = urlsAndPages.handlebarsStaticPage;
-    const handlebarsPage = "legacy-3b-task-1-b";
+    const handlebarsPage = urlsAndPages.handlebarsStaticPage;
+    // const handlebarsPage = "legacy-3b-task-1-b";
     const dataForThisSheet = allQuestions.filter( data => data.page === currentPage);
     const heading = dataForThisSheet.filter (data => data.heading);
     let perguntas = dataForThisSheet.filter (data => data.radio);

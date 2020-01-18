@@ -66,12 +66,12 @@ https://stackoverflow.com/questions/25427407/bootstrap-3-and-4-container-fluid-w
     align-items: center;
 }
 
-.bespoke-vertical-align-p {
+/* .bespoke-vertical-align-p {
     height: 100%;
     height: 100vh;
     display: flex;
     align-items: center;
-}
+} */
 
 #content-main-top-o {
     height: 30%;
