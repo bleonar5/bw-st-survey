@@ -1,5 +1,4 @@
 const urls = 
-
 [
     {
         "url": "/individual-login",
@@ -97,87 +96,95 @@ const urls =
         "page": 13,
         "hbsview": "3a-instructions",
         "previouspage": "/task-2-part-3",
-        "nextpage": "/scenario-1-split-1"
+        "nextpage": "/task-3-1a"
     },
     {
-        "url": "/scenario-1-split-1",
+        "url": "/task-3-1a",
         "page": 14,
-        "hbsview": "5a-scenarios-split",
+        "hbsview": "5a-task-3",
         "previouspage": "/instructions-3",
-        "nextpage": "/scenario-1-split-2",
-        "comment": "[RP: added 08-jan]"
+        "nextpage": "/task-3-1b",
+        "comment": "[RP: added 08-jan]",
+        "legacyurl": "/scenario-1-split-1"
     },
     {
-        "url": "/scenario-1-split-2",
+        "url": "/task-3-1b",
         "page": 15,
         "backbutton": true,
-        "hbsview": "5a-scenarios-split",
-        "previouspage": "/scenario-1-split-1",
+        "hbsview": "5a-task-3",
+        "previouspage": "/task-3-1a",
         "nextpage": "/scenario-2-intro",
-        "comment": "[RP: added 08-jan]"
+        "comment": "[RP: added 08-jan]",
+        "legacyurl": "/scenario-1-split-2"
     },
     {
         "url": "/scenario-2-intro",
         "page": 16,
         "backbutton": true,
         "hbsview": "5d-scenarios-mezzanine",
-        "previouspage": "/scenario-1-split-2",
-        "nextpage": "/scenario-2-split-1",
-        "comment": "[RP: added 09-jan]"
+        "previouspage": "/task-3-1b",
+        "nextpage": "/task-3-2a",
+        "comment": "[RP: added 09-jan]",
+        "legacyurl": "/scenario-2-intro"
     },
     {
-        "url": "/scenario-2-split-1",
+        "url": "/task-3-2a",
         "page": 17,
-        "hbsview": "5a-scenarios-split",
+        "hbsview": "5a-task-3",
         "previouspage": "/scenario-2-intro",
-        "nextpage": "/scenario-2-split-2",
-        "comment": "[RP: added 08-jan]"
+        "nextpage": "/task-3-2b",
+        "comment": "[RP: added 08-jan]",
+        "legacyurl": "/scenario-2-split-1"
     },
     {
-        "url": "/scenario-2-split-2",
+        "url": "/task-3-2b",
         "page": 18,
         "backbutton": true,
-        "hbsview": "5a-scenarios-split",
-        "previouspage": "/scenario-2-split-1",
+        "hbsview": "5a-task-3",
+        "previouspage": "/task-3-2a",
         "nextpage": "/scenario-3-intro",
-        "comment": "[RP: added 08-jan]"
+        "comment": "[RP: added 08-jan]",
+        "legacyurl": "/scenario-2-split-2"
     },
     {
         "url": "/scenario-3-intro",
         "page": 19,
         "backbutton": true,
         "hbsview": "5d-scenarios-mezzanine",
-        "previouspage": "/scenario-2-split-2",
-        "nextpage": "/scenario-3-split-1",
-        "comment": "[RP: added 09-jan]"
+        "previouspage": "/task-3-2b",
+        "nextpage": "/task-3-3a",
+        "comment": "[RP: added 09-jan]",
+        "legacyurl": "/scenario-3-intro"
     },
     {
-        "url": "/scenario-3-split-1",
+        "url": "/task-3-3a",
         "page": 20,
-        "hbsview": "5a-scenarios-split",
+        "hbsview": "5a-task-3",
         "previouspage": "/scenario-3-intro",
-        "nextpage": "/scenario-3-split-2",
-        "comment": "[RP: added 08-jan]"
+        "nextpage": "/task-3-3b",
+        "comment": "[RP: added 08-jan]",
+        "legacyurl": "/scenario-3-split-1"
     },
     {
-        "url": "/scenario-3-split-2",
+        "url": "/task-3-3b",
         "page": 21,
         "backbutton": true,
-        "hbsview": "5a-scenarios-split",
-        "previouspage": "/scenario-3-split-1",
+        "hbsview": "5a-task-3",
+        "previouspage": "/task-3-3a",
         "nextpage": "/study-conclusion",
-        "comment": "[RP: added 08-jan]"
+        "comment": "[RP: added 08-jan]",
+        "legacyurl": "/scenario-3-split-2"
     },
     {
         "url": "/study-conclusion",
         "page": 22,
         "hbsview": "6a-study-conclusion",
-        "previouspage": "/scenario-3-split-2"
+        "previouspage": "/task-3-3b"
     },
     {
         "url": "/scenario-1",
         "page": 114,
-        "previouspage": "/scenario-1-split-2",
+        "previouspage": "/task-3-1b",
         "nextpage": "/task-3-part-1"
     },
     {

@@ -17,6 +17,12 @@ Below is a workaround to fix the issue with having unwanted padding on the conta
 https://stackoverflow.com/questions/25427407/bootstrap-3-and-4-container-fluid-with-grid-adding-unwanted-padding
 */
 
+.vertical-text {
+    writing-mode: vertical-rl;
+    text-orientation: upright;
+    line-height: 1 !important;
+}
+
 .row-10h {
     height: 10%;
     height: 10vh;
@@ -517,6 +523,14 @@ If root: font-size is 16px, 1 rem will be 16px
 
 .font-size-90 {
     font-size: 0.90rem;
+}
+
+.font-size-100 {
+    font-size: 1.00rem;
+}
+
+.font-size-110 {
+    font-size: 1.10rem;
 }
 
 .font-size-bigger {

@@ -3,9 +3,9 @@
 let textSizePreference = JSON.parse(localStorage.getItem('textSizePreference'));
 
 if (textSizePreference === null || textSizePreference === "small text" ) {
-    console.log(`textSizePreference is ${textSizePreference}`)
+    // console.log(`textSizePreference is ${textSizePreference}`)
 } else if (textSizePreference === "large text") {
-    console.log(`textSizePreference is ${textSizePreference}`)
+    // console.log(`textSizePreference is ${textSizePreference}`)
     toggleFontSize()
 } else {
     console.log(textSizePreference);

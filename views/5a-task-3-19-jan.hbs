@@ -1,13 +1,19 @@
+<div style="height: 100vh">
+<form onSubmit="return checkQuestionsRadios(getArrayOfQuestions());" method="POST" class="h-100">
 <div class="row h-100">
 
 {{!-- Start of Left Side Bar --}} 
-    <div class="col-1">
+    <div id="left-col" class="col-1 h-100">
 
-        <div id="empty-skip-btn" class="row h-50">
+        <div id="empty-skip-btn" class="row h-25">
             {{!-- Skip button used to speed up testing phase. Not used for production --}} 
         </div>
 
-        <div class="row h-50">
+        <div class="row h-50 vertical-text">
+            <h4 class="text-primary m-0 vertical-text">{{#each heading}} {{#if this.heading}}{{this.text}}{{/if}} {{/each}}</h4>
+        </div>
+
+        <div class="row h-25">
             <div class="align-self-end col-12">
                 <div class="text-left {{> paddingBottomDefault }}">
                     {{#if urlsAndPages.backbutton}}
@@ -20,17 +26,18 @@
 {{!-- End of Left Side Bar --}} 
 
 
-    <div id="task-3-main" class="col-10">
-        {{!-- Header Start --}} 
-        <div class="row bespoke-header-and-footer-o">
-            <div class="col-md-12 align-self-end text-center">
-                <div class="text-center">
-                    <h2 class="text-primary m-0">{{#each heading}} {{#if this.heading}}{{this.text}}{{/if}} {{/each}}</h2>
+{{!-- Start of Middle Column (col-10) --}}
+    <div id="main-col" class="col-10 h-100">
+            {{!-- Header Start --}} 
+            {{!-- To vertically align items to the bottom  you need both d-flex and align-items-end. text-center horizonally centers --}}
+            <div class="row row-10h d-flex align-items-end text-center"> 
+                <div class="col-12 d-md-none d-lg-block">
+                        <h2 class="text-primary m-0 h-100">{{#each heading}} {{#if this.heading}}{{this.text}}{{/if}} {{/each}}</h2>
                 </div>
             </div>
-        </div>
-        {{!-- Header End --}}
 
+        {{!-- Main Content Start --}} 
+        <div class="row row-80h d-flex align-items-center justify-content-center" id="task-1-text-box">
         {{!-- Scenarios Start --}} 
         <div id="content-main-top-o">
             <div class="row justify-content-center bespoke-vertical-align-o-top font-size-90">
@@ -51,7 +58,8 @@
             <div id="task-3-text-box" class="justify-content-center bespoke-vertical-align-o-bottom col-12 text-left font-size-90">
                 <form onSubmit="return checkQuestionsRadios(getArrayOfQuestions());" method="POST">
                     <div id="task-3-text-box-2" class="col-12">
-                        <table class="table-sm table-striped">
+
+                        <table class="table-sm table-striped"> {{!-- Removing the table class will remove the top line of the table --}}
                             <thead>
                                 <tr>
                                     <td class="blank col-7"></td>
@@ -144,7 +152,9 @@
                 </form>
             </div>
         </div>
-    </div>    
-{{!-- End of Right Side Bar --}}
-{{!-- Ending Div (row) Below--}}
+    </div>
+{{!-- ^^ End of Right Side Bar --}}
+
+</div> {{!-- << End of Page Div --}}
+</form>
 </div>

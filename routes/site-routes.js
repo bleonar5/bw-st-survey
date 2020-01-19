@@ -463,7 +463,7 @@ router.post('/task-2-part-3', (req, res) => {
 
 /* Task Three Routes Below */
 
-router.get('/scenario-1-split-1', (req, res) => {
+router.get('/task-3-1a', (req, res) => {
     const currentPage = getPageNumber(req.originalUrl, allUrls);
     const dataForThisSheet = allQuestions.filter( data => data.page === currentPage);
     const sheetsSituations = dataForThisSheet.filter (data => data.scenario);
@@ -492,7 +492,7 @@ router.get('/scenario-1-split-1', (req, res) => {
 
 
 
-router.post('/scenario-1-split-1', (req, res) => {
+router.post('/task-3-1a', (req, res) => {
     let currentPage = getPageNumber(req.originalUrl, allUrls);
     const dataForThisSheet = allQuestions.filter( data => data.page === currentPage);
     const createdAt = req._startTime;
@@ -522,7 +522,7 @@ router.post('/scenario-1-split-1', (req, res) => {
 
 
 
-router.get('/scenario-1-split-2', (req, res) => {
+router.get('/task-3-1b', (req, res) => {
     const currentPage = getPageNumber(req.originalUrl, allUrls);
     const dataForThisSheet = allQuestions.filter( data => data.page === currentPage);
     const sheetsSituations = dataForThisSheet.filter (data => data.scenario);
@@ -548,7 +548,7 @@ router.get('/scenario-1-split-2', (req, res) => {
         console.log(error);
 })});
 
-router.post('/scenario-1-split-2', (req, res) => {
+router.post('/task-3-1b', (req, res) => {
     let currentPage = getPageNumber(req.originalUrl, allUrls);
     const dataForThisSheet = allQuestions.filter( data => data.page === currentPage);
     const createdAt = req._startTime;
@@ -576,7 +576,7 @@ router.post('/scenario-1-split-2', (req, res) => {
             })
 })}});
 
-router.get('/scenario-2-split-1', (req, res) => {
+router.get('/task-3-2a', (req, res) => {
     const currentPage = getPageNumber(req.originalUrl, allUrls);
     const dataForThisSheet = allQuestions.filter( data => data.page === currentPage);
     const sheetsSituations = dataForThisSheet.filter (data => data.scenario);
@@ -602,7 +602,7 @@ router.get('/scenario-2-split-1', (req, res) => {
         console.log(error);
 })});
 
-router.post('/scenario-2-split-1', (req, res) => {
+router.post('/task-3-2a', (req, res) => {
     let currentPage = getPageNumber(req.originalUrl, allUrls);
     const dataForThisSheet = allQuestions.filter( data => data.page === currentPage);
     const createdAt = req._startTime;
@@ -630,7 +630,7 @@ router.post('/scenario-2-split-1', (req, res) => {
             })
 })}});
 
-router.get('/scenario-2-split-2', (req, res) => {
+router.get('/task-3-2b', (req, res) => {
     const currentPage = getPageNumber(req.originalUrl, allUrls);
     const dataForThisSheet = allQuestions.filter( data => data.page === currentPage);
     const sheetsSituations = dataForThisSheet.filter (data => data.scenario);
@@ -656,7 +656,7 @@ router.get('/scenario-2-split-2', (req, res) => {
         console.log(error);
 })});
 
-router.post('/scenario-2-split-2', (req, res) => {
+router.post('/task-3-2b', (req, res) => {
     let currentPage = getPageNumber(req.originalUrl, allUrls);
     const dataForThisSheet = allQuestions.filter( data => data.page === currentPage);
     const createdAt = req._startTime;
@@ -684,7 +684,7 @@ router.post('/scenario-2-split-2', (req, res) => {
             })
 })}});
 
-router.get('/scenario-3-split-1', (req, res) => {
+router.get('/task-3-3a', (req, res) => {
     const currentPage = getPageNumber(req.originalUrl, allUrls);
     const dataForThisSheet = allQuestions.filter( data => data.page === currentPage);
     const sheetsSituations = dataForThisSheet.filter (data => data.scenario);
@@ -710,7 +710,7 @@ router.get('/scenario-3-split-1', (req, res) => {
         console.log(error);
 })});
 
-router.post('/scenario-3-split-1', (req, res) => {
+router.post('/task-3-3a', (req, res) => {
     let currentPage = getPageNumber(req.originalUrl, allUrls);
     const dataForThisSheet = allQuestions.filter( data => data.page === currentPage);
     const createdAt = req._startTime;
@@ -738,7 +738,7 @@ router.post('/scenario-3-split-1', (req, res) => {
             })
 })}});
 
-router.get('/scenario-3-split-2', (req, res) => {
+router.get('/task-3-3b', (req, res) => {
     const currentPage = getPageNumber(req.originalUrl, allUrls);
     const dataForThisSheet = allQuestions.filter( data => data.page === currentPage);
     const sheetsSituations = dataForThisSheet.filter (data => data.scenario);
@@ -764,7 +764,7 @@ router.get('/scenario-3-split-2', (req, res) => {
         console.log(error);
 })});
 
-router.post('/scenario-3-split-2', (req, res) => {
+router.post('/task-3-3b', (req, res) => {
     let currentPage = getPageNumber(req.originalUrl, allUrls);
     const dataForThisSheet = allQuestions.filter( data => data.page === currentPage);
     const createdAt = req._startTime;

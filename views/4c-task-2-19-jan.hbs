@@ -1,11 +1,9 @@
-<div style="height: 100vh">
-<form onSubmit="return checkQuestionsRadios(getArrayOfQuestions());" method="POST" class="h-100">
 <div class="row h-100">
 
 {{!-- Start of Left Side Bar --}} 
-    <div id="left-col" class="col-1 h-100">
+    <div class="col-1">
 
-        <div id="empty-skip-btn" class="row h-50"> 
+        <div id="empty-skip-btn" class="row h-50">
             {{!-- Skip button used to speed up testing phase. Not used for production --}} 
         </div>
 
@@ -18,31 +16,26 @@
                 </div>
             </div>
         </div>
-
     </div>
-{{!-- End of Left Side Bar --}}  
+{{!-- End of Left Side Bar --}} 
 
-{{!-- Start of Middle Column (col-10) --}}
-    <div id="main-col" class="col-10 h-100">
-        {{!-- Header Start --}} 
-        {{!-- To vertically align items to the bottom  you need both d-flex and align-items-end. text-center horizonally centers --}}
-        <div class="row row-10h d-flex align-items-end text-center"> 
-            <div class="col-12 d-md-none d-lg-block">
-                <h2 class="text-primary">{{#each perguntas}}{{#if heading}}{{this.text}}{{/if}}{{/each}}</h2>
+    <div id="task-2-main" class="col-10">
+    {{!-- Header Start --}} 
+        <div class="row bespoke-header-and-footer-o">
+            <div class="col-md-12 align-self-top text-center {{> paddingTopDefault }}">
+                <div class="text-center">
+                    <h2 class="text-primary">{{#each perguntas}}{{#if heading}}{{this.text}}{{/if}}{{/each}}</h2>
+                </div>
             </div>
-        </div> 
-        {{!-- Header End --}}
-
-
-                {{!-- Main Content Start --}} 
-        <div class="row row-80h d-flex align-items-center justify-content-center font-size-100" id="task-2-text-box" >
-            
-                <table class="table table-striped">
-                <tbody>
-
+        </div>
+    {{!-- Header End --}} 
+        <div id="task-2" class="row bespoke-vertical-align-o justify-content-center">
+        <form onSubmit="return checkQuestionsTask2(getArrayOfQuestions());" method="POST">
+            <div id="task-2-text-box" class="col-12">
+                    <table class="table-sm table-striped">
                     {{#each perguntas}} 
                         {{#if dropdown}}
-                            <tr class="row h-100 d-flex align-items-center">
+                            <tr class="row">
                                 <td class="text-left col-sm-6">{{this.text}}</td>          
                                 <td class="col-sm-6">
                                     <select id={{this.id}} name={{this.id}} class="form-control dropdn-form-validation first-radio-box" onclick="removeWarning();" onChange="disableDependencies({{this.id}});" required>
@@ -58,7 +51,7 @@
                         {{/if}}
 
                         {{#if yesno}}
-                            <tr class="row h-100 d-flex align-items-center">
+                                <tr class="row">
                                     <td class="text-left col-sm-6">{{this.text}}</td>
                                     <td id={{this.id}} class="text-center offset-sm-2 col-sm-2 btn-group yesno" data-toggle="buttons" onclick="removeWarning();" required>
 
@@ -70,7 +63,7 @@
                         {{/if}}
 
                         {{#if textarea}}
-                            <tr class="row h-100 d-flex align-items-center">
+                            <tr class="row">
                                 <td class="text-left col-sm-6">{{this.text}}</td>
                                 <td class="col-sm-6">
                                     <input id={{this.id}} name={{this.id}} class="form-control first-radio-box text-area-for-vali" type="text" autocomplete="off" onclick="removeWarning();" 
@@ -83,15 +76,12 @@
                             </tr>
                         {{/if}}
                     {{/each}}
-                    </tbody>
-                </table>
-
+                    </table>  
+                </div>
         </div>
-        {{!-- ^^ End of Main Content --}}
-
         {{!-- Start of Footer --}}
-            <div class="row row-10h d-flex align-items-end text-center">
-                <div class="col-md-12 font-size-90 pb-md-0 pb-lg-3 d-md-none d-lg-block">
+            <div class="row bespoke-header-and-footer-o">
+                <div class="col-md-12 align-self-end text-center font-size-90 pb-md-0 pb-lg-3 d-md-none d-lg-block">
                     <div id="warning-message-small">
                         {{!-- Form Validation Div --}}
                     </div>
@@ -106,12 +96,12 @@
 
                 </div>
             </div>
-        {{!-- ^^ End of Footer  --}}
+            {{!-- End of Footer --}}
     </div>
-{{!-- End of Middle Column (col-10) --}}
+    {{!-- End of task-2-main --}}
 
 {{!-- Start of Right Side Bar --}}
-    <div id="right-col" class="col-1 h-100">
+    <div class="col-1">
         <div class="row h-50">
             <div class="align-self-top col-12">
                 <div class="text-right {{> paddingTopDefault }}">
@@ -125,12 +115,11 @@
                 <div class="text-right {{> paddingBottomDefault }}">
                     <button role="button" type="submit" class="btn btn-primary text-white hand-curser">Next</button>
                 </div>
+                </form>
             </div>
         </div>
-    </div>
-{{!-- ^^ End of Right Side Bar --}}
-
-</div> {{!-- << End of Page Div --}}
-</form>
-</div>
+    </div>    
+{{!-- End of Right Side Bar --}}
+{{!-- Ending Div (row) Below--}}
+</div> 
 

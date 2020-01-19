@@ -1,13 +1,11 @@
 <div style="height: 100vh">
 <form onSubmit="return checkQuestionsRadios(getArrayOfQuestions());" method="POST" class="h-100">
-
 <div class="row h-100">
 
 {{!-- Start of Left Side Bar --}} 
     <div id="left-col" class="col-1 h-100">
 
-        <div id="empty-skip-btn" class="row h-50">
-            {{!-- Skip button used to speed up testing phase. Not used for production --}} 
+        <div id="empty-skip-btn" class="row h-50"> {{!-- Skip button used to speed up testing phase. Not used for production --}} 
             <div class="align-self-start">
                 <a id="skip-btn" role="button" onclick="completeQuestions(); removeWarning();" class="btn btn-warning float-left hand-curser">Skip</a>
             </div>
@@ -29,23 +27,20 @@
 
 {{!-- Start of Middle Column (col-10) --}}
     <div id="main-col" class="col-10 h-100">
-        {{!-- Header Start --}} 
-        {{!-- To vertically align items to the bottom  you need both d-flex and align-items-end. text-center horizonally centers --}}
-            <div class="row-10h d-flex align-items-end text-center">
-                <div class="col-12">
+            {{!-- Header Start --}} 
+            {{!-- To vertically align items to the bottom  you need both d-flex and align-items-end. text-center horizonally centers --}}
+            <div class="row row-10h d-flex align-items-end text-center"> 
+                <div class="col-12 d-md-none d-lg-block">
                         <h2 class="text-primary m-0 h-100">{{#each heading}} {{#if this.heading}}{{this.text}}{{/if}} {{/each}}</h2>
                 </div>
-            </div>
-        {{!-- Header End --}}
+            </div> 
+            {{!-- Header End --}}
 
-        {{!-- Main Start --}} 
-
-
-             {{!-- justify-content-center is a Bootstrap class which horizonally centers the content --}} 
-             
-            {{!-- bespoke-vertical-align-o --}}
-            <div id="task-1-text-box" class="row row-80h bespoke-vertical-align-o justify-content-center ">
-                <table class="table-sm table-striped">
+            {{!-- Main Content Start --}} 
+            <div class="row row-80h d-flex align-items-center justify-content-center" id="task-1-text-box">
+            
+                <div class="table-responsive"> {{!-- Use table-responsive to make sure it fits width --}}
+                <table class="table table-sm table-striped">
                     <thead>
                         <tr>
                             <td class="blank col-7"></td>
@@ -94,13 +89,13 @@
                         {{/each}}
                     </tbody>
                 </table>
-            {{!-- </div> --}}
+            </div> {{!-- Close table responsive div --}} 
         </div>
         {{!-- ^^ End of Main Content --}} 
 
-        {{!-- Start of Footer bespoke-header-and-footer-o--}}
-            <div class="row row-10h"> 
-                <div class="col-md-12 align-self-end text-center font-size-90 pb-md-0 pb-lg-3 d-md-none d-lg-block">
+        {{!-- Start of Footer --}}
+            <div class="row row-10h d-flex align-items-end text-center">
+                <div class="col-md-12 font-size-90 pb-md-0 pb-lg-3 d-md-none d-lg-block">
                     <div id="warning-message-small">
                         {{!-- Form Validation Div --}}
                     </div>
@@ -139,10 +134,6 @@
     </div>
 {{!-- ^^ End of Right Side Bar --}}
 
-</div>
-{{!-- ^^ End of Page Div --}}
-
-
-
+</div> {{!-- << End of Page Div --}}
 </form>
 </div>
