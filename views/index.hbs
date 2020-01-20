@@ -1,38 +1,32 @@
-<div id="content-heading-b" class="mx-xs-0 mx-sm-2 mx-md-3 mx-lg-5 text-center">
-    <div class="row h-100">
-        <div class="col-md-12 align-self-end">            
-            {{> 0navbarHeader}}
-            </div>
-        </div>
+<div style="height: 100vh">
+<form onSubmit="return checkQuestionsRadios(getArrayOfQuestions());" method="POST" class="h-100">
+<div class="header-or-footer-10 text-center row">
+    <div class="col-md-12 align-self-end">            
+        {{!-- 0navbarHeader goes here in dev mode --}}
     </div>
 </div>
 
 
-<div id="content-main-b">
+<div id="index-page" class="main-h-80 py-lg-5 px-lg-5 font-size-100">
     <div class="row justify-content-center bespoke-vertical-align-b">
         <div class="col-xs-12 col-sm-10 col-md-10 text-center">
 
-            <h4 class="my-sm-3 my-md-4 my-lg-4 my-xl-5">On tasks 1 and 3, a <span class="pt-2 pl-2">
+            {{!-- <h4 class="my-sm-3 my-md-4 my-lg-4 my-xl-5">On tasks 1 and 3, a <span class="pt-2 pl-2">
                     <a id="skip-btn" role="button" class="btn btn-lg btn-warning hand-curser">Skip</a>
-                </span> button will appear at the top left of the screen so that you can auto complete the questions. This button will be removed when the site is live.</h4>
-{{!-- 
+                </span> button will appear at the top left of the screen so that you can auto complete the questions. This button will be removed when the site is live.</h4> --}}
+            {{!-- 
             <h4> window.innerWidth is <span id="innerWidthHtml"></span> pixels</h4>
-            <h4> window.innerHeight is <span id="innerHeightHtml"></span> pixels</h4> --}}
-                              
+            <h4> window.innerHeight is <span id="innerHeightHtml"></span> pixels</h4> 
+            --}}
+            <button role="button" type="submit" class="btn btn-lg btn-success hand-curser">Start the Survey</button>    
         </div>
-    </div>
-{{!-- closing div of end of contentmain below --}}
-
-
-
-
-
+    </div> {{!-- << closing div of index-page --}}
 </div>
 
-<div id="footer-b" class="row pb-xs-0 pb-sm-2 pb-md-3 pb-lg-5 mx-xs-0 mx-sm-2 mx-md-3 mx-lg-5">
+<div class="header-or-footer-10 text-center row mx-md-0 mx-lg-4">
 
     {{> 4footerleft}}
-                <p><a class="btn btn-lg btn-success" role="button" href="/instructions-1">Continue Survey</a></p>
+                {{!-- <p><a class="btn btn-lg btn-success" role="button" href="/instructions-1">Continue Survey</a></p> --}}
         </div>
     </div>
 
@@ -41,14 +35,17 @@
             <a class="btn btn-lg btn-primary" role="button" href="/scenarios-layout-a" target="_blank">Option 1</a>
             <a class="btn btn-lg btn-primary" role="button" href="/scenarios-layout-b" target="_blank">Option 2</a>
             <a class="btn btn-lg btn-primary" role="button" href="/scenarios-layout-c" target="_blank">Option 3</a> --}}
+            {{!-- <p><a class="btn btn-lg btn-success" role="button" href="/individual-login">Start the Survey</a></p> --}}
         </div>
     </div>
 
     {{> 6footerright}}
-            <p><a class="btn btn-lg btn-success" role="button" href="/individual-login">Start the Survey</a></p>
+            
         </div>
     </div>
 {{!-- closing div of footer below --}}
 </div>
+</form>
+<div>
 
 <script type="text/javascript" src="js/innerHeightAndWidth.js"></script>

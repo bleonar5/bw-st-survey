@@ -1,4 +1,6 @@
 const questions =
+
+
 [
     {
         "order": 1,
@@ -676,876 +678,399 @@ const questions =
         "info": true
     },
     {
-        "order": 12,
-        "url": "/scenario-1",
-        "page": 114,
+        "url": "/task-3-1a",
+        "page": 14,
         "id": 30006,
         "text": "Scenario 1",
         "category": "heading",
         "heading": true
     },
     {
-        "order": 12,
-        "url": "/scenario-1",
-        "page": 114,
+        "url": "/task-3-1a",
+        "page": 14,
         "id": 30007,
         "text": "You are a member of an equipment maintenance team responsible for 12 high tech manufacturing machines.",
         "category": "scenario",
         "scenario": true
     },
     {
-        "order": 12,
-        "url": "/scenario-1",
-        "page": 114,
+        "url": "/task-3-1a",
+        "page": 14,
         "id": 30008,
         "text": "Your five-person team has experts in many areas, including mechanical, electrical, & hydraulic systems.",
         "category": "scenario",
         "scenario": true
     },
     {
-        "order": 12,
-        "url": "/scenario-1",
-        "page": 114,
+        "url": "/task-3-1a",
+        "page": 14,
         "id": 30009,
         "text": "You are the only member of your team with experience in the structural mechanics of the machines.",
         "category": "scenario",
         "scenario": true
     },
     {
-        "order": 12,
-        "url": "/scenario-1",
-        "page": 114,
+        "url": "/task-3-1a",
+        "page": 14,
         "id": 30010,
         "text": "One of the machines was struck by a forklift while being prepared for an important production run.",
         "category": "scenario",
         "scenario": true
     },
     {
-        "order": 12,
-        "url": "/scenario-1",
-        "page": 114,
+        "url": "/task-3-1a",
+        "page": 14,
         "id": 30011,
         "text": "The company owner quickly pulls your team together and asks if it is ok to run the machine. You are the last one to arrive at the meeting.",
         "category": "scenario",
         "scenario": true
     },
     {
-        "order": 12,
-        "url": "/scenario-1",
-        "page": 114,
+        "url": "/task-3-1a",
+        "page": 14,
         "id": 30012,
         "text": "Apparently, the team feels that there was not any visible damage to the machine and it can be used safely.  They tell you that they have looked it over and didn’t see any damage.",
         "category": "scenario",
         "scenario": true
     },
     {
-        "order": 13,
-        "url": "/task-3-part-1",
-        "page": 115,
-        "id": 30013,
-        "text": "Scenario 1 (of 3)",
-        "category": "heading",
-        "heading": true
-    },
-    {
-        "order": 13,
-        "url": "/task-3-part-1",
-        "page": 115,
+        "url": "/task-3-1a",
+        "page": 14,
         "id": 30014,
         "text": "a) Make sure the team knows of potential risks and that it is critical that you are able to check for damage to the machine before any recommendation is made.",
         "category": "radio",
         "radio": true
     },
     {
-        "order": 13,
-        "url": "/task-3-part-1",
-        "page": 115,
+        "url": "/task-3-1a",
+        "page": 14,
         "id": 30015,
         "text": "b) Support your team members in their decision, you’ve worked together for a long time, and trust their judgment.",
         "category": "radio",
         "radio": true
     },
     {
-        "order": 13,
-        "url": "/task-3-part-1",
-        "page": 115,
+        "url": "/task-3-1a",
+        "page": 14,
         "id": 30016,
         "text": "c) Make sure the machine gets the job done on schedule by accepting the judgment of your experienced teammates.",
         "category": "radio",
         "radio": true
     },
     {
-        "order": 13,
-        "url": "/task-3-part-1",
-        "page": 115,
+        "url": "/task-3-1a",
+        "page": 14,
         "id": 30017,
         "text": "d) Acknowledge that it’s likely that the electrical systems have not been damaged, but insist that you be given a chance to inspect the machine’s structural soundness yourself.",
         "category": "radio",
         "radio": true
     },
     {
-        "order": 13,
-        "url": "/task-3-part-1",
-        "page": 115,
+        "url": "/task-3-1a",
+        "page": 14,
         "id": 30018,
         "text": "e) Tell the team about your experiences with similar accidents in the past and ask that you be able to inspect the machine personally before the recommendation is made.",
         "category": "radio",
         "radio": true
     },
     {
-        "order": 13,
-        "url": "/task-3-part-1",
-        "page": 115,
+        "url": "/task-3-1b",
+        "page": 15,
+        "id": 30006,
+        "text": "Scenario 1",
+        "category": "heading",
+        "heading": true
+    },
+    {
+        "url": "/task-3-1b",
+        "page": 15,
+        "id": 30007,
+        "text": "You are a member of an equipment maintenance team responsible for 12 high tech manufacturing machines.",
+        "category": "scenario",
+        "scenario": true
+    },
+    {
+        "url": "/task-3-1b",
+        "page": 15,
+        "id": 30008,
+        "text": "Your five-person team has experts in many areas, including mechanical, electrical, & hydraulic systems.",
+        "category": "scenario",
+        "scenario": true
+    },
+    {
+        "url": "/task-3-1b",
+        "page": 15,
+        "id": 30009,
+        "text": "You are the only member of your team with experience in the structural mechanics of the machines.",
+        "category": "scenario",
+        "scenario": true
+    },
+    {
+        "url": "/task-3-1b",
+        "page": 15,
+        "id": 30010,
+        "text": "One of the machines was struck by a forklift while being prepared for an important production run.",
+        "category": "scenario",
+        "scenario": true
+    },
+    {
+        "url": "/task-3-1b",
+        "page": 15,
+        "id": 30011,
+        "text": "The company owner quickly pulls your team together and asks if it is ok to run the machine. You are the last one to arrive at the meeting.",
+        "category": "scenario",
+        "scenario": true
+    },
+    {
+        "url": "/task-3-1b",
+        "page": 15,
+        "id": 30012,
+        "text": "Apparently, the team feels that there was not any visible damage to the machine and it can be used safely.  They tell you that they have looked it over and didn’t see any damage.",
+        "category": "scenario",
+        "scenario": true
+    },
+    {
+        "url": "/task-3-1b",
+        "page": 15,
         "id": 30019,
         "text": "f) Recommend that they go ahead and run the machine to support your team and then check its structural soundness after the important production run is finished.",
         "category": "radio",
         "radio": true
     },
     {
-        "order": 13,
-        "url": "/task-3-part-1",
-        "page": 115,
+        "url": "/task-3-1b",
+        "page": 15,
         "id": 30020,
         "text": "g) Relate to the team some additional areas of potential damage to the machine after inquiring into the inspections they have made.",
         "category": "radio",
         "radio": true
     },
     {
-        "order": 13,
-        "url": "/task-3-part-1",
-        "page": 115,
+        "url": "/task-3-1b",
+        "page": 15,
         "id": 30021,
         "text": "h) Although you are more experienced in the structural mechanics, go with the judgment made by your teammates because two of them have been with the company much longer than you have.",
         "category": "radio",
         "radio": true
     },
     {
-        "order": 13,
-        "url": "/task-3-part-1",
-        "page": 115,
+        "url": "/task-3-1b",
+        "page": 15,
         "id": 30022,
         "text": "i) Thank the team for checking the machine over, but relate to the team your experience with “unseen damage” occurring even when it is not evident from an outside glance.",
         "category": "radio",
         "radio": true
     },
     {
-        "order": 13,
-        "url": "/task-3-part-1",
-        "page": 115,
+        "url": "/task-3-1b",
+        "page": 15,
         "id": 30023,
         "text": "j) Don’t waste time unnecessarily by asking the team to repeat everything they have checked, just let them know you will go with their judgment as long as they accept responsibility for the decision.",
         "category": "radio",
         "radio": true
     },
     {
-        "order": 14,
-        "url": "/scenario-2",
-        "page": 116,
+        "url": "/task-3-2a",
+        "page": 17,
         "id": 30024,
         "text": "Scenario 2",
         "category": "heading",
         "heading": true
     },
     {
-        "order": 14,
-        "url": "/scenario-2",
-        "page": 116,
+        "url": "/task-3-2a",
+        "page": 17,
         "id": 30025,
         "text": "You are a member of a manufacturing production team.",
         "category": "scenario",
         "scenario": true
     },
     {
-        "order": 14,
-        "url": "/scenario-2",
-        "page": 116,
+        "url": "/task-3-2a",
+        "page": 17,
         "id": 30026,
         "text": "Your team is responsible for the production of three product lines.",
         "category": "scenario",
         "scenario": true
     },
     {
-        "order": 14,
-        "url": "/scenario-2",
-        "page": 116,
+        "url": "/task-3-2a",
+        "page": 17,
         "id": 30027,
         "text": "Last month management asked for a recommendation from your team as to whether or not your team could assume responsibility for another product line (making a total of four).",
         "category": "scenario",
         "scenario": true
     },
     {
-        "order": 14,
-        "url": "/scenario-2",
-        "page": 116,
+        "url": "/task-3-2a",
+        "page": 17,
         "id": 30028,
         "text": "Your personal view is that taking on the new product line would increase the visibility and importance of the team within the organization, which would help raise salaries and promotional opportunities.",
         "category": "scenario",
         "scenario": true
     },
     {
-        "order": 14,
-        "url": "/scenario-2",
-        "page": 116,
+        "url": "/task-3-2a",
+        "page": 17,
         "id": 30029,
         "text": "The other four members of your team feel that, in addition to the increased time and personnel demands placed on the team, current technology may not be capable of producing the new product efficiently.",
         "category": "scenario",
         "scenario": true
     },
     {
-        "order": 14,
-        "url": "/scenario-2",
-        "page": 116,
+        "url": "/task-3-2a",
+        "page": 17,
         "id": 30030,
         "text": "For the past several weeks your team has been carefully investigating the possibility of taking on another product. Your team has thoroughly discussed all the issues and would like to propose to management that the product line be manufactured at another facility.",
         "category": "scenario",
         "scenario": true
     },
     {
-        "order": 15,
-        "url": "/task-3-part-2",
-        "page": 117,
+        "url": "/task-3-2a",
+        "page": 17,
         "id": 31601,
         "text": "a) Acknowledge that your arguments have been heard and discussed by the team, and support the team’s decision.",
         "category": "radio",
         "radio": true
     },
     {
-        "order": 15,
-        "url": "/task-3-part-2",
-        "page": 117,
+        "url": "/task-3-2a",
+        "page": 17,
         "id": 31602,
         "text": "b) Ask the team to reconsider one more time your perspective on the long-term political impact of refusing the new product line because you feel it is an important issue.",
         "category": "radio",
         "radio": true
     },
     {
-        "order": 15,
-        "url": "/task-3-part-2",
-        "page": 117,
+        "url": "/task-3-2a",
+        "page": 17,
         "id": 31603,
         "text": "c) Let the team know that although you believe in team unity, you can’t bring yourself to refuse the new product line.",
         "category": "radio",
         "radio": true
     },
     {
-        "order": 15,
-        "url": "/task-3-part-2",
-        "page": 117,
+        "url": "/task-3-2a",
+        "page": 17,
         "id": 31604,
         "text": "d) Show your willingness to be a team player by voicing your support of the team’s decision.",
         "category": "radio",
         "radio": true
     },
     {
-        "order": 15,
-        "url": "/task-3-part-2",
-        "page": 117,
+        "url": "/task-3-2a",
+        "page": 17,
         "id": 31605,
         "text": "e) Recognize that the team has reviewed the issues, and begin discussing ways to make the recommendation to management.",
         "category": "radio",
         "radio": true
     },
     {
-        "order": 15,
-        "url": "/task-3-part-2",
-        "page": 117,
+        "url": "/task-3-2b",
+        "page": 18,
+        "id": 30024,
+        "text": "Scenario 2",
+        "category": "heading",
+        "heading": true
+    },
+    {
+        "url": "/task-3-2b",
+        "page": 18,
+        "id": 30025,
+        "text": "You are a member of a manufacturing production team.",
+        "category": "scenario",
+        "scenario": true
+    },
+    {
+        "url": "/task-3-2b",
+        "page": 18,
+        "id": 30026,
+        "text": "Your team is responsible for the production of three product lines.",
+        "category": "scenario",
+        "scenario": true
+    },
+    {
+        "url": "/task-3-2b",
+        "page": 18,
+        "id": 30027,
+        "text": "Last month management asked for a recommendation from your team as to whether or not your team could assume responsibility for another product line (making a total of four).",
+        "category": "scenario",
+        "scenario": true
+    },
+    {
+        "url": "/task-3-2b",
+        "page": 18,
+        "id": 30028,
+        "text": "Your personal view is that taking on the new product line would increase the visibility and importance of the team within the organization, which would help raise salaries and promotional opportunities.",
+        "category": "scenario",
+        "scenario": true
+    },
+    {
+        "url": "/task-3-2b",
+        "page": 18,
+        "id": 30029,
+        "text": "The other four members of your team feel that, in addition to the increased time and personnel demands placed on the team, current technology may not be capable of producing the new product efficiently.",
+        "category": "scenario",
+        "scenario": true
+    },
+    {
+        "url": "/task-3-2b",
+        "page": 18,
+        "id": 30030,
+        "text": "For the past several weeks your team has been carefully investigating the possibility of taking on another product. Your team has thoroughly discussed all the issues and would like to propose to management that the product line be manufactured at another facility.",
+        "category": "scenario",
+        "scenario": true
+    },
+    {
+        "url": "/task-3-2b",
+        "page": 18,
         "id": 31606,
         "text": "f) Suggest that since the team can’t reach consensus they should allow upper management to make the final decision.",
         "category": "radio",
         "radio": true
     },
     {
-        "order": 15,
-        "url": "/task-3-part-2",
-        "page": 117,
+        "url": "/task-3-2b",
+        "page": 18,
         "id": 31607,
         "text": "g) Even though you would still prefer to take on the new product line, go along with the team’s decision, because they have let you have your say in the matter.",
         "category": "radio",
         "radio": true
     },
     {
-        "order": 15,
-        "url": "/task-3-part-2",
-        "page": 117,
+        "url": "/task-3-2b",
+        "page": 18,
         "id": 31608,
         "text": "h) Recognize that the team has some good arguments, but remain committed to making the team see that the benefits clearly outweigh the costs.",
         "category": "radio",
         "radio": true
     },
     {
-        "order": 15,
-        "url": "/task-3-part-2",
-        "page": 117,
+        "url": "/task-3-2b",
+        "page": 18,
         "id": 31609,
         "text": "i) Sustain the team’s decision on the recommendation, as long as they acknowledge to upper management that the team would revisit its decision if more resources are provided.",
         "category": "radio",
         "radio": true
     },
     {
-        "order": 15,
-        "url": "/task-3-part-2",
-        "page": 117,
+        "url": "/task-3-2b",
+        "page": 18,
         "id": 31610,
         "text": "j) Be assertive and let the team know you still feel strongly that the team should take on the new product line.",
         "category": "radio",
         "radio": true
     },
     {
-        "order": 15,
-        "url": "/task-3-part-2",
-        "page": 117,
-        "id": 31600,
-        "text": "Scenario 2 (of 3)",
-        "category": "heading",
-        "heading": true
-    },
-    {
-        "order": 16,
-        "url": "/scenario-3",
-        "page": 118,
+        "url": "/task-3-3a",
+        "page": 20,
         "id": 31700,
         "text": "Scenario 3",
         "category": "heading",
         "heading": true
     },
     {
-        "order": 16,
-        "url": "/scenario-3",
-        "page": 118,
-        "id": 31701,
-        "text": "You are a member of a long-standing manufacturing team.",
-        "category": "scenario",
-        "scenario": true
-    },
-    {
-        "order": 16,
-        "url": "/scenario-3",
-        "page": 118,
-        "id": 31702,
-        "text": "Your team has been together for several years and has become pretty good at handling the work at hand.",
-        "category": "scenario",
-        "scenario": true
-    },
-    {
-        "order": 16,
-        "url": "/scenario-3",
-        "page": 118,
-        "id": 31703,
-        "text": "Each team member is comfortable with the work process and the other team members.",
-        "category": "scenario",
-        "scenario": true
-    },
-    {
-        "order": 16,
-        "url": "/scenario-3",
-        "page": 118,
-        "id": 31704,
-        "text": "Your work team will be moving to a new building that has been added onto the plant.",
-        "category": "scenario",
-        "scenario": true
-    },
-    {
-        "order": 16,
-        "url": "/scenario-3",
-        "page": 118,
-        "id": 31705,
-        "text": "The area manager has asked your team for some new ideas on how the equipment should be laid out in the new building.",
-        "category": "scenario",
-        "scenario": true
-    },
-    {
-        "order": 17,
-        "url": "/task-3-part-3",
-        "page": 119,
-        "id": 31800,
-        "text": "Scenario 3 (of 3)",
-        "category": "heading",
-        "heading": true
-    },
-    {
-        "order": 17,
-        "url": "/task-3-part-3",
-        "page": 119,
-        "id": 31801,
-        "text": "a) Highlight the fact that you have been doing the job for 15 years and the current layout is the best one.",
-        "category": "radio",
-        "radio": true
-    },
-    {
-        "order": 17,
-        "url": "/task-3-part-3",
-        "page": 119,
-        "id": 31802,
-        "text": "b) Propose that a good strategy may be to think outside of the box and get new layout ideas from high performance manufacturers in other industries.",
-        "category": "radio",
-        "radio": true
-    },
-    {
-        "order": 17,
-        "url": "/task-3-part-3",
-        "page": 119,
-        "id": 31803,
-        "text": "c) Keep the team on track by pointing out that it is very inefficient to waste time discussing solutions that are probably not practically feasible.",
-        "category": "radio",
-        "radio": true
-    },
-    {
-        "order": 17,
-        "url": "/task-3-part-3",
-        "page": 119,
-        "id": 31804,
-        "text": "d) Suggest that the team keep the ideas similar to the current layout to simplify the transition to the new building.",
-        "category": "radio",
-        "radio": true
-    },
-    {
-        "order": 17,
-        "url": "/task-3-part-3",
-        "page": 119,
-        "id": 31805,
-        "text": "e) Suggest that to find the optimal layout, the team should first generate innovative ideas and save the evaluation of the ideas for later in the process.",
-        "category": "radio",
-        "radio": true
-    },
-    {
-        "order": 17,
-        "url": "/task-3-part-3",
-        "page": 119,
-        "id": 31806,
-        "text": "f) Make sure the team doesn’t waste time discussing drastic changes to the current layout because management is not likely to endorse such a proposal anyway.",
-        "category": "radio",
-        "radio": true
-    },
-    {
-        "order": 17,
-        "url": "/task-3-part-3",
-        "page": 119,
-        "id": 31807,
-        "text": "g) Make sure production levels don’t drop due to letting your team’s most creative member make all suggestions.",
-        "category": "radio",
-        "radio": true
-    },
-    {
-        "order": 17,
-        "url": "/task-3-part-3",
-        "page": 119,
-        "id": 31808,
-        "text": "h) Remind the team that they have been working in the current environment for many years, and should consider all layout options even if they seem unfamiliar.",
-        "category": "radio",
-        "radio": true
-    },
-    {
-        "order": 17,
-        "url": "/task-3-part-3",
-        "page": 119,
-        "id": 31809,
-        "text": "i) Recommend that each team member take time this week to create three layout designs and bring them to the next team meeting.",
-        "category": "radio",
-        "radio": true
-    },
-    {
-        "order": 17,
-        "url": "/task-3-part-3",
-        "page": 119,
-        "id": 31810,
-        "text": "j) Suggest that a good way to generate innovative layouts would be to hold the next meeting in the new building.",
-        "category": "radio",
-        "radio": true
-    },
-    {
-        "url": "/scenario-1-split-1",
-        "page": 14,
-        "id": 30006,
-        "text": "Scenario 1 (of 3)",
-        "category": "heading",
-        "heading": true
-    },
-    {
-        "url": "/scenario-1-split-1",
-        "page": 14,
-        "id": 30007,
-        "text": "You are a member of an equipment maintenance team responsible for 12 high tech manufacturing machines.",
-        "category": "scenario",
-        "scenario": true
-    },
-    {
-        "url": "/scenario-1-split-1",
-        "page": 14,
-        "id": 30008,
-        "text": "Your five-person team has experts in many areas, including mechanical, electrical, & hydraulic systems.",
-        "category": "scenario",
-        "scenario": true
-    },
-    {
-        "url": "/scenario-1-split-1",
-        "page": 14,
-        "id": 30009,
-        "text": "You are the only member of your team with experience in the structural mechanics of the machines.",
-        "category": "scenario",
-        "scenario": true
-    },
-    {
-        "url": "/scenario-1-split-1",
-        "page": 14,
-        "id": 30010,
-        "text": "One of the machines was struck by a forklift while being prepared for an important production run.",
-        "category": "scenario",
-        "scenario": true
-    },
-    {
-        "url": "/scenario-1-split-1",
-        "page": 14,
-        "id": 30011,
-        "text": "The company owner quickly pulls your team together and asks if it is ok to run the machine. You are the last one to arrive at the meeting.",
-        "category": "scenario",
-        "scenario": true
-    },
-    {
-        "url": "/scenario-1-split-1",
-        "page": 14,
-        "id": 30012,
-        "text": "Apparently, the team feels that there was not any visible damage to the machine and it can be used safely.  They tell you that they have looked it over and didn’t see any damage.",
-        "category": "scenario",
-        "scenario": true
-    },
-    {
-        "url": "/scenario-1-split-1",
-        "page": 14,
-        "id": 30014,
-        "text": "a) Make sure the team knows of potential risks and that it is critical that you are able to check for damage to the machine before any recommendation is made.",
-        "category": "radio",
-        "radio": true
-    },
-    {
-        "url": "/scenario-1-split-1",
-        "page": 14,
-        "id": 30015,
-        "text": "b) Support your team members in their decision, you’ve worked together for a long time, and trust their judgment.",
-        "category": "radio",
-        "radio": true
-    },
-    {
-        "url": "/scenario-1-split-1",
-        "page": 14,
-        "id": 30016,
-        "text": "c) Make sure the machine gets the job done on schedule by accepting the judgment of your experienced teammates.",
-        "category": "radio",
-        "radio": true
-    },
-    {
-        "url": "/scenario-1-split-1",
-        "page": 14,
-        "id": 30017,
-        "text": "d) Acknowledge that it’s likely that the electrical systems have not been damaged, but insist that you be given a chance to inspect the machine’s structural soundness yourself.",
-        "category": "radio",
-        "radio": true
-    },
-    {
-        "url": "/scenario-1-split-1",
-        "page": 14,
-        "id": 30018,
-        "text": "e) Tell the team about your experiences with similar accidents in the past and ask that you be able to inspect the machine personally before the recommendation is made.",
-        "category": "radio",
-        "radio": true
-    },
-    {
-        "url": "/scenario-1-split-2",
-        "page": 15,
-        "id": 30006,
-        "text": "Scenario 1 (of 3)",
-        "category": "heading",
-        "heading": true
-    },
-    {
-        "url": "/scenario-1-split-2",
-        "page": 15,
-        "id": 30007,
-        "text": "You are a member of an equipment maintenance team responsible for 12 high tech manufacturing machines.",
-        "category": "scenario",
-        "scenario": true
-    },
-    {
-        "url": "/scenario-1-split-2",
-        "page": 15,
-        "id": 30008,
-        "text": "Your five-person team has experts in many areas, including mechanical, electrical, & hydraulic systems.",
-        "category": "scenario",
-        "scenario": true
-    },
-    {
-        "url": "/scenario-1-split-2",
-        "page": 15,
-        "id": 30009,
-        "text": "You are the only member of your team with experience in the structural mechanics of the machines.",
-        "category": "scenario",
-        "scenario": true
-    },
-    {
-        "url": "/scenario-1-split-2",
-        "page": 15,
-        "id": 30010,
-        "text": "One of the machines was struck by a forklift while being prepared for an important production run.",
-        "category": "scenario",
-        "scenario": true
-    },
-    {
-        "url": "/scenario-1-split-2",
-        "page": 15,
-        "id": 30011,
-        "text": "The company owner quickly pulls your team together and asks if it is ok to run the machine. You are the last one to arrive at the meeting.",
-        "category": "scenario",
-        "scenario": true
-    },
-    {
-        "url": "/scenario-1-split-2",
-        "page": 15,
-        "id": 30012,
-        "text": "Apparently, the team feels that there was not any visible damage to the machine and it can be used safely.  They tell you that they have looked it over and didn’t see any damage.",
-        "category": "scenario",
-        "scenario": true
-    },
-    {
-        "url": "/scenario-1-split-2",
-        "page": 15,
-        "id": 30019,
-        "text": "f) Recommend that they go ahead and run the machine to support your team and then check its structural soundness after the important production run is finished.",
-        "category": "radio",
-        "radio": true
-    },
-    {
-        "url": "/scenario-1-split-2",
-        "page": 15,
-        "id": 30020,
-        "text": "g) Relate to the team some additional areas of potential damage to the machine after inquiring into the inspections they have made.",
-        "category": "radio",
-        "radio": true
-    },
-    {
-        "url": "/scenario-1-split-2",
-        "page": 15,
-        "id": 30021,
-        "text": "h) Although you are more experienced in the structural mechanics, go with the judgment made by your teammates because two of them have been with the company much longer than you have.",
-        "category": "radio",
-        "radio": true
-    },
-    {
-        "url": "/scenario-1-split-2",
-        "page": 15,
-        "id": 30022,
-        "text": "i) Thank the team for checking the machine over, but relate to the team your experience with “unseen damage” occurring even when it is not evident from an outside glance.",
-        "category": "radio",
-        "radio": true
-    },
-    {
-        "url": "/scenario-1-split-2",
-        "page": 15,
-        "id": 30023,
-        "text": "j) Don’t waste time unnecessarily by asking the team to repeat everything they have checked, just let them know you will go with their judgment as long as they accept responsibility for the decision.",
-        "category": "radio",
-        "radio": true
-    },
-    {
-        "url": "/scenario-2-split-1",
-        "page": 17,
-        "id": 30024,
-        "text": "Scenario 2 (of 3)",
-        "category": "heading",
-        "heading": true
-    },
-    {
-        "url": "/scenario-2-split-1",
-        "page": 17,
-        "id": 30025,
-        "text": "You are a member of a manufacturing production team.",
-        "category": "scenario",
-        "scenario": true
-    },
-    {
-        "url": "/scenario-2-split-1",
-        "page": 17,
-        "id": 30026,
-        "text": "Your team is responsible for the production of three product lines.",
-        "category": "scenario",
-        "scenario": true
-    },
-    {
-        "url": "/scenario-2-split-1",
-        "page": 17,
-        "id": 30027,
-        "text": "Last month management asked for a recommendation from your team as to whether or not your team could assume responsibility for another product line (making a total of four).",
-        "category": "scenario",
-        "scenario": true
-    },
-    {
-        "url": "/scenario-2-split-1",
-        "page": 17,
-        "id": 30028,
-        "text": "Your personal view is that taking on the new product line would increase the visibility and importance of the team within the organization, which would help raise salaries and promotional opportunities.",
-        "category": "scenario",
-        "scenario": true
-    },
-    {
-        "url": "/scenario-2-split-1",
-        "page": 17,
-        "id": 30029,
-        "text": "The other four members of your team feel that, in addition to the increased time and personnel demands placed on the team, current technology may not be capable of producing the new product efficiently.",
-        "category": "scenario",
-        "scenario": true
-    },
-    {
-        "url": "/scenario-2-split-1",
-        "page": 17,
-        "id": 30030,
-        "text": "For the past several weeks your team has been carefully investigating the possibility of taking on another product. Your team has thoroughly discussed all the issues and would like to propose to management that the product line be manufactured at another facility.",
-        "category": "scenario",
-        "scenario": true
-    },
-    {
-        "url": "/scenario-2-split-1",
-        "page": 17,
-        "id": 31601,
-        "text": "a) Acknowledge that your arguments have been heard and discussed by the team, and support the team’s decision.",
-        "category": "radio",
-        "radio": true
-    },
-    {
-        "url": "/scenario-2-split-1",
-        "page": 17,
-        "id": 31602,
-        "text": "b) Ask the team to reconsider one more time your perspective on the long-term political impact of refusing the new product line because you feel it is an important issue.",
-        "category": "radio",
-        "radio": true
-    },
-    {
-        "url": "/scenario-2-split-1",
-        "page": 17,
-        "id": 31603,
-        "text": "c) Let the team know that although you believe in team unity, you can’t bring yourself to refuse the new product line.",
-        "category": "radio",
-        "radio": true
-    },
-    {
-        "url": "/scenario-2-split-1",
-        "page": 17,
-        "id": 31604,
-        "text": "d) Show your willingness to be a team player by voicing your support of the team’s decision.",
-        "category": "radio",
-        "radio": true
-    },
-    {
-        "url": "/scenario-2-split-1",
-        "page": 17,
-        "id": 31605,
-        "text": "e) Recognize that the team has reviewed the issues, and begin discussing ways to make the recommendation to management.",
-        "category": "radio",
-        "radio": true
-    },
-    {
-        "url": "/scenario-2-split-2",
-        "page": 18,
-        "id": 30024,
-        "text": "Scenario 2 (of 3)",
-        "category": "heading",
-        "heading": true
-    },
-    {
-        "url": "/scenario-2-split-2",
-        "page": 18,
-        "id": 30025,
-        "text": "You are a member of a manufacturing production team.",
-        "category": "scenario",
-        "scenario": true
-    },
-    {
-        "url": "/scenario-2-split-2",
-        "page": 18,
-        "id": 30026,
-        "text": "Your team is responsible for the production of three product lines.",
-        "category": "scenario",
-        "scenario": true
-    },
-    {
-        "url": "/scenario-2-split-2",
-        "page": 18,
-        "id": 30027,
-        "text": "Last month management asked for a recommendation from your team as to whether or not your team could assume responsibility for another product line (making a total of four).",
-        "category": "scenario",
-        "scenario": true
-    },
-    {
-        "url": "/scenario-2-split-2",
-        "page": 18,
-        "id": 30028,
-        "text": "Your personal view is that taking on the new product line would increase the visibility and importance of the team within the organization, which would help raise salaries and promotional opportunities.",
-        "category": "scenario",
-        "scenario": true
-    },
-    {
-        "url": "/scenario-2-split-2",
-        "page": 18,
-        "id": 30029,
-        "text": "The other four members of your team feel that, in addition to the increased time and personnel demands placed on the team, current technology may not be capable of producing the new product efficiently.",
-        "category": "scenario",
-        "scenario": true
-    },
-    {
-        "url": "/scenario-2-split-2",
-        "page": 18,
-        "id": 30030,
-        "text": "For the past several weeks your team has been carefully investigating the possibility of taking on another product. Your team has thoroughly discussed all the issues and would like to propose to management that the product line be manufactured at another facility.",
-        "category": "scenario",
-        "scenario": true
-    },
-    {
-        "url": "/scenario-2-split-2",
-        "page": 18,
-        "id": 31606,
-        "text": "f) Suggest that since the team can’t reach consensus they should allow upper management to make the final decision.",
-        "category": "radio",
-        "radio": true
-    },
-    {
-        "url": "/scenario-2-split-2",
-        "page": 18,
-        "id": 31607,
-        "text": "g) Even though you would still prefer to take on the new product line, go along with the team’s decision, because they have let you have your say in the matter.",
-        "category": "radio",
-        "radio": true
-    },
-    {
-        "url": "/scenario-2-split-2",
-        "page": 18,
-        "id": 31608,
-        "text": "h) Recognize that the team has some good arguments, but remain committed to making the team see that the benefits clearly outweigh the costs.",
-        "category": "radio",
-        "radio": true
-    },
-    {
-        "url": "/scenario-2-split-2",
-        "page": 18,
-        "id": 31609,
-        "text": "i) Sustain the team’s decision on the recommendation, as long as they acknowledge to upper management that the team would revisit its decision if more resources are provided.",
-        "category": "radio",
-        "radio": true
-    },
-    {
-        "url": "/scenario-2-split-2",
-        "page": 18,
-        "id": 31610,
-        "text": "j) Be assertive and let the team know you still feel strongly that the team should take on the new product line.",
-        "category": "radio",
-        "radio": true
-    },
-    {
-        "url": "/scenario-3-split-1",
-        "page": 20,
-        "id": 31700,
-        "text": "Scenario 3 (of 3)",
-        "category": "heading",
-        "heading": true
-    },
-    {
-        "url": "/scenario-3-split-1",
+        "url": "/task-3-3a",
         "page": 20,
         "id": 31701,
         "text": "You are a member of a long-standing manufacturing team.",
@@ -1553,7 +1078,7 @@ const questions =
         "scenario": true
     },
     {
-        "url": "/scenario-3-split-1",
+        "url": "/task-3-3a",
         "page": 20,
         "id": 31702,
         "text": "Your team has been together for several years and has become pretty good at handling the work at hand.",
@@ -1561,7 +1086,7 @@ const questions =
         "scenario": true
     },
     {
-        "url": "/scenario-3-split-1",
+        "url": "/task-3-3a",
         "page": 20,
         "id": 31703,
         "text": "Each team member is comfortable with the work process and the other team members.",
@@ -1569,7 +1094,7 @@ const questions =
         "scenario": true
     },
     {
-        "url": "/scenario-3-split-1",
+        "url": "/task-3-3a",
         "page": 20,
         "id": 31704,
         "text": "Your work team will be moving to a new building that has been added onto the plant.",
@@ -1577,7 +1102,7 @@ const questions =
         "scenario": true
     },
     {
-        "url": "/scenario-3-split-1",
+        "url": "/task-3-3a",
         "page": 20,
         "id": 31705,
         "text": "The area manager has asked your team for some new ideas on how the equipment should be laid out in the new building.",
@@ -1585,7 +1110,7 @@ const questions =
         "scenario": true
     },
     {
-        "url": "/scenario-3-split-1",
+        "url": "/task-3-3a",
         "page": 20,
         "id": 31801,
         "text": "a) Highlight the fact that you have been doing the job for 15 years and the current layout is the best one.",
@@ -1593,7 +1118,7 @@ const questions =
         "radio": true
     },
     {
-        "url": "/scenario-3-split-1",
+        "url": "/task-3-3a",
         "page": 20,
         "id": 31802,
         "text": "b) Propose that a good strategy may be to think outside of the box and get new layout ideas from high performance manufacturers in other industries.",
@@ -1601,7 +1126,7 @@ const questions =
         "radio": true
     },
     {
-        "url": "/scenario-3-split-1",
+        "url": "/task-3-3a",
         "page": 20,
         "id": 31803,
         "text": "c) Keep the team on track by pointing out that it is very inefficient to waste time discussing solutions that are probably not practically feasible.",
@@ -1609,7 +1134,7 @@ const questions =
         "radio": true
     },
     {
-        "url": "/scenario-3-split-1",
+        "url": "/task-3-3a",
         "page": 20,
         "id": 31804,
         "text": "d) Suggest that the team keep the ideas similar to the current layout to simplify the transition to the new building.",
@@ -1617,7 +1142,7 @@ const questions =
         "radio": true
     },
     {
-        "url": "/scenario-3-split-1",
+        "url": "/task-3-3a",
         "page": 20,
         "id": 31805,
         "text": "e) Suggest that to find the optimal layout, the team should first generate innovative ideas and save the evaluation of the ideas for later in the process.",
@@ -1625,15 +1150,15 @@ const questions =
         "radio": true
     },
     {
-        "url": "/scenario-3-split-2",
+        "url": "/task-3-3b",
         "page": 21,
         "id": 31700,
-        "text": "Scenario 3 (of 3)",
+        "text": "Scenario 3",
         "category": "heading",
         "heading": true
     },
     {
-        "url": "/scenario-3-split-2",
+        "url": "/task-3-3b",
         "page": 21,
         "id": 31701,
         "text": "You are a member of a long-standing manufacturing team.",
@@ -1641,7 +1166,7 @@ const questions =
         "scenario": true
     },
     {
-        "url": "/scenario-3-split-2",
+        "url": "/task-3-3b",
         "page": 21,
         "id": 31702,
         "text": "Your team has been together for several years and has become pretty good at handling the work at hand.",
@@ -1649,7 +1174,7 @@ const questions =
         "scenario": true
     },
     {
-        "url": "/scenario-3-split-2",
+        "url": "/task-3-3b",
         "page": 21,
         "id": 31703,
         "text": "Each team member is comfortable with the work process and the other team members.",
@@ -1657,7 +1182,7 @@ const questions =
         "scenario": true
     },
     {
-        "url": "/scenario-3-split-2",
+        "url": "/task-3-3b",
         "page": 21,
         "id": 31704,
         "text": "Your work team will be moving to a new building that has been added onto the plant.",
@@ -1665,7 +1190,7 @@ const questions =
         "scenario": true
     },
     {
-        "url": "/scenario-3-split-2",
+        "url": "/task-3-3b",
         "page": 21,
         "id": 31705,
         "text": "The area manager has asked your team for some new ideas on how the equipment should be laid out in the new building.",
@@ -1673,7 +1198,7 @@ const questions =
         "scenario": true
     },
     {
-        "url": "/scenario-3-split-2",
+        "url": "/task-3-3b",
         "page": 21,
         "id": 31806,
         "text": "f) Make sure the team doesn’t waste time discussing drastic changes to the current layout because management is not likely to endorse such a proposal anyway.",
@@ -1681,7 +1206,7 @@ const questions =
         "radio": true
     },
     {
-        "url": "/scenario-3-split-2",
+        "url": "/task-3-3b",
         "page": 21,
         "id": 31807,
         "text": "g) Make sure production levels don’t drop due to letting your team’s most creative member make all suggestions.",
@@ -1689,7 +1214,7 @@ const questions =
         "radio": true
     },
     {
-        "url": "/scenario-3-split-2",
+        "url": "/task-3-3b",
         "page": 21,
         "id": 31808,
         "text": "h) Remind the team that they have been working in the current environment for many years, and should consider all layout options even if they seem unfamiliar.",
@@ -1697,7 +1222,7 @@ const questions =
         "radio": true
     },
     {
-        "url": "/scenario-3-split-2",
+        "url": "/task-3-3b",
         "page": 21,
         "id": 31809,
         "text": "i) Recommend that each team member take time this week to create three layout designs and bring them to the next team meeting.",
@@ -1705,7 +1230,7 @@ const questions =
         "radio": true
     },
     {
-        "url": "/scenario-3-split-2",
+        "url": "/task-3-3b",
         "page": 21,
         "id": 31810,
         "text": "j) Suggest that a good way to generate innovative layouts would be to hold the next meeting in the new building.",

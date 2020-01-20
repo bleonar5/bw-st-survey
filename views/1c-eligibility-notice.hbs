@@ -1,37 +1,37 @@
-
-<div id="content-heading-b" class="text-center row">
+<div class="header-or-footer-10 text-center row">
 
     <div class="col-2">
     </div>
 
     <div class="col-8">
         <div class="row h-100">
-            <div class="col-md-12 align-self-end">
+            <div class="col-12 align-self-end d-md-none d-lg-block">
                 <h2>Eligibility Notice</h2>
             </div>
         </div>
     </div>
 
-    <div class="col-2">
-    </div>
+
+    {{> 8increaseTextSizeBtn}}
 
 </div>
 
-<div id="content-main-b">
-    <div class="row justify-content-center bespoke-vertical-align-b">
-        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-10 text-center px-md-3 px-lg-5">
-
-            {{#each eligpg3}} 
-                <h4 class="my-sm-2 my-md-3 my-lg-5">{{{this.text}}}</h4>
-            {{/each}}
-
+<div id="eligibility-notice-text-box" class="main-h-80 py-lg-1 px-lg-2 px-xl-5 font-size-125">
+    <div class="p-md-0 p-lg-1 p-xl-5 h-100">
+        <div class="p-md-0 p-lg-1 p-xl-5 h-100">
+            <div class="row h-100 d-flex align-items-center justify-content-center">
+                {{#each eligpg3}}
+                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-10 text-center px-md-3 px-lg-5">
+                        <span>{{{this.text}}}</span>
+                    </div>
+                {{/each}}
+            </div>
         </div>
     </div>
-{{!-- closing div of end of contentmain below --}}
-</div>
+</div> {{!-- << closing div of end of contentmain below --}}
 
 
-<div id="footer-b" class="row mx-xs-0 mx-sm-2 mx-md-3 mx-lg-5">
+<div class="header-or-footer-10 text-center row mx-md-0 mx-lg-4">
 
     {{> 4footerleft}}
             <a href="/no-study-consent" role="button" class="btn btn-lg btn-warning float-left">I Do <strong>NOT </strong>Agree</a>
@@ -43,8 +43,7 @@
     </div>
 
     {{> 6footerright}}
-            <a href="/welcome" role="button" class="btn btn-lg btn-success float-right">I agree</a>
+            <a href="/instructions-1" role="button" class="btn btn-lg btn-success float-right">I agree</a>
         </div>
     </div>
-{{!-- closing div of footer below --}}
-</div>
+</div> {{!-- << closing div of footer --}}

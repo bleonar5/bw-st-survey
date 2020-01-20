@@ -1,0 +1,169 @@
+{{!-- <div style="height: 100vh"> --}}
+<form onSubmit="return checkQuestionsRadios(getArrayOfQuestions());" method="POST" class="h-100">
+<div class="row h-100">
+
+{{!-- Start of Left Side Bar --}} 
+    <div id="left-col" class="col-1 h-100">
+
+        <div id="empty-skip-btn" class="row h-50"> {{!-- Skip button used to speed up testing phase. Not used for production --}} 
+            <div class="align-self-start">
+                <a id="skip-btn" role="button" onclick="completeQuestions(); removeWarning();" class="btn btn-warning float-left hand-curser">Skip</a>
+            </div>
+        </div>
+
+        <div class="row h-50 vertical-text">
+            <h4 class="text-primary m-0 vertical-text d-md-block d-lg-none">{{#each heading}} {{#if this.heading}}{{this.text}}{{/if}} {{/each}}</h4>
+        </div>
+
+        <div class="row h-25">
+            <div class="align-self-end col-12">
+                <div class="text-left {{> paddingBottomDefault }}">
+                    {{#if urlsAndPages.backbutton}}
+                        <a href={{urlsAndPages.previousPage}} role="button" class="btn btn-secondary">Back</a>
+                    {{/if}}
+                </div>
+            </div>
+        </div>
+    </div>
+{{!-- End of Left Side Bar --}} 
+
+
+{{!-- Start of Middle Column (col-10) --}}
+    <div id="main-col" class="col-10 h-100">
+            {{!-- Header Start --}} 
+            {{!-- To vertically align items to the bottom  you need both d-flex and align-items-end. text-center horizonally centers --}}
+            <div class="row row-10h d-xs-none d-sm-none d-md-none d-lg-none d-xl-block"> {{!-- << Don't display on small screens --}}
+                <div class="h-100 d-flex align-items-end text-center "> 
+                    <div class="col-12">
+                            <h2 class="text-primary m-0 h-100">{{#each heading}} {{#if this.heading}}{{this.text}}{{/if}} {{/each}}</h2>
+                    </div>
+                </div>
+            </div> {{!-- << Header End --}}
+            
+
+        <div>
+        {{!-- Main Content Start --}} 
+        <div class="row row-80h d-flex align-items-center justify-content-center font-size-90" id="task-3-text-box">
+            {{!-- Scenarios Start --}} 
+            <div class="row justify-content-center h-50 d-flex align-items-center w-100" id="task-3-main-1">
+                {{!-- py-1 px-5 below --}}
+                <div id="task-3-text-box-1 h-100" class="col-12 px-0">
+                    {{#each sheetsSituations}}
+                        <div class="py-md-0 py-lg-1">
+                            {{#if scenario}}
+                                {{{this.text}}}
+                            {{/if}}
+                        </div>
+                    {{/each}}
+                </div>
+            </div>
+            {{!-- Scenarios End --}}
+
+
+            {{!-- Radio Buttons Start --}}
+
+            <div class="row justify-content-center h-50 d-flex align-items-center w-100" id="task-3-main-2">
+                <div id="task-3-text-box-2" class="h-100 col-12 p-0">
+
+                    <table class="table-sm table-striped"> {{!-- Removing the table class will remove the top line of the table --}}
+                        <thead>
+                            <tr>
+                                <td class="blank col-7"></td>
+
+                                <th class="key col-1">
+                                    <div class="text-center font-size-sm"><span class="font-weight-normal">Very<br></span><span class="text-danger">Ineffective</span></div>
+                                </th>
+                                <th class="key col-1">
+                                    <div class="text-center font-size-sm"><span class="font-weight-normal">Somewhat<br></span><span class="text-danger">Ineffective</span></div>
+                                </th>
+                                <th class="key col-1 align-middle">
+                                    <div class="text-center text-secondary font-weight-normal font-size-sm "><span>Neutral</span></div>
+                                </th>
+                                <th class="key col-1">
+                                    <div class="text-center font-size-sm"><span class="font-weight-normal">Somewhat<br></span><span class="text-success">Effective</span></span></div>
+                                </th>
+                                <th class="key col-1">
+                                    <div class="text-center font-size-sm"><span class="font-weight-normal">Very<br></span><span class="text-success">Effective</span></span></div>
+                                </th>
+                            </tr>
+                        </thead>
+                        
+                        <tbody>
+                            {{#each perguntas}} 
+                            {{#if radio}} 
+                                <tr name="radioques">
+                                    <td class="text-left col-7">{{this.text}}</td>
+
+                                    <td class="radiocol text-center input col-1">
+                                            <input class="first-radio-box" type="radio" name={{this.id}} value="1-strongly-disagree" onclick="removeWarning();" {{#if this.option1Selected}} checked {{/if}} required>
+                                        </td>
+                                    <td class="radiocol text-center input col-1">
+                                            <input type="radio" name={{this.id}} value="2-somewhat-disagree" onclick="removeWarning();" {{#if this.option2Selected}} checked {{/if}} required>
+                                        </td>
+                                    <td class="radiocol text-center input col-1">
+                                            <input type="radio" name={{this.id}} value="3-no-opinion" onclick="removeWarning();" {{#if this.option3Selected}} checked {{/if}} required>
+                                        </td>
+                                    <td class="radiocol text-center input col-1">
+                                            <input type="radio" name={{this.id}} value="4-somewhat-agree" onclick="removeWarning();" {{#if this.option4Selected}} checked {{/if}} required>
+                                        </td>
+                                    <td class="radiocol text-center input col-1">
+                                            <input type="radio" name={{this.id}} value="5-strongly-agree" onclick="removeWarning();" {{#if this.option5Selected}} checked {{/if}} required>
+                                        </td>
+                                </tr>
+                            {{/if}} 
+                            {{/each}}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>  {{!-- << Main Content End --}}
+        </div>
+
+        {{!-- Start of Footer --}}
+        <div class="row row-10h d-xs-none d-sm-none d-md-none d-lg-none d-xl-block"> {{!-- << Don't display on small screens --}}
+            <div class="h-100 d-flex align-items-end text-center">
+                <div class="col-md-12 font-size-90 pb-md-0 pb-lg-3 d-md-none d-lg-block">
+                    <div id="warning-message-small">
+                        {{!-- Form Validation Div --}}
+                    </div>
+
+                    {{#if urlsAndPages.pagination}}
+                        <div id="page-number">
+                            <div class="text-center pt-3">
+                                {{urlsAndPages.pagination}}
+                            </div>
+                        </div>
+                    {{/if}}
+
+                </div>
+            </div>
+        </div> {{!-- << End of Footer  --}}
+        
+</div>
+{{!-- End of Middle Column (col-10) --}}
+
+
+
+    <div id="right-col" class="col-1 h-100"> {{!-- << Start of Right Side Bar --}}
+        <div class="row h-50">
+            <div class="align-self-top col-12">
+                <div class="text-right {{> paddingTopDefault }}">
+                    <a id="toggle-text-size-btn" role="button" onclick="toggleFontSize();" class="btn btn-secondary text-white hand-curser"><strong>a</strong>A</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="row h-50">
+            <div class="align-self-end col-12">
+                <div class="text-right {{> paddingBottomDefault }}">
+                    <button role="button" type="submit" class="btn btn-primary text-white hand-curser">Next</button>
+                </div>
+                </form>
+            </div>
+        </div>
+    </div>
+{{!-- ^^ End of Right Side Bar --}}
+
+</div> {{!-- << End of Page Div --}}
+</form>
+{{!-- </div> --}}

@@ -3,8 +3,8 @@
 
 const express = require("express");
 const router = express.Router();
-const Answer = require('../models/answers');
-const FinalAnsSubmitted = require('../models/finalAnsSubmitted');
+const Answer = require('../models/answers.js');
+const FinalAnsSubmitted = require('../models/finalAnsSubmitted.js');
 const app = express();
 
 const getPageNumber = require('../helpers/getPageNumber.js');
@@ -17,8 +17,8 @@ const cookieSession = require('cookie-session');
 const addUsersExistingsAnswers = require('../helpers/addUsersExistingsAnswers.js');
 
 // Declare variable which hold all data from Google Sheets Import
-const allQuestions = require('../bin/sheets-import');
-const allUrls = require('../bin/urls');
+const allQuestions = require('../bin/sheets-import.js');
+const allUrls = require('../bin/urls.js');
 
 // Cookie Session
 app.use(cookieSession({
@@ -35,8 +35,10 @@ app.use(cookieSession({
 router.use((req, res, next) => {
     if (req.session.currentUser) { // <== if there's user in the session (user is logged in)
       next(); // ==> go to the next route ---
-    } else {                          //    |
-      res.redirect('/individual-login');         //    |
+    } else {       
+        res.redirect('/'); 
+        //    |
+        // res.redirect('/individual-login');         //    |
     }                                 //    |
 });
 
@@ -114,7 +116,6 @@ router.get('/task-1-part-1', (req, res) => {
     const urlsAndPages = extractUrlAndPage(currentPage, allUrls);
     const userEmail = req.session.currentUser;
     const handlebarsPage = urlsAndPages.handlebarsStaticPage;
-    // const handlebarsPage = "legacy-3b-task-1-b";
     const dataForThisSheet = allQuestions.filter( data => data.page === currentPage);
     const heading = dataForThisSheet.filter (data => data.heading);
     let perguntas = dataForThisSheet.filter (data => data.radio);
@@ -122,6 +123,7 @@ router.get('/task-1-part-1', (req, res) => {
     Answer.findOne({userEmail: userEmail, currentPage: currentPage})
     .then((answer) => {
         if (answer !== null) {
+            console.log(answer);
             const questionIds = JSON.parse(answer.questionsIdSaved);
             const questionAnswersPartial = JSON.parse(answer.answersSaved);
             const perguntasWithUserAnswers = addUsersExistingsAnswers(perguntas, questionIds, questionAnswersPartial);
@@ -157,6 +159,7 @@ router.post('/task-1-part-1', (req, res) => {
             newQuestionSubmittedByUser.save()
             .then( (answer) => {
                 // console.log(`Answer saved to database: ${answer}`);
+                // console.log(urlsAndPages.nextPage);
                 res.redirect(urlsAndPages.nextPage);
             })
             .catch((error) => {
@@ -172,7 +175,6 @@ router.get('/task-1-part-2', (req, res) => {
     const dataForThisSheet = allQuestions.filter( data => data.page === currentPage);
     const heading = dataForThisSheet.filter (data => data.heading);
     let perguntas = dataForThisSheet.filter (data => data.radio);
-    console.log(heading);
     Answer.findOne({userEmail: userEmail, currentPage: currentPage})
     .then((answer) => {
         if (answer !== null) {
@@ -811,25 +813,20 @@ router.post('/task-3-3b', (req, res) => {
 
 
 
-
-
-/*
-    Answer.findOne({userEmail: userEmail})
-    .then((allDataFromUser) => {
-        if (allDataFromUser != null) {
-        console.log(allDataFromUser);
-*/
-
-
-
-
-
 router.get('/study-conclusion', (req, res) => {
-  res.render('6a-study-conclusion');
+    const reqsession = req.session;
+    console.log(reqsession);
+    console.log(reqsession.redem);
+    const currentPage = getPageNumber(req.originalUrl, allUrls);
+
+    const urlsAndPages = extractUrlAndPage(currentPage, allUrls);
+    const handlebarsPage = urlsAndPages.handlebarsStaticPage;
+
+    res.render(handlebarsPage, { reqsession });
 });
 
 
-// Temp Pages for DEMO PURPOSES
+// Temp Pages for DEMO PURPOSES //
 router.get('/scenarios-layout-a', (req, res) => {
     const currentPage = 14;
     const dataForThisSheet = allQuestions.filter( data => data.page === currentPage);

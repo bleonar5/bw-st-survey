@@ -20,7 +20,6 @@ https://stackoverflow.com/questions/25427407/bootstrap-3-and-4-container-fluid-w
 .vertical-text {
     writing-mode: vertical-rl;
     text-orientation: upright;
-    line-height: 1 !important;
 }
 
 .row-10h {
@@ -42,9 +41,9 @@ https://stackoverflow.com/questions/25427407/bootstrap-3-and-4-container-fluid-w
     margin-right: -15px;
 }
 
-.bespoke-header-and-footer-o {
-    min-height: 10% !important;
-    min-height: 10vh !important;
+.header-or-footer-10 {
+    height: 10% !important;
+    height: 10vh !important;
 }
 
 #task-1-text-box {
@@ -504,22 +503,7 @@ If root: font-size is 16px, 1 rem will be 16px
   
 
   
-
-.font-size-task-one {
-    font-size: 1.00rem;
-}
-
-.font-size-scenario {
-    font-size: 1.00rem;
-}
-
-.font-size-task-3 {
-    font-size: 1.00rem;
-}
-
-.font-size-sm {
-    font-size: 0.85rem;
-}
+/* Increased Font Sizes (used in toggleFontSize function */
 
 .font-size-90 {
     font-size: 0.90rem;
@@ -533,19 +517,26 @@ If root: font-size is 16px, 1 rem will be 16px
     font-size: 1.10rem;
 }
 
-.font-size-bigger {
-    font-size: 1.10rem;
-}
-
-.font-size-bigger-120 {
+.font-size-120 {
     font-size: 1.20rem;
 }
 
-.font-size-bigger-130 {
-    font-size: 1.30rem;
+.font-size-125 {
+    font-size: 1.25rem;
 }
 
-/* Increased Font Sizes */
+.font-size-140 {
+    font-size: 1.40rem;
+}
+
+.font-size-170 {
+    font-size: 1.70rem;
+}
+
+.font-size-200 {
+    font-size: 2.00rem;
+}
+
 
 /* Dropdown Button */
 .nav-drop-btn {

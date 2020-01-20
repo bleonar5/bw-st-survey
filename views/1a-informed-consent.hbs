@@ -1,11 +1,11 @@
-<div id="content-heading-a" class="text-center row">
+<div class="header-or-footer-10 text-center row">
 
     <div class="col-2">
     </div>
 
     <div class="col-8">
         <div class="row h-100">
-            <div class="col-12 align-self-end">
+            <div class="col-12 align-self-end d-md-none d-lg-block">
                 <h2>Informed Consent Form</h2>
             </div>
         </div>
@@ -15,18 +15,17 @@
 
 </div>
 
-<div id="content-main-a" class="mx-sm-0 mx-md-1 mx-lg-3">
-    <div class="row bespoke-vertical-align-a">
-        <div class="col-12 text-left px-sm-0 px-md-2 px-lg-3 py-md-1">
-            {{#each stdConsent}}
-                <p><span class="consent-heading">{{this.subheading}}</span><span>: {{{this.text}}}</span></p>
-            {{/each}}
+<div id="informed-consent-form-text-box" class="main-h-80 py-lg-5 px-lg-5 font-size-100">
+    <div class="row h-100 d-flex align-items-stretch">
+        {{#each stdConsent}}
+        <div class="col-12 text-left d-xs-none d-sm-none d-md-block">
+            <span class="consent-heading">{{this.subheading}}</span><span>: {{{this.text}}}</span>
         </div>
+        {{/each}}
     </div>
-{{!-- closing div of end of contentmain below --}}
-</div>
+</div> {{!-- << closing div of informed-consent-form-text-box --}}
 
-<div id="footer-a" class="row mx-xs-0 mx-sm-2 mx-md-3 mx-lg-5">
+<div class="header-or-footer-10 text-center row mx-md-0 mx-lg-4">
     {{> 4footerleft}}
             <a href="/no-study-consent" role="button" class="btn btn-lg btn-warning float-left">I Do <strong>NOT </strong>Consent</a>
         </div>
@@ -40,5 +39,4 @@
             <a href="/eligibility-notice" role="button" class="btn btn-lg btn-success float-right">I Consent</a>
         </div>
     </div>
-{{!-- closing div of footer below --}}
-</div>
+</div> {{!-- << closing div of footer --}}
