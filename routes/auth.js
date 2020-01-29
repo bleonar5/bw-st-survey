@@ -48,7 +48,10 @@ router.post("/", (req, res, next) => {
     .then((arrayOfCodes) => {
 
         if (arrayOfCodes.length === 0) {
-                /* Code below is to set up codes in the first place (If the redemCodes are empty, you need to set it up with all the new redemCodes) */ 
+                /*  
+                Code below is to set up codes in the first place (If the redemCodes are empty, you need to set it up with all the new redemCodes) 
+                This code will send redem codes to the database.
+                */ 
             for (i = 0; i < numberOfCodesInDb; i++) {
                 const uniqueId = redemCodes[i].id;
                 const redemCode = redemCodes[i].redemcode;
@@ -57,7 +60,7 @@ router.post("/", (req, res, next) => {
         
                 newRedemGenerated.save()
                     .then( (answer) => {
-                        console.log(`Mturk loaded to the db:: ${answer}`);
+                        console.log(`Mturk Redem loaded to the db:: ${answer}`);
                     })
                     .catch((error) => {
                         console.log(error);

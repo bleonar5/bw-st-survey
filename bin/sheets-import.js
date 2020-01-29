@@ -8,98 +8,98 @@ const questions =
         "id": 10001,
         "text": "To understand the relationship between measures of social skill and fluid intelligence.",
         "category": "info",
-        "subheading": "Purpose of Research Study",
-        "info": true
+        "info": true,
+        "subheading": "Purpose of Research Study"
     },
     {
-        "order": 1,
+        "order": 2,
         "url": "/study-consent",
         "page": 2,
         "id": 10002,
         "text": "This is a follow-up survey. We will ask you some demographic questions about your work history and experience of teamwork, along with a ‘situational judgment test’ to assess your knowledge of working in a team.",
         "category": "info",
-        "subheading": "What You’ll Do",
-        "info": true
+        "info": true,
+        "subheading": "What You’ll Do"
     },
     {
-        "order": 1,
+        "order": 3,
         "url": "/study-consent",
         "page": 2,
         "id": 10003,
         "text": "There are no risks for participating in this study beyond those associated with normal computer use, including fatigue and mild stress.",
         "category": "info",
-        "subheading": "Risks",
-        "info": true
+        "info": true,
+        "subheading": "Risks"
     },
     {
-        "order": 1,
+        "order": 4,
         "url": "/study-consent",
         "page": 2,
         "id": 10004,
         "text": "Overall, compensation for this experiment will be $7.50.",
         "category": "info",
-        "subheading": "Compensation",
-        "info": true
+        "info": true,
+        "subheading": "Compensation"
     },
     {
-        "order": 1,
+        "order": 5,
         "url": "/study-consent",
         "page": 2,
         "id": 10005,
         "text": "This study contains a number of checks to make sure that participants are finishing the tasks honestly and completely.",
         "category": "info",
-        "subheading": "Please Note",
-        "info": true
+        "info": true,
+        "subheading": "Please Note"
     },
     {
-        "order": 1,
+        "order": 6,
         "url": "/study-consent",
         "page": 2,
         "id": 10006,
         "text": "Participation in this study is voluntary, and you can stop at any time without any penalty. To stop, simply close your browser window. Partial data will not be analyzed.",
         "category": "info",
-        "subheading": "Voluntary Participation And Right To Withdraw",
-        "info": true
+        "info": true,
+        "subheading": "Voluntary Participation And Right To Withdraw"
     },
     {
-        "order": 1,
+        "order": 7,
         "url": "/study-consent",
         "page": 2,
         "id": 10007,
         "text": "All data collected as part of this study will be anonymized (and personal information, such as your email address, will be removed).",
         "category": "info",
-        "subheading": "Confidentiality",
-        "info": true
+        "info": true,
+        "subheading": "Confidentiality"
     },
     {
-        "order": 1,
+        "order": 8,
         "url": "/study-consent",
         "page": 2,
         "id": 10008,
         "text": "If you have any questions about this research, you may contact: Ben Weidmann at <a href=\"mailto:benweidmann@g.harvard.edu\">benweidmann@g.harvard.edu</a>",
         "category": "info",
-        "subheading": "Contact Information",
-        "info": true
+        "info": true,
+        "subheading": "Contact Information"
     },
     {
-        "order": 1,
+        "order": 9,
         "url": "/study-consent",
         "page": 2,
         "id": 10009,
         "text": "By clicking on the \"I Consent\" button, you indicate that you are 18 years of age or older, that you voluntarily agree to participate in this study and that you understand the information in this consent form.",
         "category": "info",
-        "subheading": "Clicking Accept",
-        "info": true
+        "info": true,
+        "subheading": "Clicking Accept"
     },
     {
-        "order": 2,
+        "order": 10,
         "url": "/eligibility-notice",
         "page": 3,
         "id": 10010,
         "text": "Our study requires participants who try their best in these Online Tasks. If you skip through questions, or don’t read the instructions, your responses cannot be used."
     },
     {
-        "order": 2,
+        "order": 11,
         "url": "/eligibility-notice",
         "page": 3,
         "id": 10011,
@@ -107,62 +107,62 @@ const questions =
         "comments": "[RP-16-dec: HTML <strong> tag = bold text]"
     },
     {
-        "order": 2,
+        "order": 12,
         "url": "/eligibility-notice",
         "page": 3,
         "id": 10012,
         "text": "Everybody who makes a genuine attempt to answer the questions will be paid for this follow up survey."
     },
     {
-        "order": 2,
+        "order": 13,
         "url": "/eligibility-notice",
         "page": 3,
         "id": 10013,
         "text": "Click \"I agree\" if you would like to proceed. If not, thank you for your time!"
     },
     {
-        "order": 3,
+        "order": 14,
         "url": "/welcome",
         "page": 4,
         "id": 10014,
         "text": "This survey is only available to people who successfully participated in Superteams. It will take <strong>30-40 minutes</strong>. We will ask questions about your work experience, and your views on groupwork."
     },
     {
-        "order": 3,
+        "order": 15,
         "url": "/welcome",
         "page": 4,
         "id": 10015,
         "text": "Payment is $15 (either in cash, or an Amazon voucher). Details about payment will be provided at the end of the survey."
     },
     {
-        "order": 3,
+        "order": 16,
         "url": "/welcome",
         "page": 4,
         "id": 10016,
         "text": "There are <strong>three parts</strong>. Some will take longer than others, but not more than 20 minutes. "
     },
     {
-        "order": 3,
+        "order": 17,
         "url": "/welcome",
         "page": 4,
         "id": 10017,
         "text": "If you have to stop, that's OK. Your answers will be saved. To continue, come back to <span class=\"text-primary\"><a href=\"individual-login\">this website </a></span> re-enter the <strong>same login details</strong> and pick up where you left off."
     },
     {
-        "order": 3,
+        "order": 18,
         "url": "/welcome",
         "page": 4,
         "text": "If you want to increase the text size, click the button at the top-right corner of the screen."
     },
     {
-        "order": 3,
+        "order": 19,
         "url": "/welcome",
         "page": 4,
         "id": 10018,
         "text": "<span class=\"text-danger\">Note: These tasks <strong>must</strong> be done on a laptop or desktop computer.<br>They <strong>cannot</strong> be done on a mobile phone or tablet.</span>"
     },
     {
-        "order": 4,
+        "order": 20,
         "url": "/instructions-1",
         "page": 5,
         "id": 10019,
@@ -171,7 +171,7 @@ const questions =
         "heading": true
     },
     {
-        "order": 4,
+        "order": 21,
         "url": "/instructions-1",
         "page": 5,
         "id": 10020,
@@ -180,7 +180,7 @@ const questions =
         "info": true
     },
     {
-        "order": 4,
+        "order": 22,
         "url": "/instructions-1",
         "page": 5,
         "id": 10021,
@@ -189,7 +189,7 @@ const questions =
         "info": true
     },
     {
-        "order": 4,
+        "order": 23,
         "url": "/instructions-1",
         "page": 5,
         "id": 10022,
@@ -198,6 +198,7 @@ const questions =
         "info": true
     },
     {
+        "order": 24,
         "url": "/task-1-part-1",
         "page": 6,
         "id": 10600,
@@ -207,58 +208,53 @@ const questions =
         "comments": "[RP-17-jan: added in v14]"
     },
     {
-        "order": 5,
+        "order": 25,
         "url": "/task-1-part-1",
         "page": 6,
         "id": 10601,
         "text": "I always ask for information from others before making any important decision",
         "category": "radio",
-        "testanswer": "1-strongly-disagree",
         "radio": true
     },
     {
-        "order": 5,
+        "order": 26,
         "url": "/task-1-part-1",
         "page": 6,
         "id": 10602,
         "text": "I would rather take action on my own than wait around for others’ input",
         "category": "radio",
-        "testanswer": "2-somewhat-disagree",
         "radio": true
     },
     {
-        "order": 5,
+        "order": 27,
         "url": "/task-1-part-1",
         "page": 6,
         "id": 10603,
         "text": "When solving a problem, it is very important to make your own decision and stick by it",
         "category": "radio",
-        "testanswer": "3-no-opinion",
         "radio": true
     },
     {
-        "order": 5,
+        "order": 28,
         "url": "/task-1-part-1",
         "page": 6,
         "id": 10604,
         "text": "Teams usually work very effectively",
         "category": "radio",
-        "testanswer": "4-somewhat-agree",
         "radio": true
     },
     {
-        "order": 5,
+        "order": 29,
         "url": "/task-1-part-1",
         "page": 6,
         "id": 10605,
         "text": "I find that it is often more productive to work on my own than with others",
         "category": "radio",
-        "testanswer": "5-strongly-agree",
         "radio": true,
         "comments": "[RP-09-dec: corrected typo won -> own]"
     },
     {
-        "order": 5,
+        "order": 30,
         "url": "/task-1-part-1",
         "page": 6,
         "id": 10606,
@@ -268,7 +264,7 @@ const questions =
         "comments": "[RP-09-dec: corrected typo along -> alone]"
     },
     {
-        "order": 5,
+        "order": 31,
         "url": "/task-1-part-1",
         "page": 6,
         "id": 10607,
@@ -277,7 +273,7 @@ const questions =
         "radio": true
     },
     {
-        "order": 5,
+        "order": 32,
         "url": "/task-1-part-1",
         "page": 6,
         "id": 10608,
@@ -286,7 +282,7 @@ const questions =
         "radio": true
     },
     {
-        "order": 5,
+        "order": 33,
         "url": "/task-1-part-1",
         "page": 6,
         "id": 10609,
@@ -296,6 +292,7 @@ const questions =
         "comments": "[RP-08-jan: added in v9]"
     },
     {
+        "order": 34,
         "url": "/task-1-part-2",
         "page": 7,
         "id": 10700,
@@ -305,7 +302,7 @@ const questions =
         "comments": "[RP-17-jan: added in v14]"
     },
     {
-        "order": 6,
+        "order": 35,
         "url": "/task-1-part-2",
         "page": 7,
         "id": 10701,
@@ -314,7 +311,7 @@ const questions =
         "radio": true
     },
     {
-        "order": 6,
+        "order": 36,
         "url": "/task-1-part-2",
         "page": 7,
         "id": 10702,
@@ -323,7 +320,7 @@ const questions =
         "radio": true
     },
     {
-        "order": 6,
+        "order": 37,
         "url": "/task-1-part-2",
         "page": 7,
         "id": 10703,
@@ -332,7 +329,7 @@ const questions =
         "radio": true
     },
     {
-        "order": 6,
+        "order": 38,
         "url": "/task-1-part-2",
         "page": 7,
         "id": 10704,
@@ -341,7 +338,7 @@ const questions =
         "radio": true
     },
     {
-        "order": 6,
+        "order": 39,
         "url": "/task-1-part-2",
         "page": 7,
         "id": 10705,
@@ -350,7 +347,7 @@ const questions =
         "radio": true
     },
     {
-        "order": 6,
+        "order": 40,
         "url": "/task-1-part-2",
         "page": 7,
         "id": 10706,
@@ -359,7 +356,7 @@ const questions =
         "radio": true
     },
     {
-        "order": 6,
+        "order": 41,
         "url": "/task-1-part-2",
         "page": 7,
         "id": 10707,
@@ -368,7 +365,7 @@ const questions =
         "radio": true
     },
     {
-        "order": 6,
+        "order": 42,
         "url": "/task-1-part-2",
         "page": 7,
         "id": 10708,
@@ -378,7 +375,7 @@ const questions =
         "comments": "[RP-08-jan: added in v9]"
     },
     {
-        "order": 7,
+        "order": 43,
         "url": "/instructions-2",
         "page": 8,
         "id": 20001,
@@ -387,7 +384,7 @@ const questions =
         "heading": true
     },
     {
-        "order": 7,
+        "order": 44,
         "url": "/instructions-2",
         "page": 8,
         "id": 20002,
@@ -396,7 +393,7 @@ const questions =
         "info": true
     },
     {
-        "order": 7,
+        "order": 45,
         "url": "/instructions-2",
         "page": 8,
         "id": 20003,
@@ -405,7 +402,7 @@ const questions =
         "info": true
     },
     {
-        "order": 7,
+        "order": 46,
         "url": "/instructions-2",
         "page": 8,
         "id": 20004,
@@ -414,7 +411,7 @@ const questions =
         "info": true
     },
     {
-        "order": 8.1,
+        "order": 47,
         "url": "/task-2-part-1a",
         "page": 9,
         "id": 20900,
@@ -423,7 +420,7 @@ const questions =
         "heading": true
     },
     {
-        "order": 8.1,
+        "order": 48,
         "url": "/task-2-part-1a",
         "page": 9,
         "id": 20901,
@@ -433,7 +430,7 @@ const questions =
         "dropdown": true
     },
     {
-        "order": 8.1,
+        "order": 49,
         "url": "/task-2-part-1a",
         "page": 9,
         "id": 20902,
@@ -442,39 +439,36 @@ const questions =
         "textarea": true
     },
     {
-        "order": 8.1,
+        "order": 50,
         "url": "/task-2-part-1a",
         "page": 9,
         "id": 20903,
         "text": "What kind of business or industry do you work in? (Please describe the main activity at your workplace. For example: hospital, newspaper publishing, auto repair shop, bank. If you have multiple jobs, describe the one where you work the most)",
         "category": "textarea",
-        "testanswer": "Testing Testing",
         "textarea": true
     },
     {
-        "order": 8.1,
+        "order": 51,
         "url": "/task-2-part-1a",
         "page": 9,
         "id": 20904,
         "text": "Is your work mainly:",
         "category": "dropdown",
         "options": "Manufacturing; Wholesale trade; Retail trade; Other (agriculture, construction, service, government etc)",
-        "testanswer": "Retail trade",
         "dropdown": true
     },
     {
-        "order": 8.1,
+        "order": 52,
         "url": "/task-2-part-1a",
         "page": 9,
         "id": 20905,
         "text": "What is your job title?",
         "category": "textarea",
-        "testanswer": "Testing Text",
         "textarea": true,
         "comments": "[RP-08-jan: added in v9]"
     },
     {
-        "order": 8.2,
+        "order": 53,
         "url": "/task-2-part-1b",
         "page": 10,
         "id": 21000,
@@ -483,17 +477,16 @@ const questions =
         "heading": true
     },
     {
-        "order": 8.2,
+        "order": 54,
         "url": "/task-2-part-1b",
         "page": 10,
         "id": 21005,
         "text": "What kind of work do you do? (For example: registered nurse, personnel manager, supervisor of order department, auto mechanic, accountant)",
         "category": "textarea",
-        "testanswer": "Finibus Bonorum et Malorum",
         "textarea": true
     },
     {
-        "order": 8.2,
+        "order": 55,
         "url": "/task-2-part-1b",
         "page": 10,
         "id": 21006,
@@ -502,7 +495,7 @@ const questions =
         "textarea": true
     },
     {
-        "order": 8.2,
+        "order": 56,
         "url": "/task-2-part-1b",
         "page": 10,
         "id": 21007,
@@ -512,7 +505,7 @@ const questions =
         "dropdown": true
     },
     {
-        "order": 8.2,
+        "order": 57,
         "url": "/task-2-part-1b",
         "page": 10,
         "id": 21008,
@@ -522,7 +515,7 @@ const questions =
         "dropdown": true
     },
     {
-        "order": 8.2,
+        "order": 58,
         "url": "/task-2-part-1b",
         "page": 10,
         "id": 21009,
@@ -532,7 +525,7 @@ const questions =
         "dropdown": true
     },
     {
-        "order": 9,
+        "order": 59,
         "url": "/task-2-part-2",
         "page": 11,
         "id": 21101,
@@ -542,7 +535,7 @@ const questions =
         "textarea": true
     },
     {
-        "order": 9,
+        "order": 60,
         "url": "/task-2-part-2",
         "page": 11,
         "id": 21102,
@@ -552,7 +545,7 @@ const questions =
         "dropdown": true
     },
     {
-        "order": 9,
+        "order": 61,
         "url": "/task-2-part-2",
         "page": 11,
         "id": 21103,
@@ -562,18 +555,17 @@ const questions =
         "dropdown": true
     },
     {
-        "order": 9,
+        "order": 62,
         "url": "/task-2-part-2",
         "page": 11,
         "id": 21104,
         "text": "Which of the following types of assessment did you LEAST prefer?",
         "category": "dropdown",
         "options": "exams; individual assignments; group assignments",
-        "testanswer": "Finibus Bonorum et Malorum",
         "dropdown": true
     },
     {
-        "order": 9,
+        "order": 63,
         "url": "/task-2-part-2",
         "page": 11,
         "id": 21105,
@@ -583,7 +575,7 @@ const questions =
         "dropdown": true
     },
     {
-        "order": 9,
+        "order": 64,
         "url": "/task-2-part-2",
         "page": 11,
         "id": 21110,
@@ -592,28 +584,26 @@ const questions =
         "heading": true
     },
     {
-        "order": 10,
+        "order": 65,
         "url": "/task-2-part-3",
         "page": 12,
         "id": 21201,
         "text": "In the last year, have you been part of any recreational clubs or groups that involves working in groups?",
         "category": "yesno",
-        "testanswer": "yes",
         "yesno": true
     },
     {
-        "order": 10,
+        "order": 66,
         "url": "/task-2-part-3",
         "page": 12,
         "id": 21202,
         "text": "If YES, how often do you attend?",
         "category": "dropdown",
         "options": "more than 3 times a week; 1-3 times a week; 1 per month; infrequently",
-        "testanswer": "1-3 times a week",
         "dropdown": true
     },
     {
-        "order": 10,
+        "order": 67,
         "url": "/task-2-part-3",
         "page": 12,
         "id": 21203,
@@ -622,7 +612,7 @@ const questions =
         "yesno": true
     },
     {
-        "order": 10,
+        "order": 68,
         "url": "/task-2-part-3",
         "page": 12,
         "id": 21204,
@@ -632,7 +622,7 @@ const questions =
         "dropdown": true
     },
     {
-        "order": 10,
+        "order": 69,
         "url": "/task-2-part-3",
         "page": 12,
         "id": 21200,
@@ -641,7 +631,7 @@ const questions =
         "heading": true
     },
     {
-        "order": 11,
+        "order": 70,
         "url": "/instructions-3",
         "page": 13,
         "id": 30001,
@@ -650,7 +640,7 @@ const questions =
         "heading": true
     },
     {
-        "order": 11,
+        "order": 71,
         "url": "/instructions-3",
         "page": 13,
         "id": 30002,
@@ -659,7 +649,7 @@ const questions =
         "info": true
     },
     {
-        "order": 11,
+        "order": 72,
         "url": "/instructions-3",
         "page": 13,
         "id": 30004,
@@ -668,7 +658,7 @@ const questions =
         "info": true
     },
     {
-        "order": 11,
+        "order": 73,
         "url": "/instructions-3",
         "page": 13,
         "id": 30005,
@@ -677,6 +667,7 @@ const questions =
         "info": true
     },
     {
+        "order": 74,
         "url": "/task-3-1a",
         "page": 14,
         "id": 30006,
@@ -685,6 +676,7 @@ const questions =
         "heading": true
     },
     {
+        "order": 75,
         "url": "/task-3-1a",
         "page": 14,
         "id": 30007,
@@ -693,6 +685,7 @@ const questions =
         "scenario": true
     },
     {
+        "order": 76,
         "url": "/task-3-1a",
         "page": 14,
         "id": 30008,
@@ -701,6 +694,7 @@ const questions =
         "scenario": true
     },
     {
+        "order": 77,
         "url": "/task-3-1a",
         "page": 14,
         "id": 30009,
@@ -709,6 +703,7 @@ const questions =
         "scenario": true
     },
     {
+        "order": 78,
         "url": "/task-3-1a",
         "page": 14,
         "id": 30010,
@@ -717,6 +712,7 @@ const questions =
         "scenario": true
     },
     {
+        "order": 79,
         "url": "/task-3-1a",
         "page": 14,
         "id": 30011,
@@ -725,6 +721,7 @@ const questions =
         "scenario": true
     },
     {
+        "order": 80,
         "url": "/task-3-1a",
         "page": 14,
         "id": 30012,
@@ -733,6 +730,7 @@ const questions =
         "scenario": true
     },
     {
+        "order": 81,
         "url": "/task-3-1a",
         "page": 14,
         "id": 30014,
@@ -741,6 +739,7 @@ const questions =
         "radio": true
     },
     {
+        "order": 82,
         "url": "/task-3-1a",
         "page": 14,
         "id": 30015,
@@ -749,6 +748,7 @@ const questions =
         "radio": true
     },
     {
+        "order": 83,
         "url": "/task-3-1a",
         "page": 14,
         "id": 30016,
@@ -757,6 +757,7 @@ const questions =
         "radio": true
     },
     {
+        "order": 84,
         "url": "/task-3-1a",
         "page": 14,
         "id": 30017,
@@ -765,6 +766,7 @@ const questions =
         "radio": true
     },
     {
+        "order": 85,
         "url": "/task-3-1a",
         "page": 14,
         "id": 30018,
@@ -773,6 +775,7 @@ const questions =
         "radio": true
     },
     {
+        "order": 86,
         "url": "/task-3-1b",
         "page": 15,
         "id": 30006,
@@ -781,6 +784,7 @@ const questions =
         "heading": true
     },
     {
+        "order": 87,
         "url": "/task-3-1b",
         "page": 15,
         "id": 30007,
@@ -789,6 +793,7 @@ const questions =
         "scenario": true
     },
     {
+        "order": 88,
         "url": "/task-3-1b",
         "page": 15,
         "id": 30008,
@@ -797,6 +802,7 @@ const questions =
         "scenario": true
     },
     {
+        "order": 89,
         "url": "/task-3-1b",
         "page": 15,
         "id": 30009,
@@ -805,6 +811,7 @@ const questions =
         "scenario": true
     },
     {
+        "order": 90,
         "url": "/task-3-1b",
         "page": 15,
         "id": 30010,
@@ -813,6 +820,7 @@ const questions =
         "scenario": true
     },
     {
+        "order": 91,
         "url": "/task-3-1b",
         "page": 15,
         "id": 30011,
@@ -821,6 +829,7 @@ const questions =
         "scenario": true
     },
     {
+        "order": 92,
         "url": "/task-3-1b",
         "page": 15,
         "id": 30012,
@@ -829,6 +838,7 @@ const questions =
         "scenario": true
     },
     {
+        "order": 93,
         "url": "/task-3-1b",
         "page": 15,
         "id": 30019,
@@ -837,6 +847,7 @@ const questions =
         "radio": true
     },
     {
+        "order": 94,
         "url": "/task-3-1b",
         "page": 15,
         "id": 30020,
@@ -845,6 +856,7 @@ const questions =
         "radio": true
     },
     {
+        "order": 95,
         "url": "/task-3-1b",
         "page": 15,
         "id": 30021,
@@ -853,6 +865,7 @@ const questions =
         "radio": true
     },
     {
+        "order": 96,
         "url": "/task-3-1b",
         "page": 15,
         "id": 30022,
@@ -861,6 +874,7 @@ const questions =
         "radio": true
     },
     {
+        "order": 97,
         "url": "/task-3-1b",
         "page": 15,
         "id": 30023,
@@ -869,374 +883,7 @@ const questions =
         "radio": true
     },
     {
-        "url": "/task-3-2a",
-        "page": 17,
-        "id": 30024,
-        "text": "Scenario 2",
-        "category": "heading",
-        "heading": true
-    },
-    {
-        "url": "/task-3-2a",
-        "page": 17,
-        "id": 30025,
-        "text": "You are a member of a manufacturing production team.",
-        "category": "scenario",
-        "scenario": true
-    },
-    {
-        "url": "/task-3-2a",
-        "page": 17,
-        "id": 30026,
-        "text": "Your team is responsible for the production of three product lines.",
-        "category": "scenario",
-        "scenario": true
-    },
-    {
-        "url": "/task-3-2a",
-        "page": 17,
-        "id": 30027,
-        "text": "Last month management asked for a recommendation from your team as to whether or not your team could assume responsibility for another product line (making a total of four).",
-        "category": "scenario",
-        "scenario": true
-    },
-    {
-        "url": "/task-3-2a",
-        "page": 17,
-        "id": 30028,
-        "text": "Your personal view is that taking on the new product line would increase the visibility and importance of the team within the organization, which would help raise salaries and promotional opportunities.",
-        "category": "scenario",
-        "scenario": true
-    },
-    {
-        "url": "/task-3-2a",
-        "page": 17,
-        "id": 30029,
-        "text": "The other four members of your team feel that, in addition to the increased time and personnel demands placed on the team, current technology may not be capable of producing the new product efficiently.",
-        "category": "scenario",
-        "scenario": true
-    },
-    {
-        "url": "/task-3-2a",
-        "page": 17,
-        "id": 30030,
-        "text": "For the past several weeks your team has been carefully investigating the possibility of taking on another product. Your team has thoroughly discussed all the issues and would like to propose to management that the product line be manufactured at another facility.",
-        "category": "scenario",
-        "scenario": true
-    },
-    {
-        "url": "/task-3-2a",
-        "page": 17,
-        "id": 31601,
-        "text": "a) Acknowledge that your arguments have been heard and discussed by the team, and support the team’s decision.",
-        "category": "radio",
-        "radio": true
-    },
-    {
-        "url": "/task-3-2a",
-        "page": 17,
-        "id": 31602,
-        "text": "b) Ask the team to reconsider one more time your perspective on the long-term political impact of refusing the new product line because you feel it is an important issue.",
-        "category": "radio",
-        "radio": true
-    },
-    {
-        "url": "/task-3-2a",
-        "page": 17,
-        "id": 31603,
-        "text": "c) Let the team know that although you believe in team unity, you can’t bring yourself to refuse the new product line.",
-        "category": "radio",
-        "radio": true
-    },
-    {
-        "url": "/task-3-2a",
-        "page": 17,
-        "id": 31604,
-        "text": "d) Show your willingness to be a team player by voicing your support of the team’s decision.",
-        "category": "radio",
-        "radio": true
-    },
-    {
-        "url": "/task-3-2a",
-        "page": 17,
-        "id": 31605,
-        "text": "e) Recognize that the team has reviewed the issues, and begin discussing ways to make the recommendation to management.",
-        "category": "radio",
-        "radio": true
-    },
-    {
-        "url": "/task-3-2b",
-        "page": 18,
-        "id": 30024,
-        "text": "Scenario 2",
-        "category": "heading",
-        "heading": true
-    },
-    {
-        "url": "/task-3-2b",
-        "page": 18,
-        "id": 30025,
-        "text": "You are a member of a manufacturing production team.",
-        "category": "scenario",
-        "scenario": true
-    },
-    {
-        "url": "/task-3-2b",
-        "page": 18,
-        "id": 30026,
-        "text": "Your team is responsible for the production of three product lines.",
-        "category": "scenario",
-        "scenario": true
-    },
-    {
-        "url": "/task-3-2b",
-        "page": 18,
-        "id": 30027,
-        "text": "Last month management asked for a recommendation from your team as to whether or not your team could assume responsibility for another product line (making a total of four).",
-        "category": "scenario",
-        "scenario": true
-    },
-    {
-        "url": "/task-3-2b",
-        "page": 18,
-        "id": 30028,
-        "text": "Your personal view is that taking on the new product line would increase the visibility and importance of the team within the organization, which would help raise salaries and promotional opportunities.",
-        "category": "scenario",
-        "scenario": true
-    },
-    {
-        "url": "/task-3-2b",
-        "page": 18,
-        "id": 30029,
-        "text": "The other four members of your team feel that, in addition to the increased time and personnel demands placed on the team, current technology may not be capable of producing the new product efficiently.",
-        "category": "scenario",
-        "scenario": true
-    },
-    {
-        "url": "/task-3-2b",
-        "page": 18,
-        "id": 30030,
-        "text": "For the past several weeks your team has been carefully investigating the possibility of taking on another product. Your team has thoroughly discussed all the issues and would like to propose to management that the product line be manufactured at another facility.",
-        "category": "scenario",
-        "scenario": true
-    },
-    {
-        "url": "/task-3-2b",
-        "page": 18,
-        "id": 31606,
-        "text": "f) Suggest that since the team can’t reach consensus they should allow upper management to make the final decision.",
-        "category": "radio",
-        "radio": true
-    },
-    {
-        "url": "/task-3-2b",
-        "page": 18,
-        "id": 31607,
-        "text": "g) Even though you would still prefer to take on the new product line, go along with the team’s decision, because they have let you have your say in the matter.",
-        "category": "radio",
-        "radio": true
-    },
-    {
-        "url": "/task-3-2b",
-        "page": 18,
-        "id": 31608,
-        "text": "h) Recognize that the team has some good arguments, but remain committed to making the team see that the benefits clearly outweigh the costs.",
-        "category": "radio",
-        "radio": true
-    },
-    {
-        "url": "/task-3-2b",
-        "page": 18,
-        "id": 31609,
-        "text": "i) Sustain the team’s decision on the recommendation, as long as they acknowledge to upper management that the team would revisit its decision if more resources are provided.",
-        "category": "radio",
-        "radio": true
-    },
-    {
-        "url": "/task-3-2b",
-        "page": 18,
-        "id": 31610,
-        "text": "j) Be assertive and let the team know you still feel strongly that the team should take on the new product line.",
-        "category": "radio",
-        "radio": true
-    },
-    {
-        "url": "/task-3-3a",
-        "page": 20,
-        "id": 31700,
-        "text": "Scenario 3",
-        "category": "heading",
-        "heading": true
-    },
-    {
-        "url": "/task-3-3a",
-        "page": 20,
-        "id": 31701,
-        "text": "You are a member of a long-standing manufacturing team.",
-        "category": "scenario",
-        "scenario": true
-    },
-    {
-        "url": "/task-3-3a",
-        "page": 20,
-        "id": 31702,
-        "text": "Your team has been together for several years and has become pretty good at handling the work at hand.",
-        "category": "scenario",
-        "scenario": true
-    },
-    {
-        "url": "/task-3-3a",
-        "page": 20,
-        "id": 31703,
-        "text": "Each team member is comfortable with the work process and the other team members.",
-        "category": "scenario",
-        "scenario": true
-    },
-    {
-        "url": "/task-3-3a",
-        "page": 20,
-        "id": 31704,
-        "text": "Your work team will be moving to a new building that has been added onto the plant.",
-        "category": "scenario",
-        "scenario": true
-    },
-    {
-        "url": "/task-3-3a",
-        "page": 20,
-        "id": 31705,
-        "text": "The area manager has asked your team for some new ideas on how the equipment should be laid out in the new building.",
-        "category": "scenario",
-        "scenario": true
-    },
-    {
-        "url": "/task-3-3a",
-        "page": 20,
-        "id": 31801,
-        "text": "a) Highlight the fact that you have been doing the job for 15 years and the current layout is the best one.",
-        "category": "radio",
-        "radio": true
-    },
-    {
-        "url": "/task-3-3a",
-        "page": 20,
-        "id": 31802,
-        "text": "b) Propose that a good strategy may be to think outside of the box and get new layout ideas from high performance manufacturers in other industries.",
-        "category": "radio",
-        "radio": true
-    },
-    {
-        "url": "/task-3-3a",
-        "page": 20,
-        "id": 31803,
-        "text": "c) Keep the team on track by pointing out that it is very inefficient to waste time discussing solutions that are probably not practically feasible.",
-        "category": "radio",
-        "radio": true
-    },
-    {
-        "url": "/task-3-3a",
-        "page": 20,
-        "id": 31804,
-        "text": "d) Suggest that the team keep the ideas similar to the current layout to simplify the transition to the new building.",
-        "category": "radio",
-        "radio": true
-    },
-    {
-        "url": "/task-3-3a",
-        "page": 20,
-        "id": 31805,
-        "text": "e) Suggest that to find the optimal layout, the team should first generate innovative ideas and save the evaluation of the ideas for later in the process.",
-        "category": "radio",
-        "radio": true
-    },
-    {
-        "url": "/task-3-3b",
-        "page": 21,
-        "id": 31700,
-        "text": "Scenario 3",
-        "category": "heading",
-        "heading": true
-    },
-    {
-        "url": "/task-3-3b",
-        "page": 21,
-        "id": 31701,
-        "text": "You are a member of a long-standing manufacturing team.",
-        "category": "scenario",
-        "scenario": true
-    },
-    {
-        "url": "/task-3-3b",
-        "page": 21,
-        "id": 31702,
-        "text": "Your team has been together for several years and has become pretty good at handling the work at hand.",
-        "category": "scenario",
-        "scenario": true
-    },
-    {
-        "url": "/task-3-3b",
-        "page": 21,
-        "id": 31703,
-        "text": "Each team member is comfortable with the work process and the other team members.",
-        "category": "scenario",
-        "scenario": true
-    },
-    {
-        "url": "/task-3-3b",
-        "page": 21,
-        "id": 31704,
-        "text": "Your work team will be moving to a new building that has been added onto the plant.",
-        "category": "scenario",
-        "scenario": true
-    },
-    {
-        "url": "/task-3-3b",
-        "page": 21,
-        "id": 31705,
-        "text": "The area manager has asked your team for some new ideas on how the equipment should be laid out in the new building.",
-        "category": "scenario",
-        "scenario": true
-    },
-    {
-        "url": "/task-3-3b",
-        "page": 21,
-        "id": 31806,
-        "text": "f) Make sure the team doesn’t waste time discussing drastic changes to the current layout because management is not likely to endorse such a proposal anyway.",
-        "category": "radio",
-        "radio": true
-    },
-    {
-        "url": "/task-3-3b",
-        "page": 21,
-        "id": 31807,
-        "text": "g) Make sure production levels don’t drop due to letting your team’s most creative member make all suggestions.",
-        "category": "radio",
-        "radio": true
-    },
-    {
-        "url": "/task-3-3b",
-        "page": 21,
-        "id": 31808,
-        "text": "h) Remind the team that they have been working in the current environment for many years, and should consider all layout options even if they seem unfamiliar.",
-        "category": "radio",
-        "radio": true
-    },
-    {
-        "url": "/task-3-3b",
-        "page": 21,
-        "id": 31809,
-        "text": "i) Recommend that each team member take time this week to create three layout designs and bring them to the next team meeting.",
-        "category": "radio",
-        "radio": true
-    },
-    {
-        "url": "/task-3-3b",
-        "page": 21,
-        "id": 31810,
-        "text": "j) Suggest that a good way to generate innovative layouts would be to hold the next meeting in the new building.",
-        "category": "radio",
-        "radio": true
-    },
-    {
+        "order": 98,
         "url": "/scenario-2-intro",
         "page": 16,
         "text": "Click 'next' to read the second scenario",
@@ -1245,12 +892,463 @@ const questions =
         "comments": "[RP:9-jan - added 9-jan]"
     },
     {
+        "order": 99,
+        "url": "/task-3-2a",
+        "page": 17,
+        "id": 30024,
+        "text": "Scenario 2",
+        "category": "heading",
+        "heading": true
+    },
+    {
+        "order": 100,
+        "url": "/task-3-2a",
+        "page": 17,
+        "id": 30025,
+        "text": "You are a member of a manufacturing production team.",
+        "category": "scenario",
+        "scenario": true
+    },
+    {
+        "order": 101,
+        "url": "/task-3-2a",
+        "page": 17,
+        "id": 30026,
+        "text": "Your team is responsible for the production of three product lines.",
+        "category": "scenario",
+        "scenario": true
+    },
+    {
+        "order": 102,
+        "url": "/task-3-2a",
+        "page": 17,
+        "id": 30027,
+        "text": "Last month management asked for a recommendation from your team as to whether or not your team could assume responsibility for another product line (making a total of four).",
+        "category": "scenario",
+        "scenario": true
+    },
+    {
+        "order": 103,
+        "url": "/task-3-2a",
+        "page": 17,
+        "id": 30028,
+        "text": "Your personal view is that taking on the new product line would increase the visibility and importance of the team within the organization, which would help raise salaries and promotional opportunities.",
+        "category": "scenario",
+        "scenario": true
+    },
+    {
+        "order": 104,
+        "url": "/task-3-2a",
+        "page": 17,
+        "id": 30029,
+        "text": "The other four members of your team feel that, in addition to the increased time and personnel demands placed on the team, current technology may not be capable of producing the new product efficiently.",
+        "category": "scenario",
+        "scenario": true
+    },
+    {
+        "order": 105,
+        "url": "/task-3-2a",
+        "page": 17,
+        "id": 30030,
+        "text": "For the past several weeks your team has been carefully investigating the possibility of taking on another product. Your team has thoroughly discussed all the issues and would like to propose to management that the product line be manufactured at another facility.",
+        "category": "scenario",
+        "scenario": true
+    },
+    {
+        "order": 106,
+        "url": "/task-3-2a",
+        "page": 17,
+        "id": 31601,
+        "text": "a) Acknowledge that your arguments have been heard and discussed by the team, and support the team’s decision.",
+        "category": "radio",
+        "radio": true
+    },
+    {
+        "order": 107,
+        "url": "/task-3-2a",
+        "page": 17,
+        "id": 31602,
+        "text": "b) Ask the team to reconsider one more time your perspective on the long-term political impact of refusing the new product line because you feel it is an important issue.",
+        "category": "radio",
+        "radio": true
+    },
+    {
+        "order": 108,
+        "url": "/task-3-2a",
+        "page": 17,
+        "id": 31603,
+        "text": "c) Let the team know that although you believe in team unity, you can’t bring yourself to refuse the new product line.",
+        "category": "radio",
+        "radio": true
+    },
+    {
+        "order": 109,
+        "url": "/task-3-2a",
+        "page": 17,
+        "id": 31604,
+        "text": "d) Show your willingness to be a team player by voicing your support of the team’s decision.",
+        "category": "radio",
+        "radio": true
+    },
+    {
+        "order": 110,
+        "url": "/task-3-2a",
+        "page": 17,
+        "id": 31605,
+        "text": "e) Recognize that the team has reviewed the issues, and begin discussing ways to make the recommendation to management.",
+        "category": "radio",
+        "radio": true
+    },
+    {
+        "order": 111,
+        "url": "/task-3-2b",
+        "page": 18,
+        "id": 30024,
+        "text": "Scenario 2",
+        "category": "heading",
+        "heading": true
+    },
+    {
+        "order": 112,
+        "url": "/task-3-2b",
+        "page": 18,
+        "id": 30025,
+        "text": "You are a member of a manufacturing production team.",
+        "category": "scenario",
+        "scenario": true
+    },
+    {
+        "order": 113,
+        "url": "/task-3-2b",
+        "page": 18,
+        "id": 30026,
+        "text": "Your team is responsible for the production of three product lines.",
+        "category": "scenario",
+        "scenario": true
+    },
+    {
+        "order": 114,
+        "url": "/task-3-2b",
+        "page": 18,
+        "id": 30027,
+        "text": "Last month management asked for a recommendation from your team as to whether or not your team could assume responsibility for another product line (making a total of four).",
+        "category": "scenario",
+        "scenario": true
+    },
+    {
+        "order": 115,
+        "url": "/task-3-2b",
+        "page": 18,
+        "id": 30028,
+        "text": "Your personal view is that taking on the new product line would increase the visibility and importance of the team within the organization, which would help raise salaries and promotional opportunities.",
+        "category": "scenario",
+        "scenario": true
+    },
+    {
+        "order": 116,
+        "url": "/task-3-2b",
+        "page": 18,
+        "id": 30029,
+        "text": "The other four members of your team feel that, in addition to the increased time and personnel demands placed on the team, current technology may not be capable of producing the new product efficiently.",
+        "category": "scenario",
+        "scenario": true
+    },
+    {
+        "order": 117,
+        "url": "/task-3-2b",
+        "page": 18,
+        "id": 30030,
+        "text": "For the past several weeks your team has been carefully investigating the possibility of taking on another product. Your team has thoroughly discussed all the issues and would like to propose to management that the product line be manufactured at another facility.",
+        "category": "scenario",
+        "scenario": true
+    },
+    {
+        "order": 118,
+        "url": "/task-3-2b",
+        "page": 18,
+        "id": 31606,
+        "text": "f) Suggest that since the team can’t reach consensus they should allow upper management to make the final decision.",
+        "category": "radio",
+        "radio": true
+    },
+    {
+        "order": 119,
+        "url": "/task-3-2b",
+        "page": 18,
+        "id": 31607,
+        "text": "g) Even though you would still prefer to take on the new product line, go along with the team’s decision, because they have let you have your say in the matter.",
+        "category": "radio",
+        "radio": true
+    },
+    {
+        "order": 120,
+        "url": "/task-3-2b",
+        "page": 18,
+        "id": 31608,
+        "text": "h) Recognize that the team has some good arguments, but remain committed to making the team see that the benefits clearly outweigh the costs.",
+        "category": "radio",
+        "radio": true
+    },
+    {
+        "order": 121,
+        "url": "/task-3-2b",
+        "page": 18,
+        "id": 31609,
+        "text": "i) Sustain the team’s decision on the recommendation, as long as they acknowledge to upper management that the team would revisit its decision if more resources are provided.",
+        "category": "radio",
+        "radio": true
+    },
+    {
+        "order": 122,
+        "url": "/task-3-2b",
+        "page": 18,
+        "id": 31610,
+        "text": "j) Be assertive and let the team know you still feel strongly that the team should take on the new product line.",
+        "category": "radio",
+        "radio": true
+    },
+    {
+        "order": 123,
         "url": "/scenario-3-intro",
         "page": 19,
         "text": "Click 'next' to read the last scenario",
         "category": "info",
         "info": true,
         "comments": "[RP:9-jan - added 9-jan]"
+    },
+    {
+        "order": 124,
+        "url": "/task-3-3a",
+        "page": 20,
+        "id": 31700,
+        "text": "Scenario 3",
+        "category": "heading",
+        "heading": true
+    },
+    {
+        "order": 125,
+        "url": "/task-3-3a",
+        "page": 20,
+        "id": 31701,
+        "text": "You are a member of a long-standing manufacturing team.",
+        "category": "scenario",
+        "scenario": true
+    },
+    {
+        "order": 126,
+        "url": "/task-3-3a",
+        "page": 20,
+        "id": 31702,
+        "text": "Your team has been together for several years and has become pretty good at handling the work at hand.",
+        "category": "scenario",
+        "scenario": true
+    },
+    {
+        "order": 127,
+        "url": "/task-3-3a",
+        "page": 20,
+        "id": 31703,
+        "text": "Each team member is comfortable with the work process and the other team members.",
+        "category": "scenario",
+        "scenario": true
+    },
+    {
+        "order": 128,
+        "url": "/task-3-3a",
+        "page": 20,
+        "id": 31704,
+        "text": "Your work team will be moving to a new building that has been added onto the plant.",
+        "category": "scenario",
+        "scenario": true
+    },
+    {
+        "order": 129,
+        "url": "/task-3-3a",
+        "page": 20,
+        "id": 31705,
+        "text": "The area manager has asked your team for some new ideas on how the equipment should be laid out in the new building.",
+        "category": "scenario",
+        "scenario": true
+    },
+    {
+        "order": 130,
+        "url": "/task-3-3a",
+        "page": 20,
+        "id": 31801,
+        "text": "a) Highlight the fact that you have been doing the job for 15 years and the current layout is the best one.",
+        "category": "radio",
+        "radio": true
+    },
+    {
+        "order": 131,
+        "url": "/task-3-3a",
+        "page": 20,
+        "id": 31802,
+        "text": "b) Propose that a good strategy may be to think outside of the box and get new layout ideas from high performance manufacturers in other industries.",
+        "category": "radio",
+        "radio": true
+    },
+    {
+        "order": 132,
+        "url": "/task-3-3a",
+        "page": 20,
+        "id": 31803,
+        "text": "c) Keep the team on track by pointing out that it is very inefficient to waste time discussing solutions that are probably not practically feasible.",
+        "category": "radio",
+        "radio": true
+    },
+    {
+        "order": 133,
+        "url": "/task-3-3a",
+        "page": 20,
+        "id": 31804,
+        "text": "d) Suggest that the team keep the ideas similar to the current layout to simplify the transition to the new building.",
+        "category": "radio",
+        "radio": true
+    },
+    {
+        "order": 134,
+        "url": "/task-3-3a",
+        "page": 20,
+        "id": 31805,
+        "text": "e) Suggest that to find the optimal layout, the team should first generate innovative ideas and save the evaluation of the ideas for later in the process.",
+        "category": "radio",
+        "radio": true
+    },
+    {
+        "order": 135,
+        "url": "/task-3-3b",
+        "page": 21,
+        "id": 31700,
+        "text": "Scenario 3",
+        "category": "heading",
+        "heading": true
+    },
+    {
+        "order": 136,
+        "url": "/task-3-3b",
+        "page": 21,
+        "id": 31701,
+        "text": "You are a member of a long-standing manufacturing team.",
+        "category": "scenario",
+        "scenario": true
+    },
+    {
+        "order": 137,
+        "url": "/task-3-3b",
+        "page": 21,
+        "id": 31702,
+        "text": "Your team has been together for several years and has become pretty good at handling the work at hand.",
+        "category": "scenario",
+        "scenario": true
+    },
+    {
+        "order": 138,
+        "url": "/task-3-3b",
+        "page": 21,
+        "id": 31703,
+        "text": "Each team member is comfortable with the work process and the other team members.",
+        "category": "scenario",
+        "scenario": true
+    },
+    {
+        "order": 139,
+        "url": "/task-3-3b",
+        "page": 21,
+        "id": 31704,
+        "text": "Your work team will be moving to a new building that has been added onto the plant.",
+        "category": "scenario",
+        "scenario": true
+    },
+    {
+        "order": 140,
+        "url": "/task-3-3b",
+        "page": 21,
+        "id": 31705,
+        "text": "The area manager has asked your team for some new ideas on how the equipment should be laid out in the new building.",
+        "category": "scenario",
+        "scenario": true
+    },
+    {
+        "order": 141,
+        "url": "/task-3-3b",
+        "page": 21,
+        "id": 31806,
+        "text": "f) Make sure the team doesn’t waste time discussing drastic changes to the current layout because management is not likely to endorse such a proposal anyway.",
+        "category": "radio",
+        "radio": true
+    },
+    {
+        "order": 142,
+        "url": "/task-3-3b",
+        "page": 21,
+        "id": 31807,
+        "text": "g) Make sure production levels don’t drop due to letting your team’s most creative member make all suggestions.",
+        "category": "radio",
+        "radio": true
+    },
+    {
+        "order": 143,
+        "url": "/task-3-3b",
+        "page": 21,
+        "id": 31808,
+        "text": "h) Remind the team that they have been working in the current environment for many years, and should consider all layout options even if they seem unfamiliar.",
+        "category": "radio",
+        "radio": true
+    },
+    {
+        "order": 144,
+        "url": "/task-3-3b",
+        "page": 21,
+        "id": 31809,
+        "text": "i) Recommend that each team member take time this week to create three layout designs and bring them to the next team meeting.",
+        "category": "radio",
+        "radio": true
+    },
+    {
+        "order": 145,
+        "url": "/task-3-3b",
+        "page": 21,
+        "id": 31810,
+        "text": "j) Suggest that a good way to generate innovative layouts would be to hold the next meeting in the new building.",
+        "category": "radio",
+        "radio": true
+    },
+    {
+        "order": 146,
+        "url": "/feedback-page",
+        "page": 22,
+        "id": 40000,
+        "text": "This is a pilot study. The final task is to provide feedback.",
+        "category": "info",
+        "info": true
+    },
+    {
+        "order": 147,
+        "url": "/feedback-page",
+        "page": 22,
+        "id": 40001,
+        "text": "Did you find any of the questions confusing?",
+        "category": "yesno",
+        "yesno": true
+    },
+    {
+        "order": 148,
+        "url": "/feedback-page",
+        "page": 22,
+        "id": 40002,
+        "text": "If yes, what did you find confusing?",
+        "category": "textarea",
+        "textarea": true
+    },
+    {
+        "order": 149,
+        "url": "/feedback-page",
+        "page": 22,
+        "id": 40003,
+        "text": "What could we do to improve this survey (e.g. to make it more user friendly, or clearer)?",
+        "category": "textarea",
+        "textarea": true
     }
 ]
 

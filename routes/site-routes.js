@@ -5,6 +5,7 @@ const express = require("express");
 const router = express.Router();
 const Answer = require('../models/answers.js');
 const FinalAnsSubmitted = require('../models/finalAnsSubmitted.js');
+const MTurkFeedback = require('../models/MTurkFeedback.js');
 const app = express();
 
 const getPageNumber = require('../helpers/getPageNumber.js');
@@ -74,26 +75,91 @@ router.get('/welcome', (req, res) => {
 });
 
 /* --- INSTRUCTIONS ROUTES --- */
+
+/* --- QUESTION-Q4E: Can I use a class or a function to avoid repeating lines here --- */
 router.get('/instructions-1', (req, res) => { 
-    currentPage = getPageNumber(req.originalUrl, allUrls);
+    const currentPage = getPageNumber(req.originalUrl, allUrls);
     const instructions = allQuestions.filter(data => data.page === currentPage);
     const urlsAndPages = extractUrlAndPage(currentPage, allUrls);
     res.render('3a-instructions', { instructions, urlsAndPages });
 });
 
 router.get('/instructions-2', (req, res) => {
-    currentPage = getPageNumber(req.originalUrl, allUrls);
+    const currentPage = getPageNumber(req.originalUrl, allUrls);
     const instructions = allQuestions.filter(data => data.page === currentPage);
     const urlsAndPages = extractUrlAndPage(currentPage, allUrls);
     res.render('3a-instructions', { instructions, urlsAndPages });
 });
 
 router.get('/instructions-3', (req, res) => {
-    currentPage = getPageNumber(req.originalUrl, allUrls);
+    const currentPage = getPageNumber(req.originalUrl, allUrls);
     const instructions = allQuestions.filter(data => data.page === currentPage);
     const urlsAndPages = extractUrlAndPage(currentPage, allUrls);
     res.render('3a-instructions', { instructions, urlsAndPages });
-  });
+});
+
+/* --- INSTRUCTIONS POST ROUTES: Added on 29 Jan to track how long user spends on each question  --- */
+/* ----- CODE BELOW NEEDS REFACTORING TO AVOID REPEATING LINES ----- */
+router.post('/instructions-1', (req, res) => { 
+    const currentPage = getPageNumber(req.originalUrl, allUrls);
+    const urlsAndPages = extractUrlAndPage(currentPage, allUrls);
+    const createdAt = req._startTime;
+    const userId = req.cookies.session;
+    const userEmail = req.session.currentUser;
+    const reqRemoteAddress = req._remoteAddress;
+    const reqPath = req.route.path;
+    const newQuestionSubmittedByUser = new Answer ( { userId, userEmail, currentPage, reqPath, reqRemoteAddress, createdAt} );
+
+    newQuestionSubmittedByUser.save()
+    .then( (notCurrentlyUsed) => {
+        console.log(notCurrentlyUsed);
+        res.redirect(urlsAndPages.nextPage);
+    })
+    .catch((error) => {
+        console.log(error);
+    })
+});
+
+router.post('/instructions-2', (req, res) => { 
+    const currentPage = getPageNumber(req.originalUrl, allUrls);
+    const urlsAndPages = extractUrlAndPage(currentPage, allUrls);
+    const createdAt = req._startTime;
+    const userId = req.cookies.session;
+    const userEmail = req.session.currentUser;
+    const reqRemoteAddress = req._remoteAddress;
+    const reqPath = req.route.path;
+    const newQuestionSubmittedByUser = new Answer ( { userId, userEmail, currentPage, reqPath, reqRemoteAddress, createdAt} );
+
+    newQuestionSubmittedByUser.save()
+    .then( (notCurrentlyUsed) => {
+        console.log(notCurrentlyUsed);
+        res.redirect(urlsAndPages.nextPage);
+    })
+    .catch((error) => {
+        console.log(error);
+    })
+});
+
+router.post('/instructions-3', (req, res) => { 
+    const currentPage = getPageNumber(req.originalUrl, allUrls);
+    const urlsAndPages = extractUrlAndPage(currentPage, allUrls);
+    const createdAt = req._startTime;
+    const userId = req.cookies.session;
+    const userEmail = req.session.currentUser;
+    const reqRemoteAddress = req._remoteAddress;
+    const reqPath = req.route.path;
+    const newQuestionSubmittedByUser = new Answer ( { userId, userEmail, currentPage, reqPath, reqRemoteAddress, createdAt} );
+
+    newQuestionSubmittedByUser.save()
+    .then( (notCurrentlyUsed) => {
+        console.log(notCurrentlyUsed);
+        res.redirect(urlsAndPages.nextPage);
+    })
+    .catch((error) => {
+        console.log(error);
+    })
+});
+
 
 /* --- MEZZANINE LEVEL ROUTES - ADDED on 9th January --- */
 router.get('/scenario-2-intro', (req, res) => {
@@ -109,6 +175,51 @@ router.get('/scenario-3-intro', (req, res) => {
     const urlsAndPages = extractUrlAndPage(currentPage, allUrls);
     res.render('5d-scenarios-mezzanine', { instructions, urlsAndPages });
 });
+/* --- End of Mezzanine Level Get Routes --- */
+
+router.post('/scenario-2-intro', (req, res) => { 
+    const currentPage = getPageNumber(req.originalUrl, allUrls);
+    const urlsAndPages = extractUrlAndPage(currentPage, allUrls);
+    const createdAt = req._startTime;
+    const userId = req.cookies.session;
+    const userEmail = req.session.currentUser;
+    const reqRemoteAddress = req._remoteAddress;
+    const reqPath = req.route.path;
+    const newQuestionSubmittedByUser = new Answer ( { userId, userEmail, currentPage, reqPath, reqRemoteAddress, createdAt} );
+
+    newQuestionSubmittedByUser.save()
+    .then( (notCurrentlyUsed) => {
+        console.log(notCurrentlyUsed);
+        res.redirect(urlsAndPages.nextPage);
+    })
+    .catch((error) => {
+        console.log(error);
+    })
+});
+
+router.post('/scenario-3-intro', (req, res) => { 
+    const currentPage = getPageNumber(req.originalUrl, allUrls);
+    const urlsAndPages = extractUrlAndPage(currentPage, allUrls);
+    const createdAt = req._startTime;
+    const userId = req.cookies.session;
+    const userEmail = req.session.currentUser;
+    const reqRemoteAddress = req._remoteAddress;
+    const reqPath = req.route.path;
+    const newQuestionSubmittedByUser = new Answer ( { userId, userEmail, currentPage, reqPath, reqRemoteAddress, createdAt} );
+
+    newQuestionSubmittedByUser.save()
+    .then( (notCurrentlyUsed) => {
+        console.log(notCurrentlyUsed);
+        res.redirect(urlsAndPages.nextPage);
+    })
+    .catch((error) => {
+        console.log(error);
+    })
+});
+
+
+/* --- Mezzanine Post Routes - Added on 29 Jan --- */
+/* --- Need refactoring along with instructions post routes to avoid repetition --- */
 
 /* --- TASK ONE ROUTES --- */
 router.get('/task-1-part-1', (req, res) => {
@@ -139,34 +250,6 @@ router.get('/task-1-part-1', (req, res) => {
     })
 });
 
-router.post('/task-1-part-1', (req, res) => {
-    const keysConvertedToNumbers = Object.keys(req.body).map(_element => parseInt(_element, 10));
-    const answersObject = JSON.stringify(req.body);
-    const questionsIdSaved = JSON.stringify(Object.values(keysConvertedToNumbers)); // Convert to string, otherwise MongoDB will not store the data
-    const answersSaved = JSON.stringify(Object.values(req.body));
-    const createdAt = req._startTime;
-    const userId = req.cookies.session;
-    const userEmail = req.session.currentUser;
-    const currentPage = getPageNumber(req.originalUrl, allUrls);
-    const urlsAndPages = extractUrlAndPage(currentPage, allUrls);
-    const dataForThisSheet = allQuestions.filter( data => data.page === currentPage);
-    const perguntas = dataForThisSheet.filter (data => !data.heading);
-    const newQuestionSubmittedByUser = new Answer ( { userId, userEmail, currentPage, answersObject, questionsIdSaved, answersSaved, createdAt} );
-
-    if (Object.keys(req.body).length === perguntas.length) {
-        Answer.deleteMany({userEmail: userEmail, currentPage: currentPage})
-        .then(() => {
-            newQuestionSubmittedByUser.save()
-            .then( (answer) => {
-                // console.log(`Answer saved to database: ${answer}`);
-                // console.log(urlsAndPages.nextPage);
-                res.redirect(urlsAndPages.nextPage);
-            })
-            .catch((error) => {
-                console.log(error);
-            })
-})}});
-
 router.get('/task-1-part-2', (req, res) => {
     const currentPage = getPageNumber(req.originalUrl, allUrls);
     const urlsAndPages = extractUrlAndPage(currentPage, allUrls);
@@ -192,6 +275,40 @@ router.get('/task-1-part-2', (req, res) => {
         console.log(error);
     })
 });
+
+router.post('/task-1-part-1', (req, res) => {
+    // Declare variables to store currentPage, which will be used to to retrieve questions from db
+    const currentPage = getPageNumber(req.originalUrl, allUrls);
+    const urlsAndPages = extractUrlAndPage(currentPage, allUrls);
+
+    const createdAt = req._startTime;
+    const userId = req.cookies.session;
+    const userEmail = req.session.currentUser;
+
+    const keysConvertedToNumbers = Object.keys(req.body).map(_element => parseInt(_element, 10));
+    const answersObject = JSON.stringify(req.body);
+    const questionsIdSaved = JSON.stringify(Object.values(keysConvertedToNumbers)); // Convert to string, otherwise MongoDB will not store the data
+    const answersSaved = JSON.stringify(Object.values(req.body));
+    const dataForThisSheet = allQuestions.filter(data => data.page === currentPage);
+    const perguntas = dataForThisSheet.filter (data => !data.heading);
+
+    /* Next three lines are new (Jan 29). Other routes need updating with this information */
+    const reqRemoteAddress = req._remoteAddress;
+    const reqPath = req.route.path;
+    const newQuestionSubmittedByUser = new Answer ( { userId, userEmail, currentPage, reqPath, reqRemoteAddress, answersObject, questionsIdSaved, answersSaved, createdAt} );
+
+    if (Object.keys(req.body).length === perguntas.length) {
+        Answer.deleteMany({userEmail: userEmail, currentPage: currentPage})
+        .then(() => {
+            newQuestionSubmittedByUser.save()
+            .then( (notCurrentlyUsed) => {
+                res.redirect(urlsAndPages.nextPage);
+            })
+            .catch((error) => {
+                console.log(error);
+            })
+})}});
+
 
 router.post('/task-1-part-2', (req, res) => {
     const keysConvertedToNumbers = Object.keys(req.body).map(_element => parseInt(_element, 10));
@@ -495,7 +612,7 @@ router.get('/task-3-1a', (req, res) => {
 
 
 router.post('/task-3-1a', (req, res) => {
-    let currentPage = getPageNumber(req.originalUrl, allUrls);
+    const currentPage = getPageNumber(req.originalUrl, allUrls);
     const dataForThisSheet = allQuestions.filter( data => data.page === currentPage);
     const createdAt = req._startTime;
     const answersObject = JSON.stringify(req.body);
@@ -551,7 +668,7 @@ router.get('/task-3-1b', (req, res) => {
 })});
 
 router.post('/task-3-1b', (req, res) => {
-    let currentPage = getPageNumber(req.originalUrl, allUrls);
+    const currentPage = getPageNumber(req.originalUrl, allUrls);
     const dataForThisSheet = allQuestions.filter( data => data.page === currentPage);
     const createdAt = req._startTime;
     const answersObject = JSON.stringify(req.body);
@@ -605,7 +722,7 @@ router.get('/task-3-2a', (req, res) => {
 })});
 
 router.post('/task-3-2a', (req, res) => {
-    let currentPage = getPageNumber(req.originalUrl, allUrls);
+    const currentPage = getPageNumber(req.originalUrl, allUrls);
     const dataForThisSheet = allQuestions.filter( data => data.page === currentPage);
     const createdAt = req._startTime;
     const answersObject = JSON.stringify(req.body);
@@ -659,7 +776,7 @@ router.get('/task-3-2b', (req, res) => {
 })});
 
 router.post('/task-3-2b', (req, res) => {
-    let currentPage = getPageNumber(req.originalUrl, allUrls);
+    const currentPage = getPageNumber(req.originalUrl, allUrls);
     const dataForThisSheet = allQuestions.filter( data => data.page === currentPage);
     const createdAt = req._startTime;
     const answersObject = JSON.stringify(req.body);
@@ -713,7 +830,7 @@ router.get('/task-3-3a', (req, res) => {
 })});
 
 router.post('/task-3-3a', (req, res) => {
-    let currentPage = getPageNumber(req.originalUrl, allUrls);
+    const currentPage = getPageNumber(req.originalUrl, allUrls);
     const dataForThisSheet = allQuestions.filter( data => data.page === currentPage);
     const createdAt = req._startTime;
     const answersObject = JSON.stringify(req.body);
@@ -766,8 +883,14 @@ router.get('/task-3-3b', (req, res) => {
         console.log(error);
 })});
 
+/* 
+This last route differs from the previous route as it is the page where the user will submit the "final answer" 
+The post request will retrieve all the saved data under the user's name from the db
+It will then create a new object (FinalAnsSubmitted and send that to a different collection in the db) 
+*/
+
 router.post('/task-3-3b', (req, res) => {
-    let currentPage = getPageNumber(req.originalUrl, allUrls);
+    const currentPage = getPageNumber(req.originalUrl, allUrls);
     const dataForThisSheet = allQuestions.filter( data => data.page === currentPage);
     const createdAt = req._startTime;
     const answersObject = JSON.stringify(req.body);
@@ -794,11 +917,24 @@ router.post('/task-3-3b', (req, res) => {
                     const answersSavedArray = [];
                     const timesOfAnswersArray = [];
                     for (i = 0; i < length; i++) {
-                        let obbo = JSON.parse(arrayOfAllAns[i].answersObject);
-                        let answerRecorded = arrayOfAllAns[i].createdAt;
-                        answersSavedArray.push(obbo);
-                        timesOfAnswersArray.push(answerRecorded);
+                        // Include if statement to prevent loop from trying to parse the data from pages that did not contain any questions (e.g. the instructions pages) 
+                        if (typeof arrayOfAllAns[i].answersObject !== "undefined") {
+                                let ansExtracted = JSON.parse(arrayOfAllAns[i].answersObject);
+                                answersSavedArray.push(ansExtracted);
+                        }
+                        console.log(12345);
+                        console.log(arrayOfAllAns[i]);
+                        const objectForTimings =
+                        {
+                            pageNumber: arrayOfAllAns[i].currentPage,
+                            pageUrl: arrayOfAllAns[i].reqPath, 
+                            nextButtonClicked: arrayOfAllAns[i].createdAt,
+                        }                        
+                        timesOfAnswersArray.push(objectForTimings);
                     }
+                      
+                    console.log('Times of Answers:');
+                    console.log(timesOfAnswersArray);
                     const timesOfAnswers = JSON.stringify(timesOfAnswersArray);
                     const answersSaved = JSON.stringify(answersSavedArray);
                     const finalAnswer = new FinalAnsSubmitted ( { userId, userEmail, answersSaved, timesOfAnswers} );
@@ -826,136 +962,46 @@ router.get('/study-conclusion', (req, res) => {
 });
 
 
-// Temp Pages for DEMO PURPOSES //
-router.get('/scenarios-layout-a', (req, res) => {
-    const currentPage = 14;
+
+router.get('/feedback-page', (req, res) => {
+    const currentPage = getPageNumber(req.originalUrl, allUrls);
     const dataForThisSheet = allQuestions.filter( data => data.page === currentPage);
-    const sheetsSituations = dataForThisSheet.filter (data => data.scenario);
-    const heading = dataForThisSheet.filter (data => data.heading);
+    const infos = dataForThisSheet.filter (data => data.info);
+    const perguntas = dataForThisSheet.filter (data => !data.info);
     const urlsAndPages = extractUrlAndPage(currentPage, allUrls);
-    const userEmail = req.session.currentUser;
-    const handlebarsPage = '5a-scenarios-split';
-    let perguntas = dataForThisSheet.filter (data => data.radio);
+    const handlebarsPage = urlsAndPages.handlebarsStaticPage;
 
-    Answer.findOne({userEmail: userEmail, currentPage: currentPage})
-    .then((answer) => {
-        if (answer != null) {
-        const questionIds = JSON.parse(answer.questionsIdSaved);
-        const questionAnswersPartial = JSON.parse(answer.answersSaved);
-        let perguntasWithUserAnswers = addUsersExistingsAnswers(perguntas, questionIds, questionAnswersPartial);
-        perguntas = perguntasWithUserAnswers;
-        res.render(handlebarsPage, { heading, sheetsSituations, perguntas, urlsAndPages });
-    } else {
-        console.log(`no answers saved for ${userEmail} yet`);
-        res.render(handlebarsPage, { heading, sheetsSituations, perguntas, urlsAndPages });
-    }})
-    .catch((error) => {
-        console.log(error);
-})});
-
-router.get('/scenarios-layout-b', (req, res) => {
-    const currentPage = 14;
-    const dataForThisSheet = allQuestions.filter( data => data.page === currentPage);
-    const sheetsSituations = dataForThisSheet.filter (data => data.scenario);
-    const heading = dataForThisSheet.filter (data => data.heading);
-    const urlsAndPages = extractUrlAndPage(currentPage, allUrls);
-    const userEmail = req.session.currentUser;
-    const handlebarsPage = '5a-scenarios-split-b';
-    let perguntas = dataForThisSheet.filter (data => data.radio);
-
-    Answer.findOne({userEmail: userEmail, currentPage: currentPage})
-    .then((answer) => {
-        if (answer != null) {
-        const questionIds = JSON.parse(answer.questionsIdSaved);
-        const questionAnswersPartial = JSON.parse(answer.answersSaved);
-        let perguntasWithUserAnswers = addUsersExistingsAnswers(perguntas, questionIds, questionAnswersPartial);
-        perguntas = perguntasWithUserAnswers;
-        res.render(handlebarsPage, { heading, sheetsSituations, perguntas, urlsAndPages });
-    } else {
-        console.log(`no answers saved for ${userEmail} yet`);
-        res.render(handlebarsPage, { heading, sheetsSituations, perguntas, urlsAndPages });
-    }})
-    .catch((error) => {
-        console.log(error);
-})});
-
-router.get('/scenarios-layout-c', (req, res) => {
-    const currentPage = 14;
-    const dataForThisSheet = allQuestions.filter( data => data.page === currentPage);
-    const sheetsSituations = dataForThisSheet.filter (data => data.scenario);
-    const heading = dataForThisSheet.filter (data => data.heading);
-    const urlsAndPages = extractUrlAndPage(currentPage, allUrls);
-    const userEmail = req.session.currentUser;
-    const handlebarsPage = '5a-scenarios-split-c';
-    let perguntas = dataForThisSheet.filter (data => data.radio);
-
-    Answer.findOne({userEmail: userEmail, currentPage: currentPage})
-    .then((answer) => {
-        if (answer != null) {
-        const questionIds = JSON.parse(answer.questionsIdSaved);
-        const questionAnswersPartial = JSON.parse(answer.answersSaved);
-        let perguntasWithUserAnswers = addUsersExistingsAnswers(perguntas, questionIds, questionAnswersPartial);
-        perguntas = perguntasWithUserAnswers;
-        res.render(handlebarsPage, { heading, sheetsSituations, perguntas, urlsAndPages });
-    } else {
-        console.log(`no answers saved for ${userEmail} yet`);
-        res.render(handlebarsPage, { heading, sheetsSituations, perguntas, urlsAndPages });
-    }})
-    .catch((error) => {
-        console.log(error);
-})});
-
-router.get('/scenarios-layout-d', (req, res) => {
-    const currentPage = 15;
-    const dataForThisSheet = allQuestions.filter( data => data.page === currentPage);
-    const sheetsSituations = dataForThisSheet.filter (data => data.scenario);
-    const heading = dataForThisSheet.filter (data => data.heading);
-    const urlsAndPages = extractUrlAndPage(currentPage, allUrls);
-    const userEmail = req.session.currentUser;
-    const handlebarsPage = '5a-scenarios-split-d';
-    let perguntas = dataForThisSheet.filter (data => data.radio);
-
-    Answer.findOne({userEmail: userEmail, currentPage: currentPage})
-    .then((answer) => {
-        if (answer != null) {
-        const questionIds = JSON.parse(answer.questionsIdSaved);
-        const questionAnswersPartial = JSON.parse(answer.answersSaved);
-        let perguntasWithUserAnswers = addUsersExistingsAnswers(perguntas, questionIds, questionAnswersPartial);
-        perguntas = perguntasWithUserAnswers;
-        res.render(handlebarsPage, { heading, sheetsSituations, perguntas, urlsAndPages });
-    } else {
-        console.log(`no answers saved for ${userEmail} yet`);
-        res.render(handlebarsPage, { heading, sheetsSituations, perguntas, urlsAndPages });
-    }})
-    .catch((error) => {
-        console.log(error);
-})});
-
-
-router.get('/3b-task-1-b', (req, res) => {
-    let currentPage = 7;
-    let perguntas = allQuestions.filter(data => data.page === currentPage);
-    const urlsAndPages = extractUrlAndPage(currentPage, allUrls);
-    const userEmail = req.session.currentUser;
-    const handlebarsPage = '3b-task-1-b';
-
-    Answer.findOne({userEmail: userEmail, currentPage: currentPage})
-    .then((answer) => {
-        if (answer !== null) {
-            const questionIds = JSON.parse(answer.questionsIdSaved);
-            const questionAnswersPartial = JSON.parse(answer.answersSaved);
-            perguntasWithUserAnswers = addUsersExistingsAnswers(perguntas, questionIds, questionAnswersPartial);
-            perguntas = perguntasWithUserAnswers;
-            res.render(handlebarsPage, { perguntas, urlsAndPages });
-        } else {
-            console.log(`no answers saved for ${userEmail} yet`);
-            res.render(handlebarsPage, { perguntas, urlsAndPages });
-        }
-    })
-    .catch((error) => {
-        console.log(error);
-    })
+    res.render(handlebarsPage, { infos, perguntas, urlsAndPages });
 });
+
+
+router.post('/feedback-page', (req, res) => {
+    const currentPage = getPageNumber(req.originalUrl, allUrls);
+    const dataForThisSheet = allQuestions.filter( data => data.page === currentPage);
+    const createdAt = req._startTime;
+    const answersObject = JSON.stringify(req.body);
+    const userId = req.cookies.session;
+    const keysConvertedToNumbers = Object.keys(req.body).map(_element => parseInt(_element, 10));
+    const questionsIdSaved = JSON.stringify(Object.values(keysConvertedToNumbers));
+    const answersSaved = JSON.stringify(Object.values(req.body));
+    const userEmail = req.session.currentUser;
+    const urlsAndPages = extractUrlAndPage(currentPage, allUrls);
+    const perguntas = dataForThisSheet.filter (data => !data.info);
+    const feedbackFromMTurker = new MTurkFeedback ( { userId, userEmail, currentPage, answersObject, questionsIdSaved, answersSaved, createdAt} );
+
+    if (Object.keys(req.body).length === perguntas.length) {
+        Answer.deleteMany({userEmail: userEmail, currentPage: currentPage})
+        .then((answer) => {
+            console.log(answer);
+            feedbackFromMTurker.save()
+            .then( (answer) => {
+                console.log(`Answer saved to database: ${answer}`);
+                res.redirect(urlsAndPages.nextPage);
+            })
+            .catch((error) => {
+                console.log(error);
+            })
+})}});
 
 
 module.exports = router;

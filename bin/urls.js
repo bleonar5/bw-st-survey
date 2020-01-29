@@ -1,4 +1,5 @@
 const urls = 
+
 [
     {
         "url": "/individual-login",
@@ -171,15 +172,23 @@ const urls =
         "backbutton": true,
         "hbsview": "5a-task-3",
         "previouspage": "/task-3-3a",
-        "nextpage": "/study-conclusion",
+        "nextpage": "/feedback-page",
         "comment": "[RP: added 08-jan]",
         "legacyurl": "/scenario-3-split-2"
     },
     {
-        "url": "/study-conclusion",
+        "url": "/feedback-page",
         "page": 22,
+        "hbsview": "6b-feedback-page",
+        "previouspage": "/task-3-3b",
+        "nextpage": "/study-conclusion",
+        "comment": "[RP: added 29-jan for M-Turkers]"
+    },
+    {
+        "url": "/study-conclusion",
+        "page": 23,
         "hbsview": "6a-study-conclusion",
-        "previouspage": "/task-3-3b"
+        "previouspage": "/feedback-page"
     },
     {
         "url": "/scenario-1",
