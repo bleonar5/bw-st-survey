@@ -31,17 +31,3 @@ const questionSchema = new Schema({
 const Answer = mongoose.model("survey-answers", questionSchema);
 
 module.exports = Answer;
-
-
-
-/*
-
-const newQuestionSubmittedByUser = new Answer ( { userId, userEmail, currentPage, answersObject, questionsIdSaved, answersSaved, createdAt} );
-
-currentPage
-reqPath
-reqRemoteAddress
-
-*/
-
-
