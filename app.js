@@ -18,17 +18,21 @@ const MongoStore = require("connect-mongo")(session);
 
 // Prevent Deprecation Warning by adding useUnifiedTopology: true
 mongoose
-  // [old database stored on local machine]. IF YOU USE THIS, you need to switch back to the mongoDB when the site is live
-  .connect('mongodb://localhost/superteams-dev-14', 
-  // .connect(process.env.MONGODB_URI,
-  {useUnifiedTopology: true,
-  useNewUrlParser: true})
-  .then(x => {
+
+    /* ----- WARNING: Remember to flip database ----
+    You always need to remember to switch back to the MongoDB when making the site live
+    It's a common mistake to leave the connection to the localhost
+    */
+    // .connect('mongodb://localhost/superteams_dev_15', 
+    .connect(process.env.MONGODB_URI,
+    {useUnifiedTopology: true,
+    useNewUrlParser: true})
+    .then(x => {
     console.log(`Connected to Mongo! Database name: "${x.connections[0].name}"`)
-  })
-  .catch(err => {
+    })
+    .catch(err => {
     console.error('Error connecting to Mongo', err)
-  });
+    });
 
 const app_name = require('./package.json').name;
 const debug = require('debug')(`${app_name}:${path.basename(__filename).split('.')[0]}`);
