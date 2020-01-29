@@ -1,6 +1,5 @@
 const questions =
 
-
 [
     {
         "order": 1,
@@ -37,7 +36,7 @@ const questions =
         "url": "/study-consent",
         "page": 2,
         "id": 10004,
-        "text": "Overall, compensation for this experiment will be $15.",
+        "text": "Overall, compensation for this experiment will be $7.50.",
         "category": "info",
         "subheading": "Compensation",
         "info": true
@@ -77,7 +76,7 @@ const questions =
         "url": "/study-consent",
         "page": 2,
         "id": 10008,
-        "text": "If you have any questions about this research, you may contact: Ben Weidmann at <a href=\"mailto:benweidmann@g.harvard.edu\">benweidmann@g.harvard.edu</a>, or David Deming at <a href=\"mailto:david_deming@harvard.edu\">david_deming@harvard.edu</a>",
+        "text": "If you have any questions about this research, you may contact: Ben Weidmann at <a href=\"mailto:benweidmann@g.harvard.edu\">benweidmann@g.harvard.edu</a>",
         "category": "info",
         "subheading": "Contact Information",
         "info": true

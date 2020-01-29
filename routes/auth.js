@@ -12,7 +12,8 @@ const Mturk = require('../models/mturk.js');
 // Code below is only required if we are going to use passwords
 // Add BCrypt to encrypt passwords (remember we are using bcryptjs)
 const bcrypt         = require("bcryptjs");
-const bcryptSalt     = 10;
+// For a production ready code, do not settle for saltRounds less than 12.
+const bcryptSalt     = 12;
 
 const redemCodes = require('../bin/redem-codes.js');
 const allUrls = require('../bin/urls.js');
@@ -39,13 +40,12 @@ router.post("/", (req, res, next) => {
 
     /* ---- End of Delete Codes ---- */
  
-
     // Find all the codes
     Mturk.find()
     .then((arrayOfCodes) => {
 
         if (arrayOfCodes.length === 0) {
-                /* Code below is to set up codes in the first place (If the redemCodes are empty, you need to set it up with all the new redemCodes) */ 
+                /* Code below is to set up codes in the first place. If the redemCodes are empty, you need to set it up with all the new redemCodes */ 
             for (i = 0; i < numberOfCodesInDb; i++) {
                 const uniqueId = redemCodes[i].id;
                 const redemCode = redemCodes[i].redemcode;
@@ -79,6 +79,7 @@ router.post("/", (req, res, next) => {
         const randomNumber = Math.floor(Math.random() * totalCodesAvailable + 1);
         // Pull that code from the array (minus 1 from it)
         const uniqueIdForTurker = arrayOfCodes[randomNumber - 1];
+        const redemPreEncypted = uniqueIdForTurker.redemCode;
 
         // Mark the code as now inUse by updating the status on the db
         // Update the object by adding a new property to the object saying status = "inUse"
@@ -87,23 +88,18 @@ router.post("/", (req, res, next) => {
             console.log(`${uniqueIdForTurker.uniqueId} updated`);
             // Assign the unique ID as the user's email address
 
-            req.session.currentUser = uniqueIdForTurker.uniqueId;
-            req.session.redem = uniqueIdForTurker.redemCode;
-            console.log(req.session);
-            console.log('all done');
-            // 
+            const salt     = bcrypt.genSaltSync(bcryptSalt);
+            const hashPass = bcrypt.hashSync(redemPreEncypted, salt);
 
-            // start test (can delete later)
-            // Mturk.findOne({uniqueId: lookup})
-            // .then((answer) => {
-            //     console.log(`This is updated document ${answer}`);
-            //     res.redirect('/study-consent');
-            // })
-            // .catch((error) => {
-            //     console.log(`answer is null when looking for ${uniqueIdForTurker.uniqueId}`);
-            //     console.log(error);
-            // })
-            // end test //
+            // Assign values to the req sessions
+            req.session.currentUser = uniqueIdForTurker.uniqueId;
+            // req.session.redem = hashPass;
+            req.session.redem = redemPreEncypted;
+
+            console.log(`this is the redemCode (pre encrypted): ${redemPreEncypted}`);
+            console.log(`this is the redemCode (encrypted): ${hashPass}`);
+            console.log(req.session);
+
          })
          .then ( () => {
             res.redirect('/study-consent')
