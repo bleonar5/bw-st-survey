@@ -11,12 +11,14 @@ const User = require("../models/user");
 const Mturk = require('../models/mturk.js');
 // Code below is only required if we are going to use passwords
 // Add BCrypt to encrypt passwords (remember we are using bcryptjs)
-const bcrypt         = require("bcryptjs");
+// const bcrypt         = require("bcryptjs");
 // For a production ready code, do not settle for saltRounds less than 12.
-const bcryptSalt     = 12;
+// const bcryptSalt     = 12;
 
+/* --- Declare locally stored variables (before storing them on a db) --- *//*
 const redemCodes = require('../bin/redem-codes.js');
 const allUrls = require('../bin/urls.js');
+*/
 
 // First Page
 router.get("/", (req, res, next) => {
@@ -28,11 +30,11 @@ router.post("/", (req, res, next) => {
     const redemCodes = require('../bin/redem-codes.js');
     const numberOfCodesInDb = redemCodes.length;
 
-    /* Code below is to delete all codes */
+    /* ---- Code below is to delete all codes ---- */
     
     // Mturk.deleteMany()
     // .then(() => {
-    //     console.log('All M-turk codes deleted - Note: You need to comment this out when in prod');
+    //     console.log('All M-turk codes deleted');
     //     })
     //     .catch((error) => {
     //     console.log(error);
@@ -88,8 +90,8 @@ router.post("/", (req, res, next) => {
             console.log(`${uniqueIdForTurker.uniqueId} updated`);
             // Assign the unique ID as the user's email address
 
-            const salt     = bcrypt.genSaltSync(bcryptSalt);
-            const hashPass = bcrypt.hashSync(redemPreEncypted, salt);
+            // const salt     = bcrypt.genSaltSync(bcryptSalt);
+            // const hashPass = bcrypt.hashSync(redemPreEncypted, salt);
 
             // Assign values to the req sessions
             req.session.currentUser = uniqueIdForTurker.uniqueId;
@@ -97,7 +99,7 @@ router.post("/", (req, res, next) => {
             req.session.redem = redemPreEncypted;
 
             console.log(`this is the redemCode (pre encrypted): ${redemPreEncypted}`);
-            console.log(`this is the redemCode (encrypted): ${hashPass}`);
+            // console.log(`this is the redemCode (encrypted): ${hashPass}`);
             console.log(req.session);
 
          })
