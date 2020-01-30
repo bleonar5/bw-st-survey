@@ -1,11 +1,12 @@
 /* --- TODO: What is  the best practice is for storing these functions? i.e. what folder do they belong in? --- */
-/* -- TODO: Create a class */
+/* --- TODO: Create a class --- */
 
 const express = require("express");
 const router = express.Router();
 const Answer = require('../models/answerLowerCase2.js');
 const FinalAnsSubmitted = require('../models/finalAnsSubmitted2.js');
 const MTurkFeedback = require('../models/mTurkFeedback2.js');
+const Mturk = require('../models/mTurk2.js');
 const app = express();
 
 const getPageNumber = require('../helpers/getPageNumber.js');
@@ -17,13 +18,6 @@ const addUsersExistingsAnswers = require('../helpers/addUsersExistingsAnswers.js
 // Declare variable which hold all data from Google Sheets Import
 const allQuestions = require('../bin/sheets-import.js');
 const allUrls = require('../bin/urls.js');
-
-/* --- Check if in use and then delete --- */
-/*
-const convertDropdownQues = require('../helpers/convertDropdownQues.js');
-const checkQuestionsBackEnd = require('../helpers/checkQuestionsBackEnd.js');
-const getArrayOfQuestions = require('../helpers/getArrayOfQuestionsBackEnd.js');
-*/
 
 // Cookie Session
 app.use(cookieSession({
@@ -919,14 +913,13 @@ router.post('/task-3-3b', (req, res) => {
                     const arrayOfAllAns = allData;
                     const length = arrayOfAllAns.length;
                     const answersSavedArray = [];
-                    const timesOfAnswersArray = [];
+                    const times = [];
                     for (i = 0; i < length; i++) {
                         // Include if statement to prevent loop from trying to parse the data from pages that did not contain any questions (e.g. the instructions pages) 
                         if (typeof arrayOfAllAns[i].answersObject !== "undefined") {
                                 let ansExtracted = JSON.parse(arrayOfAllAns[i].answersObject);
                                 answersSavedArray.push(ansExtracted);
                         }
-                        console.log(12345);
                         console.log(arrayOfAllAns[i]);
                         const objectForTimings =
                         {
@@ -934,12 +927,29 @@ router.post('/task-3-3b', (req, res) => {
                             pageUrl: arrayOfAllAns[i].reqPath, 
                             nextButtonClicked: arrayOfAllAns[i].createdAt,
                         }                        
-                        timesOfAnswersArray.push(objectForTimings);
+                        times.push(objectForTimings);
                     }
+
+                    console.log(21);
+                    console.log(times);
+
+                    const timesWithDelta = times.map( (data, index) => {
+    
+                        if (index > 0) {
+                            times[index].previousPage = times[index - 1].pageUrl;
+                            times[index].previousPageNextButtonClicked = times[index - 1].nextButtonClicked;
+                            const startTime = times[index].previousPageNextButtonClicked;
+                            const endTime = times[index].nextButtonClicked;
+                            times[index].secondsSpentOnThisPage = (Date.parse(endTime) - Date.parse(startTime)) / 1000;
+                        } 
+                    
+                        return data;
+                    })
+
+                    console.log(22);
+                    console.log(timesWithDelta);
                       
-                    console.log('Times of Answers:');
-                    console.log(timesOfAnswersArray);
-                    const timesOfAnswers = JSON.stringify(timesOfAnswersArray);
+                    const timesOfAnswers = JSON.stringify(timesWithDelta);
                     const answersSaved = JSON.stringify(answersSavedArray);
                     const finalAnswer = new FinalAnsSubmitted ( { userId, userEmail, answersSaved, timesOfAnswers} );
                     console.log(finalAnswer);
@@ -952,19 +962,48 @@ router.post('/task-3-3b', (req, res) => {
 })})})}});
 
 
-
+/* Below is Old Code for Study-Conclusion */
+/* First test (30 Jan) that new code works on live site, then delete */
+/*
 router.get('/study-conclusion', (req, res) => {
     const reqsession = req.session;
     console.log(reqsession);
     console.log(reqsession.redem);
     const currentPage = getPageNumber(req.originalUrl, allUrls);
-
     const urlsAndPages = extractUrlAndPage(currentPage, allUrls);
     const handlebarsPage = urlsAndPages.handlebarsStaticPage;
 
     res.render(handlebarsPage, { reqsession });
 });
+*/
 
+router.get('/study-conclusion', (req, res) => {
+
+    // Create variable which will be sent to Handlebars page after redemCode is fetched from db
+    const reqsession = req.session;
+    const currentPage = getPageNumber(req.originalUrl, allUrls);
+    const urlsAndPages = extractUrlAndPage(currentPage, allUrls);
+    const handlebarsPage = urlsAndPages.handlebarsStaticPage;
+
+    // Tell db to update the status of redem code from 'inUse' to 'redemCodeIssued'
+    Mturk.updateOne( { uniqueId : req.session.currentUser }, { $set: { status: "3-redemCodeIssued" }})
+            .then( () => {
+                // Retrieve the updated redem code object from db
+                Mturk.findOne( { uniqueId : req.session.currentUser} )
+                    .then( ( updatedRedemData ) => {
+                        // Create variable and assign it to reqsession
+                        req.session.redemptionCode = updatedRedemData.redemCode;
+                        // Render page with reqsession variable. reqsession variable contains redem code which will appear on screen
+                        res.render(handlebarsPage, { reqsession });
+                    })
+                    .catch((error) => {
+                        console.log(error)
+                    });
+            })
+            .catch((error) => {
+                console.log(error);
+    });
+});
 
 
 router.get('/feedback-page', (req, res) => {

@@ -1,3 +1,5 @@
+/* --- QUES: Do I need two catch errors at the end of post route for "/" --- */
+
 // Add the auth.js route 
 const express = require("express");
 const router = express.Router();
@@ -26,6 +28,7 @@ router.get("/", (req, res, next) => {
     res.render('index');
 });
 
+
 router.post("/", (req, res, next) => {
 
     const redemCodes = require('../bin/redem-codes.js');
@@ -35,7 +38,7 @@ router.post("/", (req, res, next) => {
     
     // Mturk.deleteMany()
     // .then(() => {
-    //     console.log('All M-turk codes deleted - Note: You need to comment this out when in prod');
+    //     console.log('All M-turk codes deleted');
     //     })
     //     .catch((error) => {
     //     console.log(error);
@@ -47,6 +50,7 @@ router.post("/", (req, res, next) => {
     Mturk.find()
     .then((arrayOfCodes) => {
 
+        /* --- Setting Up Redem Codes --- */
         if (arrayOfCodes.length === 0) {
                 /*  
                 Code below is to set up codes in the first place (If the redemCodes are empty, you need to set it up with all the new redemCodes) 
@@ -76,27 +80,28 @@ router.post("/", (req, res, next) => {
                 console.log(error);
             })
         }
+        /* --- End of Setting Up Redem Codes --- */
+
         // Filter the answer to get the codes that are available
         const availableIdsAndCodes = arrayOfCodes.filter(data => data.status === "1-available");
         const totalCodesAvailable = availableIdsAndCodes.length;
-        console.log(`We have ${totalCodesAvailable} codes available`);
+        console.log(`There are ${totalCodesAvailable} codes available`);
 
         // Get a random code from the list
         const randomNumber = Math.floor(Math.random() * totalCodesAvailable + 1);
         // Pull that code from the array (minus 1 from it)
         const uniqueIdForTurker = arrayOfCodes[randomNumber - 1];
 
-        // Mark the code as now inUse by updating the status on the db
+        // Mark the code as "2-inUse" by updating the status on the db
         // Update the object by adding a new property to the object saying status = "inUse"
         Mturk.updateOne( { uniqueId : uniqueIdForTurker.uniqueId }, { $set: { status: "2-inUse" }})
          .then( () => {
             console.log(`${uniqueIdForTurker.uniqueId} updated`);
             // Assign the unique ID as the user's email address
-
+            // Note, do not retrieve the redem code until the end of the survey. You do not want the redem code in the reqSession while user is still completing survey
+            req.session.redemptionCode = null;
             req.session.currentUser = uniqueIdForTurker.uniqueId;
-            req.session.redem = uniqueIdForTurker.redemCode;
             console.log(req.session);
-            console.log('all done');
 
             /* ---- Code below is to delete all codes ---- */
             
@@ -107,6 +112,9 @@ router.post("/", (req, res, next) => {
             //     .catch((error) => {
             //     console.log(error);
             // })
+
+            // req.session = null;
+            // console.log('req.session set to null');
 
             /* ---- End of Delete Codes ---- */
 
@@ -120,13 +128,108 @@ router.post("/", (req, res, next) => {
     })
     .catch((error) => {
         console.log(error);
-}) // catch
-}) // find
+})});
 
 
-// On the finalpage 
-// Delete the user object from the array of availabe or inuse usernames
-// Add the user object to a new database called used usernames or something like that
+
+/* Keeping old code until the live site is tested (29 Jan) */
+
+// router.post("/", (req, res, next) => {
+
+//     const redemCodes = require('../bin/redem-codes.js');
+//     const numberOfCodesInDb = redemCodes.length;
+
+//     /* Code below is to delete all codes */
+    
+//     // Mturk.deleteMany()
+//     // .then(() => {
+//     //     console.log('All M-turk codes deleted');
+//     //     })
+//     //     .catch((error) => {
+//     //     console.log(error);
+//     // })
+
+//     /* ---- End of Delete Codes ---- */
+ 
+//     // Find all the codes
+//     Mturk.find()
+//     .then((arrayOfCodes) => {
+
+//         if (arrayOfCodes.length === 0) {
+//                 /*  
+//                 Code below is to set up codes in the first place (If the redemCodes are empty, you need to set it up with all the new redemCodes) 
+//                 This code will send redem codes to the database.
+//                 */ 
+//             for (i = 0; i < numberOfCodesInDb; i++) {
+//                 const uniqueId = redemCodes[i].id;
+//                 const redemCode = redemCodes[i].redemcode;
+//                 const status = '1-available';
+//                 const newRedemGenerated = new Mturk ( { uniqueId, redemCode, status } );
+        
+//                 newRedemGenerated.save()
+//                     .then( (answer) => {
+//                         console.log(`Mturk Redem loaded to the db:: ${answer}`);
+//                     })
+//                     .catch((error) => {
+//                         console.log(error);
+//                     })
+//             }
+
+//             Mturk.find()
+//             .then((arrayOfCodes) => {
+//                 const totalCodes = arrayOfCodes.length;
+//                 console.log(`db now has ${totalCodes} codes`);
+//             })
+//             .catch((error) => {
+//                 console.log(error);
+//             })
+//         }
+//         // Filter the answer to get the codes that are available
+//         const availableIdsAndCodes = arrayOfCodes.filter(data => data.status === "1-available");
+//         const totalCodesAvailable = availableIdsAndCodes.length;
+//         console.log(`We have ${totalCodesAvailable} codes available`);
+
+//         // Get a random code from the list
+//         const randomNumber = Math.floor(Math.random() * totalCodesAvailable + 1);
+//         // Pull that code from the array (minus 1 from it)
+//         const uniqueIdForTurker = arrayOfCodes[randomNumber - 1];
+
+//         // Mark the code as "2-inUse" by updating the status on the db
+//         // Update the object by adding a new property to the object saying status = "inUse"
+//         Mturk.updateOne( { uniqueId : uniqueIdForTurker.uniqueId }, { $set: { status: "2-inUse" }})
+//          .then( () => {
+//             console.log(`${uniqueIdForTurker.uniqueId} updated`);
+//             // Assign the unique ID as the user's email address
+
+//             req.session.currentUser = uniqueIdForTurker.uniqueId;
+//             req.session.redem = uniqueIdForTurker.redemCode;
+//             console.log(req.session);
+
+//             /* ---- Code below is to delete all codes ---- */
+            
+//             // Mturk.deleteMany()
+//             // .then(() => {
+//             //     console.log('All M-turk codes deleted');
+//             //     })
+//             //     .catch((error) => {
+//             //     console.log(error);
+//             // })
+
+//             /* ---- End of Delete Codes ---- */
+
+//          })
+//          .then ( () => {
+//             res.redirect('/study-consent')
+//          })
+//          .catch((error) => {
+//             console.log(error);
+//          })
+//     })
+//     .catch((error) => {
+//         console.log(error);
+// })});
+
+
 
 
 // Create route for login
