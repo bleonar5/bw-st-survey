@@ -18,7 +18,6 @@ const MongoStore = require("connect-mongo")(session);
 
 // Prevent Deprecation Warning by adding useUnifiedTopology: true
 mongoose
-
     /* ----- WARNING: Remember to flip database ----
     You always need to remember to switch back to the MongoDB when making the site live
     It's a common mistake to leave the connection to the localhost

@@ -9,17 +9,21 @@ const MTurkFeedback = require('../models/MTurkFeedback.js');
 const app = express();
 
 const getPageNumber = require('../helpers/getPageNumber.js');
-const convertDropdownQues = require('../helpers/convertDropdownQues.js');
 const formatQuestions = require('../helpers/formatQuestions.js');
 const extractUrlAndPage = require('../helpers/extractUrlAndPage.js');
-const checkQuestionsBackEnd = require('../helpers/checkQuestionsBackEnd.js');
-const getArrayOfQuestions = require('../helpers/getArrayOfQuestionsBackEnd.js');
 const cookieSession = require('cookie-session');
 const addUsersExistingsAnswers = require('../helpers/addUsersExistingsAnswers.js');
 
 // Declare variable which hold all data from Google Sheets Import
 const allQuestions = require('../bin/sheets-import.js');
 const allUrls = require('../bin/urls.js');
+
+/* --- Check if in use and then delete --- */
+/*
+const convertDropdownQues = require('../helpers/convertDropdownQues.js');
+const checkQuestionsBackEnd = require('../helpers/checkQuestionsBackEnd.js');
+const getArrayOfQuestions = require('../helpers/getArrayOfQuestionsBackEnd.js');
+*/
 
 // Cookie Session
 app.use(cookieSession({
