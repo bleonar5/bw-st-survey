@@ -3,7 +3,7 @@
 
 const express = require("express");
 const router = express.Router();
-const Answer = require('../models/answerLowerCase.js/index.js');
+const Answer = require('../models/answerLowerCase.js');
 const FinalAnsSubmitted = require('../models/finalAnsSubmitted.js');
 const MTurkFeedback = require('../models/mTurkFeedback.js');
 const app = express();
