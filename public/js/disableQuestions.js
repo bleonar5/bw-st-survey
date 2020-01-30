@@ -72,9 +72,6 @@ function convertSemiColonsToArray(_ques) {
 
 function disableDependencies(_id) {
 
-    console.log(_id);
-    console.log(hardCodedYesNo3);
-    console.log(_id === hardCodedYesNo3);
 
     if (questionsWithDependencies.includes(_id)) {
 

@@ -6,9 +6,6 @@ let employed = true;
 let student = undefined;
 let timeTaken = 0;
 
-
-
-
 // Function which removes the form validation warning when user clicks on any radio button
 function removeWarning() {
 
@@ -17,7 +14,7 @@ function removeWarning() {
         } else if (document.getElementById('warning-message') !== null) {
             document.getElementById('warning-message').innerHTML = '';
         } else {
-            console.log('there is no warning message div on this page');
+            // console.log('there is no warning message div on this page');
         }
  
     let pageNumberExists = document.getElementById('page-number');

@@ -984,7 +984,7 @@ router.post('/task-3-3b', (req, res) => {
                       
                     const timesOfAnswers = JSON.stringify(timesWithDelta);
                     const answersSaved = JSON.stringify(answersSavedArray);
-                    const finalAnswer = new FinalAnsSubmitted ( { userId, userEmail, answersSaved, timesOfAnswers} );
+                    const finalAnswer = new FinalAnsSubmitted ( { userId, userEmail, answersSaved, timesOfAnswers, timesWithDelta} );
                     console.log(finalAnswer);
                     finalAnswer.save()
                     .then ( (x) => {
