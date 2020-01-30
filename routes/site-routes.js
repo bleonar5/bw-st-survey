@@ -109,8 +109,7 @@ router.post('/instructions-1', (req, res) => {
     const newQuestionSubmittedByUser = new Answer ( { userId, userEmail, currentPage, reqPath, reqRemoteAddress, createdAt} );
 
     newQuestionSubmittedByUser.save()
-    .then( (notCurrentlyUsed) => {
-        console.log(notCurrentlyUsed);
+    .then( () => {
         res.redirect(urlsAndPages.nextPage);
     })
     .catch((error) => {
@@ -129,8 +128,7 @@ router.post('/instructions-2', (req, res) => {
     const newQuestionSubmittedByUser = new Answer ( { userId, userEmail, currentPage, reqPath, reqRemoteAddress, createdAt} );
 
     newQuestionSubmittedByUser.save()
-    .then( (notCurrentlyUsed) => {
-        console.log(notCurrentlyUsed);
+    .then( () => {
         res.redirect(urlsAndPages.nextPage);
     })
     .catch((error) => {
@@ -149,8 +147,7 @@ router.post('/instructions-3', (req, res) => {
     const newQuestionSubmittedByUser = new Answer ( { userId, userEmail, currentPage, reqPath, reqRemoteAddress, createdAt} );
 
     newQuestionSubmittedByUser.save()
-    .then( (notCurrentlyUsed) => {
-        console.log(notCurrentlyUsed);
+    .then( () => {
         res.redirect(urlsAndPages.nextPage);
     })
     .catch((error) => {
@@ -320,7 +317,11 @@ router.post('/task-1-part-2', (req, res) => {
     const urlsAndPages = extractUrlAndPage(currentPage, allUrls);
     const dataForThisSheet = allQuestions.filter( data => data.page === currentPage);
     const perguntas = dataForThisSheet.filter (data => !data.heading);
-    const newQuestionSubmittedByUser = new Answer ( { userId, userEmail, currentPage, answersObject, questionsIdSaved, answersSaved, createdAt} );
+
+    /* Next three lines are new as of Jan 29. They provide more information to help calculate how long a user spends on each question */
+    const reqRemoteAddress = req._remoteAddress;
+    const reqPath = req.route.path;
+    const newQuestionSubmittedByUser = new Answer ( { userId, userEmail, currentPage, reqPath, reqRemoteAddress, answersObject, questionsIdSaved, answersSaved, createdAt} );
 
     if (Object.keys(req.body).length === perguntas.length) {
         Answer.deleteMany({userEmail: userEmail, currentPage: currentPage})
@@ -452,7 +453,11 @@ router.post('/task-2-part-1a', (req, res) => {
     const urlsAndPages = extractUrlAndPage(currentPage, allUrls);
     // Declare variable which will be used to calculate how many questions are on this page (it excludes headings)
     const perguntas = dataForThisSheet.filter (data => !data.heading);
-    const newQuestionSubmittedByUser = new Answer ( { userId, userEmail, currentPage, answersObject, questionsIdSaved, answersSaved, createdAt} )
+
+    /* Next three lines are new as of Jan 29. They provide more information to help calculate how long a user spends on each question */
+    const reqRemoteAddress = req._remoteAddress;
+    const reqPath = req.route.path;
+    const newQuestionSubmittedByUser = new Answer ( { userId, userEmail, currentPage, reqPath, reqRemoteAddress, answersObject, questionsIdSaved, answersSaved, createdAt} );
 
     if ( (length === perguntas.length && !includesBlank) || valuesAsString === 'I am a full time student' || valuesAsString === 'no' ) {
         // Overwrite by first deleting all the entrances for this userEmail and currentPage combination
@@ -490,8 +495,12 @@ router.post('/task-2-part-1b', (req, res) => {
     const dataForThisSheet = allQuestions.filter( data => data.page === currentPage);
     const urlsAndPages = extractUrlAndPage(currentPage, allUrls);
     const perguntas = dataForThisSheet.filter (data => !data.heading);
-    const newQuestionSubmittedByUser = new Answer ( { userId, userEmail, currentPage, answersObject, questionsIdSaved, answersSaved, createdAt} );
     let includesBlank = answersObject.includes(`":""`);
+
+    /* Next three lines are new as of Jan 29. They provide more information to help calculate how long a user spends on each question */
+    const reqRemoteAddress = req._remoteAddress;
+    const reqPath = req.route.path;
+    const newQuestionSubmittedByUser = new Answer ( { userId, userEmail, currentPage, reqPath, reqRemoteAddress, answersObject, questionsIdSaved, answersSaved, createdAt} );
 
     if (length === perguntas.length && !includesBlank) {
         Answer.deleteMany({userEmail: userEmail, currentPage: currentPage})
@@ -523,8 +532,12 @@ router.post('/task-2-part-2', (req, res) => {
     const dataForThisSheet = allQuestions.filter( data => data.page === currentPage);
     const urlsAndPages = extractUrlAndPage(currentPage, allUrls);
     const perguntas = dataForThisSheet.filter (data => !data.heading);
-    const newQuestionSubmittedByUser = new Answer ( { userId, userEmail, currentPage, answersObject, questionsIdSaved, answersSaved, createdAt} );
     let includesBlank = answersObject.includes(`":""`);
+
+    /* Next three lines are new as of Jan 29. They provide more information to help calculate how long a user spends on each question */
+    const reqRemoteAddress = req._remoteAddress;
+    const reqPath = req.route.path;
+    const newQuestionSubmittedByUser = new Answer ( { userId, userEmail, currentPage, reqPath, reqRemoteAddress, answersObject, questionsIdSaved, answersSaved, createdAt} );
 
     if (length === perguntas.length && !includesBlank) {
         Answer.deleteMany({userEmail: userEmail, currentPage: currentPage})
@@ -557,9 +570,13 @@ router.post('/task-2-part-3', (req, res) => {
     const dataForThisSheet = allQuestions.filter( data => data.page === currentPage);
     const urlsAndPages = extractUrlAndPage(currentPage, allUrls);
     const perguntas = dataForThisSheet.filter (data => !data.heading);
-    const newQuestionSubmittedByUser = new Answer ( { userId, userEmail, currentPage, answersObject, questionsIdSaved, answersSaved, createdAt} );
     const valuesAsString = Object.values(req.body).toString();
     let includesNo = valuesAsString.includes("0-no");
+
+    /* Next three lines are new as of Jan 29. They provide more information to help calculate how long a user spends on each question */
+    const reqRemoteAddress = req._remoteAddress;
+    const reqPath = req.route.path;
+    const newQuestionSubmittedByUser = new Answer ( { userId, userEmail, currentPage, reqPath, reqRemoteAddress, answersObject, questionsIdSaved, answersSaved, createdAt} );
 
     if ((length === perguntas.length) || (length === 2 && valuesAsString === '0-no,0-no') || ( (length === 3 && includesNo) ) ) {
         Answer.deleteMany({userEmail: userEmail, currentPage: currentPage})
@@ -621,7 +638,11 @@ router.post('/task-3-1a', (req, res) => {
     const userEmail = req.session.currentUser;
     const urlsAndPages = extractUrlAndPage(currentPage, allUrls);
     const perguntas = dataForThisSheet.filter (data => data.radio);
-    const newQuestionSubmittedByUser = new Answer ( { userId, userEmail, currentPage, answersObject, questionsIdSaved, answersSaved, createdAt} );
+    
+    /* Next three lines are new as of Jan 29. They provide more information to help calculate how long a user spends on each question */
+    const reqRemoteAddress = req._remoteAddress;
+    const reqPath = req.route.path;
+    const newQuestionSubmittedByUser = new Answer ( { userId, userEmail, currentPage, reqPath, reqRemoteAddress, answersObject, questionsIdSaved, answersSaved, createdAt} );
 
     if (Object.keys(req.body).length === perguntas.length) {
         Answer.deleteMany({userEmail: userEmail, currentPage: currentPage})
@@ -677,7 +698,10 @@ router.post('/task-3-1b', (req, res) => {
     const userEmail = req.session.currentUser;
     const urlsAndPages = extractUrlAndPage(currentPage, allUrls);
     const perguntas = dataForThisSheet.filter (data => data.radio);
-    const newQuestionSubmittedByUser = new Answer ( { userId, userEmail, currentPage, answersObject, questionsIdSaved, answersSaved, createdAt} );
+    /* Next three lines are new as of Jan 29. They provide more information to help calculate how long a user spends on each question */
+    const reqRemoteAddress = req._remoteAddress;
+    const reqPath = req.route.path;
+    const newQuestionSubmittedByUser = new Answer ( { userId, userEmail, currentPage, reqPath, reqRemoteAddress, answersObject, questionsIdSaved, answersSaved, createdAt} );
 
     if (Object.keys(req.body).length === perguntas.length) {
         Answer.deleteMany({userEmail: userEmail, currentPage: currentPage})
@@ -731,7 +755,10 @@ router.post('/task-3-2a', (req, res) => {
     const userEmail = req.session.currentUser;
     const urlsAndPages = extractUrlAndPage(currentPage, allUrls);
     const perguntas = dataForThisSheet.filter (data => data.radio);
-    const newQuestionSubmittedByUser = new Answer ( { userId, userEmail, currentPage, answersObject, questionsIdSaved, answersSaved, createdAt} );
+    /* Next three lines are new as of Jan 29. They provide more information to help calculate how long a user spends on each question */
+    const reqRemoteAddress = req._remoteAddress;
+    const reqPath = req.route.path;
+    const newQuestionSubmittedByUser = new Answer ( { userId, userEmail, currentPage, reqPath, reqRemoteAddress, answersObject, questionsIdSaved, answersSaved, createdAt} );
 
     if (Object.keys(req.body).length === perguntas.length) {
         Answer.deleteMany({userEmail: userEmail, currentPage: currentPage})
@@ -785,7 +812,10 @@ router.post('/task-3-2b', (req, res) => {
     const userEmail = req.session.currentUser;
     const urlsAndPages = extractUrlAndPage(currentPage, allUrls);
     const perguntas = dataForThisSheet.filter (data => data.radio);
-    const newQuestionSubmittedByUser = new Answer ( { userId, userEmail, currentPage, answersObject, questionsIdSaved, answersSaved, createdAt} );
+    /* Next three lines are new as of Jan 29. They provide more information to help calculate how long a user spends on each question */
+    const reqRemoteAddress = req._remoteAddress;
+    const reqPath = req.route.path;
+    const newQuestionSubmittedByUser = new Answer ( { userId, userEmail, currentPage, reqPath, reqRemoteAddress, answersObject, questionsIdSaved, answersSaved, createdAt} );
 
     if (Object.keys(req.body).length === perguntas.length) {
         Answer.deleteMany({userEmail: userEmail, currentPage: currentPage})
@@ -839,7 +869,10 @@ router.post('/task-3-3a', (req, res) => {
     const userEmail = req.session.currentUser;
     const urlsAndPages = extractUrlAndPage(currentPage, allUrls);
     const perguntas = dataForThisSheet.filter (data => data.radio);
-    const newQuestionSubmittedByUser = new Answer ( { userId, userEmail, currentPage, answersObject, questionsIdSaved, answersSaved, createdAt} );
+    /* Next three lines are new as of Jan 29. They provide more information to help calculate how long a user spends on each question */
+    const reqRemoteAddress = req._remoteAddress;
+    const reqPath = req.route.path;
+    const newQuestionSubmittedByUser = new Answer ( { userId, userEmail, currentPage, reqPath, reqRemoteAddress, answersObject, questionsIdSaved, answersSaved, createdAt} );
 
     if (Object.keys(req.body).length === perguntas.length) {
         Answer.deleteMany({userEmail: userEmail, currentPage: currentPage})
@@ -899,7 +932,10 @@ router.post('/task-3-3b', (req, res) => {
     const userEmail = req.session.currentUser;
     const urlsAndPages = extractUrlAndPage(currentPage, allUrls);
     const perguntas = dataForThisSheet.filter (data => data.radio);
-    const newQuestionSubmittedByUser = new Answer ( { userId, userEmail, currentPage, answersObject, questionsIdSaved, answersSaved, createdAt} );
+    /* Next three lines are new as of Jan 29. They provide more information to help calculate how long a user spends on each question */
+    const reqRemoteAddress = req._remoteAddress;
+    const reqPath = req.route.path;
+    const newQuestionSubmittedByUser = new Answer ( { userId, userEmail, currentPage, reqPath, reqRemoteAddress, answersObject, questionsIdSaved, answersSaved, createdAt} );
 
     if (Object.keys(req.body).length === perguntas.length) {
         Answer.deleteMany({userEmail: userEmail, currentPage: currentPage})
@@ -930,9 +966,7 @@ router.post('/task-3-3b', (req, res) => {
                         times.push(objectForTimings);
                     }
 
-                    console.log(21);
                     console.log(times);
-
                     const timesWithDelta = times.map( (data, index) => {
     
                         if (index > 0) {
@@ -946,7 +980,6 @@ router.post('/task-3-3b', (req, res) => {
                         return data;
                     })
 
-                    console.log(22);
                     console.log(timesWithDelta);
                       
                     const timesOfAnswers = JSON.stringify(timesWithDelta);
@@ -1032,7 +1065,8 @@ router.post('/feedback-page', (req, res) => {
     const perguntas = dataForThisSheet.filter (data => !data.info);
     const feedbackFromMTurker = new MTurkFeedback ( { userId, userEmail, currentPage, answersObject, questionsIdSaved, answersSaved, createdAt} );
 
-    if (Object.keys(req.body).length === perguntas.length) {
+    // Temp hack as this is a temp page
+    if (Object.keys(req.body).length > (perguntas.length - 2)) {
         Answer.deleteMany({userEmail: userEmail, currentPage: currentPage})
         .then((answer) => {
             console.log(answer);

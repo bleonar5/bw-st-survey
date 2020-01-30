@@ -9,6 +9,7 @@ let skipNextQuestion = false;
 // Declare varibles that are the IDs of the yes-no questions that have dependencies. When the user selects 'no' on these questions (n), the following question (n + 1) will be disabled. If the user then clicks 'yes' on question n, the following question (n + 1) will be enabled again. 
 const hardCodedYesNo1 = 21201;
 const hardCodedYesNo2 = 21203;
+const hardCodedYesNo3 = 40001;
 const hardCodedEmploymentQuestion = 20901;
 
 // This is a temporary array. It should be stored somewhere else and kept in middleware instead. It is currently used by the checkDependencies function.
@@ -35,6 +36,13 @@ const dependenciesArray =
         "trigger": "no",
         "action": "disable",
         "dependencies": 21204
+    },
+    {
+        "id": 40001,
+        "text": "Did you find any of the questions confusing?",
+        "trigger": "yesno",
+        "action": "disable",
+        "dependencies": 40002
     }
 ]
 
@@ -64,11 +72,15 @@ function convertSemiColonsToArray(_ques) {
 
 function disableDependencies(_id) {
 
+    console.log(_id);
+    console.log(hardCodedYesNo3);
+    console.log(_id === hardCodedYesNo3);
+
     if (questionsWithDependencies.includes(_id)) {
 
     let dependencies = checkDependencies(_id, dependenciesArray);
     // Temporarily hardcoding Ids (checking if the hardcoded IDs are the YesNo questions in task-2-part-3
-    if ( _id === hardCodedYesNo1 || _id === hardCodedYesNo2) {
+    if ( _id === hardCodedYesNo1 || _id === hardCodedYesNo2 || _id === hardCodedYesNo3) {
 
         // Convert NodeList to array
         let yesNoArray = Array.from(document.getElementsByName(_id));
@@ -83,7 +95,10 @@ function disableDependencies(_id) {
         } else if (yesNoArray[1].checked) {
             dependency.disabled = true;
             // Choose --select an option-- on dropdown
-            dependency.options[0].selected = true;
+            // Run if statement in case the question to be disabled is not a dropdown
+            if (dependency.options !== undefined) {
+                dependency.options[0].selected = true
+            };
             // Todo: Deselect all options
             dependency.classList.add("skipped");
             dependency.parentNode.classList.add("skipped");
