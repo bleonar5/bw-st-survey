@@ -98,7 +98,6 @@ function addUsersExistingsAnswers(_arrayOfBlankQuestions, _arrayOfQuestionIds, _
 
 // Helper Function to convert yesno questions
 function convertYesNoQues() {
-    console.log('2222');
 
     // Create array of size 2 to hold the options for the yes-no question
     let yesNoArray = [];
