@@ -1,3 +1,7 @@
+/*
+There is an issue with capital letter with Heroku
+*/
+
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
@@ -11,13 +15,6 @@ const questionSchema = new Schema({
     answersSaved: String,
     reqPath: String,
     reqRemoteAddress: String,
-
-    // questionId: String,
-    // question: String,
-    // response: String,
-    // name: String,
-    // value: String,
-    // type: String
     createdAt: String,
 }, {
 }, {

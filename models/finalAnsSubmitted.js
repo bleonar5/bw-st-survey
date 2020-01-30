@@ -1,3 +1,7 @@
+/*
+There is an issue with capital letter with Heroku
+*/
+
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
