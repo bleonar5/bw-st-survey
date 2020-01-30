@@ -3,9 +3,9 @@
 
 const express = require("express");
 const router = express.Router();
-const Answer = require('../models/answerLowerCase.js');
-const FinalAnsSubmitted = require('../models/finalAnsSubmitted.js');
-const MTurkFeedback = require('../models/mTurkFeedback.js');
+const Answer = require('../models/answerLowerCase2.js');
+const FinalAnsSubmitted = require('../models/finalAnsSubmitted2.js');
+const MTurkFeedback = require('../models/mTurkFeedback2.js');
 const app = express();
 
 const getPageNumber = require('../helpers/getPageNumber.js');

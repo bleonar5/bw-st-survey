@@ -7,8 +7,8 @@ const getPageNumber = require('../helpers/getPageNumber.js');
 const extractUrlAndPage = require('../helpers/extractUrlAndPage.js');
 
 // Add code to handle the request from the the 01-individual-login.hbs page
-const User = require("../models/user");
-const Mturk = require('../models/mturk.js');
+const User = require("../models/user2.js");
+const Mturk = require('../models/mTurk2.js');
 
 // Code below is only required if we are going to use passwords
 // Add BCrypt to encrypt passwords (remember we are using bcryptjs)
