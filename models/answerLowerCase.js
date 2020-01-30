@@ -16,6 +16,7 @@ const questionSchema = new Schema({
     reqPath: String,
     reqRemoteAddress: String,
     createdAt: String,
+    capitalLetterBugInHeroku: String,
 }, {
 }, {
   timestamps: {
