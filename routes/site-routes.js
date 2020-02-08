@@ -1130,6 +1130,11 @@ router.get('/compensation-amazon', (req, res) => {
     const urlsAndPages = extractUrlAndPage(currentPage, allUrls);
     const handlebarsPage = urlsAndPages.handlebarsStaticPage;
 
+
+    res.render(handlebarsPage);
+
+    /*
+    // Only use for MTurkers test
     // Tell db to update the status of redem code from 'inUse' to 'redemCodeIssued'
     Mturk.updateOne( { uniqueId : req.session.currentUser }, { $set: { status: "4-redemCodeIssued" }})
         .then( () => {
@@ -1137,9 +1142,9 @@ router.get('/compensation-amazon', (req, res) => {
             Mturk.findOne( { uniqueId : req.session.currentUser} )
                 .then( ( updatedRedemData ) => {
                     // Create variable and assign it to reqsession
-                    req.session.redemptionCode = updatedRedemData.redemCode;
+                    // req.session.redemptionCode = updatedRedemData.redemCode;
                     // Render page with reqsession variable. reqsession variable contains redem code which will appear on screen
-                    res.render(handlebarsPage, { reqsession });
+                    
                 })
                 .catch((error) => {
                     console.log(error)
@@ -1148,6 +1153,7 @@ router.get('/compensation-amazon', (req, res) => {
         .catch((error) => {
             console.log(error);
     });
+    */
 });
 
 
