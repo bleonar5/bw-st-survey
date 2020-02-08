@@ -63,7 +63,7 @@ const urls =
     {
         "url": "/task-2-part-1a",
         "page": 9,
-        "pagination": "Page 1 of 4",
+        "pagination": "Page 1 of 5",
         "hbsview": "4c-task-2",
         "previouspage": "/instructions-2",
         "nextpage": "/task-2-part-1b"
@@ -71,7 +71,7 @@ const urls =
     {
         "url": "/task-2-part-1b",
         "page": 10,
-        "pagination": "Page 2 of 4",
+        "pagination": "Page 2 of 5",
         "hbsview": "4c-task-2",
         "previouspage": "/task-2-part-1a",
         "nextpage": "/task-2-part-2"
@@ -79,7 +79,7 @@ const urls =
     {
         "url": "/task-2-part-2",
         "page": 11,
-        "pagination": "Page 3 of 4",
+        "pagination": "Page 3 of 5",
         "hbsview": "4c-task-2",
         "previouspage": "/task-2-part-1b",
         "nextpage": "/task-2-part-3"
@@ -87,21 +87,30 @@ const urls =
     {
         "url": "/task-2-part-3",
         "page": 12,
-        "pagination": "Page 4 of 4",
+        "pagination": "Page 4 of 5",
         "hbsview": "4c-task-2",
         "previouspage": "/task-2-part-2",
-        "nextpage": "/instructions-3"
+        "nextpage": "/task-2-part-4"
+    },
+    {
+        "url": "/task-2-part-4",
+        "page": 13,
+        "pagination": "Page 5 of 5",
+        "hbsview": "4c-task-2",
+        "previouspage": "/task-2-part-3",
+        "nextpage": "/instructions-3",
+        "comment": "[RP: added 08-feb]"
     },
     {
         "url": "/instructions-3",
-        "page": 13,
+        "page": 14,
         "hbsview": "3a-instructions",
-        "previouspage": "/task-2-part-3",
+        "previouspage": "/task-2-part-4",
         "nextpage": "/task-3-1a"
     },
     {
         "url": "/task-3-1a",
-        "page": 14,
+        "page": 15,
         "hbsview": "5a-task-3",
         "previouspage": "/instructions-3",
         "nextpage": "/task-3-1b",
@@ -110,7 +119,7 @@ const urls =
     },
     {
         "url": "/task-3-1b",
-        "page": 15,
+        "page": 16,
         "backbutton": true,
         "hbsview": "5a-task-3",
         "previouspage": "/task-3-1a",
@@ -120,7 +129,7 @@ const urls =
     },
     {
         "url": "/scenario-2-intro",
-        "page": 16,
+        "page": 17,
         "backbutton": true,
         "hbsview": "5d-scenarios-mezzanine",
         "previouspage": "/task-3-1b",
@@ -130,7 +139,7 @@ const urls =
     },
     {
         "url": "/task-3-2a",
-        "page": 17,
+        "page": 18,
         "hbsview": "5a-task-3",
         "previouspage": "/scenario-2-intro",
         "nextpage": "/task-3-2b",
@@ -139,7 +148,7 @@ const urls =
     },
     {
         "url": "/task-3-2b",
-        "page": 18,
+        "page": 19,
         "backbutton": true,
         "hbsview": "5a-task-3",
         "previouspage": "/task-3-2a",
@@ -149,7 +158,7 @@ const urls =
     },
     {
         "url": "/scenario-3-intro",
-        "page": 19,
+        "page": 20,
         "backbutton": true,
         "hbsview": "5d-scenarios-mezzanine",
         "previouspage": "/task-3-2b",
@@ -159,7 +168,7 @@ const urls =
     },
     {
         "url": "/task-3-3a",
-        "page": 20,
+        "page": 21,
         "hbsview": "5a-task-3",
         "previouspage": "/scenario-3-intro",
         "nextpage": "/task-3-3b",
@@ -168,27 +177,43 @@ const urls =
     },
     {
         "url": "/task-3-3b",
-        "page": 21,
+        "page": 22,
         "backbutton": true,
         "hbsview": "5a-task-3",
         "previouspage": "/task-3-3a",
-        "nextpage": "/feedback-page",
+        "nextpage": "/study-conclusion",
         "comment": "[RP: added 08-jan]",
         "legacyurl": "/scenario-3-split-2"
-    },
-    {
-        "url": "/feedback-page",
-        "page": 22,
-        "hbsview": "6b-feedback-page",
-        "previouspage": "/task-3-3b",
-        "nextpage": "/study-conclusion",
-        "comment": "[RP: added 29-jan for M-Turkers]"
     },
     {
         "url": "/study-conclusion",
         "page": 23,
         "hbsview": "6a-study-conclusion",
-        "previouspage": "/feedback-page"
+        "previouspage": "/task-3-3b"
+    },
+    {
+        "url": "/compensation-cash",
+        "page": 24,
+        "hbsview": "6c-compensation-cash",
+        "previouspage": "/study-conclusion",
+        "nextpage": "/compensation-1",
+        "comment": "[RP: added 07-feb]"
+    },
+    {
+        "url": "/compensation-amazon",
+        "page": 25,
+        "hbsview": "6d-compensation-amazon",
+        "previouspage": "/study-conclusion",
+        "nextpage": "/compensation-2",
+        "comment": "[RP: added 07-feb]"
+    },
+    {
+        "url": "/feedback-page",
+        "page": 122,
+        "hbsview": "6b-feedback-page",
+        "previouspage": "/task-3-3b",
+        "nextpage": "/study-conclusion",
+        "comment": "[RP: added 29-jan for M-Turkers] | [RP: removed 7-feb for final version]"
     },
     {
         "url": "/scenario-1",

@@ -24,7 +24,6 @@ const questionSchema = new Schema({
   }
 });
 
-// Export setOfQuestions model. It's a schema but we treat it as a class
 // Remember to rename the model. Whatever you end up putting in quotes will end up being the collection name
 const Answer = mongoose.model("survey-answers", questionSchema);
 

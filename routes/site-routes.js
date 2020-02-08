@@ -7,6 +7,7 @@ const Answer = require('../models/answerLowerCase2.js');
 const FinalAnsSubmitted = require('../models/finalAnsSubmitted2.js');
 const MTurkFeedback = require('../models/mTurkFeedback2.js');
 const Mturk = require('../models/mTurk2.js');
+const UserPaymentPref = require('../models/userPaymentPref.js');
 const app = express();
 
 const getPageNumber = require('../helpers/getPageNumber.js');
@@ -425,10 +426,39 @@ router.get('/task-2-part-3', (req, res) => {
             const questionIds = JSON.parse(answer.questionsIdSaved);
             const questionAnswersPartial = JSON.parse(answer.answersSaved);
             perguntasWithUserAnswers = addUsersExistingsAnswers(perguntas, questionIds, questionAnswersPartial);
-            perguntas =  perguntasWithUserAnswers;
+            perguntas = perguntasWithUserAnswers;
+            console.log(perguntas);
             res.render(handlebarsPage, { perguntas, urlsAndPages });
         } else {
             console.log(`no answers saved for ${userEmail} yet`);
+            console.log(perguntas);
+            res.render(handlebarsPage, { perguntas, urlsAndPages });
+        }})
+        .catch((error) => {
+            console.log(error);
+    })
+});
+
+/* Added on 8 Feb */
+router.get('/task-2-part-4', (req, res) => {
+    const userEmail = req.session.currentUser;
+    const currentPage = getPageNumber(req.originalUrl, allUrls);
+    const perguntasUnconverted = allQuestions.filter( data => data.page === currentPage);
+    let perguntas = formatQuestions(perguntasUnconverted);
+    const urlsAndPages = extractUrlAndPage(currentPage, allUrls);
+    const handlebarsPage = urlsAndPages.handlebarsStaticPage;
+    Answer.findOne({userEmail: userEmail, currentPage: currentPage})
+    .then((answer) => {
+        if (answer != null) {
+            const questionIds = JSON.parse(answer.questionsIdSaved);
+            const questionAnswersPartial = JSON.parse(answer.answersSaved);
+            perguntasWithUserAnswers = addUsersExistingsAnswers(perguntas, questionIds, questionAnswersPartial);
+            perguntas =  perguntasWithUserAnswers;
+            console.log(perguntas);
+            res.render(handlebarsPage, { perguntas, urlsAndPages });
+        } else {
+            console.log(`no answers saved for ${userEmail} yet`);
+            console.log(perguntas);
             res.render(handlebarsPage, { perguntas, urlsAndPages });
         }})
         .catch((error) => {
@@ -555,7 +585,6 @@ router.post('/task-2-part-2', (req, res) => {
             console.log(error);
 })}});
 
-
 router.post('/task-2-part-3', (req, res) => {
     const reqBody = req.body;
     const keysConvertedToNumbers = Object.keys(reqBody).map(_element => parseInt(_element, 10));
@@ -595,8 +624,45 @@ router.post('/task-2-part-3', (req, res) => {
     }
 });
 
-/* Task Three Routes Below */
+/* Added on 8 Feb */
+router.post('/task-2-part-4', (req, res) => {
+    const reqBody = req.body;
+    const keysConvertedToNumbers = Object.keys(reqBody).map(_element => parseInt(_element, 10));
+    const answersObject = JSON.stringify(reqBody);
+    const questionsIdSaved = JSON.stringify(Object.values(keysConvertedToNumbers)); // Convert to string, otherwise MongoDB will not store the data
+    const answersSaved = JSON.stringify(Object.values(reqBody));
+    const createdAt = req._startTime;
+    const userId = req.cookies.session;
+    const userEmail = req.session.currentUser;
+    const length = Object.keys(req.body).length;
+    const currentPage = getPageNumber(req.originalUrl, allUrls);
+    const dataForThisSheet = allQuestions.filter( data => data.page === currentPage);
+    const urlsAndPages = extractUrlAndPage(currentPage, allUrls);
+    const perguntas = dataForThisSheet.filter (data => !data.heading);
+    let includesBlank = answersObject.includes(`":""`);
 
+    
+    const reqRemoteAddress = req._remoteAddress;
+    const reqPath = req.route.path;
+    const newQuestionSubmittedByUser = new Answer ( { userId, userEmail, currentPage, reqPath, reqRemoteAddress, answersObject, questionsIdSaved, answersSaved, createdAt} );
+
+    if (length === perguntas.length && !includesBlank) {
+        Answer.deleteMany({userEmail: userEmail, currentPage: currentPage})
+        .then(() => {console.log('Deleted All');
+          })
+          .catch((error) => {
+            console.log(error);
+          })
+        newQuestionSubmittedByUser.save()
+        .then( (answer) => {
+            console.log(`Answer saved to database: ${answer}`);
+            res.redirect(urlsAndPages.nextPage);
+        })
+        .catch((error) => {
+            console.log(error);
+})}});
+
+/* Task Three Routes Below */
 router.get('/task-3-1a', (req, res) => {
     const currentPage = getPageNumber(req.originalUrl, allUrls);
     const dataForThisSheet = allQuestions.filter( data => data.page === currentPage);
@@ -984,7 +1050,7 @@ router.post('/task-3-3b', (req, res) => {
                       
                     const timesOfAnswers = JSON.stringify(timesWithDelta);
                     const answersSaved = JSON.stringify(answersSavedArray);
-                    const finalAnswer = new FinalAnsSubmitted ( { userId, userEmail, answersSaved, timesOfAnswers, timesWithDelta} );
+                    const finalAnswer = new FinalAnsSubmitted ( { userId, userEmail, answersSaved, timesOfAnswers} );
                     console.log(finalAnswer);
                     finalAnswer.save()
                     .then ( (x) => {
@@ -995,22 +1061,68 @@ router.post('/task-3-3b', (req, res) => {
 })})})}});
 
 
-/* Below is Old Code for Study-Conclusion */
-/* First test (30 Jan) that new code works on live site, then delete */
-/*
 router.get('/study-conclusion', (req, res) => {
-    const reqsession = req.session;
-    console.log(reqsession);
-    console.log(reqsession.redem);
+
     const currentPage = getPageNumber(req.originalUrl, allUrls);
+    // Create variable which will be sent to Handlebars page after redemCode is fetched from db
+    // Note, as of 7 Feb, this page no longer presents the user with the Amazon voucher.
     const urlsAndPages = extractUrlAndPage(currentPage, allUrls);
     const handlebarsPage = urlsAndPages.handlebarsStaticPage;
 
-    res.render(handlebarsPage, { reqsession });
+    res.render(handlebarsPage);
+
 });
+
+
+/*
+userId: String,
+userEmail: String,
+userPaymentPref: String,
+redemCode: String,
+createdAt: String,
 */
 
-router.get('/study-conclusion', (req, res) => {
+router.post('/study-conclusion', (req, res) => {
+
+    console.log('submitted');
+
+    const userId = req.cookies.session;
+    const userEmail = req.session.currentUser;
+    const createdAt = req._startTime;
+    const userPaymentPref = req.body.compbutton;
+
+    const paymentPreffo = new UserPaymentPref ( { userId, userEmail, userPaymentPref, createdAt } );
+
+    paymentPreffo.save()
+    .then( (answer) => {
+        if (userPaymentPref == 'amazon') {
+            console.log(answer);
+            res.redirect("/compensation-amazon");
+        } else {
+            console.log(answer);
+            res.redirect("/compensation-cash");
+        }
+    })
+    .catch((error) => {
+        console.log(error);
+    })
+
+});
+
+
+/* --- The feedback page is only required for the MTurk version --- */
+router.get('/compensation-cash', (req, res) => {
+    const currentPage = getPageNumber(req.originalUrl, allUrls);
+    const dataForThisSheet = allQuestions.filter( data => data.page === currentPage);
+    const infos = dataForThisSheet.filter (data => data.info);
+    const urlsAndPages = extractUrlAndPage(currentPage, allUrls);
+    const handlebarsPage = urlsAndPages.handlebarsStaticPage;
+
+    res.render(handlebarsPage, { infos, urlsAndPages });
+});
+
+
+router.get('/compensation-amazon', (req, res) => {
 
     // Create variable which will be sent to Handlebars page after redemCode is fetched from db
     const reqsession = req.session;
@@ -1019,26 +1131,28 @@ router.get('/study-conclusion', (req, res) => {
     const handlebarsPage = urlsAndPages.handlebarsStaticPage;
 
     // Tell db to update the status of redem code from 'inUse' to 'redemCodeIssued'
-    Mturk.updateOne( { uniqueId : req.session.currentUser }, { $set: { status: "3-redemCodeIssued" }})
-            .then( () => {
-                // Retrieve the updated redem code object from db
-                Mturk.findOne( { uniqueId : req.session.currentUser} )
-                    .then( ( updatedRedemData ) => {
-                        // Create variable and assign it to reqsession
-                        req.session.redemptionCode = updatedRedemData.redemCode;
-                        // Render page with reqsession variable. reqsession variable contains redem code which will appear on screen
-                        res.render(handlebarsPage, { reqsession });
-                    })
-                    .catch((error) => {
-                        console.log(error)
-                    });
-            })
-            .catch((error) => {
-                console.log(error);
+    Mturk.updateOne( { uniqueId : req.session.currentUser }, { $set: { status: "4-redemCodeIssued" }})
+        .then( () => {
+            // Retrieve the updated redem code object from db
+            Mturk.findOne( { uniqueId : req.session.currentUser} )
+                .then( ( updatedRedemData ) => {
+                    // Create variable and assign it to reqsession
+                    req.session.redemptionCode = updatedRedemData.redemCode;
+                    // Render page with reqsession variable. reqsession variable contains redem code which will appear on screen
+                    res.render(handlebarsPage, { reqsession });
+                })
+                .catch((error) => {
+                    console.log(error)
+                });
+        })
+        .catch((error) => {
+            console.log(error);
     });
 });
 
 
+
+/* --- The feedback page is only required for the MTurk version --- */
 router.get('/feedback-page', (req, res) => {
     const currentPage = getPageNumber(req.originalUrl, allUrls);
     const dataForThisSheet = allQuestions.filter( data => data.page === currentPage);
@@ -1066,6 +1180,7 @@ router.post('/feedback-page', (req, res) => {
     const feedbackFromMTurker = new MTurkFeedback ( { userId, userEmail, currentPage, answersObject, questionsIdSaved, answersSaved, createdAt} );
 
     // Temp hack as this is a temp page
+    /* This hack performs a flawed validation check to see that the user has answered at least 2 questions. It's flawed because there are more than 2 questions but 2 out of 4 questions could be skipped. It was not worth the time to set up flawless logic as this test was only given to 10 MTurkers */
     if (Object.keys(req.body).length > (perguntas.length - 2)) {
         Answer.deleteMany({userEmail: userEmail, currentPage: currentPage})
         .then((answer) => {

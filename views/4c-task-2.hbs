@@ -43,7 +43,7 @@
                     {{#each perguntas}} 
                         {{#if dropdown}}
                             <tr class="row h-100 d-flex align-items-center">
-                                <td class="text-left col-sm-6">{{this.text}}</td>          
+                                <td class="text-left col-sm-6">{{{this.text}}}</td>          
                                 <td class="col-sm-6">
                                     <select id={{this.id}} name={{this.id}} class="form-control dropdn-form-validation first-radio-box" onclick="removeWarning();" onChange="disableDependencies({{this.id}});" required>
                                         <option disabled selected value> -- select an option -- </option>
@@ -59,7 +59,7 @@
 
                         {{#if yesno}}
                             <tr class="row h-100 d-flex align-items-center">
-                                    <td class="text-left col-sm-6">{{this.text}}</td>
+                                    <td class="text-left col-sm-6">{{{this.text}}}</td>
                                     <td id={{this.id}} class="text-center offset-sm-2 col-sm-2 btn-group yesno" data-toggle="buttons" onclick="removeWarning();" required>
 
                                         <label class="btn btn-primary {{#if this.options.1.selected}}active{{/if}}"><input type="radio" name={{this.id}} value="1-yes" class="first-radio-box" onChange="disableDependencies({{this.id}});" {{#if this.options.1.selected}}checked{{/if}}/>Yes </label>
@@ -71,7 +71,7 @@
 
                         {{#if textarea}}
                             <tr class="row h-100 d-flex align-items-center">
-                                <td class="text-left col-sm-6">{{this.text}}</td>
+                                <td class="text-left col-sm-6">{{{this.text}}}</td>
                                 <td class="col-sm-6">
                                     <input id={{this.id}} name={{this.id}} class="form-control first-radio-box text-area-for-vali" type="text" autocomplete="off" onclick="removeWarning();" 
                                     

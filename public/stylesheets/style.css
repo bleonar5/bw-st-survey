@@ -22,6 +22,15 @@ https://stackoverflow.com/questions/25427407/bootstrap-3-and-4-container-fluid-w
     text-orientation: upright;
 }
 
+.tucked-in-bullet-points {
+    list-style-position: inside;
+}
+
+.multi-line-text {
+    display: block;
+    width: 100px;
+}
+
 .row-10h {
     height: 10%;
     height: 10vh;
@@ -59,6 +68,11 @@ https://stackoverflow.com/questions/25427407/bootstrap-3-and-4-container-fluid-w
 .main-h-80 {
     height: 80%;
     height: 80vh;
+}
+
+.main-h-60 {
+    height: 60%;
+    height: 60vh;
 }
 
 #task-1-main {
@@ -223,6 +237,13 @@ In this case, the ratio is 15:60:20
 .bespoke-vertical-align-b {
     min-height: 70%;
     min-height: 70vh;
+    display: flex;
+    align-items: center;
+}
+
+.bespoke-vertical-align-60 {
+    min-height: 60%;
+    min-height: 60vh;
     display: flex;
     align-items: center;
 }
@@ -537,6 +558,9 @@ If root: font-size is 16px, 1 rem will be 16px
     font-size: 2.00rem;
 }
 
+.orange-btn {
+    background-color: #ED7D31
+}
 
 /* Dropdown Button */
 .nav-drop-btn {

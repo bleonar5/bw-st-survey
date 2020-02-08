@@ -62,23 +62,6 @@ app.get('/', function (req, res, next) {
     res.render('index');
 })
 
-
-// Configure Middleware to enable sessions in Express
-/* Commenting out the below as we want to test whether cookies are working before deciding on whether we want a username/password/sign-in scenario
-app.use(session({
-  // secret is used to sign the session ID cookie
-  secret: "basic-auth-secret",
-  // cookie is the object for the session ID cookie
-  cookie: { maxAge: 60000 },
-  // Sets the session store instance. In this case we can store the session information in our Mongo database
-  // todo: Ask what is the standard practice for how long we store session information
-  store: new MongoStore({
-    mongooseConnection: mongoose.connection,
-    ttl: 24 * 60 * 60 // 1 day
-  })
-}));
-*/
-
 // Express view engine setup
 app.use(require('node-sass-middleware')({
   src:  path.join(__dirname, 'public'),
