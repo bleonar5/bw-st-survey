@@ -1,7 +1,6 @@
 
 document.getElementById('amazon-btn').onclick = function () {
 
-    console.log(11);
     let surveyCode = window.localStorage.getItem('code');
     let studyId = '562';
     let token = '9284b25d5cd34edab1e413fbe8ce8381';
