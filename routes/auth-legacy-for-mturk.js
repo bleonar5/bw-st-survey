@@ -1,5 +1,5 @@
 /*
-Below is legacy code for the testing with mturkers
+Below is legacy code for the testing with mturkers (completed end of Jan 2020)
 Code generates new redem codes by pulling them from db
 MTurkers are then given code at end of survey
 

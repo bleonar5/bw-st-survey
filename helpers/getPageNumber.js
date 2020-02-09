@@ -11,5 +11,3 @@ function getPageNumber(_url) {
         }
     }
 }
-
-

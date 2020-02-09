@@ -241,6 +241,20 @@ In this case, the ratio is 15:60:20
     align-items: center;
 }
 
+#content-main-y {
+    /* If you change the height % of content-main, you will also have to change the height in the "bespoke-60vh-vertical-align" class */
+        min-height: 50%;
+    }
+      
+    /* Ùse this classname when you want to vertically center some content in the content-main section. It will only work in that section as it give the min height the same */
+    
+    .bespoke-vertical-align-y {
+        min-height: 50%;
+        min-height: 50vh;
+        display: flex;
+        align-items: center;
+    }
+
 .bespoke-vertical-align-60 {
     min-height: 60%;
     min-height: 60vh;

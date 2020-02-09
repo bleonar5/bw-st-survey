@@ -11,14 +11,10 @@ function formatQuestions(_array) {
         if (_array[i].category === 'dropdown') {
             // If it is a string, it needs converting to an array
             if (typeof _array[i].options === "string") {
-                // console.log('1 - Receiving Semi Colons so will convert to an object');
                 let convertedDropdown = convertDropdownQues(_array[i]);
                 newArray.push(convertedDropdown);
-                // console.log(convertedDropdown);
             } else {
-                // console.log('2 - Dropdown is already an object so no need to convert');
                 newArray.push(_array[i]);
-                // console.log(_array[i]);
             }
 
         } else if (_array[i].category === 'yesno') {
