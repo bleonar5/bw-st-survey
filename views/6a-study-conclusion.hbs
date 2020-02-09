@@ -11,7 +11,7 @@
 
 <div id="content-main-b">
     <div class="row justify-content-center bespoke-vertical-align-b">
-        <div class="col-xs-12 col-sm-10 text-center">
+        <div class="col-12 text-center">
             <h5 class="py-4">You have completed the follow-up survey for the Superteams study</h5> 
             <h5 class="py-4">You have a choice about how you will be compensated: <span class="font-size-130"><strong>EITHER</strong></span></h5>
             <ul class="tucked-in-bullet-points">
@@ -25,29 +25,40 @@
 
 <div id="footer-b" class="row">
 
-    <div class="row w-25">
-        </div>  
+    <div class="offset-1 col-4">
+        <div class="float-left">
 
-            <div class="btn-toolbar d-flex w-100 py-5 px-5"> 
-
-            <div class="w-25"></div>
-                <button name="compbutton" value="amazon" role="button" type="submit" class="btn btn-primary btn-lg text-white hand-curser w-25"><span class="font-size-100">I would like a</span><br/>
+            <button id="amazon-btn" name="compbutton" value="amazon" role="button" onclick="return window.location.href = redirectAmazonCode()" type="submit" class="btn btn-primary btn-block btn-lg text-white hand-curser w-100"><span class="font-size-100">I would like a</span><br/>
                     <span class="font-size-130"><strong>$12 Amazon voucher</strong></span>
-                </button>
-                       
-                    
-            <button name="compbutton" value="cash" role="button" type="submit" class="btn btn-lg orange-btn text-white btn-block hand-curser w-25"><span class="font-size-100">I would like to come to the lab to collect</span><br>
+            </button>
+
+        </div>
+    </div>
+
+    <div class="col-2">
+        <div class="text-center">
+
+        </div>
+    </div>
+
+    <div class="col-4">
+        <div class="float-right">
+
+            <button name="compbutton" value="cash" role="button" type="submit" class="btn btn-lg orange-btn text-white btn-block hand-curser w-100"><span class="font-size-100">I would like to come to the lab to collect</span><br>
                 <span class="font-size-130"><strong>$10 in cash</strong></span>
             </button>
             </div>
 
-        
+        </div>
     </div>
-    </div>
+
+
 {{!-- closing div of footer below --}}
 </div>
 
-
-
 </form>
 </div>
+
+<script type="text/javascript" src="js/retrieveCodeAtSurveyEnd.js"></script>
+
+

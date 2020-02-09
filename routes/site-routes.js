@@ -1097,7 +1097,8 @@ router.post('/study-conclusion', (req, res) => {
     .then( (answer) => {
         if (userPaymentPref == 'amazon') {
             console.log(answer);
-            res.redirect("/compensation-amazon");
+            // Comment this out because the redirect is now done through the frontend as part of the url is retrieved from localStorage
+            // res.redirect("/compensation-amazon");
         } else {
             console.log(answer);
             res.redirect("/compensation-cash");
