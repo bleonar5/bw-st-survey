@@ -1,9 +1,12 @@
 // On window load, fetch surveyCode from localStorage. If surveyCode has been set to N/A or surveyCode does not exist, disable Amazon Voucher button
-window.addEventListener("load", function() {
+
+// Commenting out window.addEventListener to see if window.addEventListener('DOMContentLoaded' works in Chrome
+// window.addEventListener("load", function() {
+window.addEventListener('DOMContentLoaded', () => {
 
     let surveyCode = window.localStorage.getItem('code');
 
-    if (surveyCode === "N/A" || surveyCode === null) {
+    if (surveyCode === null) {
         let amazonBtn = document.getElementById('amazon-btn');
 
         amazonBtn.disabled = true;
@@ -21,9 +24,6 @@ document.getElementById('amazon-btn').onclick = function () {
 
     // Redirect participant to harvard decision lab
     window.location.href = redirectUrl;
-
-    // Save to localStorage for testing url is valid
-    window.localStorage.setItem('redirectUrl', redirectUrl);
 
     // Returning false cancels the form submission.
     return false;

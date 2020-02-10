@@ -17,7 +17,6 @@ function getUrlParam(parameter, defaultvalue){
     return urlparameter;
 }
 
-
 // Commenting out window.addEventListener to see if window.addEventListener('DOMContentLoaded' works in Chrome
 // window.addEventListener("load", function() {
 window.addEventListener('DOMContentLoaded', () => {
@@ -25,22 +24,35 @@ window.addEventListener('DOMContentLoaded', () => {
     // On window load, take surveycode from url
     var surveyCodeFromUrl = getUrlParam('code','');
 
-    console.log(window.location.href);
-
-    // If code exists, save in localStorage & redirect user to "/"
+    // If code exists, save in localStorage & redirect user to "/". Redirecting user to "/" will remove the code from the url
     if (surveyCodeFromUrl.length !== 0) {
         window.localStorage.setItem('code', surveyCodeFromUrl);
-        console.log('before redirect');
-        console.log(window.location.href);
         window.location.href = "/", true;
-        console.log('after redirect');
-        console.log(window.location.href);
-    // If code does not appear in url, then check that user already has code saved in localStorage. If user does not have a code saved in localStorage, set code as N/A. This can then be used to disable Amazon button when user reaches study-conclusion page.
-    } else {
-        let surveyCodeInLocalStorage = window.localStorage.getItem('code')
-
-        if (surveyCodeInLocalStorage === null) {
-            window.localStorage.setItem('code', "N/A");
-        }
     }
 });
+
+
+/*
+Legacy Code - leave until tested code above across broswers
+
+// Commenting out window.addEventListener to see if window.addEventListener('DOMContentLoaded' works in Chrome
+// window.addEventListener("load", function() {
+    window.addEventListener('DOMContentLoaded', () => {
+
+        // On window load, take surveycode from url
+        var surveyCodeFromUrl = getUrlParam('code','');
+    
+        // If code exists, save in localStorage & redirect user to "/"
+        if (surveyCodeFromUrl.length !== 0) {
+            window.localStorage.setItem('code', surveyCodeFromUrl);
+            window.location.href = "/", true;
+        // If code does not appear in url, then check that user already has code saved in localStorage. If user does not have a code saved in localStorage, set code as N/A. This can then be used to disable Amazon button when user reaches study-conclusion page.
+        } else {
+            let surveyCodeInLocalStorage = window.localStorage.getItem('code')
+    
+            if (surveyCodeInLocalStorage === null) {
+                window.localStorage.setItem('code', "N/A");
+            }
+        }
+    });
+*/
