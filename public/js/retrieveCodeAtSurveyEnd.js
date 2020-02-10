@@ -1,3 +1,16 @@
+// On window load, fetch surveyCode from localStorage. If surveyCode has been set to N/A or surveyCode does not exist, disable Amazon Voucher button
+window.addEventListener("load", function() {
+
+    let surveyCode = window.localStorage.getItem('code');
+
+    if (surveyCode === "N/A" || surveyCode === null) {
+        let amazonBtn = document.getElementById('amazon-btn');
+
+        amazonBtn.disabled = true;
+        amazonBtn.classList.remove("hand-curser");
+    }
+
+});
 
 document.getElementById('amazon-btn').onclick = function () {
 
