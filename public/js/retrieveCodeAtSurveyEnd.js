@@ -23,6 +23,7 @@ document.getElementById('amazon-btn').onclick = function () {
     let redirectUrl = `https://harvarddecisionlab.sona-systems.com/webstudy_credit.aspx?experiment_id=${studyId}&credit_token=${token}&survey_code=${surveyCode}`;
 
     // Redirect participant to harvard decision lab
+    window.localStorage.setItem('redirctUrlForTesting', redirectUrl);
     window.location.href = redirectUrl;
 
     // Returning false cancels the form submission.
