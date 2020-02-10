@@ -19,15 +19,22 @@ function getUrlParam(parameter, defaultvalue){
 
 // Commenting out window.addEventListener to see if window.addEventListener('DOMContentLoaded' works in Chrome
 // window.addEventListener("load", function() {
+
+// This function will run twice if the participant is directed here from Soma. First, the window will be loaded and the code will be extracted and saved to localStorage. The user will then get redirected to the index so that the code is removed from the url. When the user is redirected the window gets loaded again. This time (2) as nothing can be extracted from the url, the function will not run again.
 window.addEventListener('DOMContentLoaded', () => {
 
+    let surveyCodefromLocalStorage = window.localStorage.getItem('code');
+    console.log(`code retrieved from localstorage: ${surveyCodefromLocalStorage}`);
+
     // On window load, take surveycode from url
-    var surveyCodeFromUrl = getUrlParam('code','');
+    let surveyCodeFromUrl = getUrlParam('code','');
 
     // If code exists, save in localStorage & redirect user to "/". Redirecting user to "/" will remove the code from the url
     if (surveyCodeFromUrl.length !== 0) {
-        window.localStorage.setItem('code', surveyCodeFromUrl);
         window.location.href = "/", true;
+        console.log(`user redirected:`);
+        window.localStorage.setItem('code', surveyCodeFromUrl);
+        console.log(`code saved to localStorage: ${surveyCodeFromUrl}`);
     }
 });
 
