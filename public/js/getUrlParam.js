@@ -31,8 +31,12 @@ window.addEventListener('DOMContentLoaded', () => {
 
     // If code exists, save in localStorage & redirect user to "/". Redirecting user to "/" will remove the code from the url
     if (surveyCodeFromUrl.length !== 0) {
-        window.location.href = "/", true;
-        console.log(`user redirected:`);
+       //  window.history.pushState("object or string", "Title", "");
+        console.log(`code ${surveyCodeFromUrl} removed from url with window.history.replacestate`);
+        window.history.replaceState({}, "Index", "/")
+        // Comment out redirect
+        // window.location.href = "/", true;
+ 
         window.localStorage.setItem('code', surveyCodeFromUrl);
         console.log(`code saved to localStorage: ${surveyCodeFromUrl}`);
     }
