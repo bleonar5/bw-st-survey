@@ -17,7 +17,7 @@
                         </div>
                         <div class="my-5">
                             <label for="participant_id">Email</label>
-                            <input type="email" class="form-control" name="emailOnLogin" value="" required>
+                            <input id="email-input" type="email" class="form-control" name="emailOnLogin" value="" required>
                         </div>
                         <div>
                             {{#if errorMessage1 }}
@@ -33,11 +33,11 @@
                         
                          {{!-- Button allows user to continue survey. No form validation required --}}
                          {{!-- Should include a frontend check to see that the reqsession actually contains an email address  --}}
-                        <a href="/instructions-1" role="button" class="btn btn-lg btn-warning hand-curser w-25">Resume Survey</a>
+                        <a id="resume-survey" href="/instructions-1" role="button" class="btn btn-lg btn-warning hand-curser w-50">Resume Survey</a>
                     
                         <div class="w-50"></div>
                     
-                        <button type="submit" class="btn btn-lg btn-success hand-curser w-25">Begin Survey</button>
+                        <button id="begin-survey" type="submit" class="btn btn-lg btn-success hand-curser w-50">Begin Survey</button>
                         
                     </div>
                 </fieldset>

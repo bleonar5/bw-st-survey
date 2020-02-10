@@ -6,6 +6,7 @@ window.addEventListener('DOMContentLoaded', () => {
 
     let surveyCode = window.localStorage.getItem('code');
 
+
     if (surveyCode === null) {
         let amazonBtn = document.getElementById('amazon-btn');
 
@@ -14,6 +15,8 @@ window.addEventListener('DOMContentLoaded', () => {
     }
 
 });
+
+let surveyCode = window.localStorage.getItem('code');
 
 document.getElementById('amazon-btn').onclick = function () {
 

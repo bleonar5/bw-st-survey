@@ -1,3 +1,9 @@
+
+const beginSurveyBtn = document.getElementById('begin-survey');
+const resumeSurveyBtn = document.getElementById('resume-survey');
+let startedSurvey = window.localStorage.getItem('startedSurvey');
+console.log(`Started survey: ${startedSurvey}`);
+
 // Declare function to extract survey code from url & return as key-value pair (i.e. code: "abcde");
 function getUrlVars() {
     var vars = {};    
@@ -17,53 +23,39 @@ function getUrlParam(parameter, defaultvalue){
     return urlparameter;
 }
 
-// Commenting out window.addEventListener to see if window.addEventListener('DOMContentLoaded' works in Chrome
-// window.addEventListener("load", function() {
-
-// This function will run twice if the participant is directed here from Soma. First, the window will be loaded and the code will be extracted and saved to localStorage. The user will then get redirected to the index so that the code is removed from the url. When the user is redirected the window gets loaded again. This time (2) as nothing can be extracted from the url, the function will not run again.
 window.addEventListener('DOMContentLoaded', () => {
+
+    // If startedSurvey does not exists yet in LocalStorage, set it to a value of false (which will be stored as a string)
+    if (startedSurvey === null) {
+        window.localStorage.setItem('startedSurvey', false)
+    }
+
+    // Disable begin survey button if participant has already started the survey
+    if (startedSurvey == "true") {
+        beginSurveyBtn.disabled = true;
+        beginSurveyBtn.classList.remove("hand-curser");
+    // Else, disable resume survey button
+    } else {
+        resumeSurveyBtn.classList.remove("hand-curser");
+        resumeSurveyBtn.classList.add("disabled");
+    }
 
     let surveyCodefromLocalStorage = window.localStorage.getItem('code');
     console.log(`code retrieved from localstorage: ${surveyCodefromLocalStorage}`);
 
-    // On window load, take surveycode from url
+    // Take surveycode from url
     let surveyCodeFromUrl = getUrlParam('code','');
 
     // If code exists, save in localStorage & redirect user to "/". Redirecting user to "/" will remove the code from the url
     if (surveyCodeFromUrl.length !== 0) {
-       //  window.history.pushState("object or string", "Title", "");
         console.log(`code ${surveyCodeFromUrl} removed from url with window.history.replacestate`);
         window.history.replaceState({}, "Index", "/")
-        // Comment out redirect
-        // window.location.href = "/", true;
- 
         window.localStorage.setItem('code', surveyCodeFromUrl);
         console.log(`code saved to localStorage: ${surveyCodeFromUrl}`);
     }
 });
 
-
-/*
-Legacy Code - leave until tested code above across broswers
-
-// Commenting out window.addEventListener to see if window.addEventListener('DOMContentLoaded' works in Chrome
-// window.addEventListener("load", function() {
-    window.addEventListener('DOMContentLoaded', () => {
-
-        // On window load, take surveycode from url
-        var surveyCodeFromUrl = getUrlParam('code','');
-    
-        // If code exists, save in localStorage & redirect user to "/"
-        if (surveyCodeFromUrl.length !== 0) {
-            window.localStorage.setItem('code', surveyCodeFromUrl);
-            window.location.href = "/", true;
-        // If code does not appear in url, then check that user already has code saved in localStorage. If user does not have a code saved in localStorage, set code as N/A. This can then be used to disable Amazon button when user reaches study-conclusion page.
-        } else {
-            let surveyCodeInLocalStorage = window.localStorage.getItem('code')
-    
-            if (surveyCodeInLocalStorage === null) {
-                window.localStorage.setItem('code', "N/A");
-            }
-        }
-    });
-*/
+// Set status of startedSurvey to true in localStorage if participant has already started survey
+beginSurveyBtn.addEventListener("click", () => {
+    window.localStorage.setItem('startedSurvey', true);
+});
