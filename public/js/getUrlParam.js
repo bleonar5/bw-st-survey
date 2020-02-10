@@ -17,7 +17,10 @@ function getUrlParam(parameter, defaultvalue){
     return urlparameter;
 }
 
-window.addEventListener("load", function() {
+
+// Commenting out window.addEventListener to see if window.addEventListener('DOMContentLoaded' works in Chrome
+// window.addEventListener("load", function() {
+window.addEventListener('DOMContentLoaded', () => {
 
     // On window load, take surveycode from url
     var surveyCodeFromUrl = getUrlParam('code','');
