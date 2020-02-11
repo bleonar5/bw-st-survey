@@ -227,8 +227,9 @@ router.get('/task-1-part-1', (req, res) => {
     Answer.findOne({userEmail: userEmail, currentPage: currentPage})
     .then((answer) => {
         if (answer !== null) {
-            console.log(`userEmail is ${userEmail}. Current page is ${currentPage}`);
+            console.log(`---- userEmail is ${userEmail}. Current page is ${currentPage} ---- `);
             console.log(answer);
+            console.log(`-- text above is answer retrieved from db for: ${userEmail} ---`);
             const questionIds = JSON.parse(answer.questionsIdSaved);
             const questionAnswersPartial = JSON.parse(answer.answersSaved);
             const perguntasWithUserAnswers = addUsersExistingsAnswers(perguntas, questionIds, questionAnswersPartial);
@@ -255,8 +256,9 @@ router.get('/task-1-part-2', (req, res) => {
     Answer.findOne({userEmail: userEmail, currentPage: currentPage})
     .then((answer) => {
         if (answer !== null) {
-            console.log(`userEmail is ${userEmail}. Current page is ${currentPage}`);
+            console.log(`---- userEmail is ${userEmail}. Current page is ${currentPage} ---- `);
             console.log(answer);
+            console.log(`-- text above is answer retrieved from db for: ${userEmail} ---`);
             const questionIds = JSON.parse(answer.questionsIdSaved);
             const questionAnswersPartial = JSON.parse(answer.answersSaved);
             perguntasWithUserAnswers = addUsersExistingsAnswers(perguntas, questionIds, questionAnswersPartial);

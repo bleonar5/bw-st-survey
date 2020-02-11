@@ -8,14 +8,8 @@ const extractUrlAndPage = require('../helpers/extractUrlAndPage.js');
 
 // Add code to handle the request from the the 01-individual-login.hbs page
 const User = require("../models/user2.js");
-const Mturk = require('../models/mTurk2.js');
-
-// Temp getting rid of
-// router.get("/", (req, res, next) => {
-//     console.log('blah');
-//     res.render('0a-individual-login');
-// });
-
+// Commenting out as this is only required for Mturkers test
+// const Mturk = require('../models/mTurk2.js');
 
 router.post('/', (req, res) => {
     const firstName = req.body.firstNameOnLogin;
