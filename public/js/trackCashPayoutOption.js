@@ -8,7 +8,6 @@ window.addEventListener('DOMContentLoaded', () => {
 
     console.log(`btn onlick updated to: ${redirectUrl}`);
 
-    // Note, this produces an error when clicked. Need to check if there is a typo somewhere.
-    document.getElementById('receipt-button').setAttribute('onClick', `window.location.href = "http://dashboard.harvarddecisionlab.org/new-receipt?i=NTQ3&t=c3RhbmRhcmQ=&p=MTA=&l=b25saW5l&d=&r="+btoa(${redirectUrl});`);
+    document.getElementById('receipt-button').setAttribute('onClick', `window.location.href = "http://dashboard.harvarddecisionlab.org/new-receipt?i=NTQ3&t=c3RhbmRhcmQ=&p=MTA=&l=b25saW5l&d=&r="+btoa("${redirectUrl}");`);
 
 });
