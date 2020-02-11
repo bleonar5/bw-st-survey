@@ -1,6 +1,3 @@
-/* --- TODO: What is  the best practice is for storing these functions? i.e. what folder do they belong in? --- */
-/* --- TODO: Create a class --- */
-
 const express = require("express");
 const router = express.Router();
 const Answer = require('../models/answerLowerCase2.js');
@@ -230,6 +227,7 @@ router.get('/task-1-part-1', (req, res) => {
     Answer.findOne({userEmail: userEmail, currentPage: currentPage})
     .then((answer) => {
         if (answer !== null) {
+            console.log(`userEmail is ${userEmail}. Current page is ${currentPage}`);
             console.log(answer);
             const questionIds = JSON.parse(answer.questionsIdSaved);
             const questionAnswersPartial = JSON.parse(answer.answersSaved);
@@ -257,6 +255,8 @@ router.get('/task-1-part-2', (req, res) => {
     Answer.findOne({userEmail: userEmail, currentPage: currentPage})
     .then((answer) => {
         if (answer !== null) {
+            console.log(`userEmail is ${userEmail}. Current page is ${currentPage}`);
+            console.log(answer);
             const questionIds = JSON.parse(answer.questionsIdSaved);
             const questionAnswersPartial = JSON.parse(answer.answersSaved);
             perguntasWithUserAnswers = addUsersExistingsAnswers(perguntas, questionIds, questionAnswersPartial);
@@ -288,7 +288,6 @@ router.post('/task-1-part-1', (req, res) => {
     const dataForThisSheet = allQuestions.filter(data => data.page === currentPage);
     const perguntas = dataForThisSheet.filter (data => !data.heading);
 
-    /* Next three lines are new (Jan 29). Other routes need updating with this information */
     const reqRemoteAddress = req._remoteAddress;
     const reqPath = req.route.path;
     const newQuestionSubmittedByUser = new Answer ( { userId, userEmail, currentPage, reqPath, reqRemoteAddress, answersObject, questionsIdSaved, answersSaved, createdAt} );
