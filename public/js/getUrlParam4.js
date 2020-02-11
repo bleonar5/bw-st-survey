@@ -47,11 +47,13 @@ window.addEventListener('DOMContentLoaded', () => {
     let surveyCodeFromUrl = getUrlParam('code','');
 
     // If code exists, save in localStorage & redirect user to "/". Redirecting user to "/" will remove the code from the url
-    if (surveyCodeFromUrl.length !== 0) {
+    // if (surveyCodeFromUrl.length !== 0) {
+    // Updated feb 11. Note, I changed surveyCodeFromUrl.length !== "N/A" to surveyCodeFromUrl !== "N/A"
+    if (surveyCodeFromUrl.length !== 0 && surveyCodeFromUrl !== "N/A" && surveyCodeFromUrl !== null) {
         // console.log(`code ${surveyCodeFromUrl} removed from url with window.history.replacestate`);
         window.history.replaceState({}, "Index", "/")
         window.localStorage.setItem('code', surveyCodeFromUrl);
-        // console.log(`code saved to localStorage: ${surveyCodeFromUrl}`);
+        console.log(`code saved to localStorage: ${surveyCodeFromUrl}`);
     }
 });
 
