@@ -2,7 +2,7 @@
 const beginSurveyBtn = document.getElementById('begin-survey');
 const resumeSurveyBtn = document.getElementById('resume-survey');
 let startedSurvey = window.localStorage.getItem('startedSurvey');
-console.log(`Started survey: ${startedSurvey}`);
+// console.log(`Started survey: ${startedSurvey}`);
 
 // Declare function to extract survey code from url & return as key-value pair (i.e. code: "abcde");
 function getUrlVars() {
@@ -41,17 +41,17 @@ window.addEventListener('DOMContentLoaded', () => {
     }
 
     let surveyCodefromLocalStorage = window.localStorage.getItem('code');
-    console.log(`code retrieved from localstorage: ${surveyCodefromLocalStorage}`);
+    // console.log(`code retrieved from localstorage: ${surveyCodefromLocalStorage}`);
 
     // Take surveycode from url
     let surveyCodeFromUrl = getUrlParam('code','');
 
     // If code exists, save in localStorage & redirect user to "/". Redirecting user to "/" will remove the code from the url
     if (surveyCodeFromUrl.length !== 0) {
-        console.log(`code ${surveyCodeFromUrl} removed from url with window.history.replacestate`);
+        // console.log(`code ${surveyCodeFromUrl} removed from url with window.history.replacestate`);
         window.history.replaceState({}, "Index", "/")
         window.localStorage.setItem('code', surveyCodeFromUrl);
-        console.log(`code saved to localStorage: ${surveyCodeFromUrl}`);
+        // console.log(`code saved to localStorage: ${surveyCodeFromUrl}`);
     }
 });
 

@@ -21,10 +21,10 @@
                         </div>
                         <div>
                             {{#if errorMessage1 }}
-                                <div class="error-message">{{ errorMessage1 }}</div>
+                                <div class="alert alert-danger error-message text-center m-5 p-3" role="alert">{{ errorMessage1 }}</div>
                             {{/if}}
                             {{#if errorMessage2 }}
-                                <div class="error-message">{{ errorMessage2 }}</div>
+                                <div class="alert alert-danger error-message text-center m-5 p-3" role="alert">{{ errorMessage2 }}</div>
                             {{/if}}
                         </div>
                     </div>
@@ -32,8 +32,9 @@
                     <div class="btn-container d-flex" role="group" aria-label="Basic example">
                         
                          {{!-- Button allows user to continue survey. No form validation required --}}
+
                          {{!-- Should include a frontend check to see that the reqsession actually contains an email address  --}}
-                        <a id="resume-survey" href="/instructions-1" role="button" class="btn btn-lg btn-warning hand-curser w-50">Resume Survey</a>
+                        <a id="resume-survey" href="/resume-survey" role="button" class="btn btn-lg btn-warning hand-curser w-50">Resume Survey</a>
                     
                         <div class="w-50"></div>
                     

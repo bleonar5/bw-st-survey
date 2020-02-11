@@ -9,7 +9,7 @@ const UserSchema = new Schema({
   firstName: String,
   familyName: String,
   email: String,
-  password: String
+  lastLogin: String,
 }, {
   timestamps: true
 });

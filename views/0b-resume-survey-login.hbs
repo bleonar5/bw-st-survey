@@ -1,0 +1,44 @@
+<div id="content-heading">
+</div>
+
+    <div id="content-main" class="mx-xs-0 mx-sm-2 mx-md-3 mx-lg-5">
+        <div class="row justify-content-center bespoke-60vh-vertical-align">
+            <div class="col-md-8 col-sm-10 p-4">
+              <form method="POST">
+                <fieldset class="bg-light p-4 rounded">
+                    <div class="form-group">
+                        <div class="m-5 p-3">
+                            <h4 class="my-sm-3 my-md-4 my-lg-4 my-xl-5 text-center">Please enter your email address to resume survey</h4>
+
+                            <label for="participant_id">Email</label>
+                            <input id="email-input" type="email" class="form-control" name="emailResumeSurvey" value="" required>
+                        </div>
+                        <div>
+                            {{#if errorMessage1 }}
+
+                             <div class="alert alert-danger error-message text-center m-5 p-3" role="alert">{{ errorMessage1 }}</div>
+
+                            {{/if}}
+                            {{#if errorMessage2 }}
+                                <div class="error-message">{{ errorMessage2 }}</div>
+                            {{/if}}
+                        </div>
+                    </div>
+
+                    <div class="btn-container d-flex p-3" aria-label="Basic example">
+                    
+                    
+                    <div class="w-25"></div>
+                    
+                        <button id="resume-survey-submit" type="submit" class="btn btn-lg btn-success hand-curser w-50">Resume Survey</button>
+                        
+                    </div>
+                </fieldset>
+              </form>
+            </div>
+          </div>
+    {{!-- closing div of end of content main below --}}
+    </div>
+
+<div id="footer">
+</div>

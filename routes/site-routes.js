@@ -7,6 +7,9 @@ const Mturk = require('../models/mTurk2.js');
 const UserPaymentPref = require('../models/userPaymentPref.js');
 const app = express();
 
+// Require User model for resume-survey page
+const User = require("../models/user2.js");
+
 const getPageNumber = require('../helpers/getPageNumber.js');
 const formatQuestions = require('../helpers/formatQuestions.js');
 const extractUrlAndPage = require('../helpers/extractUrlAndPage.js');
@@ -40,7 +43,7 @@ router.use((req, res, next) => {
 });
 
 /* --- INTRO ROUTES --- */
-// individual-login is on routes/auth.js
+// The login page is kept in routes/auth.js
 router.get('/study-consent', (req, res) => {
   const allQuestions = require('../bin/sheets-import');
   const stdConsent = allQuestions.filter(data => data.page === getPageNumber('/study-consent', allUrls));;
@@ -69,6 +72,77 @@ router.get('/welcome', (req, res) => {
   const welcomepg4 = allQuestions.filter(data => data.page === getPageNumber('/welcome', allUrls));
   res.render('2a-welcome', { welcomepg4 });
 });
+
+/* --- RESUME SURVEY ROUTE (Set up on 11 Feb) --- */
+
+router.get('/resume-survey', (req, res) => {
+    res.render('0b-resume-survey-login');
+});
+
+// Add post route for resume survey so that req.session currentUser is set to the correct email address
+router.post('/resume-survey', (req, res) => {
+    const email = req.body.emailResumeSurvey;
+    console.log(email);
+    const loginTime = req._startTime;
+
+    User.findOne({ "email": email })
+      .then(user => {
+        if (user === null) {
+          res.render('0b-resume-survey-login', {
+            errorMessage1: `Sorry, we can't find an account with the email address ${email}. Please try again.`,
+          });
+          return;
+        } else {
+            console.log(user);
+            User.updateOne( { "email": email }, { $set: { lastLogin: loginTime }})
+            .then( updatedUser => {
+                    console.log(updatedUser);
+                    console.log(req.session.currentUser);
+                    req.session.currentUser = email;
+                    res.redirect("instructions-1");
+                    })
+            .catch((error) => {
+                console.log(error)
+            });
+        }})
+});
+
+/* --- Example Below --- */
+router.post('/', (req, res) => {
+    const firstName = req.body.firstNameOnLogin;
+    const familyName = req.body.familyNameOnLogin;
+    const email = req.body.emailOnLogin;
+
+    User.findOne({ "email": email })
+      .then(user => {
+        if (user !== null) {
+          res.render('index.hbs', {
+            errorMessage1: "The email address you have entered is already registered.",
+            errorMessage2: "Click Resume Survey if you would like to continue from where you left off."
+          });
+          return;
+        }
+
+        User.create({
+            firstName,
+            familyName,
+            email
+          })
+          .then(() => {
+            console.log(`user with email ${email} created`);
+            req.session.currentUser = email;
+            res.redirect("study-consent");
+          })
+          .catch(error => {
+            console.log(error);
+          })
+      })
+      .catch(error => {
+        next(error);
+      })
+});
+
+/* --- End of Example --- */
 
 /* --- INSTRUCTIONS ROUTES --- */
 
