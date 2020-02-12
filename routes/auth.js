@@ -13,14 +13,17 @@ const User = require("../models/user2.js");
 // Require the email list so that a check can be performed against the participants who first registered for Superteams
 const LegitEmail = require("../models/emaillist.js");
 
+// This code is commented out as it only needs to be run once to ensure that the email address array is populated
+/*
 router.post('/', (req, res) => {
 
     // --- This step will only run once so that the db is populated with email addresses --- //
     // Require the list of emails addresses which will be valid
     const legitEmails = require('../bin/legitemails.js');
-    const totalLegitEmails = legitEmails.length;
-    console.log('inside post 1');
-    // Look for the emails
+    const totalLegitEmails = legitEmails.length
+
+
+    // Look for the array of Emails
     LegitEmail.find()
     .then( (arrayOfEmails) => {
         console.log('lengthOfEmails');
@@ -100,6 +103,7 @@ router.post('/', (req, res) => {
 })
 })
 });
+*/
  
 module.exports = router;
 

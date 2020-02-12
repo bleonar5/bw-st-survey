@@ -4,6 +4,7 @@ const Answer = require('../models/answerLowerCase2.js');
 const FinalAnsSubmitted = require('../models/finalAnsSubmitted2.js');
 const MTurkFeedback = require('../models/mTurkFeedback2.js');
 const Mturk = require('../models/mTurk2.js');
+const LegitEmail = require("../models/emaillist.js");
 const UserPaymentPref = require('../models/userPaymentPref.js');
 const app = express();
 
@@ -98,6 +99,7 @@ router.post('/resume-survey', (req, res) => {
             .then( updatedUser => {
                     console.log(updatedUser);
                     console.log(req.session.currentUser);
+                    console.log(`Scenario 4: Email exists in database & user is resuming a survey. req.session.currentUser for ${email} set`);
                     req.session.currentUser = email;
                     res.redirect("instructions-1");
                     })
@@ -107,42 +109,60 @@ router.post('/resume-survey', (req, res) => {
         }})
 });
 
-/* --- Example Below --- */
+/* --- Post route for the index --- */
+
 router.post('/', (req, res) => {
+
     const firstName = req.body.firstNameOnLogin;
     const familyName = req.body.familyNameOnLogin;
     const email = req.body.emailOnLogin;
 
-    User.findOne({ "email": email })
-      .then(user => {
-        if (user !== null) {
-          res.render('index.hbs', {
-            errorMessage1: "The email address you have entered is already registered.",
-            errorMessage2: "Click Resume Survey if you would like to continue from where you left off."
-          });
-          return;
-        }
-
-        User.create({
-            firstName,
-            familyName,
-            email
-          })
-          .then(() => {
-            console.log(`user with email ${email} created`);
-            req.session.currentUser = email;
-            res.redirect("study-consent");
-          })
-          .catch(error => {
-            console.log(error);
-          })
-      })
-      .catch(error => {
-        next(error);
-      })
-});
-
-/* --- End of Example --- */
+    // Check 1: Check email address against the list of emails given for the Superteams study. If the email address cannot be found on the database, then prompt the user to give a different email address
+    LegitEmail.findOne({ "emailPopulated": email })
+    .then(emailAddress => {
+        if (emailAddress === null) {
+            console.log(`Scenario 1: Email address ${email} not found in the Superteams database. Re-Render page & display error message`);
+            res.render('index.hbs', {
+                errorMessage1: "The email address you have entered has not been recognized. Please use the same email you gave when you registered for the Superteams study.",
+              });
+            return;
+        // The email has been found so we can progress to the next check
+        } else {
+            console.log(`Scenario 2: This email address has been found in the Superteams database: ${emailAddress}`)
+    // Check 2: Look up email address. If the user has already registed, then prompt them to use the 'Resume Survey" button
+        User.findOne({ "email": email })
+        .then(user => {
+            // The user has been found in the registed email address
+            if (user !== null) {
+                res.render('index.hbs', {
+                    errorMessage1: "The email address you have entered is already registered.",
+                    errorMessage2: "Click Resume Survey if you would like to continue from where you left off."
+                });
+                return; 
+            } else {
+                // If the user has not already registed and the email address is on the database of legit email addresses, then you can create a new user with the details from the login form
+                User.create({
+                    firstName,
+                    familyName,
+                    email
+                })
+                .then(() => {
+                    console.log(`Scenario 3: Email exists in database & user is logging in for the first time. User with email ${email} created & req.session.currentUser set`);
+                    // Set the req.session.currentUser equal to the email address
+                    req.session.currentUser = email;
+                    res.redirect("study-consent");
+                })
+                // Catch for creating user
+                .catch(error => {
+                    console.log(`Error when creating user: ${error}`);
+                })
+            } // close else in if statement for looking up user
+        })
+        // Catch for looking up the email in the users already emailed
+        .catch(error => {
+            next(error);
+        })
+}})});
 
 /* --- INSTRUCTIONS ROUTES --- */
 
