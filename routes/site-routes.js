@@ -312,16 +312,29 @@ router.post('/scenario-3-intro', (req, res) => {
 
 /* --- TASK ONE ROUTES --- */
 router.get('/task-1-part-1', (req, res) => {
+
+    // Reset questions:
+    let perguntas = {};
+    let dataForThisSheet = {};
+    console.log(`--- reset data ---- `);
+    console.log(perguntas);
+    console.log(dataForThisSheet);
+    console.log(`--- reset data ^^ ---- `);
     const currentPage = getPageNumber(req.originalUrl, allUrls);
     const urlsAndPages = extractUrlAndPage(currentPage, allUrls);
     const userEmail = req.session.currentUser;
     const handlebarsPage = urlsAndPages.handlebarsStaticPage;
-    const dataForThisSheet = allQuestions.filter( data => data.page === currentPage);
+    dataForThisSheet = allQuestions.filter( data => data.page === currentPage);
     const heading = dataForThisSheet.filter (data => data.heading);
-    let perguntas = dataForThisSheet.filter (data => data.radio);
+    perguntas = dataForThisSheet.filter (data => data.radio);
+    console.log(`--- filtered the questions ---- `);
+    console.log(perguntas[0]);
+    console.log(`--- ${userEmail} is the req session ---- `);
 
     Answer.findOne({userEmail: userEmail, currentPage: currentPage})
     .then((answer) => {
+        console.log('--- answer from db look up --- ');
+        console.log(answer);
         if (answer !== null) {
             console.log(`---- userEmail is ${userEmail}. Current page is ${currentPage} ---- `);
             console.log(answer);
@@ -330,9 +343,12 @@ router.get('/task-1-part-1', (req, res) => {
             const questionAnswersPartial = JSON.parse(answer.answersSaved);
             const perguntasWithUserAnswers = addUsersExistingsAnswers(perguntas, questionIds, questionAnswersPartial);
             perguntas = perguntasWithUserAnswers;
+            console.log(`--- below is the first of the partially completed questions:`);
+            console.log(perguntas[0]);
             res.render(handlebarsPage, { perguntas, heading, urlsAndPages });
         } else {
-            console.log(`no answers saved for ${userEmail} yet`);
+            console.log(`no answers saved for ${userEmail} yet so show blank answers`);
+            console.log(perguntas[0]);
             res.render(handlebarsPage, { perguntas, heading, urlsAndPages });
         }
     })
@@ -404,6 +420,7 @@ router.post('/task-1-part-1', (req, res) => {
 
 
 router.post('/task-1-part-2', (req, res) => {
+    
     const keysConvertedToNumbers = Object.keys(req.body).map(_element => parseInt(_element, 10));
     const answersObject = JSON.stringify(req.body);
     const questionsIdSaved = JSON.stringify(Object.values(keysConvertedToNumbers)); // Convert to string, otherwise MongoDB will not store the data
@@ -449,13 +466,19 @@ router.get('/task-2-part-1a', (req, res) => {
     Answer.findOne({userEmail: userEmail, currentPage: currentPage})
     .then((answer) => {
         if (answer != null) {
+            console.log(`${userEmail} found. Here is their answer: ${answer}`);
             const questionIds = JSON.parse(answer.questionsIdSaved);
             const questionAnswersPartial = JSON.parse(answer.answersSaved);
+            console.log(`before the conversion here are the questions: ${perguntas}`);
             perguntasWithUserAnswers = addUsersExistingsAnswers(perguntas, questionIds, questionAnswersPartial);
             perguntas =  perguntasWithUserAnswers;
+            console.log(perguntas);
+            console.log(`after the conversion here are the questions: ${perguntas}`);
+            console.log(handlebarsPage);
             res.render(handlebarsPage, { perguntas, urlsAndPages });
         } else {
-            console.log(`no answers saved for ${userEmail} yet`);
+            console.log(`no answers saved for ${userEmail} yet so show perguntas`);
+            console.log(perguntas);
             res.render(handlebarsPage, { perguntas, urlsAndPages });
         }})
         .catch((error) => {
