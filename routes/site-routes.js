@@ -306,48 +306,41 @@ router.post('/scenario-3-intro', (req, res) => {
     })
 });
 
-
-/* --- Mezzanine Post Routes - Added on 29 Jan --- */
 /* --- Need refactoring along with instructions post routes to avoid repetition --- */
 
 /* --- TASK ONE ROUTES --- */
 router.get('/task-1-part-1', (req, res) => {
-
-    // Reset questions:
-    let perguntas = {};
-    let dataForThisSheet = {};
-    console.log(`--- reset data ---- `);
-    console.log(perguntas);
-    console.log(dataForThisSheet);
-    console.log(`--- reset data ^^ ---- `);
     const currentPage = getPageNumber(req.originalUrl, allUrls);
     const urlsAndPages = extractUrlAndPage(currentPage, allUrls);
     const userEmail = req.session.currentUser;
     const handlebarsPage = urlsAndPages.handlebarsStaticPage;
-    dataForThisSheet = allQuestions.filter( data => data.page === currentPage);
+    const dataForThisSheet = allQuestions.filter( data => data.page === currentPage);
     const heading = dataForThisSheet.filter (data => data.heading);
-    perguntas = dataForThisSheet.filter (data => data.radio);
-    console.log(`--- filtered the questions ---- `);
+    console.log(`--- Current page: ${currentPage}. ReqSession data: ${userEmail} --- `);
+    // The mistake is here because you are manipulating the wrong data here. You need to make this a const. The browser creates a references to the original array rather than creating a new one
+    const perguntas = dataForThisSheet.filter (data => data.radio);
+    console.log(`--- Below is the first element of the untouched array of questions ---- `);
     console.log(perguntas[0]);
-    console.log(`--- ${userEmail} is the req session ---- `);
 
     Answer.findOne({userEmail: userEmail, currentPage: currentPage})
     .then((answer) => {
-        console.log('--- answer from db look up --- ');
+        console.log(`--- Below is the answer retrieved from db for: ${userEmail}: --- `);
         console.log(answer);
         if (answer !== null) {
-            console.log(`---- userEmail is ${userEmail}. Current page is ${currentPage} ---- `);
-            console.log(answer);
-            console.log(`-- text above is answer retrieved from db for: ${userEmail} ---`);
+            console.log(`---- Answer is not null. userEmail is ${userEmail}. Current page is ${currentPage} ---- `);
             const questionIds = JSON.parse(answer.questionsIdSaved);
             const questionAnswersPartial = JSON.parse(answer.answersSaved);
-            const perguntasWithUserAnswers = addUsersExistingsAnswers(perguntas, questionIds, questionAnswersPartial);
-            perguntas = perguntasWithUserAnswers;
-            console.log(`--- below is the first of the partially completed questions:`);
-            console.log(perguntas[0]);
-            res.render(handlebarsPage, { perguntas, heading, urlsAndPages });
+            // This is an essential step. You need to deep Copy the array of objects so that when you add the user's answers, you do not manipulate the original array.
+            // Previously, pergunatas was reassigned. You shouldn't reassign the value of perguntas becuase then other users will receive these results. You are maniuplating the original array here
+            const deepCopyOfPerguntas = JSON.parse(JSON.stringify(perguntas));
+            const perguntasWithUserAnswers = addUsersExistingsAnswers(deepCopyOfPerguntas, questionIds, questionAnswersPartial);
+            // Make another deep copy
+            const persistquestions = JSON.parse(JSON.stringify(perguntasWithUserAnswers));
+            console.log(`--- Below is the first element of the Deep Copy containing ${userEmail} answers --`)
+            console.log(persistquestions[0]);
+            res.render(`${handlebarsPage}-persist`, { persistquestions, heading, urlsAndPages });
         } else {
-            console.log(`no answers saved for ${userEmail} yet so show blank answers`);
+            console.log(`--- No answers saved for ${userEmail} yet so show blank answers: ---`);
             console.log(perguntas[0]);
             res.render(handlebarsPage, { perguntas, heading, urlsAndPages });
         }
@@ -364,20 +357,27 @@ router.get('/task-1-part-2', (req, res) => {
     const handlebarsPage = urlsAndPages.handlebarsStaticPage;
     const dataForThisSheet = allQuestions.filter( data => data.page === currentPage);
     const heading = dataForThisSheet.filter (data => data.heading);
-    let perguntas = dataForThisSheet.filter (data => data.radio);
+    console.log(`--- Current page: ${currentPage}. ReqSession data: ${userEmail} --- `);
+    const perguntas = dataForThisSheet.filter (data => data.radio);
+    console.log(`--- Below is the first element of the untouched array of questions ---- `);
+    console.log(perguntas[0]);
     Answer.findOne({userEmail: userEmail, currentPage: currentPage})
     .then((answer) => {
+        console.log(`--- Below is the answer retrieved from db for: ${userEmail}: --- `);
+        console.log(answer);
         if (answer !== null) {
-            console.log(`---- userEmail is ${userEmail}. Current page is ${currentPage} ---- `);
-            console.log(answer);
-            console.log(`-- text above is answer retrieved from db for: ${userEmail} ---`);
+            console.log(`---- Answer is not null. userEmail is ${userEmail}. Current page is ${currentPage} ---- `);
             const questionIds = JSON.parse(answer.questionsIdSaved);
             const questionAnswersPartial = JSON.parse(answer.answersSaved);
-            perguntasWithUserAnswers = addUsersExistingsAnswers(perguntas, questionIds, questionAnswersPartial);
-            perguntas = perguntasWithUserAnswers;
-            res.render(handlebarsPage, { perguntas, heading, urlsAndPages });
+            const deepCopyOfPerguntas = JSON.parse(JSON.stringify(perguntas));
+            const perguntasWithUserAnswers = addUsersExistingsAnswers(deepCopyOfPerguntas, questionIds, questionAnswersPartial);
+            const persistquestions = JSON.parse(JSON.stringify(perguntasWithUserAnswers));
+            console.log(`--- Below is the first element of the Deep Copy containing ${userEmail} answers --`)
+            console.log(persistquestions[0]);
+            res.render(`${handlebarsPage}-persist`, { persistquestions, heading, urlsAndPages });
         } else {
-            console.log(`no answers saved for ${userEmail} yet`);
+            console.log(`--- No answers saved for ${userEmail} yet so show blank answers: ---`);
+            console.log(perguntas[0]);
             res.render(handlebarsPage, { perguntas, heading, urlsAndPages });
         }
     })
@@ -385,6 +385,8 @@ router.get('/task-1-part-2', (req, res) => {
         console.log(error);
     })
 });
+
+/* --- Post Routes for Task 1 --- */
 
 router.post('/task-1-part-1', (req, res) => {
     // Declare variables to store currentPage, which will be used to to retrieve questions from db
@@ -453,32 +455,37 @@ router.post('/task-1-part-2', (req, res) => {
 
 
 /* --- TASK TWO ROUTES --- */
-/* --- PROTOTYPE FOR OTHER ROUTES ---*/
+/* --- PROTOTYPE FOR OTHER TASK TWO ROUTES ---*/
 router.get('/task-2-part-1a', (req, res) => {
-    const userEmail = req.session.currentUser;
     const currentPage = getPageNumber(req.originalUrl, allUrls);
-    const perguntasUnconverted = allQuestions.filter( data => data.page === currentPage);
-    let perguntas = formatQuestions(perguntasUnconverted);
     const urlsAndPages = extractUrlAndPage(currentPage, allUrls);
+    const userEmail = req.session.currentUser;
     const handlebarsPage = urlsAndPages.handlebarsStaticPage;
-    console.log(`---- req session user is: ${userEmail} for page ${handlebarsPage} --- `);
+    const perguntasUnconverted = allQuestions.filter( data => data.page === currentPage);
+    console.log(`--- Current page: ${currentPage}. ReqSession data: ${userEmail} --- `);
+    const perguntas = formatQuestions(perguntasUnconverted);
+    console.log(`--- Below is the first element of the untouched array of questions ---- `);
+    console.log(perguntas[0]);
 
     Answer.findOne({userEmail: userEmail, currentPage: currentPage})
     .then((answer) => {
+        console.log(`--- Below is the answer retrieved from db for: ${userEmail}: --- `);
+        console.log(answer);
         if (answer != null) {
-            console.log(`${userEmail} found. Here is their answer: ${answer}`);
+            console.log(`---- Answer is not null. userEmail is ${userEmail}. Current page is ${currentPage} ---- `);
             const questionIds = JSON.parse(answer.questionsIdSaved);
             const questionAnswersPartial = JSON.parse(answer.answersSaved);
-            console.log(`before the conversion here are the questions: ${perguntas}`);
-            perguntasWithUserAnswers = addUsersExistingsAnswers(perguntas, questionIds, questionAnswersPartial);
-            perguntas =  perguntasWithUserAnswers;
-            console.log(perguntas);
-            console.log(`after the conversion here are the questions: ${perguntas}`);
-            console.log(handlebarsPage);
-            res.render(handlebarsPage, { perguntas, urlsAndPages });
+            // Remember, before you convert these questions you need to make a deep copy of the array. Under no circumstances must the orginal array be mutated.
+            const deepCopyOfPerguntas = JSON.parse(JSON.stringify(perguntas));
+            const perguntasWithUserAnswers = addUsersExistingsAnswers(deepCopyOfPerguntas, questionIds, questionAnswersPartial);
+            // Make another deep copy of the returned array
+            const persistquestions = JSON.parse(JSON.stringify(perguntasWithUserAnswers));
+            console.log(`--- Below is the first element of the Deep Copy containing ${userEmail} answers --`)
+            console.log(persistquestions[0]);
+            res.render(`${handlebarsPage}-persist`, { persistquestions, urlsAndPages });
         } else {
-            console.log(`no answers saved for ${userEmail} yet so show perguntas`);
-            console.log(perguntas);
+            console.log(`--- No answers saved for ${userEmail} yet so show blank answers: ---`);
+            console.log(perguntas[0]);
             res.render(handlebarsPage, { perguntas, urlsAndPages });
         }})
         .catch((error) => {
@@ -487,24 +494,33 @@ router.get('/task-2-part-1a', (req, res) => {
 });
 
 router.get('/task-2-part-1b', (req, res) => {
-    const userEmail = req.session.currentUser;
     const currentPage = getPageNumber(req.originalUrl, allUrls);
-    const perguntasUnconverted = allQuestions.filter( data => data.page === currentPage);
-    let perguntas = formatQuestions(perguntasUnconverted);
     const urlsAndPages = extractUrlAndPage(currentPage, allUrls);
+    const userEmail = req.session.currentUser;
     const handlebarsPage = urlsAndPages.handlebarsStaticPage;
-    console.log(`---- req session user is: ${userEmail} for page ${handlebarsPage} --- `);
+    const perguntasUnconverted = allQuestions.filter( data => data.page === currentPage);
+    console.log(`--- Current page: ${currentPage}. ReqSession data: ${userEmail} --- `);
+    const perguntas = formatQuestions(perguntasUnconverted);
+    console.log(`--- Below is the first element of the untouched array of questions ---- `);
+    console.log(perguntas[0]);
 
     Answer.findOne({userEmail: userEmail, currentPage: currentPage})
     .then((answer) => {
+        console.log(`--- Below is the answer retrieved from db for: ${userEmail}: --- `);
+        console.log(answer);
         if (answer != null) {
+            console.log(`---- Answer is not null. userEmail is ${userEmail}. Current page is ${currentPage} ---- `);
             const questionIds = JSON.parse(answer.questionsIdSaved);
             const questionAnswersPartial = JSON.parse(answer.answersSaved);
-            perguntasWithUserAnswers = addUsersExistingsAnswers(perguntas, questionIds, questionAnswersPartial);
-            perguntas =  perguntasWithUserAnswers;
-            res.render(handlebarsPage, { perguntas, urlsAndPages });
+            const deepCopyOfPerguntas = JSON.parse(JSON.stringify(perguntas));
+            const perguntasWithUserAnswers = addUsersExistingsAnswers(deepCopyOfPerguntas, questionIds, questionAnswersPartial);
+            const persistquestions = JSON.parse(JSON.stringify(perguntasWithUserAnswers));
+            console.log(`--- Below is the first element of the Deep Copy containing ${userEmail} answers --`)
+            console.log(persistquestions[0]);
+            res.render(`${handlebarsPage}-persist`, { persistquestions, urlsAndPages });
         } else {
-            console.log(`no answers saved for ${userEmail} yet`);
+            console.log(`--- No answers saved for ${userEmail} yet so show blank answers: ---`);
+            console.log(perguntas[0]);
             res.render(handlebarsPage, { perguntas, urlsAndPages });
         }})
         .catch((error) => {
@@ -513,25 +529,33 @@ router.get('/task-2-part-1b', (req, res) => {
 });
 
 router.get('/task-2-part-2', (req, res) => {
-    const userEmail = req.session.currentUser;
     const currentPage = getPageNumber(req.originalUrl, allUrls);
-    const perguntasUnconverted = allQuestions.filter( data => data.page === currentPage);
-    let perguntas = formatQuestions(perguntasUnconverted);
     const urlsAndPages = extractUrlAndPage(currentPage, allUrls);
+    const userEmail = req.session.currentUser;
     const handlebarsPage = urlsAndPages.handlebarsStaticPage;
-    console.log(`---- req session user is: ${userEmail} for page ${handlebarsPage} --- `);
-    
+    const perguntasUnconverted = allQuestions.filter( data => data.page === currentPage);
+    console.log(`--- Current page: ${currentPage}. ReqSession data: ${userEmail} --- `);
+    const perguntas = formatQuestions(perguntasUnconverted);
+    console.log(`--- Below is the first element of the untouched array of questions ---- `);
+    console.log(perguntas[0]);
+
     Answer.findOne({userEmail: userEmail, currentPage: currentPage})
     .then((answer) => {
+        console.log(`--- Below is the answer retrieved from db for: ${userEmail}: --- `);
+        console.log(answer);
         if (answer != null) {
+            console.log(`---- Answer is not null. userEmail is ${userEmail}. Current page is ${currentPage} ---- `);
             const questionIds = JSON.parse(answer.questionsIdSaved);
             const questionAnswersPartial = JSON.parse(answer.answersSaved);
-            perguntasWithUserAnswers = addUsersExistingsAnswers(perguntas, questionIds, questionAnswersPartial);
-            console.log(perguntasWithUserAnswers);
-            perguntas =  perguntasWithUserAnswers;
-            res.render(handlebarsPage, { perguntas, urlsAndPages });
+            const deepCopyOfPerguntas = JSON.parse(JSON.stringify(perguntas));
+            const perguntasWithUserAnswers = addUsersExistingsAnswers(deepCopyOfPerguntas, questionIds, questionAnswersPartial);
+            const persistquestions = JSON.parse(JSON.stringify(perguntasWithUserAnswers));
+            console.log(`--- Below is the first element of the Deep Copy containing ${userEmail} answers --`)
+            console.log(persistquestions[0]);
+            res.render(`${handlebarsPage}-persist`, { persistquestions, urlsAndPages });
         } else {
-            console.log(`no answers saved for ${userEmail} yet`);
+            console.log(`--- No answers saved for ${userEmail} yet so show blank answers: ---`);
+            console.log(perguntas[0]);
             res.render(handlebarsPage, { perguntas, urlsAndPages });
         }})
         .catch((error) => {
@@ -540,26 +564,33 @@ router.get('/task-2-part-2', (req, res) => {
 });
 
 router.get('/task-2-part-3', (req, res) => {
-    const userEmail = req.session.currentUser;
     const currentPage = getPageNumber(req.originalUrl, allUrls);
-    const perguntasUnconverted = allQuestions.filter( data => data.page === currentPage);
-    let perguntas = formatQuestions(perguntasUnconverted);
     const urlsAndPages = extractUrlAndPage(currentPage, allUrls);
+    const userEmail = req.session.currentUser;
     const handlebarsPage = urlsAndPages.handlebarsStaticPage;
-    console.log(`---- req session user is: ${userEmail} for page ${handlebarsPage} --- `);
+    const perguntasUnconverted = allQuestions.filter( data => data.page === currentPage);
+    console.log(`--- Current page: ${currentPage}. ReqSession data: ${userEmail} --- `);
+    const perguntas = formatQuestions(perguntasUnconverted);
+    console.log(`--- Below is the first element of the untouched array of questions ---- `);
+    console.log(perguntas[0]);
 
     Answer.findOne({userEmail: userEmail, currentPage: currentPage})
     .then((answer) => {
+        console.log(`--- Below is the answer retrieved from db for: ${userEmail}: --- `);
+        console.log(answer);
         if (answer != null) {
+            console.log(`---- Answer is not null. userEmail is ${userEmail}. Current page is ${currentPage} ---- `);
             const questionIds = JSON.parse(answer.questionsIdSaved);
             const questionAnswersPartial = JSON.parse(answer.answersSaved);
-            perguntasWithUserAnswers = addUsersExistingsAnswers(perguntas, questionIds, questionAnswersPartial);
-            perguntas = perguntasWithUserAnswers;
-            console.log(perguntas);
-            res.render(handlebarsPage, { perguntas, urlsAndPages });
+            const deepCopyOfPerguntas = JSON.parse(JSON.stringify(perguntas));
+            const perguntasWithUserAnswers = addUsersExistingsAnswers(deepCopyOfPerguntas, questionIds, questionAnswersPartial);
+            const persistquestions = JSON.parse(JSON.stringify(perguntasWithUserAnswers));
+            console.log(`--- Below is the first element of the Deep Copy containing ${userEmail} answers --`)
+            console.log(persistquestions[0]);
+            res.render(`${handlebarsPage}-persist`, { persistquestions, urlsAndPages });
         } else {
-            console.log(`no answers saved for ${userEmail} yet`);
-            console.log(perguntas);
+            console.log(`--- No answers saved for ${userEmail} yet so show blank answers: ---`);
+            console.log(perguntas[0]);
             res.render(handlebarsPage, { perguntas, urlsAndPages });
         }})
         .catch((error) => {
@@ -569,32 +600,41 @@ router.get('/task-2-part-3', (req, res) => {
 
 /* Added on 8 Feb */
 router.get('/task-2-part-4', (req, res) => {
-    const userEmail = req.session.currentUser;
     const currentPage = getPageNumber(req.originalUrl, allUrls);
-    const perguntasUnconverted = allQuestions.filter( data => data.page === currentPage);
-    let perguntas = formatQuestions(perguntasUnconverted);
     const urlsAndPages = extractUrlAndPage(currentPage, allUrls);
+    const userEmail = req.session.currentUser;
     const handlebarsPage = urlsAndPages.handlebarsStaticPage;
-    console.log(`---- req session user is: ${userEmail} for page ${handlebarsPage} --- `);
+    const perguntasUnconverted = allQuestions.filter( data => data.page === currentPage);
+    console.log(`--- Current page: ${currentPage}. ReqSession data: ${userEmail} --- `);
+    const perguntas = formatQuestions(perguntasUnconverted);
+    console.log(`--- Below is the first element of the untouched array of questions ---- `);
+    console.log(perguntas[0]);
 
     Answer.findOne({userEmail: userEmail, currentPage: currentPage})
     .then((answer) => {
+        console.log(`--- Below is the answer retrieved from db for: ${userEmail}: --- `);
+        console.log(answer);
         if (answer != null) {
+            console.log(`---- Answer is not null. userEmail is ${userEmail}. Current page is ${currentPage} ---- `);
             const questionIds = JSON.parse(answer.questionsIdSaved);
             const questionAnswersPartial = JSON.parse(answer.answersSaved);
-            perguntasWithUserAnswers = addUsersExistingsAnswers(perguntas, questionIds, questionAnswersPartial);
-            perguntas =  perguntasWithUserAnswers;
-            console.log(perguntas);
-            res.render(handlebarsPage, { perguntas, urlsAndPages });
+            const deepCopyOfPerguntas = JSON.parse(JSON.stringify(perguntas));
+            const perguntasWithUserAnswers = addUsersExistingsAnswers(deepCopyOfPerguntas, questionIds, questionAnswersPartial);
+            const persistquestions = JSON.parse(JSON.stringify(perguntasWithUserAnswers));
+            console.log(`--- Below is the first element of the Deep Copy containing ${userEmail} answers --`)
+            console.log(persistquestions[0]);
+            res.render(`${handlebarsPage}-persist`, { persistquestions, urlsAndPages });
         } else {
-            console.log(`no answers saved for ${userEmail} yet`);
-            console.log(perguntas);
+            console.log(`--- No answers saved for ${userEmail} yet so show blank answers: ---`);
+            console.log(perguntas[0]);
             res.render(handlebarsPage, { perguntas, urlsAndPages });
         }})
         .catch((error) => {
             console.log(error);
     })
 });
+
+/* --- Post Routes for Task 2 --- */
 
 router.post('/task-2-part-1a', (req, res) => {
     const reqBody = req.body;
@@ -795,24 +835,32 @@ router.post('/task-2-part-4', (req, res) => {
 /* Task Three Routes Below */
 router.get('/task-3-1a', (req, res) => {
     const currentPage = getPageNumber(req.originalUrl, allUrls);
+    const urlsAndPages = extractUrlAndPage(currentPage, allUrls);
+    const userEmail = req.session.currentUser;
+    const handlebarsPage = urlsAndPages.handlebarsStaticPage;   
     const dataForThisSheet = allQuestions.filter( data => data.page === currentPage);
     const sheetsSituations = dataForThisSheet.filter (data => data.scenario);
     const heading = dataForThisSheet.filter (data => data.heading);
-    const urlsAndPages = extractUrlAndPage(currentPage, allUrls);
-    const userEmail = req.session.currentUser;
-    const handlebarsPage = urlsAndPages.handlebarsStaticPage;
-    let perguntas = dataForThisSheet.filter (data => data.radio);
+    console.log(`--- Current page: ${currentPage}. ReqSession data: ${userEmail} --- `);
+    const perguntas = dataForThisSheet.filter (data => data.radio);
+    console.log(`--- Below is the first element of the untouched array of questions ---- `);
+    console.log(perguntas[0]);
 
     Answer.findOne({userEmail: userEmail, currentPage: currentPage})
     .then((answer) => {
+        console.log(`--- Below is the answer retrieved from db for: ${userEmail}: --- `);
+        console.log(answer);
         if (answer != null) {
+        console.log(`---- Answer is not null. userEmail is ${userEmail}. Current page is ${currentPage} ---- `);
         const questionIds = JSON.parse(answer.questionsIdSaved);
         const questionAnswersPartial = JSON.parse(answer.answersSaved);
-        let perguntasWithUserAnswers = addUsersExistingsAnswers(perguntas, questionIds, questionAnswersPartial);
-        perguntas = perguntasWithUserAnswers;
-        res.render(handlebarsPage, { heading, sheetsSituations, perguntas, urlsAndPages });
+        const deepCopyOfPerguntas = JSON.parse(JSON.stringify(perguntas));
+        const perguntasWithUserAnswers = addUsersExistingsAnswers(deepCopyOfPerguntas, questionIds, questionAnswersPartial);
+        const persistquestions = JSON.parse(JSON.stringify(perguntasWithUserAnswers));
+        res.render(`${handlebarsPage}-persist`, { heading, sheetsSituations, persistquestions, urlsAndPages });
     } else {
-        console.log(`no answers saved for ${userEmail} yet`);
+        console.log(`--- No answers saved for ${userEmail} yet so show blank answers: ---`);
+        console.log(perguntas[0]);
         res.render(handlebarsPage, { heading, sheetsSituations, perguntas, urlsAndPages });
     }})
     .catch((error) => {
@@ -858,24 +906,32 @@ router.post('/task-3-1a', (req, res) => {
 
 router.get('/task-3-1b', (req, res) => {
     const currentPage = getPageNumber(req.originalUrl, allUrls);
+    const urlsAndPages = extractUrlAndPage(currentPage, allUrls);
+    const userEmail = req.session.currentUser;
+    const handlebarsPage = urlsAndPages.handlebarsStaticPage;   
     const dataForThisSheet = allQuestions.filter( data => data.page === currentPage);
     const sheetsSituations = dataForThisSheet.filter (data => data.scenario);
     const heading = dataForThisSheet.filter (data => data.heading);
-    const urlsAndPages = extractUrlAndPage(currentPage, allUrls);
-    const userEmail = req.session.currentUser;
-    const handlebarsPage = urlsAndPages.handlebarsStaticPage;
-    let perguntas = dataForThisSheet.filter (data => data.radio);
+    console.log(`--- Current page: ${currentPage}. ReqSession data: ${userEmail} --- `);
+    const perguntas = dataForThisSheet.filter (data => data.radio);
+    console.log(`--- Below is the first element of the untouched array of questions ---- `);
+    console.log(perguntas[0]);
 
     Answer.findOne({userEmail: userEmail, currentPage: currentPage})
     .then((answer) => {
+        console.log(`--- Below is the answer retrieved from db for: ${userEmail}: --- `);
+        console.log(answer);
         if (answer != null) {
+        console.log(`---- Answer is not null. userEmail is ${userEmail}. Current page is ${currentPage} ---- `);
         const questionIds = JSON.parse(answer.questionsIdSaved);
         const questionAnswersPartial = JSON.parse(answer.answersSaved);
-        let perguntasWithUserAnswers = addUsersExistingsAnswers(perguntas, questionIds, questionAnswersPartial);
-        perguntas = perguntasWithUserAnswers;
-        res.render(handlebarsPage, { heading, sheetsSituations, perguntas, urlsAndPages });
+        const deepCopyOfPerguntas = JSON.parse(JSON.stringify(perguntas));
+        const perguntasWithUserAnswers = addUsersExistingsAnswers(deepCopyOfPerguntas, questionIds, questionAnswersPartial);
+        const persistquestions = JSON.parse(JSON.stringify(perguntasWithUserAnswers));
+        res.render(`${handlebarsPage}-persist`, { heading, sheetsSituations, persistquestions, urlsAndPages });
     } else {
-        console.log(`no answers saved for ${userEmail} yet`);
+        console.log(`--- No answers saved for ${userEmail} yet so show blank answers: ---`);
+        console.log(perguntas[0]);
         res.render(handlebarsPage, { heading, sheetsSituations, perguntas, urlsAndPages });
     }})
     .catch((error) => {
@@ -915,24 +971,32 @@ router.post('/task-3-1b', (req, res) => {
 
 router.get('/task-3-2a', (req, res) => {
     const currentPage = getPageNumber(req.originalUrl, allUrls);
+    const urlsAndPages = extractUrlAndPage(currentPage, allUrls);
+    const userEmail = req.session.currentUser;
+    const handlebarsPage = urlsAndPages.handlebarsStaticPage;   
     const dataForThisSheet = allQuestions.filter( data => data.page === currentPage);
     const sheetsSituations = dataForThisSheet.filter (data => data.scenario);
     const heading = dataForThisSheet.filter (data => data.heading);
-    const urlsAndPages = extractUrlAndPage(currentPage, allUrls);
-    const userEmail = req.session.currentUser;
-    const handlebarsPage = urlsAndPages.handlebarsStaticPage;
-    let perguntas = dataForThisSheet.filter (data => data.radio);
+    console.log(`--- Current page: ${currentPage}. ReqSession data: ${userEmail} --- `);
+    const perguntas = dataForThisSheet.filter (data => data.radio);
+    console.log(`--- Below is the first element of the untouched array of questions ---- `);
+    console.log(perguntas[0]);
 
     Answer.findOne({userEmail: userEmail, currentPage: currentPage})
     .then((answer) => {
+        console.log(`--- Below is the answer retrieved from db for: ${userEmail}: --- `);
+        console.log(answer);
         if (answer != null) {
+        console.log(`---- Answer is not null. userEmail is ${userEmail}. Current page is ${currentPage} ---- `);
         const questionIds = JSON.parse(answer.questionsIdSaved);
         const questionAnswersPartial = JSON.parse(answer.answersSaved);
-        let perguntasWithUserAnswers = addUsersExistingsAnswers(perguntas, questionIds, questionAnswersPartial);
-        perguntas = perguntasWithUserAnswers;
-        res.render(handlebarsPage, { heading, sheetsSituations, perguntas, urlsAndPages });
+        const deepCopyOfPerguntas = JSON.parse(JSON.stringify(perguntas));
+        const perguntasWithUserAnswers = addUsersExistingsAnswers(deepCopyOfPerguntas, questionIds, questionAnswersPartial);
+        const persistquestions = JSON.parse(JSON.stringify(perguntasWithUserAnswers));
+        res.render(`${handlebarsPage}-persist`, { heading, sheetsSituations, persistquestions, urlsAndPages });
     } else {
-        console.log(`no answers saved for ${userEmail} yet`);
+        console.log(`--- No answers saved for ${userEmail} yet so show blank answers: ---`);
+        console.log(perguntas[0]);
         res.render(handlebarsPage, { heading, sheetsSituations, perguntas, urlsAndPages });
     }})
     .catch((error) => {
@@ -972,24 +1036,32 @@ router.post('/task-3-2a', (req, res) => {
 
 router.get('/task-3-2b', (req, res) => {
     const currentPage = getPageNumber(req.originalUrl, allUrls);
+    const urlsAndPages = extractUrlAndPage(currentPage, allUrls);
+    const userEmail = req.session.currentUser;
+    const handlebarsPage = urlsAndPages.handlebarsStaticPage;   
     const dataForThisSheet = allQuestions.filter( data => data.page === currentPage);
     const sheetsSituations = dataForThisSheet.filter (data => data.scenario);
     const heading = dataForThisSheet.filter (data => data.heading);
-    const urlsAndPages = extractUrlAndPage(currentPage, allUrls);
-    const userEmail = req.session.currentUser;
-    const handlebarsPage = urlsAndPages.handlebarsStaticPage;
-    let perguntas = dataForThisSheet.filter (data => data.radio);
+    console.log(`--- Current page: ${currentPage}. ReqSession data: ${userEmail} --- `);
+    const perguntas = dataForThisSheet.filter (data => data.radio);
+    console.log(`--- Below is the first element of the untouched array of questions ---- `);
+    console.log(perguntas[0]);
 
     Answer.findOne({userEmail: userEmail, currentPage: currentPage})
     .then((answer) => {
+        console.log(`--- Below is the answer retrieved from db for: ${userEmail}: --- `);
+        console.log(answer);
         if (answer != null) {
+        console.log(`---- Answer is not null. userEmail is ${userEmail}. Current page is ${currentPage} ---- `);
         const questionIds = JSON.parse(answer.questionsIdSaved);
         const questionAnswersPartial = JSON.parse(answer.answersSaved);
-        let perguntasWithUserAnswers = addUsersExistingsAnswers(perguntas, questionIds, questionAnswersPartial);
-        perguntas = perguntasWithUserAnswers;
-        res.render(handlebarsPage, { heading, sheetsSituations, perguntas, urlsAndPages });
+        const deepCopyOfPerguntas = JSON.parse(JSON.stringify(perguntas));
+        const perguntasWithUserAnswers = addUsersExistingsAnswers(deepCopyOfPerguntas, questionIds, questionAnswersPartial);
+        const persistquestions = JSON.parse(JSON.stringify(perguntasWithUserAnswers));
+        res.render(`${handlebarsPage}-persist`, { heading, sheetsSituations, persistquestions, urlsAndPages });
     } else {
-        console.log(`no answers saved for ${userEmail} yet`);
+        console.log(`--- No answers saved for ${userEmail} yet so show blank answers: ---`);
+        console.log(perguntas[0]);
         res.render(handlebarsPage, { heading, sheetsSituations, perguntas, urlsAndPages });
     }})
     .catch((error) => {
@@ -1029,24 +1101,32 @@ router.post('/task-3-2b', (req, res) => {
 
 router.get('/task-3-3a', (req, res) => {
     const currentPage = getPageNumber(req.originalUrl, allUrls);
+    const urlsAndPages = extractUrlAndPage(currentPage, allUrls);
+    const userEmail = req.session.currentUser;
+    const handlebarsPage = urlsAndPages.handlebarsStaticPage;   
     const dataForThisSheet = allQuestions.filter( data => data.page === currentPage);
     const sheetsSituations = dataForThisSheet.filter (data => data.scenario);
     const heading = dataForThisSheet.filter (data => data.heading);
-    const urlsAndPages = extractUrlAndPage(currentPage, allUrls);
-    const userEmail = req.session.currentUser;
-    const handlebarsPage = urlsAndPages.handlebarsStaticPage;
-    let perguntas = dataForThisSheet.filter (data => data.radio);
+    console.log(`--- Current page: ${currentPage}. ReqSession data: ${userEmail} --- `);
+    const perguntas = dataForThisSheet.filter (data => data.radio);
+    console.log(`--- Below is the first element of the untouched array of questions ---- `);
+    console.log(perguntas[0]);
 
     Answer.findOne({userEmail: userEmail, currentPage: currentPage})
     .then((answer) => {
+        console.log(`--- Below is the answer retrieved from db for: ${userEmail}: --- `);
+        console.log(answer);
         if (answer != null) {
+        console.log(`---- Answer is not null. userEmail is ${userEmail}. Current page is ${currentPage} ---- `);
         const questionIds = JSON.parse(answer.questionsIdSaved);
         const questionAnswersPartial = JSON.parse(answer.answersSaved);
-        let perguntasWithUserAnswers = addUsersExistingsAnswers(perguntas, questionIds, questionAnswersPartial);
-        perguntas = perguntasWithUserAnswers;
-        res.render(handlebarsPage, { heading, sheetsSituations, perguntas, urlsAndPages });
+        const deepCopyOfPerguntas = JSON.parse(JSON.stringify(perguntas));
+        const perguntasWithUserAnswers = addUsersExistingsAnswers(deepCopyOfPerguntas, questionIds, questionAnswersPartial);
+        const persistquestions = JSON.parse(JSON.stringify(perguntasWithUserAnswers));
+        res.render(`${handlebarsPage}-persist`, { heading, sheetsSituations, persistquestions, urlsAndPages });
     } else {
-        console.log(`no answers saved for ${userEmail} yet`);
+        console.log(`--- No answers saved for ${userEmail} yet so show blank answers: ---`);
+        console.log(perguntas[0]);
         res.render(handlebarsPage, { heading, sheetsSituations, perguntas, urlsAndPages });
     }})
     .catch((error) => {
@@ -1086,24 +1166,32 @@ router.post('/task-3-3a', (req, res) => {
 
 router.get('/task-3-3b', (req, res) => {
     const currentPage = getPageNumber(req.originalUrl, allUrls);
+    const urlsAndPages = extractUrlAndPage(currentPage, allUrls);
+    const userEmail = req.session.currentUser;
+    const handlebarsPage = urlsAndPages.handlebarsStaticPage;   
     const dataForThisSheet = allQuestions.filter( data => data.page === currentPage);
     const sheetsSituations = dataForThisSheet.filter (data => data.scenario);
     const heading = dataForThisSheet.filter (data => data.heading);
-    const urlsAndPages = extractUrlAndPage(currentPage, allUrls);
-    const userEmail = req.session.currentUser;
-    const handlebarsPage = urlsAndPages.handlebarsStaticPage;
-    let perguntas = dataForThisSheet.filter (data => data.radio);
+    console.log(`--- Current page: ${currentPage}. ReqSession data: ${userEmail} --- `);
+    const perguntas = dataForThisSheet.filter (data => data.radio);
+    console.log(`--- Below is the first element of the untouched array of questions ---- `);
+    console.log(perguntas[0]);
 
     Answer.findOne({userEmail: userEmail, currentPage: currentPage})
     .then((answer) => {
+        console.log(`--- Below is the answer retrieved from db for: ${userEmail}: --- `);
+        console.log(answer);
         if (answer != null) {
+        console.log(`---- Answer is not null. userEmail is ${userEmail}. Current page is ${currentPage} ---- `);
         const questionIds = JSON.parse(answer.questionsIdSaved);
         const questionAnswersPartial = JSON.parse(answer.answersSaved);
-        let perguntasWithUserAnswers = addUsersExistingsAnswers(perguntas, questionIds, questionAnswersPartial);
-        perguntas = perguntasWithUserAnswers;
-        res.render(handlebarsPage, { heading, sheetsSituations, perguntas, urlsAndPages });
+        const deepCopyOfPerguntas = JSON.parse(JSON.stringify(perguntas));
+        const perguntasWithUserAnswers = addUsersExistingsAnswers(deepCopyOfPerguntas, questionIds, questionAnswersPartial);
+        const persistquestions = JSON.parse(JSON.stringify(perguntasWithUserAnswers));
+        res.render(`${handlebarsPage}-persist`, { heading, sheetsSituations, persistquestions, urlsAndPages });
     } else {
-        console.log(`no answers saved for ${userEmail} yet`);
+        console.log(`--- No answers saved for ${userEmail} yet so show blank answers: ---`);
+        console.log(perguntas[0]);
         res.render(handlebarsPage, { heading, sheetsSituations, perguntas, urlsAndPages });
     }})
     .catch((error) => {
@@ -1204,17 +1292,7 @@ router.get('/study-conclusion', (req, res) => {
 });
 
 
-/*
-userId: String,
-userEmail: String,
-userPaymentPref: String,
-redemCode: String,
-createdAt: String,
-*/
-
 router.post('/study-conclusion', (req, res) => {
-
-    console.log('submitted');
 
     const userId = req.cookies.session;
     const userEmail = req.session.currentUser;
@@ -1240,8 +1318,6 @@ router.post('/study-conclusion', (req, res) => {
 
 });
 
-
-/* --- The feedback page is only required for the MTurk version --- */
 router.get('/compensation-cash', (req, res) => {
     const currentPage = getPageNumber(req.originalUrl, allUrls);
     const dataForThisSheet = allQuestions.filter( data => data.page === currentPage);
@@ -1287,8 +1363,6 @@ router.get('/compensation-amazon', (req, res) => {
     */
 });
 
-
-
 /* --- The feedback page is only required for the MTurk version --- */
 router.get('/feedback-page', (req, res) => {
     const currentPage = getPageNumber(req.originalUrl, allUrls);
@@ -1300,7 +1374,6 @@ router.get('/feedback-page', (req, res) => {
 
     res.render(handlebarsPage, { infos, perguntas, urlsAndPages });
 });
-
 
 router.post('/feedback-page', (req, res) => {
     const currentPage = getPageNumber(req.originalUrl, allUrls);
@@ -1331,6 +1404,5 @@ router.post('/feedback-page', (req, res) => {
                 console.log(error);
             })
 })}});
-
 
 module.exports = router;
