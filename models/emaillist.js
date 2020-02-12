@@ -1,7 +1,9 @@
+// Had to change name as Heroku could not find file
+
 const mongoose = require("mongoose");
 const Schema   = mongoose.Schema;
 
-const legitEmailSchema = new Schema({
+const LegitEmailSchema = new Schema({
   uniqueId: String,
   emailPopulated : String,
   status: String, 
@@ -9,6 +11,6 @@ const legitEmailSchema = new Schema({
   timestamps: true
 });
 
-const LegitEmail = mongoose.model("legit-emails", legitEmailSchema);
+const LegitEmail = mongoose.model("legit-emails", LegitEmailSchema);
 
 module.exports = LegitEmail;

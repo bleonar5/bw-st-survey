@@ -10,7 +10,8 @@ const extractUrlAndPage = require('../helpers/extractUrlAndPage.js');
 const User = require("../models/user2.js");
 // Commenting out as this is only required for Mturkers test
 // const Mturk = require('../models/mTurk2.js');
-const LegitEmail = require("../models/legitemail.js");
+// Require the email list so that a check can be performed against the participants who first registered for Superteams
+const LegitEmail = require("../models/emaillist.js");
 
 router.post('/', (req, res) => {
 
