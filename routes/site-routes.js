@@ -442,6 +442,8 @@ router.get('/task-2-part-1a', (req, res) => {
     let perguntas = formatQuestions(perguntasUnconverted);
     const urlsAndPages = extractUrlAndPage(currentPage, allUrls);
     const handlebarsPage = urlsAndPages.handlebarsStaticPage;
+    console.log(`---- req session user is: ${userEmail} for page ${handlebarsPage} --- `);
+
     Answer.findOne({userEmail: userEmail, currentPage: currentPage})
     .then((answer) => {
         if (answer != null) {
@@ -466,6 +468,8 @@ router.get('/task-2-part-1b', (req, res) => {
     let perguntas = formatQuestions(perguntasUnconverted);
     const urlsAndPages = extractUrlAndPage(currentPage, allUrls);
     const handlebarsPage = urlsAndPages.handlebarsStaticPage;
+    console.log(`---- req session user is: ${userEmail} for page ${handlebarsPage} --- `);
+
     Answer.findOne({userEmail: userEmail, currentPage: currentPage})
     .then((answer) => {
         if (answer != null) {
@@ -490,6 +494,7 @@ router.get('/task-2-part-2', (req, res) => {
     let perguntas = formatQuestions(perguntasUnconverted);
     const urlsAndPages = extractUrlAndPage(currentPage, allUrls);
     const handlebarsPage = urlsAndPages.handlebarsStaticPage;
+    console.log(`---- req session user is: ${userEmail} for page ${handlebarsPage} --- `);
     
     Answer.findOne({userEmail: userEmail, currentPage: currentPage})
     .then((answer) => {
@@ -497,6 +502,7 @@ router.get('/task-2-part-2', (req, res) => {
             const questionIds = JSON.parse(answer.questionsIdSaved);
             const questionAnswersPartial = JSON.parse(answer.answersSaved);
             perguntasWithUserAnswers = addUsersExistingsAnswers(perguntas, questionIds, questionAnswersPartial);
+            console.log(perguntasWithUserAnswers);
             perguntas =  perguntasWithUserAnswers;
             res.render(handlebarsPage, { perguntas, urlsAndPages });
         } else {
@@ -515,6 +521,8 @@ router.get('/task-2-part-3', (req, res) => {
     let perguntas = formatQuestions(perguntasUnconverted);
     const urlsAndPages = extractUrlAndPage(currentPage, allUrls);
     const handlebarsPage = urlsAndPages.handlebarsStaticPage;
+    console.log(`---- req session user is: ${userEmail} for page ${handlebarsPage} --- `);
+
     Answer.findOne({userEmail: userEmail, currentPage: currentPage})
     .then((answer) => {
         if (answer != null) {
@@ -542,6 +550,8 @@ router.get('/task-2-part-4', (req, res) => {
     let perguntas = formatQuestions(perguntasUnconverted);
     const urlsAndPages = extractUrlAndPage(currentPage, allUrls);
     const handlebarsPage = urlsAndPages.handlebarsStaticPage;
+    console.log(`---- req session user is: ${userEmail} for page ${handlebarsPage} --- `);
+
     Answer.findOne({userEmail: userEmail, currentPage: currentPage})
     .then((answer) => {
         if (answer != null) {

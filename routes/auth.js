@@ -14,7 +14,7 @@ const User = require("../models/user2.js");
 const LegitEmail = require("../models/emaillist.js");
 
 // This code is commented out as it only needs to be run once to ensure that the email address array is populated
-/*
+
 router.post('/', (req, res) => {
 
     // --- This step will only run once so that the db is populated with email addresses --- //
@@ -29,7 +29,7 @@ router.post('/', (req, res) => {
         console.log('lengthOfEmails');
         console.log(arrayOfEmails.length);
         // If it's equal to zero then we need to set up the database. This will only need to be run once
-        if (arrayOfEmails.length === 0 ) {
+        if (arrayOfEmails.length > 0 ) {
             for (i = 0; i < totalLegitEmails; i++) {
                 // Assign and email after pulling from the bin
                 const uniqueId = legitEmails[i].id;
@@ -103,7 +103,7 @@ router.post('/', (req, res) => {
 })
 })
 });
-*/
+
  
 module.exports = router;
 
