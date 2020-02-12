@@ -32,6 +32,7 @@ app.use(cookieSession({
 }))
 
 
+/* Comment Out as it is causing bugs
 // Write own Middleware to prevent users who are not logged in from accessing secret pages
 router.use((req, res, next) => {
     if (req.session.currentUser) { // <== if there's user in the session (user is logged in)
@@ -42,6 +43,7 @@ router.use((req, res, next) => {
         // res.redirect('/individual-login');         //    |
     }                                 //    |
 });
+*/
 
 /* --- INTRO ROUTES --- */
 // The login page is kept in routes/auth.js

@@ -53,11 +53,12 @@ app.use(cookieSession({
 
 app.get('/', function (req, res, next) {
     // Update views
-    req.session.views = (req.session.views || 0) + 1
-    user = req.session.currentUser;
-    // Write response
-    console.log(`logged in as ${user}`);
-    console.log(`user has had ${req.session.views} views`);
+
+    // user = req.session.currentUser;
+    /* Reset the current user */
+
+    req.session.currentUser = null;
+    console.log(`req session reset`);
 
     res.render('index');
 })
