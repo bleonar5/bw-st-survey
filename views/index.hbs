@@ -1,30 +1,28 @@
-<div id="content-heading">
-</div>
-
-    <div id="content-main" class="mx-xs-0 mx-sm-2 mx-md-3 mx-lg-5">
-        <div class="row justify-content-center bespoke-60vh-vertical-align">
+<form method="POST">
+    <div id="content-main-100">
+        <div class="row h-100 d-flex bespoke-100vh-vertical-align justify-content-center p-4">
             <div class="col-md-8 col-sm-10 p-4">
-              <form method="POST">
+
                 <fieldset class="bg-light p-4 rounded">
-                    <div class="form-group">
-                        <div class="my-5">
+                    <div class="form-group h-100">
+                        <div class="my-4">
                             <label for="participant_id">First Name</label>
-                            <input type="text" class="form-control" name="firstNameOnLogin" value="" required>
+                            <input type="text" onclick="hideAlertDiv()" class="form-control" name="firstNameOnLogin" value="" required>
                         </div>
-                        <div class="my-5">
+                        <div class="my-4">
                             <label for="participant_id">Family Name</label>
-                            <input type="text" class="form-control" name="familyNameOnLogin" value="" required>
+                            <input type="text" onclick="hideAlertDiv()" class="form-control" name="familyNameOnLogin" value="" required>
                         </div>
-                        <div class="my-5">
+                        <div class="my-4">
                             <label for="participant_id">Email</label>
-                            <input id="email-input" type="email" class="form-control" name="emailOnLogin" value="" required>
+                            <input id="email-input" onclick="hideAlertDiv()" type="email" class="form-control" name="emailOnLogin" value="" required>
                         </div>
                         <div>
                             {{#if errorMessage1 }}
-                                <div class="alert alert-danger error-message text-center m-5 p-3" role="alert">{{ errorMessage1 }}</div>
+                                <div id="alert-1" class="alert alert-danger error-message text-center m-2 p-3" role="alert">{{ errorMessage1 }}</div>
                             {{/if}}
                             {{#if errorMessage2 }}
-                                <div class="alert alert-danger error-message text-center m-5 p-3" role="alert">{{ errorMessage2 }}</div>
+                                <div id="alert-2" class="alert alert-danger error-message text-center m-2 p-3" role="alert">{{ errorMessage2 }}</div>
                             {{/if}}
                         </div>
                     </div>
@@ -42,13 +40,12 @@
                         
                     </div>
                 </fieldset>
-              </form>
+              
             </div>
           </div>
     {{!-- closing div of end of content main below --}}
     </div>
-
-<div id="footer">
-</div>
+</form>
 
 <script type="text/javascript" src="js/getUrlParam4.js"></script>
+<script type="text/javascript" src="js/hideAlertDiv.js"></script>

@@ -1,11 +1,10 @@
 // On window load, fetch surveyCode from localStorage. If surveyCode has been set to N/A or surveyCode does not exist, disable Amazon Voucher button
 
-// Commenting out window.addEventListener to see if window.addEventListener('DOMContentLoaded' works in Chrome
-// window.addEventListener("load", function() {
+// Commenting out this listener as we now want the user to have the option choosing cash or Amazon code
+/*
 window.addEventListener('DOMContentLoaded', () => {
 
     let surveyCode = window.localStorage.getItem('code');
-
 
     if (surveyCode === null) {
         let amazonBtn = document.getElementById('amazon-btn');
@@ -15,6 +14,11 @@ window.addEventListener('DOMContentLoaded', () => {
     }
 
 });
+*/
+
+// Feb 12: Commenting out listener below as BW would like an extra page when user clicks on Amazon button
+
+/*
 
 let surveyCode = window.localStorage.getItem('code');
 
@@ -26,9 +30,11 @@ document.getElementById('amazon-btn').onclick = function () {
     let redirectUrl = `https://harvarddecisionlab.sona-systems.com/webstudy_credit.aspx?experiment_id=${studyId}&credit_token=${token}&survey_code=${surveyCode}`;
 
     // Redirect participant to harvard decision lab
-    window.localStorage.setItem('redirctUrlForTesting', redirectUrl);
+    window.localStorage.setItem('redirctUrl', redirectUrl);
     window.location.href = redirectUrl;
 
     // Returning false cancels the form submission.
     return false;
 };
+
+*/

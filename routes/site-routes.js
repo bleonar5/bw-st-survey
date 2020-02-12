@@ -1172,8 +1172,8 @@ router.post('/study-conclusion', (req, res) => {
     .then( (answer) => {
         if (userPaymentPref == 'amazon') {
             console.log(answer);
-            // Comment this out because the redirect is now done through the frontend as part of the url is retrieved from localStorage
-            // res.redirect("/compensation-amazon");
+
+            res.redirect("/compensation-amazon");
         } else {
             console.log(answer);
             res.redirect("/compensation-cash");
@@ -1201,13 +1201,13 @@ router.get('/compensation-cash', (req, res) => {
 router.get('/compensation-amazon', (req, res) => {
 
     // Create variable which will be sent to Handlebars page after redemCode is fetched from db
-    const reqsession = req.session;
+
     const currentPage = getPageNumber(req.originalUrl, allUrls);
     const urlsAndPages = extractUrlAndPage(currentPage, allUrls);
     const handlebarsPage = urlsAndPages.handlebarsStaticPage;
+    const userEmail = req.session.currentUser
 
-
-    res.render(handlebarsPage);
+    res.render(handlebarsPage, { userEmail });
 
     /*
     // Only use for MTurkers test

@@ -11,16 +11,16 @@
                             <h4 class="my-sm-3 my-md-4 my-lg-4 my-xl-5 text-center">Please enter your email address to resume survey</h4>
 
                             <label for="participant_id">Email</label>
-                            <input id="email-input" type="email" class="form-control" name="emailResumeSurvey" value="" required>
+                            <input id="email-input" type="email" onclick="hideAlertDiv()" class="form-control" name="emailResumeSurvey" value="" required>
                         </div>
                         <div>
                             {{#if errorMessage1 }}
 
-                             <div class="alert alert-danger error-message text-center m-5 p-3" role="alert">{{ errorMessage1 }}</div>
+                             <div id="alert-1" class="alert alert-danger error-message text-center m-2 p-3" role="alert">{{ errorMessage1 }}</div>
 
                             {{/if}}
                             {{#if errorMessage2 }}
-                                <div class="error-message">{{ errorMessage2 }}</div>
+                                <div id="alert-2" class="alert alert-danger error-message text-center m-2 p-3" role="alert">{{ errorMessage2 }}</div>
                             {{/if}}
                         </div>
                     </div>
@@ -42,3 +42,5 @@
 
 <div id="footer">
 </div>
+
+<script type="text/javascript" src="js/hideAlertDiv.js"></script>

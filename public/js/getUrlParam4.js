@@ -31,11 +31,13 @@ window.addEventListener('DOMContentLoaded', () => {
     }
 
     // Disable begin survey button if participant has already started the survey
-    if (startedSurvey == "true") {
-        beginSurveyBtn.disabled = true;
-        beginSurveyBtn.classList.remove("hand-curser");
+    // if (startedSurvey == "true") {
+    //     beginSurveyBtn.disabled = true;
+    //     beginSurveyBtn.classList.remove("hand-curser");
     // Else, disable resume survey button
-    } else {
+    
+    // Disable resumesurvey if user has not already started survey
+    if (startedSurvey == "false") {
         resumeSurveyBtn.classList.remove("hand-curser");
         resumeSurveyBtn.classList.add("disabled");
     }
