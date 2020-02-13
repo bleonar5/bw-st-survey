@@ -15,6 +15,7 @@ const LegitEmail = require("../models/emaillist.js");
 
 // This code is commented out as it only needs to be run once to ensure that the email address array is populated
 
+/*
 
 router.post('/', (req, res) => {
 
@@ -23,16 +24,16 @@ router.post('/', (req, res) => {
     const legitEmails = require('../bin/legitemails.js');
     const totalLegitEmails = legitEmails.length
 
-    /*
-    --- Only use the code below when you want to reset the list of emails that will be checked against when the user logs in
-    LegitEmail.deleteMany()
-    .then(() => {
-        console.log('All email addresses in the database collection have been deleted');
-        })
-        .catch((error) => {
-        console.log(error);
-    })
-    */
+    
+    // --- Only use the code below when you want to reset the list of emails that will be checked against when the user logs in
+    // LegitEmail.deleteMany()
+    // .then(() => {
+    //     console.log('All email addresses in the database collection have been deleted');
+    //     })
+    //     .catch((error) => {
+    //     console.log(error);
+    // })
+   
 
     // Look for the array of Emails
     LegitEmail.find()
@@ -112,20 +113,7 @@ router.post('/', (req, res) => {
 })
 });
 
-
+*/
 
 module.exports = router;
 
-/* --- Legacy Code --- */
-
-/* Code below is to delete all codes (for dev purposes to be used in router.post("/") */
-
-// Mturk.deleteMany()
-// .then(() => {
-//     console.log('All M-turk codes deleted');
-//     })
-//     .catch((error) => {
-//     console.log(error);
-// })
-
-/* ---- End of Delete Codes ---- */
