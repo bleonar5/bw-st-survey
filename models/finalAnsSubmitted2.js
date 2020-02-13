@@ -11,6 +11,7 @@ const FinalAnsSubmittedSchema = new Schema({
     userEmail: String,
     answersSaved: String,
     timesOfAnswers: String,
+    totalPagesofAnswers: String,
     // Todo: change logic in study-conclusion so that this database is updated with the user's payment preference instead of sending it to a new collection
     userPaymentPref: String,
 }, {

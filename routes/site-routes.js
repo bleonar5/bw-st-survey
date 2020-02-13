@@ -3,7 +3,7 @@ const router = express.Router();
 const Answer = require('../models/answerLowerCase2.js');
 const FinalAnsSubmitted = require('../models/finalAnsSubmitted2.js');
 const MTurkFeedback = require('../models/mTurkFeedback2.js');
-const Mturk = require('../models/mTurk2.js');
+// const Mturk = require('../models/mTurk2.js');
 const LegitEmail = require("../models/emaillist.js");
 const UserPaymentPref = require('../models/userPaymentPref.js');
 const app = express();
@@ -319,8 +319,6 @@ router.get('/task-1-part-1', (req, res) => {
     console.log(`--- Current page: ${currentPage}. ReqSession data: ${userEmail} --- `);
     // The mistake is here because you are manipulating the wrong data here. You need to make this a const. The browser creates a references to the original array rather than creating a new one
     const perguntas = dataForThisSheet.filter (data => data.radio);
-    console.log(`--- Below is the first element of the untouched array of questions ---- `);
-    console.log(perguntas[0]);
 
     Answer.findOne({userEmail: userEmail, currentPage: currentPage})
     .then((answer) => {
@@ -353,14 +351,13 @@ router.get('/task-1-part-1', (req, res) => {
 router.get('/task-1-part-2', (req, res) => {
     const currentPage = getPageNumber(req.originalUrl, allUrls);
     const urlsAndPages = extractUrlAndPage(currentPage, allUrls);
+    const userId = req.cookies.session;
     const userEmail = req.session.currentUser;
     const handlebarsPage = urlsAndPages.handlebarsStaticPage;
     const dataForThisSheet = allQuestions.filter( data => data.page === currentPage);
     const heading = dataForThisSheet.filter (data => data.heading);
     console.log(`--- Current page: ${currentPage}. ReqSession data: ${userEmail} --- `);
     const perguntas = dataForThisSheet.filter (data => data.radio);
-    console.log(`--- Below is the first element of the untouched array of questions ---- `);
-    console.log(perguntas[0]);
     Answer.findOne({userEmail: userEmail, currentPage: currentPage})
     .then((answer) => {
         console.log(`--- Below is the answer retrieved from db for: ${userEmail}: --- `);
@@ -389,79 +386,69 @@ router.get('/task-1-part-2', (req, res) => {
 /* --- Post Routes for Task 1 --- */
 
 router.post('/task-1-part-1', (req, res) => {
-    // Declare variables to store currentPage, which will be used to to retrieve questions from db
     const currentPage = getPageNumber(req.originalUrl, allUrls);
     const urlsAndPages = extractUrlAndPage(currentPage, allUrls);
-
-    const createdAt = req._startTime;
-    const userId = req.cookies.session;
-    const userEmail = req.session.currentUser;
-
-    const keysConvertedToNumbers = Object.keys(req.body).map(_element => parseInt(_element, 10));
-    const answersObject = JSON.stringify(req.body);
-    const questionsIdSaved = JSON.stringify(Object.values(keysConvertedToNumbers)); // Convert to string, otherwise MongoDB will not store the data
-    const answersSaved = JSON.stringify(Object.values(req.body));
     const dataForThisSheet = allQuestions.filter(data => data.page === currentPage);
     const perguntas = dataForThisSheet.filter (data => !data.heading);
-
-    const reqRemoteAddress = req._remoteAddress;
-    const reqPath = req.route.path;
-    const newQuestionSubmittedByUser = new Answer ( { userId, userEmail, currentPage, reqPath, reqRemoteAddress, answersObject, questionsIdSaved, answersSaved, createdAt} );
-
-    if (Object.keys(req.body).length === perguntas.length) {
-        console.log('deleting');
-        Answer.deleteMany({userEmail: userEmail, currentPage: currentPage})
-        
-        .then( (bog) => {
-            console.log(11);
-            console.log(bog);
-            newQuestionSubmittedByUser.save()
-            .then( (data) => {
-                console.log(`data saved for ${userEmail} on path: ${reqPath}`);
-                console.log(data);
-                console.log(`^^^ Data Saved ^^^ }`);
-                res.redirect(urlsAndPages.nextPage);
-            })
-            .catch((error) => {
-                console.log(error);
-            })
-})}});
-
-
-router.post('/task-1-part-2', (req, res) => {
-    
-    const keysConvertedToNumbers = Object.keys(req.body).map(_element => parseInt(_element, 10));
-    const answersObject = JSON.stringify(req.body);
-    const questionsIdSaved = JSON.stringify(Object.values(keysConvertedToNumbers)); // Convert to string, otherwise MongoDB will not store the data
-    const answersSaved = JSON.stringify(Object.values(req.body));
     const createdAt = req._startTime;
     const userId = req.cookies.session;
     const userEmail = req.session.currentUser;
+    const keysConvertedToNumbers = Object.keys(req.body).map(_element => parseInt(_element, 10));
+    const answersObject = JSON.stringify(req.body);
+    const questionsIdSaved = JSON.stringify(Object.values(keysConvertedToNumbers)); 
+    const answersSaved = JSON.stringify(Object.values(req.body));
+    const reqPath = req.route.path;
+    const numberOfQuestionsAnswered = Object.keys(req.body).length;
+
+    if (numberOfQuestionsAnswered === perguntas.length) {
+        Answer.updateOne( {userEmail: userEmail, currentPage: currentPage}, { $set:{ userId, userEmail, currentPage, reqPath, answersObject, questionsIdSaved, answersSaved, createdAt} }, { upsert: true })
+        .then( (mongoUpdateResult) => {
+            console.log(mongoUpdateResult);
+            console.log(`--- Here is the Answer for ${userEmail} sent to the db ---`);
+            console.log(answersObject);
+            res.redirect(urlsAndPages.nextPage);
+        })
+        .catch((error) => {
+            console.log(error);
+        })
+    } else {
+        res.redirect(req.originalUrl);
+    }
+});
+
+router.post('/task-1-part-2', (req, res) => {
     const currentPage = getPageNumber(req.originalUrl, allUrls);
     const urlsAndPages = extractUrlAndPage(currentPage, allUrls);
-    const dataForThisSheet = allQuestions.filter( data => data.page === currentPage);
+    const dataForThisSheet = allQuestions.filter(data => data.page === currentPage);
     const perguntas = dataForThisSheet.filter (data => !data.heading);
-
-    /* Next three lines are new as of Jan 29. They provide more information to help calculate how long a user spends on each question */
-    const reqRemoteAddress = req._remoteAddress;
+    const createdAt = req._startTime;
+    const userId = req.cookies.session;
+    const userEmail = req.session.currentUser;
+    const keysConvertedToNumbers = Object.keys(req.body).map(_element => parseInt(_element, 10));
+    const answersObject = JSON.stringify(req.body);
+    const questionsIdSaved = JSON.stringify(Object.values(keysConvertedToNumbers)); 
+    const answersSaved = JSON.stringify(Object.values(req.body));
     const reqPath = req.route.path;
-    const newQuestionSubmittedByUser = new Answer ( { userId, userEmail, currentPage, reqPath, reqRemoteAddress, answersObject, questionsIdSaved, answersSaved, createdAt} );
+    const numberOfQuestionsAnswered = Object.keys(req.body).length;
 
-    if (Object.keys(req.body).length === perguntas.length) {
-        Answer.deleteMany({userEmail: userEmail, currentPage: currentPage})
-        .then(() => {
-            newQuestionSubmittedByUser.save()
-            .then( (answer) => {
-                console.log(`Answer saved to database: ${answer}`);
-                res.redirect(urlsAndPages.nextPage);
-            })
-            .catch((error) => {
-                console.log(error);
-            })
-})}});
+    if (numberOfQuestionsAnswered === perguntas.length) {
+        Answer.updateOne( {userEmail: userEmail, currentPage: currentPage}, { $set:{ userId, userEmail, currentPage, reqPath, answersObject, questionsIdSaved, answersSaved, createdAt} }, { upsert: true })
+        .then( (mongoUpdateResult) => {
+            console.log(mongoUpdateResult);
+            console.log(`--- Here is the Answer for ${userEmail} sent to the db ---`);
+            console.log(answersObject);
+            res.redirect(urlsAndPages.nextPage);
+        })
+        .catch((error) => {
+            console.log(error);
+        })
+    } else {
+        res.redirect(req.originalUrl);
+    }
+});
 
 
-/* --- TASK TWO ROUTES --- */
+/* --- TASK TWO GET ROUTES --- */
 /* --- PROTOTYPE FOR OTHER TASK TWO ROUTES ---*/
 router.get('/task-2-part-1a', (req, res) => {
     const currentPage = getPageNumber(req.originalUrl, allUrls);
@@ -471,8 +458,6 @@ router.get('/task-2-part-1a', (req, res) => {
     const perguntasUnconverted = allQuestions.filter( data => data.page === currentPage);
     console.log(`--- Current page: ${currentPage}. ReqSession data: ${userEmail} --- `);
     const perguntas = formatQuestions(perguntasUnconverted);
-    console.log(`--- Below is the first element of the untouched array of questions ---- `);
-    console.log(perguntas[0]);
 
     Answer.findOne({userEmail: userEmail, currentPage: currentPage})
     .then((answer) => {
@@ -508,8 +493,6 @@ router.get('/task-2-part-1b', (req, res) => {
     const perguntasUnconverted = allQuestions.filter( data => data.page === currentPage);
     console.log(`--- Current page: ${currentPage}. ReqSession data: ${userEmail} --- `);
     const perguntas = formatQuestions(perguntasUnconverted);
-    console.log(`--- Below is the first element of the untouched array of questions ---- `);
-    console.log(perguntas[0]);
 
     Answer.findOne({userEmail: userEmail, currentPage: currentPage})
     .then((answer) => {
@@ -543,8 +526,6 @@ router.get('/task-2-part-2', (req, res) => {
     const perguntasUnconverted = allQuestions.filter( data => data.page === currentPage);
     console.log(`--- Current page: ${currentPage}. ReqSession data: ${userEmail} --- `);
     const perguntas = formatQuestions(perguntasUnconverted);
-    console.log(`--- Below is the first element of the untouched array of questions ---- `);
-    console.log(perguntas[0]);
 
     Answer.findOne({userEmail: userEmail, currentPage: currentPage})
     .then((answer) => {
@@ -578,8 +559,7 @@ router.get('/task-2-part-3', (req, res) => {
     const perguntasUnconverted = allQuestions.filter( data => data.page === currentPage);
     console.log(`--- Current page: ${currentPage}. ReqSession data: ${userEmail} --- `);
     const perguntas = formatQuestions(perguntasUnconverted);
-    console.log(`--- Below is the first element of the untouched array of questions ---- `);
-    console.log(perguntas[0]);
+
 
     Answer.findOne({userEmail: userEmail, currentPage: currentPage})
     .then((answer) => {
@@ -614,8 +594,6 @@ router.get('/task-2-part-4', (req, res) => {
     const perguntasUnconverted = allQuestions.filter( data => data.page === currentPage);
     console.log(`--- Current page: ${currentPage}. ReqSession data: ${userEmail} --- `);
     const perguntas = formatQuestions(perguntasUnconverted);
-    console.log(`--- Below is the first element of the untouched array of questions ---- `);
-    console.log(perguntas[0]);
 
     Answer.findOne({userEmail: userEmail, currentPage: currentPage})
     .then((answer) => {
@@ -642,204 +620,195 @@ router.get('/task-2-part-4', (req, res) => {
 });
 
 /* --- Post Routes for Task 2 --- */
-
 router.post('/task-2-part-1a', (req, res) => {
-    const reqBody = req.body;
-    const keysConvertedToNumbers = Object.keys(reqBody).map(_element => parseInt(_element, 10));
-    const answersObject = JSON.stringify(reqBody);
-    const questionsIdSaved = JSON.stringify(Object.values(keysConvertedToNumbers)); // Convert to string, otherwise MongoDB will not store the data
-    const answersSaved = JSON.stringify(Object.values(reqBody));
+    const currentPage = getPageNumber(req.originalUrl, allUrls);
+    const urlsAndPages = extractUrlAndPage(currentPage, allUrls);
+    const dataForThisSheet = allQuestions.filter(data => data.page === currentPage);
+    const perguntas = dataForThisSheet.filter (data => !data.heading);
     const createdAt = req._startTime;
     const userId = req.cookies.session;
     const userEmail = req.session.currentUser;
-    const length = Object.keys(req.body).length;
-    const valuesAsString = Object.values(req.body).toString(); // Used for checking if student or no
-    let includesBlank = answersObject.includes(`":""`);
-    const currentPage = getPageNumber(req.originalUrl, allUrls);
-    const dataForThisSheet = allQuestions.filter( data => data.page === currentPage);
-    const urlsAndPages = extractUrlAndPage(currentPage, allUrls);
-    // Declare variable which will be used to calculate how many questions are on this page (it excludes headings)
-    const perguntas = dataForThisSheet.filter (data => !data.heading);
-
-    /* Next three lines are new as of Jan 29. They provide more information to help calculate how long a user spends on each question */
-    const reqRemoteAddress = req._remoteAddress;
+    const keysConvertedToNumbers = Object.keys(req.body).map(_element => parseInt(_element, 10));
+    const answersObject = JSON.stringify(req.body);
+    const questionsIdSaved = JSON.stringify(Object.values(keysConvertedToNumbers));
+    const answersSaved = JSON.stringify(Object.values(req.body));
     const reqPath = req.route.path;
-    const newQuestionSubmittedByUser = new Answer ( { userId, userEmail, currentPage, reqPath, reqRemoteAddress, answersObject, questionsIdSaved, answersSaved, createdAt} );
+    // Declare variables for form validation (only applies to task-2-part-1a)
+    const valuesAsString = Object.values(req.body).toString(); // Used for checking if student or no
+    const includesBlank = answersObject.includes(`":""`);
+    const numberOfQuestionsAnswered = Object.keys(req.body).length;
 
-    if ( (length === perguntas.length && !includesBlank) || valuesAsString === 'I am a full time student' || valuesAsString === 'no' ) 
-    {
-        // Overwrite by first deleting all the entrances for this userEmail and currentPage combination
-        Answer.deleteMany({userEmail: userEmail, currentPage: currentPage})
-        .then(() => {
-            console.log('Deleted All');
-          })
-          .catch((error) => {   
-            console.log(error);
-          })
-        newQuestionSubmittedByUser.save()
-        .then( (answer) => {
-            console.log(`Answer saved to database: ${answer}`);
-            if (length === perguntas.length) {
-                console.log(`--- ${userEmail} has been forwarded to next page becaue they are employed--- `)
+    if ( (numberOfQuestionsAnswered === perguntas.length && !includesBlank) || valuesAsString === 'I am a full time student' || valuesAsString === 'no' ) {
+        Answer.updateOne( {userEmail: userEmail, currentPage: currentPage}, { $set:{ userId, userEmail, currentPage, reqPath, answersObject, questionsIdSaved, answersSaved, createdAt} }, { upsert: true })
+        .then( (mongoUpdateResult) => {
+            console.log(mongoUpdateResult);
+            console.log(`--- Below is the Answer for ${userEmail} from page: ${reqPath}:`);
+            console.log(answersObject);
+            if (numberOfQuestionsAnswered === perguntas.length) {
+                console.log(`--- ${userEmail} has been forwarded to ${urlsAndPages.nextPage} page becaue they are employed--- `)
                 res.redirect(urlsAndPages.nextPage);
             } else {
-                console.log(`--- ${userEmail} has skipped pages because they are full time student or unemployed --- `)
-                res.redirect('/task-2-part-2'); // Skip the next question if the values are 'I am a full time student' or 'no'
+                console.log(`--- ${userEmail} has skipped to page task-2-part-2' because they are full time student or unemployed --- `)
+                console.log(`update the following question`);
+                // As the user has skipped the next question, send a document to the db with answers marked as N/A
+                Answer.updateOne( {userEmail: userEmail, currentPage: currentPage + 1}, { $set:{ userId: userId, userEmail: userEmail, currentPage: 10, reqPath: urlsAndPages.nextPage, answersObject: '{"21005":"N/A","21006":"N/A","21007":"N/A","21008":"N/A","21009":"N/A"}', questionsIdSaved: '[21005,21006,21007,21008,21009]', answersSaved: '["N/A","N/A","N/A","N/A","N/A"]', createdAt} }, { upsert: true })
+                .then ( ( completingNextPageWithNa ) => {
+                    console.log(completingNextPageWithNa);
+                    res.redirect('/task-2-part-2'); // Skip the next question if the values are 'I am a full time student' or 'no'
+                })
+                .catch((error) => {
+                    console.log(error);
+                })                
             }
         })
         .catch((error) => {
             console.log(error);
-})}});
+        })
+    } else {
+            // Backend Form Validation failed so refresh page.
+            res.redirect(req.originalUrl);
+        }
+    });
 
 router.post('/task-2-part-1b', (req, res) => {
-    const reqBody = req.body;
-    const keysConvertedToNumbers = Object.keys(reqBody).map(_element => parseInt(_element, 10));
-    const answersObject = JSON.stringify(reqBody);
-    const questionsIdSaved = JSON.stringify(Object.values(keysConvertedToNumbers)); // Convert to string, otherwise MongoDB will not store the data
-    const answersSaved = JSON.stringify(Object.values(reqBody));
+    const currentPage = getPageNumber(req.originalUrl, allUrls);
+    const urlsAndPages = extractUrlAndPage(currentPage, allUrls);
+    const dataForThisSheet = allQuestions.filter(data => data.page === currentPage);
+    const perguntas = dataForThisSheet.filter (data => !data.heading);
     const createdAt = req._startTime;
     const userId = req.cookies.session;
     const userEmail = req.session.currentUser;
-    const length = Object.keys(req.body).length;
-    const currentPage = getPageNumber(req.originalUrl, allUrls);
-    const dataForThisSheet = allQuestions.filter( data => data.page === currentPage);
-    const urlsAndPages = extractUrlAndPage(currentPage, allUrls);
-    const perguntas = dataForThisSheet.filter (data => !data.heading);
-    let includesBlank = answersObject.includes(`":""`);
-
-    /* Next three lines are new as of Jan 29. They provide more information to help calculate how long a user spends on each question */
-    const reqRemoteAddress = req._remoteAddress;
+    const keysConvertedToNumbers = Object.keys(req.body).map(_element => parseInt(_element, 10));
+    const answersObject = JSON.stringify(req.body);
+    const questionsIdSaved = JSON.stringify(Object.values(keysConvertedToNumbers));
+    const answersSaved = JSON.stringify(Object.values(req.body));
     const reqPath = req.route.path;
-    const newQuestionSubmittedByUser = new Answer ( { userId, userEmail, currentPage, reqPath, reqRemoteAddress, answersObject, questionsIdSaved, answersSaved, createdAt} );
+    // Declare variable for form validation
+    const includesBlank = answersObject.includes(`":""`);
+    const numberOfQuestionsAnswered = Object.keys(req.body).length;
 
-    if (length === perguntas.length && !includesBlank) {
-        Answer.deleteMany({userEmail: userEmail, currentPage: currentPage})
-        .then(() => {console.log('Deleted All');
-          })
-          .catch((error) => {
-            console.log(error);
-          })
-        newQuestionSubmittedByUser.save()
-        .then( (answer) => {
-            console.log(`Answer saved to database: ${answer}`);
+    if (numberOfQuestionsAnswered === perguntas.length && !includesBlank) {
+        Answer.updateOne( {userEmail: userEmail, currentPage: currentPage}, { $set:{ userId, userEmail, currentPage, reqPath, answersObject, questionsIdSaved, answersSaved, createdAt} }, { upsert: true })
+        .then( (mongoUpdateResult) => {
+            console.log(mongoUpdateResult);
+            console.log(`--- Below is the Answer for ${userEmail} from page: ${reqPath}:`);
+            console.log(answersObject);
             res.redirect(urlsAndPages.nextPage);
         })
         .catch((error) => {
             console.log(error);
-})}});
+        })
+    } else {
+        res.redirect(req.originalUrl);
+    }
+});
 
 router.post('/task-2-part-2', (req, res) => {
-    const reqBody = req.body;
-    const keysConvertedToNumbers = Object.keys(reqBody).map(_element => parseInt(_element, 10));
-    const answersObject = JSON.stringify(reqBody);
-    const questionsIdSaved = JSON.stringify(Object.values(keysConvertedToNumbers)); // Convert to string, otherwise MongoDB will not store the data
-    const answersSaved = JSON.stringify(Object.values(reqBody));
+    const currentPage = getPageNumber(req.originalUrl, allUrls);
+    const urlsAndPages = extractUrlAndPage(currentPage, allUrls);
+    const dataForThisSheet = allQuestions.filter(data => data.page === currentPage);
+    const perguntas = dataForThisSheet.filter (data => !data.heading);
     const createdAt = req._startTime;
     const userId = req.cookies.session;
     const userEmail = req.session.currentUser;
-    const length = Object.keys(req.body).length;
-    const currentPage = getPageNumber(req.originalUrl, allUrls);
-    const dataForThisSheet = allQuestions.filter( data => data.page === currentPage);
-    const urlsAndPages = extractUrlAndPage(currentPage, allUrls);
-    const perguntas = dataForThisSheet.filter (data => !data.heading);
-    let includesBlank = answersObject.includes(`":""`);
-
-    /* Next three lines are new as of Jan 29. They provide more information to help calculate how long a user spends on each question */
-    const reqRemoteAddress = req._remoteAddress;
+    const keysConvertedToNumbers = Object.keys(req.body).map(_element => parseInt(_element, 10));
+    const answersObject = JSON.stringify(req.body);
+    const questionsIdSaved = JSON.stringify(Object.values(keysConvertedToNumbers));
+    const answersSaved = JSON.stringify(Object.values(req.body));
     const reqPath = req.route.path;
-    const newQuestionSubmittedByUser = new Answer ( { userId, userEmail, currentPage, reqPath, reqRemoteAddress, answersObject, questionsIdSaved, answersSaved, createdAt} );
+    // Declare variable for form validation (just for task-2-part-2)
+    const includesBlank = answersObject.includes(`":""`);
+    const numberOfQuestionsAnswered = Object.keys(req.body).length;
 
-    if (length === perguntas.length && !includesBlank) {
-        Answer.deleteMany({userEmail: userEmail, currentPage: currentPage})
-        .then(() => {console.log('Deleted All');
-          })
-          .catch((error) => {
-            console.log(error);
-          })
-        newQuestionSubmittedByUser.save()
-        .then( (answer) => {
-            console.log(`Answer saved to database: ${answer}`);
+    if (numberOfQuestionsAnswered === perguntas.length && !includesBlank) {
+        Answer.updateOne( {userEmail: userEmail, currentPage: currentPage}, { $set:{ userId, userEmail, currentPage, reqPath, answersObject, questionsIdSaved, answersSaved, createdAt} }, { upsert: true })
+        .then( (mongoUpdateResult) => {
+            console.log(mongoUpdateResult);
+            console.log(`--- Below is the Answer for ${userEmail} from page: ${reqPath}:`);
+            console.log(answersObject);
             res.redirect(urlsAndPages.nextPage);
         })
         .catch((error) => {
             console.log(error);
-})}});
+        })
+    } else {
+        res.redirect(req.originalUrl);
+    }
+});
 
 router.post('/task-2-part-3', (req, res) => {
-    const reqBody = req.body;
-    const keysConvertedToNumbers = Object.keys(reqBody).map(_element => parseInt(_element, 10));
-    const answersObject = JSON.stringify(reqBody);
-    const questionsIdSaved = JSON.stringify(Object.values(keysConvertedToNumbers)); // Convert to string, otherwise MongoDB will not store the data
-    const answersSaved = JSON.stringify(Object.values(reqBody));
+    const currentPage = getPageNumber(req.originalUrl, allUrls);
+    const urlsAndPages = extractUrlAndPage(currentPage, allUrls);
+    const dataForThisSheet = allQuestions.filter(data => data.page === currentPage);
+    const perguntas = dataForThisSheet.filter (data => !data.heading);
     const createdAt = req._startTime;
     const userId = req.cookies.session;
     const userEmail = req.session.currentUser;
-    const length = Object.keys(req.body).length;
-    const currentPage = getPageNumber(req.originalUrl, allUrls);
-    const dataForThisSheet = allQuestions.filter( data => data.page === currentPage);
-    const urlsAndPages = extractUrlAndPage(currentPage, allUrls);
-    const perguntas = dataForThisSheet.filter (data => !data.heading);
-    const valuesAsString = Object.values(req.body).toString();
-    let includesNo = valuesAsString.includes("0-no");
-
-    /* Next three lines are new as of Jan 29. They provide more information to help calculate how long a user spends on each question */
-    const reqRemoteAddress = req._remoteAddress;
+    const keysConvertedToNumbers = Object.keys(req.body).map(_element => parseInt(_element, 10));
+    const answersObject = JSON.stringify(req.body);
+    const questionsIdSaved = JSON.stringify(Object.values(keysConvertedToNumbers));
+    const answersSaved = JSON.stringify(Object.values(req.body));
     const reqPath = req.route.path;
-    const newQuestionSubmittedByUser = new Answer ( { userId, userEmail, currentPage, reqPath, reqRemoteAddress, answersObject, questionsIdSaved, answersSaved, createdAt} );
+    // Declare variables for form validation (only for task-2-part-3). These variables contain user's answers and are part of the form validation in the if statement below
+    const numberOfQuestionsAnswered = Object.keys(req.body).length;
+    const valuesAsString = Object.values(req.body).toString();
+    const includesNo = valuesAsString.includes("0-no");
+    console.log(`--- ${userEmail} has answered ${numberOfQuestionsAnswered} questions`);
+    console.log(`---  ValuesAsString: ${valuesAsString}. IncludesNo: ${includesNo}.`);
 
-    if ((length === perguntas.length) || (length === 2 && valuesAsString === '0-no,0-no') || ( (length === 3 && includesNo) ) ) {
-        Answer.deleteMany({userEmail: userEmail, currentPage: currentPage})
-        .then(() => {console.log('Deleted All');
-          })
-          .catch((error) => {
-            console.log(error);
-          })
-        newQuestionSubmittedByUser.save()
-        .then( (answer) => {
+    if (
+        (numberOfQuestionsAnswered === perguntas.length) || 
+        (numberOfQuestionsAnswered === 2 && valuesAsString === '0-no,0-no') || 
+        (numberOfQuestionsAnswered === 3 && includesNo) ) 
+        {
+        Answer.updateOne( {userEmail: userEmail, currentPage: currentPage}, { $set:{ userId, userEmail, currentPage, reqPath, answersObject, questionsIdSaved, answersSaved, createdAt} }, { upsert: true })
+        .then( (mongoUpdateResult) => {
+            console.log(mongoUpdateResult);
+            console.log(`--- Below is the Answer for ${userEmail} from page: ${reqPath}:`);
+            console.log(answersObject);
             res.redirect(urlsAndPages.nextPage);
         })
         .catch((error) => {
             console.log(error);
         })
+    } else {
+        res.redirect(req.originalUrl);
     }
 });
 
 /* Added on 8 Feb */
 router.post('/task-2-part-4', (req, res) => {
-    const reqBody = req.body;
-    const keysConvertedToNumbers = Object.keys(reqBody).map(_element => parseInt(_element, 10));
-    const answersObject = JSON.stringify(reqBody);
-    const questionsIdSaved = JSON.stringify(Object.values(keysConvertedToNumbers)); // Convert to string, otherwise MongoDB will not store the data
-    const answersSaved = JSON.stringify(Object.values(reqBody));
+    const currentPage = getPageNumber(req.originalUrl, allUrls);
+    const urlsAndPages = extractUrlAndPage(currentPage, allUrls);
+    const dataForThisSheet = allQuestions.filter(data => data.page === currentPage);
+    const perguntas = dataForThisSheet.filter (data => !data.heading);
     const createdAt = req._startTime;
     const userId = req.cookies.session;
     const userEmail = req.session.currentUser;
-    const length = Object.keys(req.body).length;
-    const currentPage = getPageNumber(req.originalUrl, allUrls);
-    const dataForThisSheet = allQuestions.filter( data => data.page === currentPage);
-    const urlsAndPages = extractUrlAndPage(currentPage, allUrls);
-    const perguntas = dataForThisSheet.filter (data => !data.heading);
-    let includesBlank = answersObject.includes(`":""`);
-
-    const reqRemoteAddress = req._remoteAddress;
+    const keysConvertedToNumbers = Object.keys(req.body).map(_element => parseInt(_element, 10));
+    const answersObject = JSON.stringify(req.body);
+    const questionsIdSaved = JSON.stringify(Object.values(keysConvertedToNumbers));
+    const answersSaved = JSON.stringify(Object.values(req.body));
     const reqPath = req.route.path;
-    const newQuestionSubmittedByUser = new Answer ( { userId, userEmail, currentPage, reqPath, reqRemoteAddress, answersObject, questionsIdSaved, answersSaved, createdAt} );
+    // Declare variable for form validation (just for task-2-part-4)
+    const includesBlank = answersObject.includes(`":""`);
+    const numberOfQuestionsAnswered = Object.keys(req.body).length;
 
-    if (length === perguntas.length && !includesBlank) {
-        Answer.deleteMany({userEmail: userEmail, currentPage: currentPage})
-        .then(() => {console.log('Deleted All');
-          })
-          .catch((error) => {
-            console.log(error);
-          })
-        newQuestionSubmittedByUser.save()
-        .then( (answer) => {
-            console.log(`Answer saved to database: ${answer}`);
+    if (numberOfQuestionsAnswered === perguntas.length && !includesBlank) {
+        Answer.updateOne( {userEmail: userEmail, currentPage: currentPage}, { $set:{ userId, userEmail, currentPage, reqPath, answersObject, questionsIdSaved, answersSaved, createdAt} }, { upsert: true })
+        .then( (mongoUpdateResult) => {
+            console.log(mongoUpdateResult);
+            console.log(`--- Below is the Answer for ${userEmail} from page: ${reqPath}:`);
+            console.log(answersObject);
             res.redirect(urlsAndPages.nextPage);
         })
         .catch((error) => {
             console.log(error);
-})}});
+        })
+    } else {
+        res.redirect(req.originalUrl);
+    }
+});
 
 /* Task Three Routes Below */
 router.get('/task-3-1a', (req, res) => {
@@ -852,8 +821,7 @@ router.get('/task-3-1a', (req, res) => {
     const heading = dataForThisSheet.filter (data => data.heading);
     console.log(`--- Current page: ${currentPage}. ReqSession data: ${userEmail} --- `);
     const perguntas = dataForThisSheet.filter (data => data.radio);
-    console.log(`--- Below is the first element of the untouched array of questions ---- `);
-    console.log(perguntas[0]);
+
 
     Answer.findOne({userEmail: userEmail, currentPage: currentPage})
     .then((answer) => {
@@ -876,42 +844,36 @@ router.get('/task-3-1a', (req, res) => {
         console.log(error);
 })});
 
-
-
-
 router.post('/task-3-1a', (req, res) => {
     const currentPage = getPageNumber(req.originalUrl, allUrls);
-    const dataForThisSheet = allQuestions.filter( data => data.page === currentPage);
-    const createdAt = req._startTime;
-    const answersObject = JSON.stringify(req.body);
-    const userId = req.cookies.session;
-    const keysConvertedToNumbers = Object.keys(req.body).map(_element => parseInt(_element, 10));
-    const questionsIdSaved = JSON.stringify(Object.values(keysConvertedToNumbers));
-    const answersSaved = JSON.stringify(Object.values(req.body));
-    const userEmail = req.session.currentUser;
     const urlsAndPages = extractUrlAndPage(currentPage, allUrls);
-    const perguntas = dataForThisSheet.filter (data => data.radio);
-    
-    /* Next three lines are new as of Jan 29. They provide more information to help calculate how long a user spends on each question */
-    const reqRemoteAddress = req._remoteAddress;
+    const dataForThisSheet = allQuestions.filter(data => data.page === currentPage);
+    const radios = dataForThisSheet.filter (data => data.radio);
+    const createdAt = req._startTime;
+    const userId = req.cookies.session;
+    const userEmail = req.session.currentUser;
+    const keysConvertedToNumbers = Object.keys(req.body).map(_element => parseInt(_element, 10));
+    const answersObject = JSON.stringify(req.body);
+    const questionsIdSaved = JSON.stringify(Object.values(keysConvertedToNumbers)); 
+    const answersSaved = JSON.stringify(Object.values(req.body));
     const reqPath = req.route.path;
-    const newQuestionSubmittedByUser = new Answer ( { userId, userEmail, currentPage, reqPath, reqRemoteAddress, answersObject, questionsIdSaved, answersSaved, createdAt} );
+    const numberOfQuestionsAnswered = Object.keys(req.body).length;
 
-    if (Object.keys(req.body).length === perguntas.length) {
-        Answer.deleteMany({userEmail: userEmail, currentPage: currentPage})
-        .then((answer) => {
-            console.log(answer);
-            newQuestionSubmittedByUser.save()
-            .then( (answer) => {
-                console.log(`Answer saved to database: ${answer}`);
-                res.redirect(urlsAndPages.nextPage);
-            })
-            .catch((error) => {
-                console.log(error);
-            })
-})}});
-
-
+    if (numberOfQuestionsAnswered === radios.length) {
+        Answer.updateOne( {userEmail: userEmail, currentPage: currentPage}, { $set:{ userId, userEmail, currentPage, reqPath, answersObject, questionsIdSaved, answersSaved, createdAt} }, { upsert: true })
+        .then( (mongoUpdateResult) => {
+            console.log(mongoUpdateResult);
+            console.log(`--- Below is the Answer for ${userEmail} from page: ${reqPath}:`);
+            console.log(answersObject);
+            res.redirect(urlsAndPages.nextPage);
+        })
+        .catch((error) => {
+            console.log(error);
+        })
+    } else {
+        res.redirect(req.originalUrl);
+    }
+});
 
 router.get('/task-3-1b', (req, res) => {
     const currentPage = getPageNumber(req.originalUrl, allUrls);
@@ -923,8 +885,6 @@ router.get('/task-3-1b', (req, res) => {
     const heading = dataForThisSheet.filter (data => data.heading);
     console.log(`--- Current page: ${currentPage}. ReqSession data: ${userEmail} --- `);
     const perguntas = dataForThisSheet.filter (data => data.radio);
-    console.log(`--- Below is the first element of the untouched array of questions ---- `);
-    console.log(perguntas[0]);
 
     Answer.findOne({userEmail: userEmail, currentPage: currentPage})
     .then((answer) => {
@@ -949,34 +909,34 @@ router.get('/task-3-1b', (req, res) => {
 
 router.post('/task-3-1b', (req, res) => {
     const currentPage = getPageNumber(req.originalUrl, allUrls);
-    const dataForThisSheet = allQuestions.filter( data => data.page === currentPage);
-    const createdAt = req._startTime;
-    const answersObject = JSON.stringify(req.body);
-    const userId = req.cookies.session;
-    const keysConvertedToNumbers = Object.keys(req.body).map(_element => parseInt(_element, 10));
-    const questionsIdSaved = JSON.stringify(Object.values(keysConvertedToNumbers));
-    const answersSaved = JSON.stringify(Object.values(req.body));
-    const userEmail = req.session.currentUser;
     const urlsAndPages = extractUrlAndPage(currentPage, allUrls);
-    const perguntas = dataForThisSheet.filter (data => data.radio);
-    /* Next three lines are new as of Jan 29. They provide more information to help calculate how long a user spends on each question */
-    const reqRemoteAddress = req._remoteAddress;
+    const dataForThisSheet = allQuestions.filter(data => data.page === currentPage);
+    const radios = dataForThisSheet.filter (data => data.radio);
+    const createdAt = req._startTime;
+    const userId = req.cookies.session;
+    const userEmail = req.session.currentUser;
+    const keysConvertedToNumbers = Object.keys(req.body).map(_element => parseInt(_element, 10));
+    const answersObject = JSON.stringify(req.body);
+    const questionsIdSaved = JSON.stringify(Object.values(keysConvertedToNumbers)); 
+    const answersSaved = JSON.stringify(Object.values(req.body));
     const reqPath = req.route.path;
-    const newQuestionSubmittedByUser = new Answer ( { userId, userEmail, currentPage, reqPath, reqRemoteAddress, answersObject, questionsIdSaved, answersSaved, createdAt} );
+    const numberOfQuestionsAnswered = Object.keys(req.body).length;
 
-    if (Object.keys(req.body).length === perguntas.length) {
-        Answer.deleteMany({userEmail: userEmail, currentPage: currentPage})
-        .then((answer) => {
-            console.log(answer);
-            newQuestionSubmittedByUser.save()
-            .then( (answer) => {
-                console.log(`Answer saved to database: ${answer}`);
-                res.redirect(urlsAndPages.nextPage);
-            })
-            .catch((error) => {
-                console.log(error);
-            })
-})}});
+    if (numberOfQuestionsAnswered === radios.length) {
+        Answer.updateOne( {userEmail: userEmail, currentPage: currentPage}, { $set:{ userId, userEmail, currentPage, reqPath, answersObject, questionsIdSaved, answersSaved, createdAt} }, { upsert: true })
+        .then( (mongoUpdateResult) => {
+            console.log(mongoUpdateResult);
+            console.log(`--- Below is the Answer for ${userEmail} from page: ${reqPath}:`);
+            console.log(answersObject);
+            res.redirect(urlsAndPages.nextPage);
+        })
+        .catch((error) => {
+            console.log(error);
+        })
+    } else {
+        res.redirect(req.originalUrl);
+    }
+});
 
 router.get('/task-3-2a', (req, res) => {
     const currentPage = getPageNumber(req.originalUrl, allUrls);
@@ -988,8 +948,7 @@ router.get('/task-3-2a', (req, res) => {
     const heading = dataForThisSheet.filter (data => data.heading);
     console.log(`--- Current page: ${currentPage}. ReqSession data: ${userEmail} --- `);
     const perguntas = dataForThisSheet.filter (data => data.radio);
-    console.log(`--- Below is the first element of the untouched array of questions ---- `);
-    console.log(perguntas[0]);
+
 
     Answer.findOne({userEmail: userEmail, currentPage: currentPage})
     .then((answer) => {
@@ -1014,34 +973,34 @@ router.get('/task-3-2a', (req, res) => {
 
 router.post('/task-3-2a', (req, res) => {
     const currentPage = getPageNumber(req.originalUrl, allUrls);
-    const dataForThisSheet = allQuestions.filter( data => data.page === currentPage);
-    const createdAt = req._startTime;
-    const answersObject = JSON.stringify(req.body);
-    const userId = req.cookies.session;
-    const keysConvertedToNumbers = Object.keys(req.body).map(_element => parseInt(_element, 10));
-    const questionsIdSaved = JSON.stringify(Object.values(keysConvertedToNumbers));
-    const answersSaved = JSON.stringify(Object.values(req.body));
-    const userEmail = req.session.currentUser;
     const urlsAndPages = extractUrlAndPage(currentPage, allUrls);
-    const perguntas = dataForThisSheet.filter (data => data.radio);
-    /* Next three lines are new as of Jan 29. They provide more information to help calculate how long a user spends on each question */
-    const reqRemoteAddress = req._remoteAddress;
+    const dataForThisSheet = allQuestions.filter(data => data.page === currentPage);
+    const radios = dataForThisSheet.filter (data => data.radio);
+    const createdAt = req._startTime;
+    const userId = req.cookies.session;
+    const userEmail = req.session.currentUser;
+    const keysConvertedToNumbers = Object.keys(req.body).map(_element => parseInt(_element, 10));
+    const answersObject = JSON.stringify(req.body);
+    const questionsIdSaved = JSON.stringify(Object.values(keysConvertedToNumbers)); 
+    const answersSaved = JSON.stringify(Object.values(req.body));
     const reqPath = req.route.path;
-    const newQuestionSubmittedByUser = new Answer ( { userId, userEmail, currentPage, reqPath, reqRemoteAddress, answersObject, questionsIdSaved, answersSaved, createdAt} );
+    const numberOfQuestionsAnswered = Object.keys(req.body).length;
 
-    if (Object.keys(req.body).length === perguntas.length) {
-        Answer.deleteMany({userEmail: userEmail, currentPage: currentPage})
-        .then((answer) => {
-            console.log(answer);
-            newQuestionSubmittedByUser.save()
-            .then( (answer) => {
-                console.log(`Answer saved to database: ${answer}`);
-                res.redirect(urlsAndPages.nextPage);
-            })
-            .catch((error) => {
-                console.log(error);
-            })
-})}});
+    if (numberOfQuestionsAnswered === radios.length) {
+        Answer.updateOne( {userEmail: userEmail, currentPage: currentPage}, { $set:{ userId, userEmail, currentPage, reqPath, answersObject, questionsIdSaved, answersSaved, createdAt} }, { upsert: true })
+        .then( (mongoUpdateResult) => {
+            console.log(mongoUpdateResult);
+            console.log(`--- Below is the Answer for ${userEmail} from page: ${reqPath}:`);
+            console.log(answersObject);
+            res.redirect(urlsAndPages.nextPage);
+        })
+        .catch((error) => {
+            console.log(error);
+        })
+    } else {
+        res.redirect(req.originalUrl);
+    }
+});
 
 router.get('/task-3-2b', (req, res) => {
     const currentPage = getPageNumber(req.originalUrl, allUrls);
@@ -1053,8 +1012,7 @@ router.get('/task-3-2b', (req, res) => {
     const heading = dataForThisSheet.filter (data => data.heading);
     console.log(`--- Current page: ${currentPage}. ReqSession data: ${userEmail} --- `);
     const perguntas = dataForThisSheet.filter (data => data.radio);
-    console.log(`--- Below is the first element of the untouched array of questions ---- `);
-    console.log(perguntas[0]);
+
 
     Answer.findOne({userEmail: userEmail, currentPage: currentPage})
     .then((answer) => {
@@ -1079,34 +1037,34 @@ router.get('/task-3-2b', (req, res) => {
 
 router.post('/task-3-2b', (req, res) => {
     const currentPage = getPageNumber(req.originalUrl, allUrls);
-    const dataForThisSheet = allQuestions.filter( data => data.page === currentPage);
-    const createdAt = req._startTime;
-    const answersObject = JSON.stringify(req.body);
-    const userId = req.cookies.session;
-    const keysConvertedToNumbers = Object.keys(req.body).map(_element => parseInt(_element, 10));
-    const questionsIdSaved = JSON.stringify(Object.values(keysConvertedToNumbers));
-    const answersSaved = JSON.stringify(Object.values(req.body));
-    const userEmail = req.session.currentUser;
     const urlsAndPages = extractUrlAndPage(currentPage, allUrls);
-    const perguntas = dataForThisSheet.filter (data => data.radio);
-    /* Next three lines are new as of Jan 29. They provide more information to help calculate how long a user spends on each question */
-    const reqRemoteAddress = req._remoteAddress;
+    const dataForThisSheet = allQuestions.filter(data => data.page === currentPage);
+    const radios = dataForThisSheet.filter (data => data.radio);
+    const createdAt = req._startTime;
+    const userId = req.cookies.session;
+    const userEmail = req.session.currentUser;
+    const keysConvertedToNumbers = Object.keys(req.body).map(_element => parseInt(_element, 10));
+    const answersObject = JSON.stringify(req.body);
+    const questionsIdSaved = JSON.stringify(Object.values(keysConvertedToNumbers)); 
+    const answersSaved = JSON.stringify(Object.values(req.body));
     const reqPath = req.route.path;
-    const newQuestionSubmittedByUser = new Answer ( { userId, userEmail, currentPage, reqPath, reqRemoteAddress, answersObject, questionsIdSaved, answersSaved, createdAt} );
+    const numberOfQuestionsAnswered = Object.keys(req.body).length;
 
-    if (Object.keys(req.body).length === perguntas.length) {
-        Answer.deleteMany({userEmail: userEmail, currentPage: currentPage})
-        .then((answer) => {
-            console.log(answer);
-            newQuestionSubmittedByUser.save()
-            .then( (answer) => {
-                console.log(`Answer saved to database: ${answer}`);
-                res.redirect(urlsAndPages.nextPage);
-            })
-            .catch((error) => {
-                console.log(error);
-            })
-})}});
+    if (numberOfQuestionsAnswered === radios.length) {
+        Answer.updateOne( {userEmail: userEmail, currentPage: currentPage}, { $set:{ userId, userEmail, currentPage, reqPath, answersObject, questionsIdSaved, answersSaved, createdAt} }, { upsert: true })
+        .then( (mongoUpdateResult) => {
+            console.log(mongoUpdateResult);
+            console.log(`--- Below is the Answer for ${userEmail} from page: ${reqPath}:`);
+            console.log(answersObject);
+            res.redirect(urlsAndPages.nextPage);
+        })
+        .catch((error) => {
+            console.log(error);
+        })
+    } else {
+        res.redirect(req.originalUrl);
+    }
+});
 
 router.get('/task-3-3a', (req, res) => {
     const currentPage = getPageNumber(req.originalUrl, allUrls);
@@ -1118,8 +1076,7 @@ router.get('/task-3-3a', (req, res) => {
     const heading = dataForThisSheet.filter (data => data.heading);
     console.log(`--- Current page: ${currentPage}. ReqSession data: ${userEmail} --- `);
     const perguntas = dataForThisSheet.filter (data => data.radio);
-    console.log(`--- Below is the first element of the untouched array of questions ---- `);
-    console.log(perguntas[0]);
+
 
     Answer.findOne({userEmail: userEmail, currentPage: currentPage})
     .then((answer) => {
@@ -1144,34 +1101,34 @@ router.get('/task-3-3a', (req, res) => {
 
 router.post('/task-3-3a', (req, res) => {
     const currentPage = getPageNumber(req.originalUrl, allUrls);
-    const dataForThisSheet = allQuestions.filter( data => data.page === currentPage);
-    const createdAt = req._startTime;
-    const answersObject = JSON.stringify(req.body);
-    const userId = req.cookies.session;
-    const keysConvertedToNumbers = Object.keys(req.body).map(_element => parseInt(_element, 10));
-    const questionsIdSaved = JSON.stringify(Object.values(keysConvertedToNumbers));
-    const answersSaved = JSON.stringify(Object.values(req.body));
-    const userEmail = req.session.currentUser;
     const urlsAndPages = extractUrlAndPage(currentPage, allUrls);
-    const perguntas = dataForThisSheet.filter (data => data.radio);
-    /* Next three lines are new as of Jan 29. They provide more information to help calculate how long a user spends on each question */
-    const reqRemoteAddress = req._remoteAddress;
+    const dataForThisSheet = allQuestions.filter(data => data.page === currentPage);
+    const radios = dataForThisSheet.filter (data => data.radio);
+    const createdAt = req._startTime;
+    const userId = req.cookies.session;
+    const userEmail = req.session.currentUser;
+    const keysConvertedToNumbers = Object.keys(req.body).map(_element => parseInt(_element, 10));
+    const answersObject = JSON.stringify(req.body);
+    const questionsIdSaved = JSON.stringify(Object.values(keysConvertedToNumbers)); 
+    const answersSaved = JSON.stringify(Object.values(req.body));
     const reqPath = req.route.path;
-    const newQuestionSubmittedByUser = new Answer ( { userId, userEmail, currentPage, reqPath, reqRemoteAddress, answersObject, questionsIdSaved, answersSaved, createdAt} );
+    const numberOfQuestionsAnswered = Object.keys(req.body).length;
 
-    if (Object.keys(req.body).length === perguntas.length) {
-        Answer.deleteMany({userEmail: userEmail, currentPage: currentPage})
-        .then((answer) => {
-            console.log(answer);
-            newQuestionSubmittedByUser.save()
-            .then( (answer) => {
-                console.log(`Answer saved to database: ${answer}`);
-                res.redirect(urlsAndPages.nextPage);
-            })
-            .catch((error) => {
-                console.log(error);
-            })
-})}});
+    if (numberOfQuestionsAnswered === radios.length) {
+        Answer.updateOne( {userEmail: userEmail, currentPage: currentPage}, { $set:{ userId, userEmail, currentPage, reqPath, answersObject, questionsIdSaved, answersSaved, createdAt} }, { upsert: true })
+        .then( (mongoUpdateResult) => {
+            console.log(mongoUpdateResult);
+            console.log(`--- Below is the Answer for ${userEmail} from page: ${reqPath}:`);
+            console.log(answersObject);
+            res.redirect(urlsAndPages.nextPage);
+        })
+        .catch((error) => {
+            console.log(error);
+        })
+    } else {
+        res.redirect(req.originalUrl);
+    }
+});
 
 router.get('/task-3-3b', (req, res) => {
     const currentPage = getPageNumber(req.originalUrl, allUrls);
@@ -1183,8 +1140,7 @@ router.get('/task-3-3b', (req, res) => {
     const heading = dataForThisSheet.filter (data => data.heading);
     console.log(`--- Current page: ${currentPage}. ReqSession data: ${userEmail} --- `);
     const perguntas = dataForThisSheet.filter (data => data.radio);
-    console.log(`--- Below is the first element of the untouched array of questions ---- `);
-    console.log(perguntas[0]);
+
 
     Answer.findOne({userEmail: userEmail, currentPage: currentPage})
     .then((answer) => {
@@ -1215,79 +1171,87 @@ It will then create a new object (FinalAnsSubmitted and send that to a different
 
 router.post('/task-3-3b', (req, res) => {
     const currentPage = getPageNumber(req.originalUrl, allUrls);
-    const dataForThisSheet = allQuestions.filter( data => data.page === currentPage);
-    const createdAt = req._startTime;
-    const answersObject = JSON.stringify(req.body);
-    const userId = req.cookies.session;
-    const keysConvertedToNumbers = Object.keys(req.body).map(_element => parseInt(_element, 10));
-    const questionsIdSaved = JSON.stringify(Object.values(keysConvertedToNumbers));
-    const answersSaved = JSON.stringify(Object.values(req.body));
-    const userEmail = req.session.currentUser;
     const urlsAndPages = extractUrlAndPage(currentPage, allUrls);
-    const perguntas = dataForThisSheet.filter (data => data.radio);
-    /* Next three lines are new as of Jan 29. They provide more information to help calculate how long a user spends on each question */
-    const reqRemoteAddress = req._remoteAddress;
+    const dataForThisSheet = allQuestions.filter(data => data.page === currentPage);
+    const radios = dataForThisSheet.filter (data => data.radio);
+    const createdAt = req._startTime;
+    const userId = req.cookies.session;
+    const userEmail = req.session.currentUser;
+    const keysConvertedToNumbers = Object.keys(req.body).map(_element => parseInt(_element, 10));
+    const answersObject = JSON.stringify(req.body);
+    const questionsIdSaved = JSON.stringify(Object.values(keysConvertedToNumbers)); 
+    const answersSaved = JSON.stringify(Object.values(req.body));
     const reqPath = req.route.path;
-    const newQuestionSubmittedByUser = new Answer ( { userId, userEmail, currentPage, reqPath, reqRemoteAddress, answersObject, questionsIdSaved, answersSaved, createdAt} );
+    const numberOfQuestionsAnswered = Object.keys(req.body).length;
 
-    if (Object.keys(req.body).length === perguntas.length) {
-        Answer.deleteMany({userEmail: userEmail, currentPage: currentPage})
-        .then((answer) => {
-            console.log(answer);
-            newQuestionSubmittedByUser.save()
-            .then( (answer) => {
-                console.log(`Answer saved to database: ${answer}`);
-                Answer.find({userEmail: userEmail})
-                .then( (allData) => {
-                    const arrayOfAllAns = allData;
-                    const length = arrayOfAllAns.length;
-                    const answersSavedArray = [];
-                    const times = [];
-                    for (i = 0; i < length; i++) {
-                        // Include if statement to prevent loop from trying to parse the data from pages that did not contain any questions (e.g. the instructions pages) 
-                        if (typeof arrayOfAllAns[i].answersObject !== "undefined") {
-                                let ansExtracted = JSON.parse(arrayOfAllAns[i].answersObject);
-                                answersSavedArray.push(ansExtracted);
-                        }
-                        console.log(arrayOfAllAns[i]);
-                        const objectForTimings =
-                        {
-                            pageNumber: arrayOfAllAns[i].currentPage,
-                            pageUrl: arrayOfAllAns[i].reqPath, 
-                            nextButtonClicked: arrayOfAllAns[i].createdAt,
-                        }                        
-                        times.push(objectForTimings);
+    // (1) Save the answers for this page (task-3-3b)
+    if (numberOfQuestionsAnswered === radios.length) {
+        Answer.updateOne( {userEmail: userEmail, currentPage: currentPage}, { $set:{ userId, userEmail, currentPage, reqPath, answersObject, questionsIdSaved, answersSaved, createdAt} }, { upsert: true })
+        .then( (mongoUpdateResult) => {
+            console.log(mongoUpdateResult);
+            console.log(`--- Below is the Answer for ${userEmail} from page: ${reqPath}:`);
+            console.log(answersObject);
+            console.log(`--- ${userEmail} has now completed the survey so we can submit final answers`);
+    // (2) Retrieve all the answers for this user
+        Answer.find({userEmail: userEmail})
+        .then( (allData) => {
+            const arrayOfAllAns = allData;
+            const length = arrayOfAllAns.length;
+            const answersSavedArray = [];
+            const times = [];
+                for (i = 0; i < length; i++) {
+                    // Include if statement to prevent loop from trying to parse the data from pages that did not contain any questions (e.g. the instructions pages) 
+                    if (typeof arrayOfAllAns[i].answersObject !== "undefined") {
+                            let ansExtracted = JSON.parse(arrayOfAllAns[i].answersObject);
+                            answersSavedArray.push(ansExtracted);
                     }
-
-                    console.log(times);
-                    const timesWithDelta = times.map( (data, index) => {
-    
-                        if (index > 0) {
-                            times[index].previousPage = times[index - 1].pageUrl;
-                            times[index].previousPageNextButtonClicked = times[index - 1].nextButtonClicked;
-                            const startTime = times[index].previousPageNextButtonClicked;
-                            const endTime = times[index].nextButtonClicked;
-                            times[index].secondsSpentOnThisPage = (Date.parse(endTime) - Date.parse(startTime)) / 1000;
-                        } 
-                    
-                        return data;
-                    })
-
-                    console.log(timesWithDelta);
-                      
-                    const timesOfAnswers = JSON.stringify(timesWithDelta);
-                    const answersSaved = JSON.stringify(answersSavedArray);
-                    const finalAnswer = new FinalAnsSubmitted ( { userId, userEmail, answersSaved, timesOfAnswers} );
-                    console.log(finalAnswer);
-                    finalAnswer.save()
-                    .then ( (x) => {
-                        res.redirect(urlsAndPages.nextPage);
-                    })})
-                    .catch((error) => {
-                        console.log(error);
-})})})}});
-
-
+                    const objectForTimings =
+                    {
+                        pageNumber: arrayOfAllAns[i].currentPage,
+                        pageUrl: arrayOfAllAns[i].reqPath, 
+                        nextButtonClicked: arrayOfAllAns[i].createdAt,
+                    }                        
+                    times.push(objectForTimings);
+                }
+            totalPagesofAnswers = answersSavedArray.length;
+            const timesWithDelta = times.map( (data, index) => {
+                if (index > 0) {
+                    times[index].previousPage = times[index - 1].pageUrl;
+                    times[index].previousPageNextButtonClicked = times[index - 1].nextButtonClicked;
+                    const startTime = times[index].previousPageNextButtonClicked;
+                    const endTime = times[index].nextButtonClicked;
+                    times[index].secondsSpentOnThisPage = (Date.parse(endTime) - Date.parse(startTime)) / 1000;
+                } 
+                return data;
+            })
+            const timesOfAnswers = JSON.stringify(timesWithDelta);
+            const answersSaved = JSON.stringify(answersSavedArray);
+                // (3) Submit the final answers for this user
+                FinalAnsSubmitted.updateOne( {userEmail: userEmail}, { $set:{ userId, userEmail, answersSaved, timesOfAnswers, totalPagesofAnswers} }, { upsert: true })
+                .then ( (finalAnswersMongoMsg) => {
+                    console.log(answersSaved);
+                    console.log(`--- ^^^ Final answer for ${userEmail} saved as above. Total number of answers was ${totalPagesofAnswers} ^^^`);
+                    console.log(finalAnswersMongoMsg);
+                    res.redirect(urlsAndPages.nextPage);
+                })
+                .catch((error) => { // Close then & create catch for (3) Submitting final answer
+                    console.log(error);
+                })
+            }) // Close then & create catch for (2) Retrieving all the answers for this user
+            .catch((error) => {
+                console.log(error);
+            })
+        }) // Close then & create catch for (1) Saving answers for this page
+        .catch((error) => { 
+            console.log(error);
+        })
+        // Backend form validation will refresh page
+        } else {
+            console.log(`--- ${userEmail} has not submitted enough questions on this page --- `)
+            res.redirect(req.originalUrl);
+        }
+});
+        
 router.get('/study-conclusion', (req, res) => {
 
     const currentPage = getPageNumber(req.originalUrl, allUrls);
@@ -1299,7 +1263,6 @@ router.get('/study-conclusion', (req, res) => {
     res.render(handlebarsPage);
 
 });
-
 
 router.post('/study-conclusion', (req, res) => {
 
