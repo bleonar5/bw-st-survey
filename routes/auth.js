@@ -23,6 +23,8 @@ router.post('/', (req, res) => {
     const legitEmails = require('../bin/legitemails.js');
     const totalLegitEmails = legitEmails.length
 
+    /*
+    --- Only use the code below when you want to reset the list of emails that will be checked against when the user logs in
     LegitEmail.deleteMany()
     .then(() => {
         console.log('All email addresses in the database collection have been deleted');
@@ -30,6 +32,7 @@ router.post('/', (req, res) => {
         .catch((error) => {
         console.log(error);
     })
+    */
 
     // Look for the array of Emails
     LegitEmail.find()
@@ -42,9 +45,6 @@ router.post('/', (req, res) => {
                 // Assign and email after pulling from the bin
                 const uniqueId = legitEmails[i].id;
                 const emailPopulated = legitEmails[i].email;
-                console.log('inside for loop');
-                console.log(i);
-
                 const newEmailGenerated = new LegitEmail ( { uniqueId, emailPopulated } );
 
                 newEmailGenerated.save()
