@@ -1266,28 +1266,26 @@ router.get('/study-conclusion', (req, res) => {
 
 router.post('/study-conclusion', (req, res) => {
 
-    const userId = req.cookies.session;
     const userEmail = req.session.currentUser;
     const createdAt = req._startTime;
     const userPaymentPref = req.body.compbutton;
 
-    const paymentPreffo = new UserPaymentPref ( { userId, userEmail, userPaymentPref, createdAt } );
-
-    paymentPreffo.save()
-    .then( (answer) => {
+    FinalAnsSubmitted.updateOne( {userEmail: userEmail}, { $set:{ paymentPreference: userPaymentPref, paymentPrefTime: createdAt }})
+    .then ( (mongoReport) => {
         if (userPaymentPref == 'amazon') {
-            console.log(answer);
-
+            console.log(mongoReport);
             res.redirect("/compensation-amazon");
-        } else {
-            console.log(answer);
+        } else if (userPaymentPref == 'cash') {
+            console.log(mongoReport);
             res.redirect("/compensation-cash");
+        } else {
+            console.log('problem');
+            res.redirect(req.originalUrl);
         }
     })
     .catch((error) => {
         console.log(error);
     })
-
 });
 
 router.get('/compensation-cash', (req, res) => {
@@ -1336,6 +1334,7 @@ router.get('/compensation-amazon', (req, res) => {
 });
 
 /* --- The feedback page is only required for the MTurk version --- */
+/*
 router.get('/feedback-page', (req, res) => {
     const currentPage = getPageNumber(req.originalUrl, allUrls);
     const dataForThisSheet = allQuestions.filter( data => data.page === currentPage);
@@ -1361,8 +1360,7 @@ router.post('/feedback-page', (req, res) => {
     const perguntas = dataForThisSheet.filter (data => !data.info);
     const feedbackFromMTurker = new MTurkFeedback ( { userId, userEmail, currentPage, answersObject, questionsIdSaved, answersSaved, createdAt} );
 
-    // Temp hack as this is a temp page
-    /* This hack performs a flawed validation check to see that the user has answered at least 2 questions. It's flawed because there are more than 2 questions but 2 out of 4 questions could be skipped. It was not worth the time to set up flawless logic as this test was only given to 10 MTurkers */
+    // Temp hack as this is a temp page. This hack performs a flawed validation check to see that the user has answered at least 2 questions. It's flawed because there are more than 2 questions but 2 out of 4 questions could be skipped. It was not worth the time to set up flawless logic as this test was only given to 10 MTurkers
     if (Object.keys(req.body).length > (perguntas.length - 2)) {
         Answer.deleteMany({userEmail: userEmail, currentPage: currentPage})
         .then((answer) => {
@@ -1376,5 +1374,6 @@ router.post('/feedback-page', (req, res) => {
                 console.log(error);
             })
 })}});
+*/
 
 module.exports = router;
