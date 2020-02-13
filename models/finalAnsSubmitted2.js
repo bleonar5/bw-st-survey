@@ -21,6 +21,6 @@ const FinalAnsSubmittedSchema = new Schema({
 });
 
 // Remember to rename the model. Whatever you end up putting in quotes will end up being the collection name
-const FinalAnsSubmitted = mongoose.model("final-answers", FinalAnsSubmittedSchema);
+const FinalAnsSubmitted = mongoose.model("final-answers-v2", FinalAnsSubmittedSchema);
 
 module.exports = FinalAnsSubmitted;

@@ -15,7 +15,7 @@ const LegitEmail = require("../models/emaillist.js");
 
 // This code is commented out as it only needs to be run once to ensure that the email address array is populated
 
-/*
+
 router.post('/', (req, res) => {
 
     // --- This step will only run once so that the db is populated with email addresses --- //
@@ -23,6 +23,13 @@ router.post('/', (req, res) => {
     const legitEmails = require('../bin/legitemails.js');
     const totalLegitEmails = legitEmails.length
 
+    LegitEmail.deleteMany()
+    .then(() => {
+        console.log('All email addresses in the database collection have been deleted');
+        })
+        .catch((error) => {
+        console.log(error);
+    })
 
     // Look for the array of Emails
     LegitEmail.find()
@@ -105,7 +112,7 @@ router.post('/', (req, res) => {
 })
 });
 
-*/
+
 
 module.exports = router;
 

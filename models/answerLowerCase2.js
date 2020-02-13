@@ -25,6 +25,6 @@ const questionSchema = new Schema({
 });
 
 // Remember to rename the model. Whatever you end up putting in quotes will end up being the collection name
-const Answer = mongoose.model("survey-answers", questionSchema);
+const Answer = mongoose.model("survey-answers-v2", questionSchema);
 
 module.exports = Answer;

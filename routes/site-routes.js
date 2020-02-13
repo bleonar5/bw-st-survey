@@ -409,10 +409,17 @@ router.post('/task-1-part-1', (req, res) => {
     const newQuestionSubmittedByUser = new Answer ( { userId, userEmail, currentPage, reqPath, reqRemoteAddress, answersObject, questionsIdSaved, answersSaved, createdAt} );
 
     if (Object.keys(req.body).length === perguntas.length) {
+        console.log('deleting');
         Answer.deleteMany({userEmail: userEmail, currentPage: currentPage})
-        .then(() => {
+        
+        .then( (bog) => {
+            console.log(11);
+            console.log(bog);
             newQuestionSubmittedByUser.save()
-            .then( (notCurrentlyUsed) => {
+            .then( (data) => {
+                console.log(`data saved for ${userEmail} on path: ${reqPath}`);
+                console.log(data);
+                console.log(`^^^ Data Saved ^^^ }`);
                 res.redirect(urlsAndPages.nextPage);
             })
             .catch((error) => {
@@ -659,21 +666,24 @@ router.post('/task-2-part-1a', (req, res) => {
     const reqPath = req.route.path;
     const newQuestionSubmittedByUser = new Answer ( { userId, userEmail, currentPage, reqPath, reqRemoteAddress, answersObject, questionsIdSaved, answersSaved, createdAt} );
 
-    if ( (length === perguntas.length && !includesBlank) || valuesAsString === 'I am a full time student' || valuesAsString === 'no' ) {
+    if ( (length === perguntas.length && !includesBlank) || valuesAsString === 'I am a full time student' || valuesAsString === 'no' ) 
+    {
         // Overwrite by first deleting all the entrances for this userEmail and currentPage combination
         Answer.deleteMany({userEmail: userEmail, currentPage: currentPage})
         .then(() => {
             console.log('Deleted All');
           })
-          .catch((error) => {
+          .catch((error) => {   
             console.log(error);
           })
         newQuestionSubmittedByUser.save()
         .then( (answer) => {
             console.log(`Answer saved to database: ${answer}`);
             if (length === perguntas.length) {
+                console.log(`--- ${userEmail} has been forwarded to next page becaue they are employed--- `)
                 res.redirect(urlsAndPages.nextPage);
             } else {
+                console.log(`--- ${userEmail} has skipped pages because they are full time student or unemployed --- `)
                 res.redirect('/task-2-part-2'); // Skip the next question if the values are 'I am a full time student' or 'no'
             }
         })
@@ -811,7 +821,6 @@ router.post('/task-2-part-4', (req, res) => {
     const perguntas = dataForThisSheet.filter (data => !data.heading);
     let includesBlank = answersObject.includes(`":""`);
 
-    
     const reqRemoteAddress = req._remoteAddress;
     const reqPath = req.route.path;
     const newQuestionSubmittedByUser = new Answer ( { userId, userEmail, currentPage, reqPath, reqRemoteAddress, answersObject, questionsIdSaved, answersSaved, createdAt} );
